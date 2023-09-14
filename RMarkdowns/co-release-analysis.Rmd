@@ -5,7 +5,36 @@ date: "2023-07-12"
 output: html_document
 ---
 
+#load libraries
+```{r}
+library("dplyr")
+library("bigrquery")
+library("DBI")
+```
 
+
+#query data from BQ (dataframe with TRI ID, facility name, chemicals, and total sum of on site releases for the 5 year span)
+```{r}
+	# set up database connection
+	con <- dbConnect(
+	  bigrquery::bigquery(),
+	  project = "edf-aq-data",
+	  dataset = "tri",
+)
+
+SQL = "	
+	SELECT
+	trifd,
+	facility_name,
+	chemical,
+	SUM(on_site_release_total) as sum_onsite_releases
+	FROM `edf-aq-data.tri.tri_basic_2016-2021` 
+	GROUP BY trifd, facility_name, chemical"
+
+df = dbGetQuery(con,SQL)
+
+df = filter(df, sum_onsite_releases > 0)
+```
 
 
 
