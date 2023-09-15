@@ -10,6 +10,7 @@ output: html_document
 library("dplyr")
 library("bigrquery")
 library("DBI")
+
 ```
 
 
@@ -37,13 +38,418 @@ df = filter(df, sum_onsite_releases > 0)
 ```
 
 
+#CNS effects (cyanides, TAME, ethylbenzene, xylenes)
+```{r}
+#total cyanide = 266
+cyanide = filter(df, chemical == "Cyanide compounds" | chemical == "Hydrogen cyanide")
+length(unique(cyanide[["trifd"]]))
+
+#total ethylbenzene = 1440
+eb = filter(df, chemical == "Ethylbenzene")
+length(unique(eb[["trifd"]]))
+
+#total xylenes = 2213
+xyl = filter(df, chemical == "m-Xylene" | chemical == "o-Xylene" | chemical == "p-Xylene" | chemical == "Xylene (mixed isomers)")
+length(unique(xyl[["trifd"]]))
+
+#cyanide + ethylbenzene = 93
+cyanide$chemical = gsub("Hydrogen cyanide", "Cyanide Compounds", cyanide$chemical)
+cyanide = cyanide[!duplicated(cyanide[,'trifd']),]
+
+cyan.eb = merge(cyanide, eb, by = 'trifd')
+length(unique(cyan.eb[["trifd"]]))
+
+#cyanide + xylenes = 117
+cyan.xyl = merge(cyanide, xyl, by = 'trifd')
+length(unique(cyan.xyl[["trifd"]]))
+
+#ethylbenzene + xylenes = 1320
+eb.xyl = merge(xyl, eb, by = 'trifd')
+length(unique(eb.xyl[["trifd"]]))
+
+
+```
 
 
 
+#Carcinogens with CNS (acetaldehyde, acrylonitrile, benzenamine (aniline), styrene, benzene, tribromomethane (bromoform), vinyl chloride)
+```{r}
+#total acetaldehyde = 496
+ace = filter(df, chemical == "Acetaldehyde")
+length(unique(ace[["trifd"]]))
+
+#total acrylonitrile = 102
+acr = filter(df, chemical == "Acrylonitrile")
+length(unique(acr[["trifd"]]))
+
+#total benzenamine (aniline) = 45
+ani = filter(df, chemical == "Aniline")
+length(unique(ani[["trifd"]]))
+
+#total styrene = 1302
+sty = filter(df, chemical == "Styrene")
+length(unique(sty[["trifd"]]))
+
+#total benzene = 885
+ben = filter(df, chemical == "Benzene")
+length(unique(ben[["trifd"]]))
+
+#total tribromomethane = 2
+tbm = filter(df, chemical == "Bromoform")
+length(unique(tbm[["trifd"]]))
+
+#total vinyl chloride = 44
+vc = filter(df, chemical == "Vinyl chloride")
+length(unique(vc[["trifd"]]))
+
+#ace + acr = 13
+ace.acr = merge(ace, acr, by = 'trifd')
+length(unique(ace.acr[["trifd"]]))
+
+#ace + ani = 12
+ace.ani = merge(ace, ani, by = 'trifd')
+length(unique(ace.ani[["trifd"]]))
+
+#ace + sty = 42
+ace.sty = merge(ace, sty, by = 'trifd')
+length(unique(ace.sty[["trifd"]]))
+
+#ace + ben = 103
+ace.ben = merge(ace, ben, by = 'trifd')
+length(unique(ace.ben[["trifd"]]))
+
+#ace + tbm = 1
+ace.tbm = merge(ace, tbm, by = 'trifd')
+length(unique(ace.tbm[["trifd"]]))
+
+#ace + vc = 12
+ace.vc = merge(ace, vc, by = 'trifd')
+length(unique(ace.vc[["trifd"]]))
+
+#acr + ani = 12
+acr.ani = merge(acr, ani, by = 'trifd')
+length(unique(acr.ani[["trifd"]]))
+
+#acr + sty = 59
+acr.sty = merge(acr, sty, by = 'trifd')
+length(unique(acr.sty[["trifd"]]))
+
+#acr + ben = 20
+acr.ben = merge(acr, ben, by = 'trifd')
+length(unique(acr.ben[["trifd"]]))
+
+#acr + tbm = 0
+acr.tbm = merge(acr, tbm, by = 'trifd')
+length(unique(acr.tbm[["trifd"]]))
+
+#acr + vc = 6
+acr.vc = merge(acr, vc, by = 'trifd')
+length(unique(acr.vc[["trifd"]]))
+
+#ani + sty = 21
+ani.sty = merge(ani, sty, by = 'trifd')
+length(unique(ani.sty[["trifd"]]))
+
+#ani + ben = 24
+ani.ben = merge(ani, ben, by = 'trifd')
+length(unique(ani.ben[["trifd"]]))
+
+#ani + tbm = 0
+ani.tbm = merge(ani, tbm, by = 'trifd')
+length(unique(ani.tbm[["trifd"]]))
+
+#ani + vc = 6
+ani.vc = merge(ani, vc, by = 'trifd')
+length(unique(ani.vc[["trifd"]]))
+
+#sty + ben = 192
+sty.ben = merge(sty, ben, by = 'trifd')
+length(unique(sty.ben[["trifd"]]))
+
+#sty + tbm = 1
+sty.tbm = merge(sty, tbm, by = 'trifd')
+length(unique(sty.tbm[["trifd"]]))
+
+#sty + vc = 15
+sty.vc = merge(sty, vc, by = 'trifd')
+length(unique(sty.vc[["trifd"]]))
+
+#ben + tbm = 1
+ben.tbm = merge(ben, tbm, by = 'trifd')
+length(unique(ben.tbm[["trifd"]]))
+
+#ben + vc = 22
+ben.vc = merge(ben, vc, by = 'trifd')
+length(unique(ben.vc[["trifd"]]))
+
+#tbm + vc = 1
+tbm.vc = merge(tbm, vc, by = 'trifd')
+length(unique(tbm.vc[["trifd"]]))
+
+```
+
+#Carcinogens (Creosotes, 3,3'-Dichlorobenzidine, 3,3'-Dichlorobenzidine dihydrochloride, 4,4'-Methylene bis(2-chloroaniline), N-Nitroso-diphenylamine)
+```{r}
+#total creosotes = 64
+cre = filter(df, chemical == "Creosote")
+length(unique(cre[["trifd"]]))
+
+#total 3,3'-Dichlorobenzidine = 1
+dcb = filter(df, chemical == "3,3'-Dichlorobenzidine")
+length(unique(dcb[["trifd"]]))
+
+#total 3,3'-Dichlorobenzidine dihydrochloride = 1
+dcbd = filter(df, chemical == "3,3'-Dichlorobenzidine dihydrochloride")
+length(unique(dcbd[["trifd"]]))
+
+#total 4,4'-Methylenebis(2-chloroaniline)	= 12
+mbc = filter(df, chemical == "4,4'-Methylenebis(2-chloroaniline)")
+length(unique(mbc[["trifd"]]))
+
+#total N-Nitrosodiphenylamine = 6
+nn = filter(df, chemical == "N-Nitrosodiphenylamine")
+length(unique(nn[["trifd"]]))
+
+#cre + dcb = 1
+cre.dcb = merge(cre, dcb, by = 'trifd')
+length(unique(cre.dcb[["trifd"]]))
+
+#cre + dcbd = 0
+cre.dcbd = merge(cre, dcbd, by = 'trifd')
+length(unique(cre.dcbd[["trifd"]]))
+
+#cre + mbc = 8
+cre.mbc = merge(cre, mbc, by = 'trifd')
+length(unique(cre.mbc[["trifd"]]))
+
+#cre + nn = 1
+cre.nn = merge(cre, nn, by = 'trifd')
+length(unique(cre.nn[["trifd"]]))
+
+#dcb + dcbd = 0
+dcb.dcbd = merge(dcb, dcbd, by = 'trifd')
+length(unique(dcb.dcbd[["trifd"]]))
+
+#dcb + mbc = 1
+dcb.mbc = merge(dcb, mbc, by = 'trifd')
+length(unique(dcb.mbc[["trifd"]]))
+
+#dcb + nn = 0
+dcb.nn = merge(dcb, nn, by = 'trifd')
+length(unique(dcb.nn[["trifd"]]))
+
+#mbc + dcbd = 0
+mbc.dcdb = merge(mbc, dcbd, by = 'trifd')
+length(unique(mbc.dcdb[["trifd"]]))
+
+#nn + dcbd = 0
+nn.dcdb = merge(nn, dcbd, by = 'trifd')
+length(unique(nn.dcdb[["trifd"]]))
+
+#nn + mbc = 1
+mbc.nn = merge(mbc, nn, by = 'trifd')
+length(unique(mbc.nn[["trifd"]]))
+
+```
 
 
+#Carcinogenic metals (cadmium, nickel, arsenic, chromium, lead)
+```{r}
+#total cadmium = 114
+cad = filter(df, chemical == "Cadmium" | chemical == "Cadmium compounds")
+length(unique(cad[["trifd"]]))
+
+cad$chemical = gsub("Cadmium compounds", "Cadmium", cad$chemical)
+cad = cad[!duplicated(cad[,'trifd']),]
+
+#total nickel = 3018
+nick = filter(df, chemical == "Nickel" | chemical == "Nickel compounds")
+length(unique(nick[["trifd"]]))
+
+nick$chemical = gsub("Nickel compounds", "Nickel", nick$chemical)
+nick = nick[!duplicated(nick[,'trifd']),]
+
+#total arsenic = 269
+ars = filter(df, chemical == "Arsenic" | chemical == "Arsenic compounds")
+length(unique(ars[["trifd"]]))
+
+ars$chemical = gsub("Arsenic compounds", "Arsenic", ars$chemical)
+ars = ars[!duplicated(ars[,'trifd']),]
+
+#total chromium = 1963
+chr = filter(df, chemical == "Chromium" | chemical == "Chromium compounds")
+length(unique(chr[["trifd"]]))
+
+chr$chemical = gsub("Chromium compounds", "Chromium", chr$chemical)
+chr = chr[!duplicated(chr[,'trifd']),]
+
+#total lead = 6696
+lead = filter(df, chemical == "Lead" | chemical == "Lead compounds")
+length(unique(lead[["trifd"]]))
+
+lead$chemical = gsub("Lead compounds", "Lead", lead$chemical)
+lead = lead[!duplicated(lead[,'trifd']),]
+
+#cad + nick = 81
+cad.nick = merge(cad, nick, by = 'trifd')
+length(unique(cad.nick[["trifd"]]))
+
+#cad + ars = 47
+cad.ars = merge(cad, ars, by = 'trifd')
+length(unique(cad.ars[["trifd"]]))
+
+#cad + chr = 22
+cad.chr = merge(cad, chr, by = 'trifd')
+length(unique(cad.chr[["trifd"]]))
+
+#cad + lead = 102
+cad.lead = merge(cad, lead, by = 'trifd')
+length(unique(cad.lead[["trifd"]]))
+
+#nick + ars = 188
+nick.ars = merge(nick, ars, by = 'trifd')
+length(unique(nick.ars[["trifd"]]))
+
+#nick + chr = 1604
+nick.chr = merge(nick, chr, by = 'trifd')
+length(unique(nick.chr[["trifd"]]))
+
+#nick + lead = 1331
+nick.lead = merge(nick, lead, by = 'trifd')
+length(unique(nick.lead[["trifd"]]))
+
+#ars + chr = 31
+ars.chr = merge(ars, chr, by = 'trifd')
+length(unique(ars.chr[["trifd"]]))
+
+#ars + lead = 235
+ars.lead = merge(ars, lead, by = 'trifd')
+length(unique(ars.lead[["trifd"]]))
+
+#lead + chr = 596
+lead.chr = merge(chr, lead, by = 'trifd')
+length(unique(lead.chr[["trifd"]]))
+
+```
+
+#Cardiorespiratory (Barium, cobalt, molybdenum, naphthalene, 2,5-Furandione (maleic anhydride), 1-hexadecanol)
+```{r}
+#total barium = 48
+bar = filter(df, chemical == "Barium" | chemical == "Barium compounds")
+length(unique(bar[["trifd"]]))
+
+bar$chemical = gsub("Barium compounds", "Barium", bar$chemical)
+bar = bar[!duplicated(bar[,'trifd']),]
+
+#total cobalt = 609
+cob = filter(df, chemical == "Cobalt" | chemical == "Cobalt compounds")
+length(unique(cob[["trifd"]]))
+
+cob$chemical = gsub("Cobalt compounds", "Cobalt", cob$chemical)
+cob = cob[!duplicated(cob[,'trifd']),]
+
+#total molybdenum = 131
+mol = filter(df, chemical == "Molybdenum trioxide")
+length(unique(mol[["trifd"]]))
+
+#total naphthalene = 1273
+naph = filter(df, chemical == "Naphthalene")
+length(unique(naph[["trifd"]]))
+
+#total Maleic anhydride = 140
+mbc = filter(df, chemical == "Maleic anhydride")
+length(unique(mbc[["trifd"]]))
+
+#total 1-hexadecanol = 0
+hex = filter(df, chemical == "1-Hexadecanol")
+length(unique(hex[["trifd"]]))
+
+#bar + cob = 11
+bar.cob = merge(bar, cob, by = 'trifd')
+length(unique(bar.cob[["trifd"]]))
+
+#bar + mol = 9
+bar.mol = merge(bar, mol, by = 'trifd')
+length(unique(bar.mol[["trifd"]]))
+
+#bar + naph = 14
+bar.naph = merge(bar, naph, by = 'trifd')
+length(unique(bar.naph[["trifd"]]))
+
+#bar + mbc = 4
+bar.mbc = merge(bar, mbc, by = 'trifd')
+length(unique(bar.mbc[["trifd"]]))
+
+#bar + hex = 0
+bar.hex = merge(bar, hex, by = 'trifd')
+length(unique(bar.hex[["trifd"]]))
+
+#cob + mol = 72
+cob.mol = merge(cob, mol, by = 'trifd')
+length(unique(cob.mol[["trifd"]]))
+
+#cob + naph = 119
+cob.naph = merge(cob, naph, by = 'trifd')
+length(unique(cob.naph[["trifd"]]))
+
+#cob + mbc = 11
+cob.mbc = merge(cob, mbc, by = 'trifd')
+length(unique(cob.mbc[["trifd"]]))
+
+#mol + naph = 62
+mol.naph = merge(mol, naph, by = 'trifd')
+length(unique(mol.naph[["trifd"]]))
+
+#mol + mbc = 5
+mol.mbc = merge(mol, mbc, by = 'trifd')
+length(unique(mol.mbc[["trifd"]]))
+
+#naph + mbc = 35
+naph.mbc = merge(naph, mbc, by = 'trifd')
+length(unique(naph.mbc[["trifd"]]))
+
+```
+
+#Liver, kidney, and thyroid (Hexachlorobutadiene, DEHA, long-chain chlorinated paraffins, medium-chain chlorinated paraffins, pentachlorothiophenol)
+```{r}
+#total hexachlorobutadiene = 14
+hcb = filter(df, chemical == "Hexachloro-1,3-butadiene")
+length(unique(hcb[["trifd"]]))
+
+```
+#Developmental & reproductive (nonylphenol/nonylphenol ethoxylates, 4-tert-Octylphenol, TBB, TBPH, BPA, DecaBDE, Monoglyme, 2-Dimethylaminoethanol)
+```{r}
+#total nonylphenol/nonylphenol ethoxylates = 188
+non = filter(df, chemical == "Nonylphenol" | chemical == "Nonylphenol Ethoxylates")
+length(unique(non[["trifd"]]))
+
+#total BPA = 89
+bpa = filter(df, chemical == "4,4'-Isopropylidenediphenol")
+length(unique(bpa[["trifd"]]))
+
+#total Decabromodiphenyl oxide = 10
+dbde = filter(df, chemical == "Decabromodiphenyl oxide")
+length(unique(dbde[["trifd"]]))
+
+#non + bpa = 14
+non$chemical = gsub("Nonylphenol Ethoxylates", "Nonylphenol", non$chemical)
+non = non[!duplicated(non[,'trifd']),]
+
+non.bpa = merge(non, bpa, by = 'trifd')
+length(unique(non.bpa[["trifd"]]))
+
+#non + dbde = 1
+non.dbde = merge(non, dbde, by = 'trifd')
+length(unique(non.dbde[["trifd"]]))
+
+#bpa + dbde = 0
+bpa.dbde = merge(bpa, dbde, by = 'trifd')
+length(unique(bpa.dbde[["trifd"]]))
+
+```
 
 
+#need to figure out how to make a heat map now
 
 
 
