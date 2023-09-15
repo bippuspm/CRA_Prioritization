@@ -10,7 +10,7 @@ output: html_document
 library("dplyr")
 library("bigrquery")
 library("DBI")
-
+library("pheatmap")
 ```
 
 
@@ -450,9 +450,54 @@ length(unique(bpa.dbde[["trifd"]]))
 
 
 #need to figure out how to make a heat map now
+```{r}
+#code from phd heatmap
+ancom.all = read.csv("~/varnerphd/data/ancom.all.csv")
+ancom.simple = ancom.all %>% select(group, Species, beta)
+
+ancom.all.long = read.csv("~/varnerphd/data/ancom.all.long.csv")
+rownames(ancom.all.long) = ancom.all.long$X
+
+ancom.all.long = subset(ancom.all.long, select = -X)
+
+ancom.matrix = as.matrix(ancom.all.long)
+
+pheatmap(ancom.matrix, border_color = NA, filename = "~/varnerphd/output/seq/ancom.heatmap.png", width = 7, height = 5)
+```
 
 
+#formatting data for heat map, subsetting by endpoint
+```{r}
+#read in csv and format data
+corelease = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/corelease_percents.csv")
 
+#subsetting
+corelease.CNS = filter(corelease, endpoint == "CNS")
+corelease.carc_CNS = filter(corelease, endpoint == "carc_CNS")
+corelease.carc = filter(corelease, endpoint == "carc")
+corelease.carc_metals = filter(corelease, endpoint == "carc_metals")
+corelease.cardio = filter(corelease, endpoint == "cardio")
+corelease.edcs = filter(corelease, endpoint == "edcs")
+
+corelease.CNS = corelease.CNS %>% select(chem1, chem2, percent)
+corelease.carc_CNS = corelease.carc_CNS %>% select(chem1, chem2, percent) 
+corelease.carc = corelease.carc %>% select(chem1, chem2, percent)
+corelease.carc_metals = corelease.carc_metals %>% select(chem1, chem2, percent)
+corelease.cardio = corelease.cardio %>% select(chem1, chem2, percent)
+corelease.edcs = corelease.edcs %>% select(chem1, chem2, percent)
+
+
+#trying graph? (**NEED TO REFORMAT ORIGINAL DATA TO FIT THE TEMP FORMAT; ALSO NEED TO THINK ABOUT HOW TO GET IT TO 1 VALUE PER PAIR**)
+
+temp = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/temp.csv")
+row.names(temp) = temp$X
+temp = select(temp, -X)
+temp.matrix = as.matrix(temp)
+
+
+pheatmap(temp.matrix, border_color = NA, filename = "~/TSCA/CRA/CRA_Prioritization/Output/corelease.CNS.png", width = 7, height = 5)
+
+```
 
 
 
