@@ -11,6 +11,7 @@ library("dplyr")
 library("bigrquery")
 library("DBI")
 library("pheatmap")
+library("RColorBrewer")
 ```
 
 
@@ -468,38 +469,76 @@ pheatmap(ancom.matrix, border_color = NA, filename = "~/varnerphd/output/seq/anc
 
 #formatting data for heat map, subsetting by endpoint
 ```{r}
-#read in csv and format data
-corelease = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/corelease_percents.csv")
+#read in csvs and format data
+carc_CNS = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/carc_CNS.csv")
+carc_metals = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/carc_metals.csv")
+carc = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/carc.csv")
+cardio = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/cardio.csv")
+CNS = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/CNS.csv")
+edcs = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/edcs.csv")
 
-#subsetting
-corelease.CNS = filter(corelease, endpoint == "CNS")
-corelease.carc_CNS = filter(corelease, endpoint == "carc_CNS")
-corelease.carc = filter(corelease, endpoint == "carc")
-corelease.carc_metals = filter(corelease, endpoint == "carc_metals")
-corelease.cardio = filter(corelease, endpoint == "cardio")
-corelease.edcs = filter(corelease, endpoint == "edcs")
+#heeelllllpppp
 
-corelease.CNS = corelease.CNS %>% select(chem1, chem2, percent)
-corelease.carc_CNS = corelease.carc_CNS %>% select(chem1, chem2, percent) 
-corelease.carc = corelease.carc %>% select(chem1, chem2, percent)
-corelease.carc_metals = corelease.carc_metals %>% select(chem1, chem2, percent)
-corelease.cardio = corelease.cardio %>% select(chem1, chem2, percent)
-corelease.edcs = corelease.edcs %>% select(chem1, chem2, percent)
+breaks <- c(0, 1, 2, 3, 4, 5, 10, 15, 25, 35)
+colors <- brewer.pal(9, "Blues")
 
+#carc_CNS heatmap
+row.names(carc_CNS) = carc_CNS$X
+carc_CNS = select(carc_CNS, -X)
+colnames(carc_CNS) = c("Acrylonitrile", "Benzenamine", "Styrene", "Benzene", "Tribromomethane", "Vinyl chloride")
+carc_CNS.matrix = as.matrix(carc_CNS)
 
-#trying graph? (**NEED TO REFORMAT ORIGINAL DATA TO FIT THE TEMP FORMAT; ALSO NEED TO THINK ABOUT HOW TO GET IT TO 1 VALUE PER PAIR**)
+pheatmap(carc_CNS.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = NA, breaks = breaks, color = colors, legend = T, na_col = "grey50", display_numbers = TRUE, number_color = "grey15", fontsize_number = 10, angle_col = 45, filename = "~/TSCA/CRA/CRA_Prioritization/Output/corelease.carc_CNS.png", width = 7, height = 5,)
 
-temp = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/temp.csv")
-row.names(temp) = temp$X
-temp = select(temp, -X)
-temp.matrix = as.matrix(temp)
+#carc_metals heatmap
+row.names(carc_metals) = carc_metals$X
+carc_metals = select(carc_metals, -X)
+carc_metals.matrix = as.matrix(carc_metals)
 
+pheatmap(carc_metals.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = NA, breaks = breaks, display_numbers = TRUE, color = colors, na_col = "grey50", number_color = "grey15", fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/corelease.carc_metals.png", width = 7, height = 5)
 
-pheatmap(temp.matrix, border_color = NA, filename = "~/TSCA/CRA/CRA_Prioritization/Output/corelease.CNS.png", width = 7, height = 5)
+#carc heatmap
+row.names(carc) = carc$X
+carc = select(carc, -X)
+colnames(carc) = c("Dichlorobenzidine", "Dichlorobenzidine HCl", "MOCA", "N-Nitrosodiphenylamine")
+carc.matrix = as.matrix(carc)
+
+pheatmap(carc.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = NA, breaks = breaks, display_numbers = TRUE, color = colors, na_col = "grey50", number_color = "grey15", fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/corelease.carc.png", width = 8, height = 5)
+
+#cardio heatmap
+row.names(cardio) = cardio$X
+cardio = select(cardio, -X)
+colnames(cardio) = c("Cobalt", "Molybdenum", "Naphthalene", "2,5-Furandione")
+cardio.matrix = as.matrix(cardio)
+
+pheatmap(cardio.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = NA, breaks = breaks, display_numbers = TRUE, color = colors, na_col = "grey50", number_color = "grey15", fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/corelease.cardio.png", width = 7, height = 5)
+
+#CNS heatmap
+row.names(CNS) = CNS$X
+CNS = select(CNS, -X)
+CNS.matrix = as.matrix(CNS)
+
+pheatmap(CNS.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = NA, breaks = breaks, display_numbers = TRUE, color = colors, na_col = "grey50", number_color = "grey15", fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/corelease.CNS.png", width = 7, height = 5)
+
+#edcs heatmap
+row.names(edcs) = edcs$X
+edcs = select(edcs, -X)
+colnames(edcs) = c("Bisphenol A", "DecaBDE")
+edcs.matrix = as.matrix(edcs)
+
+pheatmap(edcs.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = NA, breaks = breaks, display_numbers = TRUE, color = colors, na_col = "grey50", number_color = "grey15", fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/corelease.edcs.png", width = 7, height = 5)
 
 ```
 
 
+#average co-production for each group, and statistical analysis
+```{r}
+
+
+
+
+
+```
 
 
 
