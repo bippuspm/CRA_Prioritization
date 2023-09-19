@@ -12,6 +12,10 @@ library("bigrquery")
 library("DBI")
 library("pheatmap")
 library("RColorBrewer")
+library("Rmisc")
+library("stats")
+library("rstatix")
+library("ggplot2")
 ```
 
 
@@ -533,10 +537,30 @@ pheatmap(edcs.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color =
 
 #average co-production for each group, and statistical analysis
 ```{r}
+co.simp = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/corelease_simplified.csv")
 
+co.summ = summarySE(co.simp, measurevar = "percent", groupvars = "group")
 
+co.summ.aov = aov(percent ~ group, data = co.simp)
+co.summ.tukey = TukeyHSD(x = co.summ.aov, conf.level = 0.95)
+co.summ.tukey
+capture.output(co.summ.tukey, file = "~/TSCA/CRA/CRA_Prioritization/Output/corelease_Tukey")
 
+#results
 
+#CNS-carc = 0.0250515
+#CNS-carc_CNS = 0.0163142
+#CNS-cardio = 0.0463787
+#CNS-edcs = 0.0788965
+
+#box plot of average co-release per group
+endpoints = c("Carcinogens", "Carcinogenic CNS", "Carcinogenetic Metals", "Cardiorespiratory", "CNS", "EDCs")
+
+corelease_box = ggplot(co.simp, aes(x = group, y = percent)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("Average Percent Corelease") + xlab("Endpoint Group") + scale_x_discrete(labels = endpoints) + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1))
+
+corelease_box
+
+ggsave(filename = "corelease_box.png", device = "png", plot = corelease_box, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
 
 ```
 
