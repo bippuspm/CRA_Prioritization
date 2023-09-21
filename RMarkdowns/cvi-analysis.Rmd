@@ -1,0 +1,273 @@
+---
+title: "CVI"
+author: "Paige Varner"
+date: "2023-09-21"
+output: html_document
+---
+
+#load libraries
+```{r}
+library("dplyr")
+library("bigrquery")
+library("DBI")
+library("pheatmap")
+library("RColorBrewer")
+library("Rmisc")
+library("stats")
+library("rstatix")
+library("ggplot2")
+library("tigris")
+library("sf")
+library("tidycensus")
+```
+
+
+#query data from BQ (dataframe with TRI ID, facility name, chemicals, lat/long, and total sum of on site releases for the 5 year span)
+```{r}
+	# set up database connection
+	con <- dbConnect(
+	  bigrquery::bigquery(),
+	  project = "edf-aq-data",
+	  dataset = "tri",
+)
+
+SQL = "	
+	SELECT
+	trifd,
+	facility_name,
+	chemical,
+	latitude,
+	longitude,
+	SUM(on_site_release_total) as sum_onsite_releases
+	FROM `edf-aq-data.tri.tri_basic_2016-2021` 
+	GROUP BY trifd, facility_name, chemical,latitude,longitude"
+
+tri = dbGetQuery(con,SQL)
+
+tri = filter(tri, sum_onsite_releases > 0)
+```
+
+
+#get census tract GEOIDs for all TRI facilities based on long/lat
+```{r}
+cvi = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/cvi_scores.csv")
+colnames(cvi)[1] = "GEOID"
+
+#getting census tract info for all TRI facilities
+tracts = tracts(state = NULL, cb = TRUE)
+
+tri.points <- tri %>%
+  filter(!is.na(latitude)) %>%  # remove missing
+  st_as_sf(coords=c('longitude', 'latitude'), crs=st_crs(tracts))
+
+tri.tracts = st_join(tri.points, tracts)
+```
+
+
+#join CVI data to TRI data based on GEOID
+```{r}
+tri_cvi = merge(tri.tracts, cvi, by = "GEOID")
+```
+
+
+#Get average baseline CVI score for each chemical (by first subsetting for each chemical)
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#CNS effects (cyanides, TAME, ethylbenzene, xylenes)
+```{r}
+#total cyanide = 266
+cyanide = filter(df, chemical == "Cyanide compounds" | chemical == "Hydrogen cyanide")
+length(unique(cyanide[["trifd"]]))
+
+#total ethylbenzene = 1440
+eb = filter(df, chemical == "Ethylbenzene")
+length(unique(eb[["trifd"]]))
+
+#total xylenes = 2213
+xyl = filter(df, chemical == "m-Xylene" | chemical == "o-Xylene" | chemical == "p-Xylene" | chemical == "Xylene (mixed isomers)")
+length(unique(xyl[["trifd"]]))
+```
+
+
+#Carcinogens with CNS (acetaldehyde, acrylonitrile, benzenamine (aniline), styrene, benzene, tribromomethane (bromoform), vinyl chloride)
+```{r}
+#total acetaldehyde = 496
+ace = filter(df, chemical == "Acetaldehyde")
+length(unique(ace[["trifd"]]))
+
+#total acrylonitrile = 102
+acr = filter(df, chemical == "Acrylonitrile")
+length(unique(acr[["trifd"]]))
+
+#total benzenamine (aniline) = 45
+ani = filter(df, chemical == "Aniline")
+length(unique(ani[["trifd"]]))
+
+#total styrene = 1302
+sty = filter(df, chemical == "Styrene")
+length(unique(sty[["trifd"]]))
+
+#total benzene = 885
+ben = filter(df, chemical == "Benzene")
+length(unique(ben[["trifd"]]))
+
+#total tribromomethane = 2
+tbm = filter(df, chemical == "Bromoform")
+length(unique(tbm[["trifd"]]))
+
+#total vinyl chloride = 44
+vc = filter(df, chemical == "Vinyl chloride")
+length(unique(vc[["trifd"]]))
+```
+
+
+#Carcinogens (Creosotes, 3,3'-Dichlorobenzidine, 3,3'-Dichlorobenzidine dihydrochloride, 4,4'-Methylene bis(2-chloroaniline), N-Nitroso-diphenylamine)
+```{r}
+#total creosotes = 64
+cre = filter(df, chemical == "Creosote")
+length(unique(cre[["trifd"]]))
+
+#total 3,3'-Dichlorobenzidine = 1
+dcb = filter(df, chemical == "3,3'-Dichlorobenzidine")
+length(unique(dcb[["trifd"]]))
+
+#total 3,3'-Dichlorobenzidine dihydrochloride = 1
+dcbd = filter(df, chemical == "3,3'-Dichlorobenzidine dihydrochloride")
+length(unique(dcbd[["trifd"]]))
+
+#total 4,4'-Methylenebis(2-chloroaniline)	= 12
+mbc = filter(df, chemical == "4,4'-Methylenebis(2-chloroaniline)")
+length(unique(mbc[["trifd"]]))
+
+#total N-Nitrosodiphenylamine = 6
+nn = filter(df, chemical == "N-Nitrosodiphenylamine")
+length(unique(nn[["trifd"]]))
+
+```
+
+
+#Carcinogenic metals (cadmium, nickel, arsenic, chromium, lead)
+```{r}
+#total cadmium = 114
+cad = filter(df, chemical == "Cadmium" | chemical == "Cadmium compounds")
+length(unique(cad[["trifd"]]))
+
+cad$chemical = gsub("Cadmium compounds", "Cadmium", cad$chemical)
+cad = cad[!duplicated(cad[,'trifd']),]
+
+#total nickel = 3018
+nick = filter(df, chemical == "Nickel" | chemical == "Nickel compounds")
+length(unique(nick[["trifd"]]))
+
+nick$chemical = gsub("Nickel compounds", "Nickel", nick$chemical)
+nick = nick[!duplicated(nick[,'trifd']),]
+
+#total arsenic = 269
+ars = filter(df, chemical == "Arsenic" | chemical == "Arsenic compounds")
+length(unique(ars[["trifd"]]))
+
+ars$chemical = gsub("Arsenic compounds", "Arsenic", ars$chemical)
+ars = ars[!duplicated(ars[,'trifd']),]
+
+#total chromium = 1963
+chr = filter(df, chemical == "Chromium" | chemical == "Chromium compounds")
+length(unique(chr[["trifd"]]))
+
+chr$chemical = gsub("Chromium compounds", "Chromium", chr$chemical)
+chr = chr[!duplicated(chr[,'trifd']),]
+
+#total lead = 6696
+lead = filter(df, chemical == "Lead" | chemical == "Lead compounds")
+length(unique(lead[["trifd"]]))
+
+lead$chemical = gsub("Lead compounds", "Lead", lead$chemical)
+lead = lead[!duplicated(lead[,'trifd']),]
+
+```
+
+#Cardiorespiratory (Barium, cobalt, molybdenum, naphthalene, 2,5-Furandione (maleic anhydride), 1-hexadecanol)
+```{r}
+#total barium = 48
+bar = filter(df, chemical == "Barium" | chemical == "Barium compounds")
+length(unique(bar[["trifd"]]))
+
+bar$chemical = gsub("Barium compounds", "Barium", bar$chemical)
+bar = bar[!duplicated(bar[,'trifd']),]
+
+#total cobalt = 609
+cob = filter(df, chemical == "Cobalt" | chemical == "Cobalt compounds")
+length(unique(cob[["trifd"]]))
+
+cob$chemical = gsub("Cobalt compounds", "Cobalt", cob$chemical)
+cob = cob[!duplicated(cob[,'trifd']),]
+
+#total molybdenum = 131
+mol = filter(df, chemical == "Molybdenum trioxide")
+length(unique(mol[["trifd"]]))
+
+#total naphthalene = 1273
+naph = filter(df, chemical == "Naphthalene")
+length(unique(naph[["trifd"]]))
+
+#total Maleic anhydride = 140
+mbc = filter(df, chemical == "Maleic anhydride")
+length(unique(mbc[["trifd"]]))
+
+#total 1-hexadecanol = 0
+hex = filter(df, chemical == "1-Hexadecanol")
+length(unique(hex[["trifd"]]))
+
+```
+
+#Liver, kidney, and thyroid (Hexachlorobutadiene, DEHA, long-chain chlorinated paraffins, medium-chain chlorinated paraffins, pentachlorothiophenol)
+```{r}
+#total hexachlorobutadiene = 14
+hcb = filter(df, chemical == "Hexachloro-1,3-butadiene")
+length(unique(hcb[["trifd"]]))
+
+```
+
+
+#Developmental & reproductive (nonylphenol/nonylphenol ethoxylates, 4-tert-Octylphenol, TBB, TBPH, BPA, DecaBDE, Monoglyme, 2-Dimethylaminoethanol)
+```{r}
+#total nonylphenol/nonylphenol ethoxylates = 188
+non = filter(df, chemical == "Nonylphenol" | chemical == "Nonylphenol Ethoxylates")
+length(unique(non[["trifd"]]))
+
+#total BPA = 89
+bpa = filter(df, chemical == "4,4'-Isopropylidenediphenol")
+length(unique(bpa[["trifd"]]))
+
+#total Decabromodiphenyl oxide = 10
+dbde = filter(df, chemical == "Decabromodiphenyl oxide")
+length(unique(dbde[["trifd"]]))
+
+```
+
+
+
+
+
+
+
+
+
+
+
