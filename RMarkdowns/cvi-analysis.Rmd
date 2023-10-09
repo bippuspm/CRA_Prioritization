@@ -70,198 +70,299 @@ tri_cvi = merge(tri.tracts, cvi, by = "GEOID")
 ```
 
 
-#Get average baseline CVI score for each chemical (by first subsetting for each chemical)
+#fix multiple chemical names
 ```{r}
+tri_cvi$chemical = gsub("Hydrogen cyanide", "Cyanide compounds", tri_cvi$chemical)
+tri_cvi$chemical = gsub("m-Xylene", "Xylene (mixed isomers)", tri_cvi$chemical)
+tri_cvi$chemical = gsub("o-Xylene", "Xylene (mixed isomers)", tri_cvi$chemical)
+tri_cvi$chemical = gsub("p-Xylene", "Xylene (mixed isomers)", tri_cvi$chemical)
+tri_cvi$chemical = gsub("Cadmium compounds", "Cadmium", tri_cvi$chemical)
+tri_cvi$chemical = gsub("Nickel compounds", "Nickel", tri_cvi$chemical)
+tri_cvi$chemical = gsub("Arsenic compounds", "Arsenic", tri_cvi$chemical)
+tri_cvi$chemical = gsub("Nickel compounds", "Nickel", tri_cvi$chemical)
+tri_cvi$chemical = gsub("Lead compounds", "Lead", tri_cvi$chemical)
+tri_cvi$chemical = gsub("Barium compounds", "Barium", tri_cvi$chemical)
+tri_cvi$chemical = gsub("Cobalt compounds", "Cobalt", tri_cvi$chemical)
+tri_cvi$chemical = gsub("Nonylphenol Ethoxylates", "Nonylphenol", tri_cvi$chemical)
 
+
+tri_cvi = tri_cvi[!duplicated(tri_cvi[c("trifd", "chemical")]),]
+
+write.csv(tri_cvi, "~/TSCA/CRA/CRA_Prioritization/Data/tri_cvi.csv")
 ```
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-#CNS effects (cyanides, TAME, ethylbenzene, xylenes)
+#Get average baseline CVI score for each chemical and endpoint group
 ```{r}
-#total cyanide = 266
-cyanide = filter(df, chemical == "Cyanide compounds" | chemical == "Hydrogen cyanide")
-length(unique(cyanide[["trifd"]]))
+baseline_bychem = summarySE(tri_cvi, groupvars = "chemical", measurevar = "Baseline.Vulnerabilities")
 
-#total ethylbenzene = 1440
-eb = filter(df, chemical == "Ethylbenzene")
-length(unique(eb[["trifd"]]))
+#baseline for CNS chemicals
+baseline_CNS = filter(baseline_bychem, chemical == "Cyanide compounds" | chemical == "Hydrogen cyanide" |  chemical == "Ethylbenzene" | chemical == "m-Xylene" | chemical == "o-Xylene" | chemical == "p-Xylene" | chemical == "Xylene (mixed isomers)")
 
-#total xylenes = 2213
-xyl = filter(df, chemical == "m-Xylene" | chemical == "o-Xylene" | chemical == "p-Xylene" | chemical == "Xylene (mixed isomers)")
-length(unique(xyl[["trifd"]]))
+#baseline for Carcinogens with CNS
+baseline_carc_CNS = filter(baseline_bychem, chemical == "Acetaldehyde" | chemical == "Acrylonitrile"|chemical == "Aniline"|chemical == "Styrene"|chemical == "Benzene"|chemical == "Bromoform"|chemical == "Vinyl chloride")
+
+#baseline for Carcinogens
+baseline_carc = filter(baseline_bychem, chemical == "Creosote"|chemical == "3,3'-Dichlorobenzidine"|chemical == "3,3'-Dichlorobenzidine dihydrochloride"|chemical == "4,4'-Methylenebis(2-chloroaniline)"|chemical == "N-Nitrosodiphenylamine")
+
+#baseline for Carcinogenetic metals
+baseline_carc_metals = filter(baseline_bychem, chemical == "Cadmium" | chemical == "Cadmium compounds"|chemical == "Nickel" | chemical == "Nickel compounds"|chemical == "Arsenic" | chemical == "Arsenic compounds"|chemical == "Chromium" | chemical == "Chromium compounds"|chemical == "Lead" | chemical == "Lead compounds")
+
+#baseline for cardiorespiratory
+baseline_cardio = filter(baseline_bychem, chemical == "Barium" | chemical == "Barium compounds"|chemical == "Cobalt" | chemical == "Cobalt compounds"|chemical == "Molybdenum trioxide"|chemical == "Naphthalene"|chemical == "Maleic anhydride"|chemical == "1-Hexadecanol"|chemical == "Hydrogen fluoride") 
+
+#baseline for liver, kidney, thyroid
+baseline_lkt = filter(baseline_bychem, chemical == "Hexachloro-1,3-butadiene")
+
+#baseline for edcs
+baseline_edcs = filter(baseline_bychem, chemical == "Nonylphenol" | chemical == "Nonylphenol Ethoxylates"|chemical == "4,4'-Isopropylidenediphenol"|chemical == "Decabromodiphenyl oxide")
+
+```
+
+#add groupings to baseline vulnerability dfs so I can add back into one big df
+```{r}
+baseline_carc$endpoint = "carc"
+baseline_carc_CNS$endpoint = "carc_CNS"
+baseline_carc_metals$endpoint = "carc_metals"
+baseline_cardio$endpoint = "cardio"
+baseline_CNS$endpoint = "CNS"
+baseline_edcs$endpoint = "edcs"
+baseline_lkt$endpoint = "lkt"
+
+all_baseline = rbind(baseline_carc, baseline_carc_CNS, baseline_carc_metals, baseline_cardio, baseline_CNS, baseline_edcs, baseline_lkt)
+
+tri_cvi_baseline = merge(tri_cvi, all_baseline[,c("chemical", "endpoint")], by = "chemical")
 ```
 
 
-#Carcinogens with CNS (acetaldehyde, acrylonitrile, benzenamine (aniline), styrene, benzene, tribromomethane (bromoform), vinyl chloride)
+#summary and stats to compare between end groups and graph
 ```{r}
-#total acetaldehyde = 496
-ace = filter(df, chemical == "Acetaldehyde")
-length(unique(ace[["trifd"]]))
+tri_cvi_aov_baseline = aov(Baseline.Vulnerabilities ~ endpoint, data = tri_cvi_baseline)
+tri_cvi_aov_baseline
+tri_cvi_tukey_baseline = TukeyHSD(x = tri_cvi_aov_baseline, conf.level = 0.95)
+tri_cvi_tukey_baseline
+capture.output(tri_cvi_tukey_baseline, file = "~/TSCA/CRA/CRA_Prioritization/Output/tri_cvi_tukey")
 
-#total acrylonitrile = 102
-acr = filter(df, chemical == "Acrylonitrile")
-length(unique(acr[["trifd"]]))
+#Boxplot 
+endpoints = c("Carcinogens", "Carcinogenic CNS", "Carcinogenetic Metals", "Cardiorespiratory", "CNS", "EDCs", "Liver, Kidney, Thyroid")
 
-#total benzenamine (aniline) = 45
-ani = filter(df, chemical == "Aniline")
-length(unique(ani[["trifd"]]))
+tri_cvi_box_baseline = ggplot(tri_cvi_baseline, aes(x = endpoint, y = Baseline.Vulnerabilities)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("Baseline Vulnerability") + xlab("Endpoint Group") + scale_x_discrete(labels = endpoints) + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1))
 
-#total styrene = 1302
-sty = filter(df, chemical == "Styrene")
-length(unique(sty[["trifd"]]))
+tri_cvi_box_baseline
 
-#total benzene = 885
-ben = filter(df, chemical == "Benzene")
-length(unique(ben[["trifd"]]))
-
-#total tribromomethane = 2
-tbm = filter(df, chemical == "Bromoform")
-length(unique(tbm[["trifd"]]))
-
-#total vinyl chloride = 44
-vc = filter(df, chemical == "Vinyl chloride")
-length(unique(vc[["trifd"]]))
-```
-
-
-#Carcinogens (Creosotes, 3,3'-Dichlorobenzidine, 3,3'-Dichlorobenzidine dihydrochloride, 4,4'-Methylene bis(2-chloroaniline), N-Nitroso-diphenylamine)
-```{r}
-#total creosotes = 64
-cre = filter(df, chemical == "Creosote")
-length(unique(cre[["trifd"]]))
-
-#total 3,3'-Dichlorobenzidine = 1
-dcb = filter(df, chemical == "3,3'-Dichlorobenzidine")
-length(unique(dcb[["trifd"]]))
-
-#total 3,3'-Dichlorobenzidine dihydrochloride = 1
-dcbd = filter(df, chemical == "3,3'-Dichlorobenzidine dihydrochloride")
-length(unique(dcbd[["trifd"]]))
-
-#total 4,4'-Methylenebis(2-chloroaniline)	= 12
-mbc = filter(df, chemical == "4,4'-Methylenebis(2-chloroaniline)")
-length(unique(mbc[["trifd"]]))
-
-#total N-Nitrosodiphenylamine = 6
-nn = filter(df, chemical == "N-Nitrosodiphenylamine")
-length(unique(nn[["trifd"]]))
+ggsave(filename = "tri_cvi_box_baseline.png", device = "png", plot = tri_cvi_box_baseline, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
 
 ```
 
 
-#Carcinogenic metals (cadmium, nickel, arsenic, chromium, lead)
+#filter tri_cvi_baseline for each endpoint group (without summary numbers, like above in baseline_endpoint dfs)
 ```{r}
-#total cadmium = 114
-cad = filter(df, chemical == "Cadmium" | chemical == "Cadmium compounds")
-length(unique(cad[["trifd"]]))
+cvi_CNS = filter(tri_cvi, chemical == "Cyanide compounds" | chemical == "Hydrogen cyanide" |  chemical == "Ethylbenzene" | chemical == "m-Xylene" | chemical == "o-Xylene" | chemical == "p-Xylene" | chemical == "Xylene (mixed isomers)")
 
-cad$chemical = gsub("Cadmium compounds", "Cadmium", cad$chemical)
-cad = cad[!duplicated(cad[,'trifd']),]
+cvi_carc_CNS = filter(tri_cvi, chemical == "Acetaldehyde" | chemical == "Acrylonitrile"|chemical == "Aniline"|chemical == "Styrene"|chemical == "Benzene"|chemical == "Bromoform"|chemical == "Vinyl chloride")
 
-#total nickel = 3018
-nick = filter(df, chemical == "Nickel" | chemical == "Nickel compounds")
-length(unique(nick[["trifd"]]))
+cvi_carc = filter(tri_cvi, chemical == "Creosote"|chemical == "3,3'-Dichlorobenzidine"|chemical == "3,3'-Dichlorobenzidine dihydrochloride"|chemical == "4,4'-Methylenebis(2-chloroaniline)"|chemical == "N-Nitrosodiphenylamine")
 
-nick$chemical = gsub("Nickel compounds", "Nickel", nick$chemical)
-nick = nick[!duplicated(nick[,'trifd']),]
+cvi_carc_metals = filter(tri_cvi, chemical == "Cadmium" | chemical == "Cadmium compounds"|chemical == "Nickel" | chemical == "Nickel compounds"|chemical == "Arsenic" | chemical == "Arsenic compounds"|chemical == "Chromium" | chemical == "Chromium compounds"|chemical == "Lead" | chemical == "Lead compounds")
 
-#total arsenic = 269
-ars = filter(df, chemical == "Arsenic" | chemical == "Arsenic compounds")
-length(unique(ars[["trifd"]]))
+cvi_cardio = filter(tri_cvi, chemical == "Barium" | chemical == "Barium compounds"|chemical == "Cobalt" | chemical == "Cobalt compounds"|chemical == "Molybdenum trioxide"|chemical == "Naphthalene"|chemical == "Maleic anhydride"|chemical == "1-Hexadecanol"|chemical == "Hydrogen fluoride") 
 
-ars$chemical = gsub("Arsenic compounds", "Arsenic", ars$chemical)
-ars = ars[!duplicated(ars[,'trifd']),]
+cvi_lkt = filter(tri_cvi, chemical == "Hexachloro-1,3-butadiene")
 
-#total chromium = 1963
-chr = filter(df, chemical == "Chromium" | chemical == "Chromium compounds")
-length(unique(chr[["trifd"]]))
-
-chr$chemical = gsub("Chromium compounds", "Chromium", chr$chemical)
-chr = chr[!duplicated(chr[,'trifd']),]
-
-#total lead = 6696
-lead = filter(df, chemical == "Lead" | chemical == "Lead compounds")
-length(unique(lead[["trifd"]]))
-
-lead$chemical = gsub("Lead compounds", "Lead", lead$chemical)
-lead = lead[!duplicated(lead[,'trifd']),]
-
-```
-
-#Cardiorespiratory (Barium, cobalt, molybdenum, naphthalene, 2,5-Furandione (maleic anhydride), 1-hexadecanol)
-```{r}
-#total barium = 48
-bar = filter(df, chemical == "Barium" | chemical == "Barium compounds")
-length(unique(bar[["trifd"]]))
-
-bar$chemical = gsub("Barium compounds", "Barium", bar$chemical)
-bar = bar[!duplicated(bar[,'trifd']),]
-
-#total cobalt = 609
-cob = filter(df, chemical == "Cobalt" | chemical == "Cobalt compounds")
-length(unique(cob[["trifd"]]))
-
-cob$chemical = gsub("Cobalt compounds", "Cobalt", cob$chemical)
-cob = cob[!duplicated(cob[,'trifd']),]
-
-#total molybdenum = 131
-mol = filter(df, chemical == "Molybdenum trioxide")
-length(unique(mol[["trifd"]]))
-
-#total naphthalene = 1273
-naph = filter(df, chemical == "Naphthalene")
-length(unique(naph[["trifd"]]))
-
-#total Maleic anhydride = 140
-mbc = filter(df, chemical == "Maleic anhydride")
-length(unique(mbc[["trifd"]]))
-
-#total 1-hexadecanol = 0
-hex = filter(df, chemical == "1-Hexadecanol")
-length(unique(hex[["trifd"]]))
-
-```
-
-#Liver, kidney, and thyroid (Hexachlorobutadiene, DEHA, long-chain chlorinated paraffins, medium-chain chlorinated paraffins, pentachlorothiophenol)
-```{r}
-#total hexachlorobutadiene = 14
-hcb = filter(df, chemical == "Hexachloro-1,3-butadiene")
-length(unique(hcb[["trifd"]]))
-
+cvi_edcs = filter(tri_cvi, chemical == "Nonylphenol" | chemical == "Nonylphenol Ethoxylates"|chemical == "4,4'-Isopropylidenediphenol"|chemical == "Decabromodiphenyl oxide")
 ```
 
 
-#Developmental & reproductive (nonylphenol/nonylphenol ethoxylates, 4-tert-Octylphenol, TBB, TBPH, BPA, DecaBDE, Monoglyme, 2-Dimethylaminoethanol)
+#boxplots for baseline vulnerability of each chemical within endpoint groups
 ```{r}
-#total nonylphenol/nonylphenol ethoxylates = 188
-non = filter(df, chemical == "Nonylphenol" | chemical == "Nonylphenol Ethoxylates")
-length(unique(non[["trifd"]]))
+#carcinogens
+carc_box_baseline = ggplot(cvi_carc, aes(x = chemical, y = Baseline.Vulnerabilities)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("Baseline Vulnerability") + xlab("Chemical")  + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
 
-#total BPA = 89
-bpa = filter(df, chemical == "4,4'-Isopropylidenediphenol")
-length(unique(bpa[["trifd"]]))
+carc_box_baseline
 
-#total Decabromodiphenyl oxide = 10
-dbde = filter(df, chemical == "Decabromodiphenyl oxide")
-length(unique(dbde[["trifd"]]))
+ggsave(filename = "carc_box_baseline.png", device = "png", plot = carc_box_baseline, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+
+#CNS
+CNS_box_baseline = ggplot(cvi_CNS, aes(x = chemical, y = Baseline.Vulnerabilities)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("Baseline Vulnerability") + xlab("Chemical")  + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+
+CNS_box_baseline
+
+ggsave(filename = "CNS_box_baseline.png", device = "png", plot = CNS_box_baseline, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+
+#carcinogenic metals
+carc_metals_box_baseline = ggplot(cvi_carc_metals, aes(x = chemical, y = Baseline.Vulnerabilities)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("Baseline Vulnerability") + xlab("Chemical")  + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+
+carc_metals_box_baseline
+
+ggsave(filename = "carc_metals_box_baseline.png", device = "png", plot = carc_metals_box_baseline, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+
+#carcinogenic with CNS
+carc_CNS_box_baseline = ggplot(cvi_carc_CNS, aes(x = chemical, y = Baseline.Vulnerabilities)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("Baseline Vulnerability") + xlab("Chemical")  + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+
+carc_CNS_box_baseline
+
+ggsave(filename = "carc_CNS_box_baseline.png", device = "png", plot = carc_CNS_box_baseline, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+
+#cardiorespiratory
+cardio_box_baseline = ggplot(cvi_cardio, aes(x = chemical, y = Baseline.Vulnerabilities)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("Baseline Vulnerability") + xlab("Chemical")  + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+
+cardio_box_baseline
+
+ggsave(filename = "cardio_box_baseline.png", device = "png", plot = cardio_box_baseline, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+
+#EDCs
+edcs_box_baseline = ggplot(cvi_edcs, aes(x = chemical, y = Baseline.Vulnerabilities)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("Baseline Vulnerability") + xlab("Chemical")  + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+
+edcs_box_baseline
+
+ggsave(filename = "edcs_box_baseline.png", device = "png", plot = edcs_box_baseline, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+
+#liver, kidney, thyroid
+lkt_box_baseline = ggplot(cvi_lkt, aes(x = chemical, y = Baseline.Vulnerabilities)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("Baseline Vulnerability") + xlab("Chemical")  + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+
+lkt_box_baseline
+
+ggsave(filename = "lkt_box_baseline.png", device = "png", plot = lkt_box_baseline, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+```
+
+
+#repeat everything we did with baseline for climate vulnerability index to see where climate might have an impact (want to do just for climate or overall cvi? doing for overall cvi for now)
+
+
+#Get average CVI score for each chemical and endpoint group
+```{r}
+cvi_bychem = summarySE(tri_cvi, groupvars = "chemical", measurevar = "CVI.Score")
+
+#CNS chemicals
+cvi_CNS = filter(cvi_bychem, chemical == "Cyanide compounds" | chemical == "Hydrogen cyanide" |  chemical == "Ethylbenzene" | chemical == "m-Xylene" | chemical == "o-Xylene" | chemical == "p-Xylene" | chemical == "Xylene (mixed isomers)")
+
+#Carcinogens with CNS
+cvi_carc_CNS = filter(cvi_bychem, chemical == "Acetaldehyde" | chemical == "Acrylonitrile"|chemical == "Aniline"|chemical == "Styrene"|chemical == "Benzene"|chemical == "Bromoform"|chemical == "Vinyl chloride")
+
+#Carcinogens
+cvi_carc = filter(cvi_bychem, chemical == "Creosote"|chemical == "3,3'-Dichlorobenzidine"|chemical == "3,3'-Dichlorobenzidine dihydrochloride"|chemical == "4,4'-Methylenebis(2-chloroaniline)"|chemical == "N-Nitrosodiphenylamine")
+
+#Carcinogenetic metals
+cvi_carc_metals = filter(cvi_bychem, chemical == "Cadmium" | chemical == "Cadmium compounds"|chemical == "Nickel" | chemical == "Nickel compounds"|chemical == "Arsenic" | chemical == "Arsenic compounds"|chemical == "Chromium" | chemical == "Chromium compounds"|chemical == "Lead" | chemical == "Lead compounds")
+
+#cardiorespiratory
+cvi_cardio = filter(cvi_bychem, chemical == "Barium" | chemical == "Barium compounds"|chemical == "Cobalt" | chemical == "Cobalt compounds"|chemical == "Molybdenum trioxide"|chemical == "Naphthalene"|chemical == "Maleic anhydride"|chemical == "1-Hexadecanol"|chemical == "Hydrogen fluoride") 
+
+#liver, kidney, thyroid
+cvi_lkt = filter(cvi_bychem, chemical == "Hexachloro-1,3-butadiene")
+
+#edcs
+cvi_edcs = filter(cvi_bychem, chemical == "Nonylphenol" | chemical == "Nonylphenol Ethoxylates"|chemical == "4,4'-Isopropylidenediphenol"|chemical == "Decabromodiphenyl oxide")
 
 ```
 
 
+#add groupings to climate vulnerability index dfs so I can add back into one big df
+```{r}
+cvi_carc$endpoint = "carc"
+cvi_carc_CNS$endpoint = "carc_CNS"
+cvi_carc_metals$endpoint = "carc_metals"
+cvi_cardio$endpoint = "cardio"
+cvi_CNS$endpoint = "CNS"
+cvi_edcs$endpoint = "edcs"
+cvi_lkt$endpoint = "lkt"
+
+all_cvi = rbind(cvi_carc, cvi_carc_CNS, cvi_carc_metals, cvi_cardio, cvi_CNS, cvi_edcs, cvi_lkt)
+
+tri_cvi = merge(tri_cvi, all_cvi[,c("chemical", "endpoint")], by = "chemical")
+```
+
+
+#summary and stats to compare between end groups and graph for climate vulnerability index
+```{r}
+tri_cvi_aov = aov(CVI.Score ~ endpoint, data = tri_cvi)
+tri_cvi_aov
+tri_cvi_tukey = TukeyHSD(x = tri_cvi_aov, conf.level = 0.95)
+tri_cvi_tukey
+capture.output(tri_cvi_tukey, file = "~/TSCA/CRA/CRA_Prioritization/Output/tri_cvi_tukey")
+
+#Boxplot 
+endpoints = c("Carcinogens", "Carcinogenic CNS", "Carcinogenetic Metals", "Cardiorespiratory", "CNS", "EDCs", "Liver, Kidney, Thyroid")
+
+tri_cvi_box = ggplot(tri_cvi, aes(x = endpoint, y = CVI.Score)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("CVI Score") + xlab("Endpoint Group") + scale_x_discrete(labels = endpoints) + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1))
+
+tri_cvi_box
+
+ggsave(filename = "tri_cvi_box.png", device = "png", plot = tri_cvi_box, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+
+```
+
+
+#filter tri_cvi for each endpoint group (without summary numbers, like above in cvi_endpoint dfs)
+```{r}
+cvi_CNS = filter(tri_cvi, chemical == "Cyanide compounds" | chemical == "Hydrogen cyanide" |  chemical == "Ethylbenzene" | chemical == "m-Xylene" | chemical == "o-Xylene" | chemical == "p-Xylene" | chemical == "Xylene (mixed isomers)")
+
+cvi_carc_CNS = filter(tri_cvi, chemical == "Acetaldehyde" | chemical == "Acrylonitrile"|chemical == "Aniline"|chemical == "Styrene"|chemical == "Benzene"|chemical == "Bromoform"|chemical == "Vinyl chloride")
+
+cvi_carc = filter(tri_cvi, chemical == "Creosote"|chemical == "3,3'-Dichlorobenzidine"|chemical == "3,3'-Dichlorobenzidine dihydrochloride"|chemical == "4,4'-Methylenebis(2-chloroaniline)"|chemical == "N-Nitrosodiphenylamine")
+
+cvi_carc_metals = filter(tri_cvi, chemical == "Cadmium" | chemical == "Cadmium compounds"|chemical == "Nickel" | chemical == "Nickel compounds"|chemical == "Arsenic" | chemical == "Arsenic compounds"|chemical == "Chromium" | chemical == "Chromium compounds"|chemical == "Lead" | chemical == "Lead compounds")
+
+cvi_cardio = filter(tri_cvi, chemical == "Barium" | chemical == "Barium compounds"|chemical == "Cobalt" | chemical == "Cobalt compounds"|chemical == "Molybdenum trioxide"|chemical == "Naphthalene"|chemical == "Maleic anhydride"|chemical == "1-Hexadecanol"|chemical == "Hydrogen fluoride") 
+
+cvi_lkt = filter(tri_cvi, chemical == "Hexachloro-1,3-butadiene")
+
+cvi_edcs = filter(tri_cvi, chemical == "Nonylphenol" | chemical == "Nonylphenol Ethoxylates"|chemical == "4,4'-Isopropylidenediphenol"|chemical == "Decabromodiphenyl oxide")
+```
+
+
+#boxplots for climate vulnerability of each chemical within endpoint groups
+```{r}
+#carcinogens
+carc_box_cvi = ggplot(cvi_carc, aes(x = chemical, y = CVI.Score)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("CVI Score") + xlab("Chemical")  + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+
+carc_box_cvi
+
+ggsave(filename = "carc_box_cvi.png", device = "png", plot = carc_box_cvi, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+
+#CNS
+CNS_box_cvi = ggplot(cvi_CNS, aes(x = chemical, y = CVI.Score)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("CVI Score") + xlab("Chemical")  + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+
+CNS_box_cvi
+
+ggsave(filename = "CNS_box_cvi.png", device = "png", plot = CNS_box_cvi, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+
+#carcinogenic metals
+carc_metals_box_cvi = ggplot(cvi_carc_metals, aes(x = chemical, y = CVI.Score)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("CVI Score") + xlab("Chemical")  + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+
+carc_metals_box_cvi
+
+ggsave(filename = "carc_metals_box_cvi.png", device = "png", plot = carc_metals_box_cvi, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+
+#carcinogenic with CNS
+carc_CNS_box_cvi = ggplot(cvi_carc_CNS, aes(x = chemical, y = CVI.Score)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("CVI Score") + xlab("Chemical")  + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+
+carc_CNS_box_cvi
+
+ggsave(filename = "carc_CNS_box_cvi.png", device = "png", plot = carc_CNS_box_cvi, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+
+#cardiorespiratory
+cardio_box_cvi = ggplot(cvi_cardio, aes(x = chemical, y = CVI.Score)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("CVI Score") + xlab("Chemical")  + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+
+cardio_box_cvi
+
+ggsave(filename = "cardio_box_cvi.png", device = "png", plot = cardio_box_cvi, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+
+#EDCs
+edcs_box_cvi = ggplot(cvi_edcs, aes(x = chemical, y = CVI.Score)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("CVI Score") + xlab("Chemical")  + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+
+edcs_box_cvi
+
+ggsave(filename = "edcs_box_cvi.png", device = "png", plot = edcs_box_cvi, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+
+#liver, kidney, thyroid
+lkt_box_cvi = ggplot(cvi_lkt, aes(x = chemical, y = CVI.Score)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("CVI Score") + xlab("Chemical")  + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+
+lkt_box_cvi
+
+ggsave(filename = "lkt_box_cvi.png", device = "png", plot = lkt_box_cvi, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+```
 
 
 

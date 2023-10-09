@@ -1,0 +1,51 @@
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = CVI.Score ~ endpoint, data = tri_cvi)
+
+$endpoint
+                             diff           lwr          upr
+carc_CNS-carc        -0.024317376 -0.0558270593  0.007192307
+carc_metals-carc     -0.046549500 -0.0777278867 -0.015371114
+cardio-carc          -0.030375378 -0.0618972914  0.001146535
+CNS-carc             -0.028428090 -0.0598276995  0.002971520
+edcs-carc            -0.013823587 -0.0487863086  0.021139135
+lkt-carc              0.054374070 -0.0322725737  0.141020714
+carc_metals-carc_CNS -0.022232124 -0.0280986113 -0.016365637
+cardio-carc_CNS      -0.006058002 -0.0135383029  0.001422299
+CNS-carc_CNS         -0.004110714 -0.0110576113  0.002836184
+edcs-carc_CNS         0.010493790 -0.0063797350  0.027367314
+lkt-carc_CNS          0.078691446 -0.0023638729  0.159746765
+cardio-carc_metals    0.016174122  0.0102422971  0.022105947
+CNS-carc_metals       0.018121411  0.0128782212  0.023364600
+edcs-carc_metals      0.032725914  0.0164794532  0.048972374
+lkt-carc_metals       0.100923570  0.0199964649  0.181850676
+CNS-cardio            0.001947289 -0.0050548728  0.008949450
+edcs-cardio           0.016551792 -0.0003445601  0.033448144
+lkt-cardio            0.084749448  0.0036893741  0.165809523
+edcs-CNS              0.014604503 -0.0020625660  0.031271572
+lkt-CNS               0.082802160  0.0017895674  0.163814752
+lkt-edcs              0.068197657 -0.0142614033  0.150656717
+                         p adj
+carc_CNS-carc        0.2558771
+carc_metals-carc     0.0002177
+cardio-carc          0.0675757
+CNS-carc             0.1060750
+edcs-carc            0.9069346
+lkt-carc             0.5137034
+carc_metals-carc_CNS 0.0000000
+cardio-carc_CNS      0.2035523
+CNS-carc_CNS         0.5856495
+edcs-carc_CNS        0.5249810
+lkt-carc_CNS         0.0637352
+cardio-carc_metals   0.0000000
+CNS-carc_metals      0.0000000
+edcs-carc_metals     0.0000001
+lkt-carc_metals      0.0044301
+CNS-cardio           0.9829916
+edcs-cardio          0.0593083
+lkt-cardio           0.0335919
+edcs-CNS             0.1309128
+lkt-CNS              0.0413404
+lkt-edcs             0.1825149
+
