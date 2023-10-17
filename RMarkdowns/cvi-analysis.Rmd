@@ -83,6 +83,7 @@ tri_cvi$chemical = gsub("Nickel compounds", "Nickel", tri_cvi$chemical)
 tri_cvi$chemical = gsub("Lead compounds", "Lead", tri_cvi$chemical)
 tri_cvi$chemical = gsub("Barium compounds", "Barium", tri_cvi$chemical)
 tri_cvi$chemical = gsub("Cobalt compounds", "Cobalt", tri_cvi$chemical)
+tri_cvi$chemical = gsub("Chromium compounds", "Chromium", tri_cvi$chemical)
 tri_cvi$chemical = gsub("Nonylphenol Ethoxylates", "Nonylphenol", tri_cvi$chemical)
 
 

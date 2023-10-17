@@ -1,0 +1,1442 @@
+---
+title: "Co-release analysis - repeated endpoints"
+author: "Paige Varner"
+date: "2023-10-13"
+output: html_document
+---
+
+
+#load libraries
+```{r}
+library("dplyr")
+library("bigrquery")
+library("DBI")
+library("pheatmap")
+library("RColorBrewer")
+library("Rmisc")
+library("stats")
+library("rstatix")
+library("ggplot2")
+```
+
+
+#query data from BQ (dataframe with TRI ID, facility name, chemicals, and total sum of on site releases for the 5 year span)
+```{r}
+	# set up database connection
+	con <- dbConnect(
+	  bigrquery::bigquery(),
+	  project = "edf-aq-data",
+	  dataset = "tri",
+)
+
+SQL = "	
+	SELECT
+	trifd,
+	facility_name,
+	chemical,
+	SUM(on_site_release_total) as sum_onsite_releases
+	FROM `edf-aq-data.tri.tri_basic_2016-2021` 
+	GROUP BY trifd, facility_name, chemical"
+
+df = dbGetQuery(con,SQL)
+
+df = filter(df, sum_onsite_releases > 0)
+```
+
+
+#getting total numbers of facilities for all chemicals 
+```{r}
+#total cyanide = 266
+cyanide = filter(df, chemical == "Cyanide compounds" | chemical == "Hydrogen cyanide")
+length(unique(cyanide[["trifd"]]))
+
+#total ethylbenzene = 1440
+eb = filter(df, chemical == "Ethylbenzene")
+length(unique(eb[["trifd"]]))
+
+#total xylenes = 2213
+xyl = filter(df, chemical == "m-Xylene" | chemical == "o-Xylene" | chemical == "p-Xylene" | chemical == "Xylene (mixed isomers)")
+length(unique(xyl[["trifd"]]))
+
+#total acetaldehyde = 496
+ace = filter(df, chemical == "Acetaldehyde")
+length(unique(ace[["trifd"]]))
+
+#total acrylonitrile = 102
+acr = filter(df, chemical == "Acrylonitrile")
+length(unique(acr[["trifd"]]))
+
+#total benzenamine (aniline) = 45
+ani = filter(df, chemical == "Aniline")
+length(unique(ani[["trifd"]]))
+
+#total styrene = 1302
+sty = filter(df, chemical == "Styrene")
+length(unique(sty[["trifd"]]))
+
+#total benzene = 885
+ben = filter(df, chemical == "Benzene")
+length(unique(ben[["trifd"]]))
+
+#total tribromomethane = 2
+tbm = filter(df, chemical == "Bromoform")
+length(unique(tbm[["trifd"]]))
+
+#total vinyl chloride = 44
+vc = filter(df, chemical == "Vinyl chloride")
+length(unique(vc[["trifd"]]))
+
+#total creosotes = 64
+cre = filter(df, chemical == "Creosote")
+length(unique(cre[["trifd"]]))
+
+#total 3,3'-Dichlorobenzidine = 1
+dcb = filter(df, chemical == "3,3'-Dichlorobenzidine")
+length(unique(dcb[["trifd"]]))
+
+#total 3,3'-Dichlorobenzidine dihydrochloride = 1
+dcbd = filter(df, chemical == "3,3'-Dichlorobenzidine dihydrochloride")
+length(unique(dcbd[["trifd"]]))
+
+#total 4,4'-Methylenebis(2-chloroaniline)	= 12
+mbc = filter(df, chemical == "4,4'-Methylenebis(2-chloroaniline)")
+length(unique(mbc[["trifd"]]))
+
+#total N-Nitrosodiphenylamine = 6
+nn = filter(df, chemical == "N-Nitrosodiphenylamine")
+length(unique(nn[["trifd"]]))
+
+#total cadmium = 114
+cad = filter(df, chemical == "Cadmium" | chemical == "Cadmium compounds")
+length(unique(cad[["trifd"]]))
+
+#total nickel = 3018
+nick = filter(df, chemical == "Nickel" | chemical == "Nickel compounds")
+length(unique(nick[["trifd"]]))
+
+#total arsenic = 269
+ars = filter(df, chemical == "Arsenic" | chemical == "Arsenic compounds")
+length(unique(ars[["trifd"]]))
+
+#total chromium = 1963
+chr = filter(df, chemical == "Chromium" | chemical == "Chromium compounds")
+length(unique(chr[["trifd"]]))
+
+#total lead = 6696
+lead = filter(df, chemical == "Lead" | chemical == "Lead compounds")
+length(unique(lead[["trifd"]]))
+
+#total barium = 48
+bar = filter(df, chemical == "Barium" | chemical == "Barium compounds")
+length(unique(bar[["trifd"]]))
+
+#total cobalt = 609
+cob = filter(df, chemical == "Cobalt" | chemical == "Cobalt compounds")
+length(unique(cob[["trifd"]]))
+
+#total molybdenum = 131
+mol = filter(df, chemical == "Molybdenum trioxide")
+length(unique(mol[["trifd"]]))
+
+#total naphthalene = 1273
+naph = filter(df, chemical == "Naphthalene")
+length(unique(naph[["trifd"]]))
+
+#total Maleic anhydride = 140
+ma = filter(df, chemical == "Maleic anhydride")
+length(unique(ma[["trifd"]]))
+
+#total 1-hexadecanol = 0
+hex = filter(df, chemical == "1-Hexadecanol")
+length(unique(hex[["trifd"]]))
+
+#total hydrogen fluoride = 753
+hf = filter(df, chemical == "Hydrogen fluoride")
+length(unique(hf[["trifd"]]))
+
+#total hexachlorobutadiene = 14
+hcb = filter(df, chemical == "Hexachloro-1,3-butadiene")
+length(unique(hcb[["trifd"]]))
+
+#total nonylphenol/nonylphenol ethoxylates = 188
+non = filter(df, chemical == "Nonylphenol" | chemical == "Nonylphenol Ethoxylates")
+length(unique(non[["trifd"]]))
+
+#total BPA = 89
+bpa = filter(df, chemical == "4,4'-Isopropylidenediphenol")
+length(unique(bpa[["trifd"]]))
+
+#total Decabromodiphenyl oxide = 10
+dbde = filter(df, chemical == "Decabromodiphenyl oxide")
+length(unique(dbde[["trifd"]]))
+
+#total hydrogen fluoride
+hf = filter(df,chemical == "Hydrogen fluoride")
+length(unique(hf[["trifd"]]))
+```
+
+
+#fixing multiple names for same chemical
+```{r}
+xyl$chemical = gsub("o-Xylene", "Xylene", xyl$chemical)
+xyl$chemical = gsub("p-Xylene", "Xylene", xyl$chemical)
+xyl$chemical = gsub("m-Xylene", "Xylene", xyl$chemical)
+xyl$chemical = gsub("Xylene (Mixed Isomers)", "Xylene", xyl$chemical)
+xyl = xyl[!duplicated(xyl[,'trifd']),]
+
+cyanide$chemical = gsub("Hydrogen cyanide", "Cyanide Compounds", cyanide$chemical)
+cyanide = cyanide[!duplicated(cyanide[,'trifd']),]
+
+nick$chemical = gsub("Nickel compounds", "Nickel", nick$chemical)
+nick = nick[!duplicated(nick[,'trifd']),]
+
+ars$chemical = gsub("Arsenic compounds", "Arsenic", ars$chemical)
+ars = ars[!duplicated(ars[,'trifd']),]
+
+cad$chemical = gsub("Cadmium compounds", "Cadmium", cad$chemical)
+cad = cad[!duplicated(cad[,'trifd']),]
+
+chr$chemical = gsub("Chromium compounds", "Chromium", chr$chemical)
+chr = chr[!duplicated(chr[,'trifd']),]
+
+lead$chemical = gsub("Lead compounds", "Lead", lead$chemical)
+lead = lead[!duplicated(lead[,'trifd']),]
+
+cob$chemical = gsub("Cobalt compounds", "Cobalt", cob$chemical)
+cob = cob[!duplicated(cob[,'trifd']),]
+
+non$chemical = gsub("Nonylphenol Ethoxylates", "Nonylphenol", non$chemical)
+non = non[!duplicated(non[,'trifd']),]
+
+bar$chemical = gsub("Barium compounds", "Barium", bar$chemical)
+bar = bar[!duplicated(bar[,'trifd']),]
+```
+
+
+#getting co-releases for CNS Effects pairs that were not previously covered in the Rmd "co-release-analysis"
+```{r}
+#ace + ars = 9
+ace.ars = merge(ace, ars, by = 'trifd')
+length(unique(ace.ars[["trifd"]]))
+
+#ace + cyan = 23
+ace.cyanide = merge(ace, cyanide, by = 'trifd')
+length(unique(ace.cyanide[["trifd"]]))
+
+#ace + dbde = 0
+ace.dbde = merge(ace, dbde, by = 'trifd')
+length(unique(ace.dbde[["trifd"]]))
+
+#ace + eb = 88
+ace.eb = merge(ace, eb, by = 'trifd')
+length(unique(ace.eb[["trifd"]]))
+
+#ace + lead = 211
+ace.lead = merge(ace, lead, by = 'trifd')
+length(unique(ace.lead[["trifd"]]))
+
+#ace + xyl = 102
+ace.xyl = merge(ace, xyl, by = 'trifd')
+length(unique(ace.xyl[["trifd"]]))
+
+#acr + ars = 8
+acr.ars = merge(acr, ars, by = 'trifd')
+length(unique(acr.ars[["trifd"]]))
+
+#acr + cyanide = 20
+acr.cyanide = merge(acr, cyanide, by = 'trifd')
+length(unique(acr.cyanide[["trifd"]]))
+
+#acr + dbde = 1
+acr.dbde = merge(acr, dbde, by = 'trifd')
+length(unique(acr.dbde[["trifd"]]))
+
+#acr + eb =31
+acr.eb = merge(acr, eb, by = 'trifd')
+length(unique(acr.eb[["trifd"]]))
+
+#acr + lead = 26
+acr.lead = merge(acr, lead, by = 'trifd')
+length(unique(acr.lead[["trifd"]]))
+
+#acr + xyl = 34
+acr.xyl = merge(acr, xyl, by = 'trifd')
+length(unique(acr.xyl[["trifd"]]))
+
+#ars + ani = 8
+ars.ani = merge(ars, ani, by = 'trifd')
+length(unique(ars.ani[["trifd"]]))
+
+#ars + ben = 26
+ars.ben = merge(ars, ben, by = 'trifd')
+length(unique(ars.ben[["trifd"]]))
+
+#ars + cyanide = 33
+ars.cyanide = merge(ars, cyanide, by = 'trifd')
+length(unique(ars.cyanide[["trifd"]]))
+
+#ars + dbde = 1
+ars.dbde = merge(ars, dbde, by = 'trifd')
+length(unique(ars.dbde[["trifd"]]))
+
+#ars + eb = 27
+ars.eb = merge(ars, eb, by = 'trifd')
+length(unique(ars.eb[["trifd"]]))
+
+#ars + sty = 22
+ars.sty = merge(ars, sty, by = 'trifd')
+length(unique(ars.sty[["trifd"]]))
+
+#ars + tbm = 1
+ars.tbm = merge(ars, tbm, by = 'trifd')
+length(unique(ars.tbm[["trifd"]]))
+
+#ars + vc = 8
+ars.vc = merge(ars, vc, by = 'trifd')
+length(unique(ars.vc[["trifd"]]))
+
+#ars + xyl = 41
+ars.xyl = merge(ars, xyl, by = 'trifd')
+length(unique(ars.xyl[["trifd"]]))
+
+#ani + cyanide = 10
+ani.cyanide = merge(ani, cyanide, by = 'trifd')
+length(unique(ani.cyanide[["trifd"]]))
+
+#ani + dbde = 0
+ani.dbde = merge(ani, dbde, by = 'trifd')
+length(unique(ani.dbde[["trifd"]]))
+
+#ani + eb = 22
+ani.eb = merge(ani,eb, by = 'trifd')
+length(unique(ani.eb[["trifd"]]))
+
+#ani + lead = 21
+ani.lead = merge(ani,lead, by = 'trifd')
+length(unique(ani.lead[["trifd"]]))
+
+#ani + xyl = 30
+ani.xyl = merge(ani,xyl, by = 'trifd')
+length(unique(ani.xyl[["trifd"]]))
+
+#ben + cyanide = 109
+ben.cyanide = merge(ben,cyanide, by = 'trifd')
+length(unique(ben.cyanide[["trifd"]]))
+
+#ben + dbde = 0
+ben.dbde = merge(ben,dbde, by = 'trifd')
+length(unique(ben.dbde[["trifd"]]))
+
+#ben + eb = 722
+ben.eb = merge(ben,eb, by = 'trifd')
+length(unique(ben.eb[["trifd"]]))
+
+#ben + lead = 345
+ben.lead = merge(ben,lead, by = 'trifd')
+length(unique(ben.lead[["trifd"]]))
+
+#ben + xyl 750
+ben.xyl = merge(ben,xyl, by = 'trifd')
+length(unique(ben.xyl[["trifd"]]))
+
+#cyanide + dbde 1
+cyanide.dbde = merge(cyanide,dbde, by = 'trifd')
+length(unique(cyanide.dbde[["trifd"]]))
+
+#cyanide + lead 169
+cyanide.lead = merge(cyanide,lead, by = 'trifd')
+length(unique(cyanide.lead[["trifd"]]))
+
+#cyanide + sty 63
+cyanide.sty = merge(cyanide,sty, by = 'trifd')
+length(unique(cyanide.sty[["trifd"]]))
+
+#cyanide + tbm 0
+cyanide.tbm = merge(cyanide,tbm, by = 'trifd')
+length(unique(cyanide.tbm[["trifd"]]))
+
+#cyanide + vc 6
+cyanide.vc = merge(cyanide,vc, by = 'trifd')
+length(unique(cyanide.vc[["trifd"]]))
+
+#dbde + eb 1
+dbde.eb = merge(dbde,eb, by = 'trifd')
+length(unique(dbde.eb[["trifd"]]))
+
+#dbde + lead 6
+dbde.lead = merge(dbde,lead, by = 'trifd')
+length(unique(dbde.lead[["trifd"]]))
+
+#dbde + sty 2
+dbde.sty = merge(dbde,sty, by = 'trifd')
+length(unique(dbde.sty[["trifd"]]))
+
+#dbde + tbm 0
+dbde.tbm = merge(dbde,tbm, by = 'trifd')
+length(unique(dbde.tbm[["trifd"]]))
+
+#dbde + vc 0
+dbde.vc = merge(dbde,vc, by = 'trifd')
+length(unique(dbde.vc[["trifd"]]))
+
+#dbde xyl 2
+dbde.xyl = merge(dbde,xyl, by = 'trifd')
+length(unique(dbde.xyl[["trifd"]]))
+
+#lead eb 413
+lead.eb = merge(lead,eb, by = 'trifd')
+length(unique(lead.eb[["trifd"]]))
+
+#eb sty 283
+eb.sty = merge(eb,sty, by = 'trifd')
+length(unique(eb.sty[["trifd"]]))
+
+#eb tbm1
+eb.tbm = merge(eb,tbm, by = 'trifd')
+length(unique(eb.tbm[["trifd"]]))
+
+#eb vc 17
+eb.vc = merge(eb,vc, by = 'trifd')
+length(unique(eb.vc[["trifd"]]))
+
+#lead sty 165
+lead.sty = merge(lead,sty, by = 'trifd')
+length(unique(lead.sty[["trifd"]]))
+
+#lead tbm 1
+lead.tbm = merge(lead,tbm, by = 'trifd')
+length(unique(lead.tbm[["trifd"]]))
+
+#lead vc 16
+lead.vc = merge(lead,vc, by = 'trifd')
+length(unique(lead.vc[["trifd"]]))
+
+#lead xyl 539
+lead.xyl = merge(lead,xyl, by = 'trifd')
+length(unique(lead.xyl[["trifd"]]))
+
+#sty xyl 302
+sty.xyl = merge(sty,xyl, by = 'trifd')
+length(unique(sty.xyl[["trifd"]]))
+
+#tbm xyl 1
+tbm.xyl = merge(tbm,xyl, by = 'trifd')
+length(unique(tbm.xyl[["trifd"]]))
+
+#vc xyl 20
+vc.xyl = merge(vc,xyl, by = 'trifd')
+length(unique(vc.xyl[["trifd"]]))
+
+```
+
+#getting co-releases for Carcinogen pairs that were not previously covered in the Rmd "co-release-analysis"
+```{r}
+#dcb ace 1
+dcb.ace = merge(dcb,ace, by = 'trifd')
+length(unique(dcb.ace[["trifd"]]))
+
+#dcb acr 1
+dcb.acr = merge(dcb,acr, by = 'trifd')
+length(unique(dcb.acr[["trifd"]]))
+
+#dcb ars 0
+dcb.ars = merge(dcb,ars, by = 'trifd')
+length(unique(dcb.ars[["trifd"]]))
+
+#dcb ani 1
+dcb.ani = merge(dcb,ani, by = 'trifd')
+length(unique(dcb.ani[["trifd"]]))
+
+#dcb ben 1
+dcb.ben = merge(dcb,ben, by = 'trifd')
+length(unique(dcb.ben[["trifd"]]))
+
+#dcb cad 0
+dcb.cad = merge(dcb,cad, by = 'trifd')
+length(unique(dcb.cad[["trifd"]]))
+
+#dcb chr 0
+dcb.chr = merge(dcb,chr, by = 'trifd')
+length(unique(dcb.chr[["trifd"]]))
+
+#dcb lead 1
+dcb.lead = merge(dcb,lead, by = 'trifd')
+length(unique(dcb.lead[["trifd"]]))
+
+#dcb nick 1
+dcb.nick = merge(dcb,nick, by = 'trifd')
+length(unique(dcb.nick[["trifd"]]))
+
+#dcb sty 1
+dcb.sty = merge(dcb,sty, by = 'trifd')
+length(unique(dcb.sty[["trifd"]]))
+
+#dcb tbm 0
+dcb.tbm = merge(dcb,tbm, by = 'trifd')
+length(unique(dcb.tbm[["trifd"]]))
+
+#dcb vc 0
+dcb.vc = merge(dcb,vc, by = 'trifd')
+length(unique(dcb.vc[["trifd"]]))
+
+#dcbd ace 0
+dcbd.ace = merge(dcbd,ace, by = 'trifd')
+length(unique(dcbd.ace[["trifd"]]))
+
+#dcbd acr 0
+dcbd.acr = merge(dcbd,acr, by = 'trifd')
+length(unique(dcbd.acr[["trifd"]]))
+
+#dcbd ars 0
+dcbd.ars = merge(dcbd,ars, by = 'trifd')
+length(unique(dcbd.ars[["trifd"]]))
+
+#dcbd ani 1
+dcb.ani = merge(dcb,ani, by = 'trifd')
+length(unique(dcb.ani[["trifd"]]))
+
+#dcbd ben 0
+dcbd.ben = merge(dcbd,ben, by = 'trifd')
+length(unique(dcbd.ben[["trifd"]]))
+
+#dcbd cad 0
+dcbd.cad = merge(dcbd,cad, by = 'trifd')
+length(unique(dcbd.cad[["trifd"]]))
+
+#dcbd chr 0
+dcbd.chr = merge(dcbd,chr, by = 'trifd')
+length(unique(dcbd.chr[["trifd"]]))
+
+#dcbd lead 0
+dcbd.lead = merge(dcbd,lead, by = 'trifd')
+length(unique(dcbd.lead[["trifd"]]))
+
+#dcbd nick 0
+dcbd.nick = merge(dcbd,nick, by = 'trifd')
+length(unique(dcbd.nick[["trifd"]]))
+
+#dcbd sty 0
+dcbd.sty = merge(dcbd,sty, by = 'trifd')
+length(unique(dcbd.sty[["trifd"]]))
+
+#dcbd tbm 0
+dcbd.tbm = merge(dcbd,tbm, by = 'trifd')
+length(unique(dcbd.tbm[["trifd"]]))
+
+#dcbd vc 0
+dcbd.vc = merge(dcbd,vc, by = 'trifd')
+length(unique(dcbd.vc[["trifd"]]))
+
+####################
+
+#mbc ace 
+mbc.ace = merge(mbc,ace, by = 'trifd')
+length(unique(mbc.ace[["trifd"]]))
+
+#mbc acr 
+mbc.acr = merge(mbc,acr, by = 'trifd')
+length(unique(mbc.acr[["trifd"]]))
+
+#mbc ars 
+mbc.ars = merge(mbc,ars, by = 'trifd')
+length(unique(mbc.ars[["trifd"]]))
+
+#mbc ani 
+mbc.ani = merge(mbc,ani, by = 'trifd')
+length(unique(mbc.ani[["trifd"]]))
+
+#mbc ben 
+mbc.ben = merge(mbc,ben, by = 'trifd')
+length(unique(mbc.ben[["trifd"]]))
+
+#mbc cad 
+mbc.cad = merge(mbc,cad, by = 'trifd')
+length(unique(mbc.cad[["trifd"]]))
+
+#mbc chr 
+mbc.chr = merge(mbc,chr, by = 'trifd')
+length(unique(mbc.chr[["trifd"]]))
+
+#mbc cre
+mbc.cre = merge(mbc,cre, by = 'trifd')
+length(unique(mbc.cre[["trifd"]]))
+
+#mbc lead 
+mbc.lead = merge(mbc,lead, by = 'trifd')
+length(unique(mbc.lead[["trifd"]]))
+
+#mbc nick 
+mbc.nick = merge(mbc,nick, by = 'trifd')
+length(unique(mbc.nick[["trifd"]]))
+
+#mbc nn
+mbc.nn = merge(mbc,nn, by = 'trifd')
+length(unique(mbc.nn[["trifd"]]))
+
+#mbc sty 
+mbc.sty = merge(mbc,sty, by = 'trifd')
+length(unique(mbc.sty[["trifd"]]))
+
+#mbc tbm 
+mbc.tbm = merge(mbc,tbm, by = 'trifd')
+length(unique(mbc.tbm[["trifd"]]))
+
+#mbc vc 
+mbc.vc = merge(mbc,vc, by = 'trifd')
+length(unique(mbc.vc[["trifd"]]))
+
+##########
+
+#ace cad 
+ace.cad = merge(ace,cad, by = 'trifd')
+length(unique(ace.cad[["trifd"]]))
+
+#ace chr 
+ace.chr = merge(ace,chr, by = 'trifd')
+length(unique(ace.chr[["trifd"]]))
+
+#ace cre 
+ace.cre = merge(ace,cre, by = 'trifd')
+length(unique(ace.cre[["trifd"]]))
+
+#ace nick 
+ace.nick = merge(ace,nick, by = 'trifd')
+length(unique(ace.nick[["trifd"]]))
+
+#ace nn
+ace.nn = merge(ace,nn, by = 'trifd')
+length(unique(ace.nn[["trifd"]]))
+
+######## 
+
+#acr cad 
+acr.cad = merge(acr,cad, by = 'trifd')
+length(unique(acr.cad[["trifd"]]))
+
+#acr chr 
+acr.chr = merge(acr,chr, by = 'trifd')
+length(unique(acr.chr[["trifd"]]))
+
+#acr cre 
+acr.cre = merge(acr,cre, by = 'trifd')
+length(unique(acr.cre[["trifd"]]))
+
+#acr nick 
+acr.nick = merge(acr,nick, by = 'trifd')
+length(unique(acr.nick[["trifd"]]))
+
+#acr nn
+acr.nn = merge(acr,nn, by = 'trifd')
+length(unique(acr.nn[["trifd"]]))
+
+######
+
+#ars cre 
+ars.cre = merge(ars,cre, by = 'trifd')
+length(unique(ars.cre[["trifd"]]))
+
+#ars nn
+ars.nn = merge(ars,nn, by = 'trifd')
+length(unique(ars.nn[["trifd"]]))
+
+#####
+
+#ani cad 9
+ani.cad = merge(ani, cad, by = 'trifd')
+length(unique(ani.cad[["trifd"]]))
+
+#ani chr 12
+ani.chr = merge(ani, chr, by = 'trifd')
+length(unique(ani.chr[["trifd"]]))
+
+#ani cre 10
+ani.cre = merge(ani, cre, by = 'trifd')
+length(unique(ani.cre[["trifd"]]))
+
+#ani nick 19
+ani.nick = merge(ani, nick, by = 'trifd')
+length(unique(ani.nick[["trifd"]]))
+
+#ani nn 4
+ani.nn = merge(ani, nn, by = 'trifd')
+length(unique(ani.nn[["trifd"]]))
+
+##### 
+
+#ben cad
+ben.cad = merge(ben, cad, by = 'trifd')
+length(unique(ben.cad[["trifd"]]))
+
+#ben chr 
+ben.chr = merge(ben, chr, by = 'trifd')
+length(unique(ben.chr[["trifd"]]))
+
+#ben cre
+ben.cre = merge(ben, cre, by = 'trifd')
+length(unique(ben.cre[["trifd"]]))
+
+#ben nick 
+ben.nick = merge(ben, nick, by = 'trifd')
+length(unique(ben.nick[["trifd"]]))
+
+#ben nn 
+ben.nn = merge(ben, nn, by = 'trifd')
+length(unique(ben.nn[["trifd"]]))
+
+####
+
+#cad cre
+cad.cre = merge(cad, cre, by = 'trifd')
+length(unique(cad.cre[["trifd"]]))
+
+#cad nn 
+cad.nn = merge(cad, nn, by = 'trifd')
+length(unique(cad.nn[["trifd"]]))
+
+#cad sty
+cad.sty = merge(cad, sty, by = 'trifd')
+length(unique(cad.sty[["trifd"]]))
+
+#cad tbm
+cad.tbm = merge(cad, tbm, by = 'trifd')
+length(unique(cad.tbm[["trifd"]]))
+
+#cad vc
+cad.vc = merge(cad, vc, by = 'trifd')
+length(unique(cad.vc[["trifd"]]))
+
+####
+
+#chr cre
+chr.cre = merge(chr, cre, by = 'trifd')
+length(unique(chr.cre[["trifd"]]))
+
+#chr nn 
+chr.nn = merge(chr, nn, by = 'trifd')
+length(unique(chr.nn[["trifd"]]))
+
+#chr sty
+chr.sty = merge(chr, sty, by = 'trifd')
+length(unique(chr.sty[["trifd"]]))
+
+#chr tbm
+chr.tbm = merge(chr, tbm, by = 'trifd')
+length(unique(chr.tbm[["trifd"]]))
+
+#chr vc
+chr.vc = merge(chr, vc, by = 'trifd')
+length(unique(chr.vc[["trifd"]]))
+
+####
+
+#cre lead
+cre.lead = merge(cre,lead, by = 'trifd')
+length(unique(cre.lead[["trifd"]]))
+
+#cre nick 
+cre.nick = merge(cre,nick, by = 'trifd')
+length(unique(cre.nick[["trifd"]]))
+
+#cre sty
+cre.sty = merge(cre, sty, by = 'trifd')
+length(unique(cre.sty[["trifd"]]))
+
+#cre tbm
+cre.tbm = merge(cre, tbm, by = 'trifd')
+length(unique(cre.tbm[["trifd"]]))
+
+#cre vc
+cre.vc = merge(cre, vc, by = 'trifd')
+length(unique(cre.vc[["trifd"]]))
+
+###
+
+#lead nn 
+lead.nn = merge(lead, nn, by = 'trifd')
+length(unique(lead.nn[["trifd"]]))
+
+###
+
+#nick nn 
+nick.nn = merge(nick, nn, by = 'trifd')
+length(unique(nick.nn[["trifd"]]))
+
+#nick sty
+nick.sty = merge(nick, sty, by = 'trifd')
+length(unique(nick.sty[["trifd"]]))
+
+#nick tbm
+nick.tbm = merge(nick, tbm, by = 'trifd')
+length(unique(nick.tbm[["trifd"]]))
+
+#nick vc
+nick.vc = merge(nick, vc, by = 'trifd')
+length(unique(nick.vc[["trifd"]]))
+
+###
+
+#nn sty
+nn.sty = merge(nn, sty, by = 'trifd')
+length(unique(nn.sty[["trifd"]]))
+
+#nn tbm
+nn.tbm = merge(nn, tbm, by = 'trifd')
+length(unique(nn.tbm[["trifd"]]))
+
+#nn vc
+nn.vc = merge(nn, vc, by = 'trifd')
+length(unique(nn.vc[["trifd"]]))
+```
+
+
+#getting co-releases for Cardiorespiratory pairs that were not previously covered in the Rmd "co-release-analysis"
+```{r}
+#hex ace
+hex.ace = merge(hex,ace, by = 'trifd')
+length(unique(hex.ace[["trifd"]]))  
+
+#hex acr
+hex.acr = merge(hex,acr, by = 'trifd')
+length(unique(hex.acr[["trifd"]])) 
+
+#hex ars
+hex.ars = merge(hex,ars, by = 'trifd')
+length(unique(hex.ars[["trifd"]])) 
+
+#hex ani
+hex.ani = merge(hex,ani, by = 'trifd')
+length(unique(hex.ani[["trifd"]])) 
+
+#hex cad
+hex.cad = merge(hex,cad, by = 'trifd')
+length(unique(hex.cad[["trifd"]])) 
+
+#hex chr
+hex.chr = merge(hex,chr, by = 'trifd')
+length(unique(hex.chr[["trifd"]])) 
+
+#hex eb
+hex.eb = merge(hex,eb, by = 'trifd')
+length(unique(hex.eb[["trifd"]])) 
+
+#hex nick
+hex.nick = merge(hex,nick, by = 'trifd')
+length(unique(hex.nick[["trifd"]])) 
+
+###
+
+#ma ace
+ma.ace = merge(ma,ace, by = 'trifd')
+length(unique(ma.ace[["trifd"]]))  
+
+#ma acr
+ma.acr = merge(ma,acr, by = 'trifd')
+length(unique(ma.acr[["trifd"]])) 
+
+#ma ars
+ma.ars = merge(ma,ars, by = 'trifd')
+length(unique(ma.ars[["trifd"]])) 
+
+#ma ani
+ma.ani = merge(ma,ani, by = 'trifd')
+length(unique(ma.ani[["trifd"]])) 
+
+#ma cad
+ma.cad = merge(ma,cad, by = 'trifd')
+length(unique(ma.cad[["trifd"]])) 
+
+#ma chr
+ma.chr = merge(ma,chr, by = 'trifd')
+length(unique(ma.chr[["trifd"]])) 
+
+#ma eb
+ma.eb = merge(ma,eb, by = 'trifd')
+length(unique(ma.eb[["trifd"]])) 
+
+#ma nick
+ma.nick = merge(ma,nick, by = 'trifd')
+length(unique(ma.nick[["trifd"]])) 
+
+###
+
+#ace bar
+ace.bar = merge(ace,bar, by = 'trifd')
+length(unique(ace.bar[["trifd"]])) 
+
+#ace cad
+ace.cad = merge(ace,cad, by = 'trifd')
+length(unique(ace.cad[["trifd"]]))
+
+#ace chr
+ace.chr = merge(ace,chr, by = 'trifd')
+length(unique(ace.chr[["trifd"]])) 
+
+#ace cob
+ace.cob = merge(ace,cob, by = 'trifd')
+length(unique(ace.cob[["trifd"]])) 
+
+#ace hf
+ace.hf = merge(ace,hf, by = 'trifd')
+length(unique(ace.hf[["trifd"]])) 
+
+#ace mol
+ace.mol = merge(ace,mol, by = 'trifd')
+length(unique(ace.mol[["trifd"]])) 
+
+#ace naph
+ace.naph = merge(ace,naph, by = 'trifd')
+length(unique(ace.naph[["trifd"]])) 
+
+#ace nick
+ace.nick = merge(ace,nick, by = 'trifd')
+length(unique(ace.nick[["trifd"]])) 
+
+###
+
+#acr bar
+acr.bar = merge(acr,bar, by = 'trifd')
+length(unique(acr.bar[["trifd"]])) 
+
+#acr cad
+acr.cad = merge(acr,cad, by = 'trifd')
+length(unique(acr.cad[["trifd"]]))
+
+#acr chr
+acr.chr = merge(acr,chr, by = 'trifd')
+length(unique(acr.chr[["trifd"]])) 
+
+#acr cob
+acr.cob = merge(acr,cob, by = 'trifd')
+length(unique(acr.cob[["trifd"]])) 
+
+#acr hf
+acr.hf = merge(acr,hf, by = 'trifd')
+length(unique(acr.hf[["trifd"]])) 
+
+#acr mol
+acr.mol = merge(acr,mol, by = 'trifd')
+length(unique(acr.mol[["trifd"]])) 
+
+#acr naph
+acr.naph = merge(acr,naph, by = 'trifd')
+length(unique(acr.naph[["trifd"]])) 
+
+#acr nick
+acr.nick = merge(acr,nick, by = 'trifd')
+length(unique(acr.nick[["trifd"]])) 
+
+### left off here: need to put in ars
+
+#ars bar
+ars.bar = merge(ars,bar, by = 'trifd')
+length(unique(ars.bar[["trifd"]])) 
+
+#ars cob
+ars.cob = merge(ars,cob, by = 'trifd')
+length(unique(ars.cob[["trifd"]])) 
+
+#ars hf
+ars.hf = merge(ars,hf, by = 'trifd')
+length(unique(ars.hf[["trifd"]])) 
+
+#ars mol
+ars.mol = merge(ars,mol, by = 'trifd')
+length(unique(ars.mol[["trifd"]])) 
+
+#ars naph
+ars.naph = merge(ars,naph, by = 'trifd')
+length(unique(ars.naph[["trifd"]])) 
+
+###
+
+#bar ani
+bar.ani = merge(bar,ani, by = 'trifd')
+length(unique(bar.ani[["trifd"]])) 
+
+#bar cad
+bar.cad = merge(bar,cad, by = 'trifd')
+length(unique(bar.cad[["trifd"]]))
+
+#bar chr
+bar.chr = merge(bar,chr, by = 'trifd')
+length(unique(bar.chr[["trifd"]])) 
+
+#bar eb
+bar.eb = merge(bar,eb, by = 'trifd')
+length(unique(bar.eb[["trifd"]])) 
+
+#ace nick
+bar.nick = merge(bar,nick, by = 'trifd')
+length(unique(bar.nick[["trifd"]]))
+
+###
+
+#ani cob
+ani.cob = merge(ani,cob, by = 'trifd')
+length(unique(ani.cob[["trifd"]])) 
+
+#ani hf
+ani.hf = merge(ani,hf, by = 'trifd')
+length(unique(ani.hf[["trifd"]])) 
+
+#ani mol
+ani.mol = merge(ani,mol, by = 'trifd')
+length(unique(ani.mol[["trifd"]])) 
+
+#ars naph
+ani.naph = merge(ani,naph, by = 'trifd')
+length(unique(ani.naph[["trifd"]])) 
+
+###
+
+#cad cob
+cad.cob = merge(cad,cob, by = 'trifd')
+length(unique(cad.cob[["trifd"]])) 
+
+#cad eb
+cad.eb = merge(cad,eb, by = 'trifd')
+length(unique(cad.eb[["trifd"]])) 
+
+#cad hf
+cad.hf = merge(cad,hf, by = 'trifd')
+length(unique(cad.hf[["trifd"]])) 
+
+#cad mol
+cad.mol = merge(cad,mol, by = 'trifd')
+length(unique(cad.mol[["trifd"]])) 
+
+#cad naph
+cad.naph = merge(cad,naph, by = 'trifd')
+length(unique(cad.naph[["trifd"]])) 
+
+###
+
+#chr cob
+chr.cob = merge(chr,cob, by = 'trifd')
+length(unique(chr.cob[["trifd"]])) 
+
+#chr eb
+chr.eb = merge(chr,eb, by = 'trifd')
+length(unique(chr.eb[["trifd"]])) 
+
+#chr hf
+chr.hf = merge(chr,hf, by = 'trifd')
+length(unique(chr.hf[["trifd"]])) 
+
+#chr mol
+chr.mol = merge(chr,mol, by = 'trifd')
+length(unique(chr.mol[["trifd"]])) 
+
+#chr naph
+chr.naph = merge(chr,naph, by = 'trifd')
+length(unique(chr.naph[["trifd"]])) 
+
+###
+
+#cob eb
+cob.eb = merge(cob,eb, by = 'trifd')
+length(unique(cob.eb[["trifd"]])) 
+
+#cob nick
+cob.nick = merge(cob,nick, by = 'trifd')
+length(unique(cob.nick[["trifd"]])) 
+
+###
+
+#eb hf
+eb.hf = merge(eb,hf, by = 'trifd')
+length(unique(eb.hf[["trifd"]])) 
+
+#eb mol
+eb.mol = merge(eb,mol, by = 'trifd')
+length(unique(eb.mol[["trifd"]])) 
+
+#eb naph
+eb.naph = merge(eb,naph, by = 'trifd')
+length(unique(eb.naph[["trifd"]])) 
+
+#eb nick
+eb.nick = merge(eb,nick, by = 'trifd')
+length(unique(eb.nick[["trifd"]])) 
+
+###
+
+#hf nick
+hf.nick = merge(hf,nick, by = 'trifd')
+length(unique(hf.nick[["trifd"]])) 
+
+#mol nick
+mol.nick = merge(mol,nick, by = 'trifd')
+length(unique(mol.nick[["trifd"]])) 
+
+#naph nick
+naph.nick = merge(naph,nick, by = 'trifd')
+length(unique(naph.nick[["trifd"]])) 
+
+```
+
+
+#getting co-releases for lkt pairs that were not previously covered in the Rmd "co-release-analysis"
+```{r}
+#ma mbc
+ma.mbc = merge(ma,mbc, by = 'trifd')
+length(unique(ma.mbc[["trifd"]])) 
+
+#ma cre
+ma.cre = merge(ma,cre, by = 'trifd')
+length(unique(ma.cre[["trifd"]])) 
+
+#ma hcb
+ma.hcb = merge(ma,hcb, by = 'trifd')
+length(unique(ma.hcb[["trifd"]])) 
+
+#ma lead
+ma.lead = merge(ma,lead, by = 'trifd')
+length(unique(ma.lead[["trifd"]])) 
+
+#ma sty
+ma.sty = merge(ma,sty, by = 'trifd')
+length(unique(ma.sty[["trifd"]])) 
+
+#ma tbm
+ma.tbm = merge(ma,tbm, by = 'trifd')
+length(unique(ma.tbm[["trifd"]])) 
+
+#ma vc
+ma.vc = merge(ma,vc, by = 'trifd')
+length(unique(ma.vc[["trifd"]])) 
+
+###
+
+#mbc cad
+mbc.cad = merge(mbc,cad, by = 'trifd')
+length(unique(mbc.cad[["trifd"]])) 
+
+#mbc eb
+mbc.eb = merge(mbc,eb, by = 'trifd')
+length(unique(mbc.eb[["trifd"]])) 
+
+#mbc hcb
+mbc.hcb = merge(mbc,hcb, by = 'trifd')
+length(unique(mbc.hcb[["trifd"]])) 
+
+#mbc lead
+mbc.lead = merge(mbc,lead, by = 'trifd')
+length(unique(mbc.lead[["trifd"]]))
+
+#mbc mol
+mbc.lead = merge(mbc,lead, by = 'trifd')
+length(unique(mbc.lead[["trifd"]])) 
+
+#mbc sty
+mbc.sty = merge(mbc,sty, by = 'trifd')
+length(unique(mbc.sty[["trifd"]])) 
+
+#mbc tbm
+mbc.tbm = merge(mbc,tbm, by = 'trifd')
+length(unique(mbc.tbm[["trifd"]])) 
+
+#mbc vc
+mbc.vc = merge(mbc,vc, by = 'trifd')
+length(unique(mbc.vc[["trifd"]])) 
+
+###
+
+#cad cre
+cad.cre = merge(cad,cre, by = 'trifd')
+length(unique(cad.cre[["trifd"]])) 
+
+#cad hcb
+cad.hcb = merge(cad,hcb, by = 'trifd')
+length(unique(cad.hcb[["trifd"]])) 
+
+#cad mol
+cad.lead = merge(cad,lead, by = 'trifd')
+length(unique(cad.lead[["trifd"]])) 
+
+###
+
+#cre eb
+cre.eb = merge(cre,eb, by = 'trifd')
+length(unique(cre.eb[["trifd"]])) 
+
+#cre hcb
+cre.hcb = merge(cre,hcb, by = 'trifd')
+length(unique(cre.hcb[["trifd"]])) 
+
+#cre lead
+cre.lead = merge(cre,lead, by = 'trifd')
+length(unique(cre.lead[["trifd"]]))
+
+#cre mol
+cre.mol = merge(cre,mol, by = 'trifd')
+length(unique(cre.mol[["trifd"]])) 
+
+###
+
+#eb hcb
+eb.hcb = merge(eb,hcb, by = 'trifd')
+length(unique(eb.hcb[["trifd"]])) 
+
+#eb lead
+eb.lead = merge(eb,lead, by = 'trifd')
+length(unique(eb.lead[["trifd"]]))
+
+###
+
+#hcb lead
+hcb.lead = merge(hcb,lead, by = 'trifd')
+length(unique(hcb.lead[["trifd"]]))
+
+#hcb mol
+hcb.mol = merge(hcb,mol, by = 'trifd')
+length(unique(hcb.mol[["trifd"]]))
+
+#hcb sty
+hcb.sty = merge(hcb,sty, by = 'trifd')
+length(unique(hcb.sty[["trifd"]])) 
+
+#hcb tbm
+hcb.tbm = merge(hcb,tbm, by = 'trifd')
+length(unique(hcb.tbm[["trifd"]])) 
+
+#hcb vc
+hcb.vc = merge(hcb,vc, by = 'trifd')
+length(unique(hcb.vc[["trifd"]])) 
+
+###
+
+#lead mol
+lead.mol = merge(lead,mol, by = 'trifd')
+length(unique(lead.mol[["trifd"]]))
+
+###
+
+#mol sty
+mol.sty = merge(mol,sty, by = 'trifd')
+length(unique(mol.sty[["trifd"]])) 
+
+#mol tbm
+mol.tbm = merge(mol,tbm, by = 'trifd')
+length(unique(mol.tbm[["trifd"]])) 
+
+#mol vc
+mol.vc = merge(mol,vc, by = 'trifd')
+length(unique(mol.vc[["trifd"]])) 
+
+```
+
+#getting co-releases for EDC pairs that were not previously covered in the Rmd "co-release-analysis"
+```{r}
+#bpa chr 20
+bpa.chr = merge(bpa,chr, by = 'trifd')
+length(unique(bpa.chr[["trifd"]]))
+
+#bpa cyanide 6
+bpa.cyanide = merge(bpa,cyanide, by = 'trifd')
+length(unique(bpa.cyanide[["trifd"]]))
+
+#bpa lead 22
+bpa.lead = merge(bpa,lead, by = 'trifd')
+length(unique(bpa.lead[["trifd"]]))
+
+#bpa sty 27
+bpa.sty = merge(bpa,sty, by = 'trifd')
+length(unique(bpa.sty[["trifd"]]))
+
+#chr cyanide 30
+chr.cyanide = merge(chr,cyanide, by = 'trifd')
+length(unique(chr.cyanide[["trifd"]]))
+
+#chr dbde 1
+chr.dbde = merge(chr,dbde, by = 'trifd')
+length(unique(chr.dbde[["trifd"]]))
+
+#chr non 12
+chr.non = merge(chr,non, by = 'trifd')
+length(unique(chr.non[["trifd"]]))
+
+#chr styr 30
+chr.sty = merge(chr,sty, by = 'trifd')
+length(unique(chr.sty[["trifd"]]))
+
+#cyanide dbde 1
+cyanide.dbde = merge(cyanide,dbde, by = 'trifd')
+length(unique(cyanide.dbde[["trifd"]]))
+
+#cyanide lead 169
+cyanide.lead = merge(cyanide,lead, by = 'trifd')
+length(unique(cyanide.lead[["trifd"]]))
+
+#cyanide non 11
+cyanide.non = merge(cyanide,non, by = 'trifd')
+length(unique(cyanide.non[["trifd"]]))
+
+#cyanide sty 63
+cyanide.sty = merge(cyanide,sty, by = 'trifd')
+length(unique(cyanide.sty[["trifd"]]))
+
+#dbde lead 6
+dbde.lead = merge(dbde,lead, by = 'trifd')
+length(unique(dbde.lead[["trifd"]]))
+
+#dbde sty 2
+dbde.sty = merge(dbde,sty, by = 'trifd')
+length(unique(dbde.sty[["trifd"]]))
+
+#lead non 30
+lead.non = merge(lead,non, by = 'trifd')
+length(unique(lead.non[["trifd"]]))
+
+#lead sty 165
+lead.sty = merge(lead,sty, by = 'trifd')
+length(unique(lead.sty[["trifd"]]))
+
+#sty non 34
+sty.non = merge(sty,non, by = 'trifd')
+length(unique(sty.non[["trifd"]]))
+```
+
+#fix multiple chemical names in original df
+```{r}
+df$chemical = gsub("Hydrogen cyanide", "Cyanide compounds", df$chemical)
+df$chemical = gsub("m-Xylene", "Xylene (mixed isomers)", df$chemical)
+df$chemical = gsub("o-Xylene", "Xylene (mixed isomers)", df$chemical)
+df$chemical = gsub("p-Xylene", "Xylene (mixed isomers)", df$chemical)
+df$chemical = gsub("Cadmium compounds", "Cadmium", df$chemical)
+df$chemical = gsub("Nickel compounds", "Nickel", df$chemical)
+df$chemical = gsub("Arsenic compounds", "Arsenic", df$chemical)
+df$chemical = gsub("Nickel compounds", "Nickel", df$chemical)
+df$chemical = gsub("Lead compounds", "Lead", df$chemical)
+df$chemical = gsub("Barium compounds", "Barium", df$chemical)
+df$chemical = gsub("Cobalt compounds", "Cobalt", df$chemical)
+df$chemical = gsub("Nonylphenol Ethoxylates", "Nonylphenol", df$chemical)
+df$chemical = gsub("Chromium compounds", "Chromium", df$chemical)
+
+```
+
+#filtering by endpoint group
+```{r}
+df_cns = filter(df, chemical == "Acetaldehyde" | chemical == "Acrylonitrile"|chemical == "Aniline"|chemical == "Styrene"|chemical == "Benzene"|chemical == "Bromoform"|chemical == "Vinyl chloride"|chemical =="Arsenic"|chemical =="Arsenic compounds"|chemical == "Cyanide compounds" | chemical == "Hydrogen cyanide" |  chemical == "Ethylbenzene" | chemical == "m-Xylene" | chemical == "o-Xylene" | chemical == "p-Xylene" | chemical == "Xylene (mixed isomers)"| chemical =="Decabromodiphenyl oxide"| chemical == "Lead"| chemical == "Lead compounds") 
+
+df_carc = filter(df, chemical == "Acetaldehyde" | chemical == "Acrylonitrile"|chemical == "Aniline"|chemical == "Styrene"|chemical == "Benzene"|chemical == "Bromoform"|chemical == "Vinyl chloride"|chemical == "Creosote"|chemical == "3,3'-Dichlorobenzidine"|chemical == "3,3'-Dichlorobenzidine dihydrochloride"|chemical == "4,4'-Methylenebis(2-chloroaniline)"|chemical == "N-Nitrosodiphenylamine"|chemical == "Cadmium" | chemical == "Cadmium compounds"|chemical == "Nickel" | chemical == "Nickel compounds"|chemical == "Arsenic" | chemical == "Arsenic compounds"|chemical == "Chromium" | chemical == "Chromium compounds"|chemical == "Lead" | chemical == "Lead compounds")
+
+df_cardio = filter(df, chemical == "Barium" | chemical == "Barium compounds"|chemical == "Cobalt" | chemical == "Cobalt compounds"|chemical == "Molybdenum trioxide"|chemical == "Naphthalene"|chemical == "Maleic anhydride"|chemical == "1-Hexadecanol"|chemical == "Hydrogen fluoride"|chemical == "Acetaldehyde" | chemical == "Acrylonitrile"|chemical == "Arsenic" | chemical == "Arsenic compounds"|chemical == "Aniline"|chemical == "Cadmium" | chemical == "Cadmium compounds"|chemical == "Chromium" | chemical == "Chromium compounds"|chemical =="Ethylbenzene"|chemical == "Nickel" | chemical == "Nickel compounds")
+
+df_lkt = filter(df, chemical == "Hexachloro-1,3-butadiene"|chemical == "Maleic anhydride"|chemical == "4,4'-Methylenebis(2-chloroaniline)"|chemical == "Cadmium" | chemical == "Cadmium compounds"|chemical == "Creosote"|chemical =="Ethylbenzene"|chemical == "Lead" | chemical == "Lead compounds"|chemical == "Molybdenum trioxide"|chemical == "Styrene"|chemical == "Bromoform"|chemical == "Vinyl chloride")
+
+df_edc = filter(df, chemical == "Nonylphenol" | chemical == "Nonylphenol Ethoxylates"|chemical == "4,4'-Isopropylidenediphenol"|chemical == "Decabromodiphenyl oxide"|chemical == "Chromium" | chemical == "Chromium compounds"|chemical == "Cyanide compounds" | chemical == "Hydrogen cyanide"|chemical == "Lead" | chemical == "Lead compounds"|chemical == "Styrene")
+
+```
+
+
+#adding endpoint groups to df for further analysis
+```{r}
+df_carc$endpoint = "carc"
+df_cardio$endpoint = "cardio"
+df_cns$endpoint = "CNS"
+df_edc$endpoint = "edcs"
+df_lkt$endpoint = "lkt"
+
+all_df = rbind(df_carc, df_cardio, df_cns, df_edc, df_lkt)
+```
+
+
+
+#calculate percent co-releases overall for each group: # of coreleases/unique facilities where # of coreleases is total number of facilities - unique facilities
+```{r}
+#CNS = 44.02%
+((length(df_cns[["trifd"]]) - length(unique(df_cns[["trifd"]]))) / length(unique(df_cns[["trifd"]])))*100
+
+#carc = 47.08%
+((length(df_carc[["trifd"]]) - length(unique(df_carc[["trifd"]]))) / length(unique(df_carc[["trifd"]])))*100
+
+#cardio = 74.01%
+((length(df_cardio[["trifd"]]) - length(unique(df_cardio[["trifd"]]))) / length(unique(df_cardio[["trifd"]])))*100
+
+#lkt = 15.2%
+((length(df_lkt[["trifd"]]) - length(unique(df_lkt[["trifd"]]))) / length(unique(df_lkt[["trifd"]])))*100
+
+#edcs = 15.06%
+((length(df_edc[["trifd"]]) - length(unique(df_edc[["trifd"]]))) / length(unique(df_edc[["trifd"]])))*100
+```
+
+
+#boxplots for co-releases
+
+#formatting data for heat map, subsetting by endpoint (need to fix names!!!!)
+```{r}
+#read in csvs and format data
+carc = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/Repeats/carc_repeats.csv")
+cardio = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/Repeats/cardio_repeats.csv")
+CNS = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/Repeats/CNS_repeats.csv")
+edcs = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/Repeats/edcs_repeats.csv")
+lkt = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/Repeats/lkt_repeats.csv")
+
+#heeelllllpppp
+
+breaks <- c(0, 2, 4, 6, 8, 10, 20, 30, 50, 70)
+colors <- brewer.pal(9, "Blues")
+
+#CNS heatmap
+row.names(CNS) = CNS$X
+CNS = select(CNS, -X)
+colnames(CNS) = c("Acrylonitrile*", "Arsenic", "Benzenamine*", "Benzene*", "Cyanide", "Decabromodiphenyl ethers", "Ethylbenzene*", "Lead", "Styrene*", "Tribromomethane*", "Vinyl chloride*", "Xylenes")
+CNS.matrix = as.matrix(CNS)
+
+pheatmap(CNS.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/Repeats/corelease.CNS.png", width = 10, height = 7)
+
+#carc heatmap
+row.names(carc) = carc$X
+carc = select(carc, -X)
+colnames(carc) = c("3,3'-Dichlorobenzidine 2HCl", "4,4-Methylene bis(2-chloroaniline)*", "Acetaldehyde*", "Acrylonitrile*", "Arsenic","Benzenamine*", "Benzene*", "Cadmium", "Chromium", "Creosotes", "Lead", "Nickel", "N-Nitroso- diphenylamine", "Styrene*", "Tribromomethane*", "Vinyl chloride*")
+carc.matrix = as.matrix(carc)
+
+pheatmap(carc.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, color = colors, na_col = "grey50", number_color = "grey15", cellheight=22,cellwidth=22, fontsize_number = 8, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/Repeats/corelease.carc.png", width = 10, height = 7)
+
+#cardio heatmap
+row.names(cardio) = cardio$X
+cardio = select(cardio, -X)
+colnames(cardio) = c("Acetaldehyde*", "Acrylonitrile*", "Arsenic", "Barium Carbonate", "Benzenamine*", "Cadmium", "Chromium", "Cobalt", "Ethylbenzene*", "Hydrogen fluoride*", "Molybdenum", "Naphthalene*", "Nickel")
+cardio.matrix = as.matrix(cardio)
+
+pheatmap(cardio.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/Repeats/corelease.cardio.png", width = 10, height = 7)
+
+#lkt heatmap
+row.names(lkt) = lkt$X
+lkt = select(lkt, -X)
+colnames(lkt) = c("4,4'-Methylene bis(2-chloroaniline)*", "Cadmium", "Creosotes", "Ethylbenzene*", "Hexachlorobutadiene", "Lead", "Molybdenum", "Styrene*", "Tribromomethane*", "Vinyl chloride*")
+lkt.matrix = as.matrix(lkt)
+
+pheatmap(lkt.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/Repeats/corelease.lkt.png", width = 10, height = 7)
+
+#edcs heatmap
+row.names(edcs) = edcs$X
+edcs = select(edcs, -X)
+colnames(edcs) = c("Chromium", "Cyanide", "Decabromodiphenyl ethers", "Lead", "Nonylphenol", "Styrene*")
+edcs.matrix = as.matrix(edcs)
+
+pheatmap(edcs.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, color = colors, na_col = "grey50", number_color = "grey15", cellheight=60,cellwidth=60, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/Repeats/corelease.edcs.png", width = 10, height = 7)
+
+```
+
+
+#can do average co-production (of pairs) for each group, or report the overall corelease number I calculated above -- ask Maria
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
