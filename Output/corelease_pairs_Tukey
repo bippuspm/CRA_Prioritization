@@ -1,0 +1,18 @@
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = percent ~ endpoint, data = co.simp)
+
+$endpoint
+                  diff         lwr      upr     p adj
+cardio-carc  3.7895432   0.2212737 7.357813 0.0310796
+CNS-carc     2.8382582  -0.9039245 6.580441 0.2313622
+edcs-carc   -0.9659151  -7.1433132 5.211483 0.9929476
+lkt-carc     2.1935606  -2.0166202 6.403741 0.6098670
+CNS-cardio  -0.9512849  -5.0167499 3.114180 0.9681553
+edcs-cardio -4.7554583 -11.1338844 1.622968 0.2473292
+lkt-cardio  -1.5959826  -6.0959488 2.903984 0.8676057
+edcs-CNS    -3.8041733 -10.2814957 2.673149 0.4919827
+lkt-CNS     -0.6446976  -5.2837795 3.994384 0.9955197
+lkt-edcs     3.1594757  -3.5990297 9.917981 0.7028551
+

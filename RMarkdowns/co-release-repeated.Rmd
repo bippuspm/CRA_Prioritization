@@ -1304,7 +1304,6 @@ df$chemical = gsub("m-Xylene", "Xylene (mixed isomers)", df$chemical)
 df$chemical = gsub("o-Xylene", "Xylene (mixed isomers)", df$chemical)
 df$chemical = gsub("p-Xylene", "Xylene (mixed isomers)", df$chemical)
 df$chemical = gsub("Cadmium compounds", "Cadmium", df$chemical)
-df$chemical = gsub("Nickel compounds", "Nickel", df$chemical)
 df$chemical = gsub("Arsenic compounds", "Arsenic", df$chemical)
 df$chemical = gsub("Nickel compounds", "Nickel", df$chemical)
 df$chemical = gsub("Lead compounds", "Lead", df$chemical)
@@ -1421,7 +1420,30 @@ pheatmap(edcs.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color =
 ```
 
 
-#can do average co-production (of pairs) for each group, or report the overall corelease number I calculated above -- ask Maria
+#can do average co-production (of pairs) for each group (below), or report the overall corelease number I calculated above - they follow the same relative trends, but below there are no significant differences except between cardio and carc, but this is likely because there's many repeats that are causing the same spread (SD)
+
+#average co-production (of pairs) for each group, and statistical analysis
+```{r}
+co.simp = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/Repeats/corelease_repeats_R.csv")
+
+co.summ = summarySE(co.simp, measurevar = "percent", groupvars = "endpoint")
+
+co.summ.aov = aov(percent ~ endpoint, data = co.simp)
+co.summ.tukey = TukeyHSD(x = co.summ.aov, conf.level = 0.95)
+co.summ.tukey
+capture.output(co.summ.tukey, file = "~/TSCA/CRA/CRA_Prioritization/Output/corelease_pairs_Tukey")
+
+#box plot of average co-release per group
+endpoints = c("Carcinogens", "Cardiorespiratory", "CNS", "EDCs", "Liver, Kidney, Thyroid")
+
+corelease_box = ggplot(co.simp, aes(x = endpoint, y = percent)) + geom_boxplot(position = position_dodge()) + theme_bw() + ylab("Average Percent Corelease") + xlab("Endpoint Group") + scale_x_discrete(labels = endpoints) + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1))
+
+corelease_box
+
+ggsave(filename = "corelease_box.png", device = "png", plot = corelease_box, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
+
+```
+
 
 
 
