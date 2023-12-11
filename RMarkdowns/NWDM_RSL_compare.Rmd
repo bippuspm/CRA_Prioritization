@@ -1,0 +1,57 @@
+---
+title: "Comparing New Work Dredge Material concentrations to EPA Soil RSLs"
+author: "Paige Varner"
+date: "2023-12-04"
+output: html_document
+---
+
+#load libraries
+```{r}
+library("dplyr")
+library("bigrquery")
+library("DBI")
+library("pheatmap")
+library("RColorBrewer")
+library("Rmisc")
+library("stats")
+library("rstatix")
+library("ggplot2")
+```
+
+#load data
+```{r}
+conc = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/EPA_RSLs/NWmaterial_conc.csv")
+rsls = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/EPA_RSLs/EPA_soil_RSLs_R.csv")
+```
+
+
+#combine dfs, find which rows were not matched by the CAS no, and re-add those files to the merged_df to do those by hand in excel
+```{r}
+merged_df = merge(conc, rsls, by="CAS")
+
+dropped_cas = anti_join(conc, merged_df, by="CAS")
+
+write.csv(merged_df, "~/TSCA/CRA/CRA_Prioritization/Output/NW_RSLs/merged_df.csv")
+
+write.csv(dropped_cas, "~/TSCA/CRA/CRA_Prioritization/Output/NW_RSLs/dropped_cas.csv")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
