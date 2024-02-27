@@ -200,7 +200,7 @@ ggsave(filename = "lkt_violin_baseline.png", device = "png", plot = lkt_violin_b
 ```
 
 
-#repeat everything we did with baseline for climate vulnerability index to see where climate might have an impact (want to do just for climate or overall cvi? doing for overall cvi for now)
+#repeat everything we did with baseline for climate vulnerability index to see where climate might have an impact 
 
 
 #Get average CVI score for each chemical and endpoint group
@@ -225,7 +225,7 @@ cvi_edcs = filter(cvi_bychem, chemical == "Nonylphenol" | chemical == "Nonylphen
 ```
 
 
-#add groupings to climate vulnerability index dfs so I can add back into one big df
+#add groupings to climate vulnerability index dfs so I can add back into one big df; shorten MBOCA's name
 ```{r}
 cvi_carc$endpoint = "carc"
 cvi_cardio$endpoint = "cardio"
@@ -251,7 +251,7 @@ capture.output(tri_cvi_tukey, file = "~/TSCA/CRA/CRA_Prioritization/Output/tri_c
 endpoints = c("Carcinogens", "Cardiorespiratory", "CNS", "EDCs", "Liver, Kidney, Thyroid")
 yvar = mean(tri_cvi$CVI.Score)
 
-tri_cvi_violin = ggplot(tri_cvi, aes(x = endpoint, y = CVI.Score)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Endpoint Group") + scale_x_discrete(labels = endpoints) + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = yvar, linetype = "dashed") + scale_fill_viridis(discrete = TRUE, begin=.4)
+tri_cvi_violin = ggplot(tri_cvi, aes(x = endpoint, y = CVI.Score)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Endpoint Group") + scale_x_discrete(labels = endpoints) + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1), legend.position = "none") + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = yvar, linetype = "dashed") 
 
 tri_cvi_violin
 
@@ -281,40 +281,106 @@ cvi_edcs = filter(tri_cvi, chemical == "Nonylphenol" | chemical == "Nonylphenol 
 #violin for climate vulnerability of each chemical within endpoint groups
 ```{r}
 #carcinogens
-carc_violin_cvi = ggplot(cvi_carc, aes(x = chemical, y = CVI.Score)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(cvi_carc$CVI.Score), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+carc_violin_cvi = ggplot(cvi_carc, aes(x = chemical, y = CVI.Score, fill = chemical)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1), legend.position = "none") + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(cvi_carc$CVI.Score), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8)) + scale_fill_viridis(discrete = TRUE, option = "H", begin = 0.2) + scale_x_discrete(labels = c("3,3'-Dichlorobenzidine", "3,3'-Dichlorobenzidine 2HCl", "MBOCA*", "Acetaldehyde*", "Acrylonitrile*", "Aniline*", "Arsenic", "Benzene*", "Bromoform*", "Cadmium", "Chromium", "Creosote", "Lead", "N-Nitrosodiphenylamine", "Nickel", "Styrene*", "Vinyl Chloride*"))
 
 carc_violin_cvi
 
-ggsave(filename = "carc_violin_cvi.png", device = "png", plot = carc_violin_cvi, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 14, height = 5)
+ggsave(filename = "carc_violin_cvi.png", device = "png", plot = carc_violin_cvi, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 15, height = 5)
 
 #CNS
-CNS_violin_cvi = ggplot(cvi_CNS, aes(x = chemical, y = CVI.Score)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(cvi_CNS$CVI.Score), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+CNS_violin_cvi = ggplot(cvi_CNS, aes(x = chemical, y = CVI.Score, fill = chemical)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1), legend.position = "none") + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(cvi_CNS$CVI.Score), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8)) + scale_fill_viridis(discrete = TRUE, option = "H", begin = 0.2) + scale_x_discrete(labels = c("Acetaldehyde*", "Acrylonitrile*", "Aniline*", "Arsenic", "Benzene*", "Bromoform*", "Cyanide compounds", "Decabromodiphenyl oxide", "Ethylbenzene*", "Lead", "Styrene*", "Vinyl chloride*", "Xylene"))
 
 CNS_violin_cvi
 
 ggsave(filename = "CNS_violin_cvi.png", device = "png", plot = CNS_violin_cvi, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
 
 #cardiorespiratory
-cardio_violin_cvi = ggplot(cvi_cardio, aes(x = chemical, y = CVI.Score)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(cvi_cardio$CVI.Score), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+cardio_violin_cvi = ggplot(cvi_cardio, aes(x = chemical, y = CVI.Score, fill = chemical)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1), legend.position = "none") + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(cvi_cardio$CVI.Score), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8)) + scale_fill_viridis(discrete = TRUE, option = "H", begin = 0.2) + scale_x_discrete(labels = c("Acetaldehyde*", "Acrylonitrile*", "Aniline*", "Arsenic", "Barium", "Cadmium", "Chromium", "Cobalt", "Ethylbenzene*", "Hydrogen fluoride*", "Maleic anhydride", "Molybdenum trioxide", "Naphthalene*", "Nickel"))
 
 cardio_violin_cvi
 
 ggsave(filename = "cardio_violin_cvi.png", device = "png", plot = cardio_violin_cvi, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
 
 #EDCs
-edcs_violin_cvi = ggplot(cvi_edcs, aes(x = chemical, y = CVI.Score)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(cvi_edcs$CVI.Score), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+edcs_violin_cvi = ggplot(cvi_edcs, aes(x = chemical, y = CVI.Score, fill = chemical)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1), legend.position = "none") + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(cvi_edcs$CVI.Score), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8)) + scale_fill_viridis(discrete = TRUE, option = "H", begin = 0.2) + scale_x_discrete(labels = c("Bisphenol A*", "Chromium", "Cyanide compounds", "Decabromodiphenyl oxide", "Lead", "Nonylphenol", "Styrene*"))
 
 edcs_violin_cvi
 
 ggsave(filename = "edcs_violin_cvi.png", device = "png", plot = edcs_violin_cvi, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
 
 #liver, kidney, thyroid
-lkt_violin_cvi = ggplot(cvi_lkt, aes(x = chemical, y = CVI.Score)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1)) + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(cvi_lkt$CVI.Score), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
+lkt_violin_cvi = ggplot(cvi_lkt, aes(x = chemical, y = CVI.Score, fill = chemical)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1), legend.position = "none") + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(cvi_lkt$CVI.Score), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8)) + scale_fill_viridis(discrete = TRUE, option = "H", begin = 0.2) + scale_x_discrete(labels = c("MBOCA*", "Bromoform*", "Cadmium", "Creosote", "Ethylbenzene*", "Hexacloro-1,3-butadiene", "Lead", "Maleic anhydride", "Molybdenum trioxide", "Styrene*", "Vinyl Chloride*"))
 
 lkt_violin_cvi
 
 ggsave(filename = "lkt_violin_cvi.png", device = "png", plot = lkt_violin_cvi, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
 ```
+
+
+
+#stats for above: significant differences between CVI scores of chemicals in each endpoint group?
+```{r}
+#carc
+cvi_carc_aov = aov(CVI.Score ~ chemical, data = cvi_carc)
+cvi_carc_aov
+cvi_carc_tukey = TukeyHSD(x = cvi_carc_aov, conf.level = 0.95)
+capture.output(cvi_carc_tukey, file = "~/TSCA/CRA/CRA_Prioritization/Output/cvi_carc_tukey")
+
+#CNS
+cvi_CNS_aov = aov(CVI.Score ~ chemical, data = cvi_CNS)
+cvi_CNS_aov
+cvi_CNS_tukey = TukeyHSD(x = cvi_CNS_aov, conf.level = 0.95)
+capture.output(cvi_CNS_tukey, file = "~/TSCA/CRA/CRA_Prioritization/Output/cvi_CNS_tukey")
+
+#cardio
+cvi_cardio_aov = aov(CVI.Score ~ chemical, data = cvi_cardio)
+cvi_cardio_aov
+cvi_cardio_tukey = TukeyHSD(x = cvi_cardio_aov, conf.level = 0.95)
+capture.output(cvi_cardio_tukey, file = "~/TSCA/CRA/CRA_Prioritization/Output/cvi_cardio_tukey")
+
+#edcs
+cvi_edcs_aov = aov(CVI.Score ~ chemical, data = cvi_edcs)
+cvi_edcs_aov
+cvi_edcs_tukey = TukeyHSD(x = cvi_edcs_aov, conf.level = 0.95)
+capture.output(cvi_edcs_tukey, file = "~/TSCA/CRA/CRA_Prioritization/Output/cvi_edcs_tukey")
+
+#lkt
+cvi_lkt_aov = aov(CVI.Score ~ chemical, data = cvi_lkt)
+cvi_lkt_aov
+cvi_lkt_tukey = TukeyHSD(x = cvi_lkt_aov, conf.level = 0.95)
+capture.output(cvi_lkt_tukey, file = "~/TSCA/CRA/CRA_Prioritization/Output/cvi_lkt_tukey")
+```
+
+
+#getting csv of values for the above for comparison between specific chemicals
+```{r}
+#carc
+cvi_carc_sum = summarySE(cvi_carc, measurevar = "CVI.Score", groupvars = "chemical")
+
+write.csv(cvi_carc_sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/cvi_carc_sum.csv")
+
+#CNS
+cvi_CNS_sum = summarySE(cvi_CNS, measurevar = "CVI.Score", groupvars = "chemical")
+
+write.csv(cvi_CNS_sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/cvi_CNS_sum.csv")
+
+#cardio
+cvi_cardio_sum = summarySE(cvi_cardio, measurevar = "CVI.Score", groupvars = "chemical")
+
+write.csv(cvi_cardio_sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/cvi_cardio_sum.csv")
+
+#edcs
+cvi_edcs_sum = summarySE(cvi_edcs, measurevar = "CVI.Score", groupvars = "chemical")
+
+write.csv(cvi_edcs_sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/cvi_edcs_sum.csv")
+
+#lkt
+cvi_lkt_sum = summarySE(cvi_lkt, measurevar = "CVI.Score", groupvars = "chemical")
+
+write.csv(cvi_lkt_sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/cvi_lkt_sum.csv")
+```
+
+
 
 
 #violin plots for Baseline Vulnerability - Environment by chemical in each endpoint group (most relevant for cumulative exposures)
@@ -349,12 +415,13 @@ edcs_violin_env
 ggsave(filename = "edcs_violin_env.png", device = "png", plot = edcs_violin_env, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
 
 #liver, kidney, thyroid
-lkt_violin_env = ggplot(cvi_lkt, aes(x = chemical, y = Baseline.Vulnerability..Enviroment, fill = chemical)) + geom_violin(trim = FALSE) + theme_bw() + ylab("Environmental Vulnerability") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1), legend.position = "none") + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(cvi_lkt$Baseline.Vulnerability..Enviroment), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8)) + scale_fill_viridis(discrete = TRUE, begin = .4)
+lkt_violin_env = ggplot(cvi_lkt, aes(x = chemical, y = Baseline.Vulnerability..Enviroment)) + geom_violin(trim = FALSE) + theme_bw() + ylab("Environmental Vulnerability") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1), legend.position = "none") + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(cvi_lkt$Baseline.Vulnerability..Enviroment), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8))
 
 lkt_violin_env
 
 ggsave(filename = "lkt_violin_env.png", device = "png", plot = lkt_violin_env, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 10, height = 5)
 ```
+
 
 #summary and stats to compare between end groups and graph for baseline vulnerability - environment
 ```{r}

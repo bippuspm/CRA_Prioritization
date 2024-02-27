@@ -1226,6 +1226,7 @@ length(unique(mol.vc[["trifd"]]))
 
 ```
 
+
 #getting co-releases for EDC pairs that were not previously covered in the Rmd "co-release-analysis"
 ```{r}
 #bpa chr 20
@@ -1363,7 +1364,7 @@ all_df = rbind(df_carc, df_cardio, df_cns, df_edc, df_lkt)
 
 #boxplots for co-releases
 
-#formatting data for heat map, subsetting by endpoint (need to fix names!!!!)
+#formatting data for heat map, subsetting by endpoint
 ```{r}
 #read in csvs and format data
 carc = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/Repeats/carc_repeats.csv")
@@ -1372,7 +1373,7 @@ CNS = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/Repeats/CNS_repeats.csv")
 edcs = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/Repeats/edcs_repeats.csv")
 lkt = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/Repeats/lkt_repeats.csv")
 
-#heeelllllpppp
+#create breaks for colors
 
 breaks <- c(0, 2, 4, 6, 8, 10, 20, 30, 50, 70)
 colors <- brewer.pal(9, "Blues")
@@ -1383,7 +1384,7 @@ CNS = select(CNS, -X)
 colnames(CNS) = c("Acrylonitrile*", "Arsenic", "Benzenamine*", "Benzene*", "Cyanide", "Decabromodiphenyl ethers", "Ethylbenzene*", "Lead", "Styrene*", "Tribromomethane*", "Vinyl chloride*", "Xylenes")
 CNS.matrix = as.matrix(CNS)
 
-pheatmap(CNS.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/Repeats/corelease.CNS.png", width = 10, height = 7)
+pheatmap(CNS.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/corelease.CNS.png", width = 10, height = 7)
 
 #carc heatmap
 row.names(carc) = carc$X
@@ -1391,7 +1392,7 @@ carc = select(carc, -X)
 colnames(carc) = c("3,3'-Dichlorobenzidine 2HCl", "4,4-Methylene bis(2-chloroaniline)*", "Acetaldehyde*", "Acrylonitrile*", "Arsenic","Benzenamine*", "Benzene*", "Cadmium", "Chromium", "Creosotes", "Lead", "Nickel", "N-Nitroso- diphenylamine", "Styrene*", "Tribromomethane*", "Vinyl chloride*")
 carc.matrix = as.matrix(carc)
 
-pheatmap(carc.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, color = colors, na_col = "grey50", number_color = "grey15", cellheight=22,cellwidth=22, fontsize_number = 8, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/Repeats/corelease.carc.png", width = 10, height = 7)
+pheatmap(carc.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, color = colors, na_col = "grey50", number_color = "grey15", cellheight=22,cellwidth=22, fontsize_number = 8, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/corelease.carc.png", width = 10, height = 7)
 
 #cardio heatmap
 row.names(cardio) = cardio$X
@@ -1399,7 +1400,7 @@ cardio = select(cardio, -X)
 colnames(cardio) = c("Acetaldehyde*", "Acrylonitrile*", "Arsenic", "Barium Carbonate", "Benzenamine*", "Cadmium", "Chromium", "Cobalt", "Ethylbenzene*", "Hydrogen fluoride*", "Molybdenum", "Naphthalene*", "Nickel")
 cardio.matrix = as.matrix(cardio)
 
-pheatmap(cardio.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/Repeats/corelease.cardio.png", width = 10, height = 7)
+pheatmap(cardio.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/corelease.cardio.png", width = 10, height = 7)
 
 #lkt heatmap
 row.names(lkt) = lkt$X
@@ -1407,7 +1408,7 @@ lkt = select(lkt, -X)
 colnames(lkt) = c("4,4'-Methylene bis(2-chloroaniline)*", "Cadmium", "Creosotes", "Ethylbenzene*", "Hexachlorobutadiene", "Lead", "Molybdenum", "Styrene*", "Tribromomethane*", "Vinyl chloride*")
 lkt.matrix = as.matrix(lkt)
 
-pheatmap(lkt.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/Repeats/corelease.lkt.png", width = 10, height = 7)
+pheatmap(lkt.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/corelease.lkt.png", width = 10, height = 7)
 
 #edcs heatmap
 row.names(edcs) = edcs$X
@@ -1415,7 +1416,7 @@ edcs = select(edcs, -X)
 colnames(edcs) = c("Chromium", "Cyanide", "Decabromodiphenyl ethers", "Lead", "Nonylphenol", "Styrene*")
 edcs.matrix = as.matrix(edcs)
 
-pheatmap(edcs.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, color = colors, na_col = "grey50", number_color = "grey15", cellheight=60,cellwidth=60, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/Repeats/corelease.edcs.png", width = 10, height = 7)
+pheatmap(edcs.matrix, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, color = colors, na_col = "grey50", number_color = "grey15", cellheight=60,cellwidth=60, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/corelease.edcs.png", width = 10, height = 7)
 
 ```
 
