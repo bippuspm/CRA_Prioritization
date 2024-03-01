@@ -17,6 +17,7 @@ library("Rmisc")
 library("stats")
 library("rstatix")
 library("ggplot2")
+
 ```
 
 
@@ -1446,6 +1447,122 @@ ggsave(filename = "corelease_box.png", device = "png", plot = corelease_box, pat
 ```
 
 
+#filter for non-unique and unique facilities in each endpoint group, compare average pounds released between the two 
+```{r}
+#carc
+df_carc.unique = df_carc %>%
+  distinct(trifd, .keep_all = TRUE)
+
+df_carc.repeat = df_carc %>%
+  filter(duplicated(trifd) | duplicated(trifd, fromLast = TRUE))
+
+df_carc.unique.sum = summarySE(df_carc.unique, measurevar = "sum_onsite_releases", groupvars = "chemical")
+df_carc.repeat.sum = summarySE(df_carc.repeat, measurevar = "sum_onsite_releases", groupvars = "chemical")
+
+mean(df_carc.unique$sum_onsite_releases) #avg = 57485.67
+mean(df_carc.repeat$sum_onsite_releases) #avg = 577015.1
+
+t.test(df_carc.unique$sum_onsite_releases, df_carc.repeat$sum_onsite_releases, paired = FALSE) # p = 0.04605
+
+write.csv(df_carc.unique.sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/carc.unique.summary.csv")
+write.csv(df_carc.repeat.sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/carc.repeat.summary.csv")
+
+#CNS
+df_cns.unique = df_cns %>%
+  distinct(trifd, .keep_all = TRUE)
+
+df_cns.repeat = df_cns %>%
+  filter(duplicated(trifd) | duplicated(trifd, fromLast = TRUE))
+
+df_cns.unique.sum = summarySE(df_cns.unique, measurevar = "sum_onsite_releases", groupvars = "chemical")
+df_cns.repeat.sum = summarySE(df_cns.repeat, measurevar = "sum_onsite_releases", groupvars = "chemical")
+
+mean(df_cns.unique$sum_onsite_releases) #avg = 116921.7
+mean(df_cns.repeat$sum_onsite_releases) #avg = 715276.3
+
+t.test(df_cns.unique$sum_onsite_releases, df_cns.repeat$sum_onsite_releases, paired = FALSE) # p = 0.06749
+
+write.csv(df_cns.unique.sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/cns.unique.summary.csv")
+write.csv(df_cns.repeat.sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/cns.repeat.summary.csv")
+
+#cardio
+df_cardio.unique = df_cardio %>%
+  distinct(trifd, .keep_all = TRUE)
+
+df_cardio.repeat = df_cardio %>%
+  filter(duplicated(trifd) | duplicated(trifd, fromLast = TRUE))
+
+df_cardio.unique.sum = summarySE(df_cardio.unique, measurevar = "sum_onsite_releases", groupvars = "chemical")
+df_cardio.repeat.sum = summarySE(df_cardio.repeat, measurevar = "sum_onsite_releases", groupvars = "chemical")
+
+mean(df_cardio.unique$sum_onsite_releases) #avg = 35007.77
+mean(df_cardio.repeat$sum_onsite_releases) #avg = 237677.9
+
+t.test(df_cardio.unique$sum_onsite_releases, df_cardio.repeat$sum_onsite_releases, paired = FALSE) # p = 0.0.03665
+
+write.csv(df_cardio.unique.sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/cardio.unique.summary.csv")
+write.csv(df_cardio.repeat.sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/cardio.repeat.summary.csv")
+
+#EDCs
+df_edc.unique = df_edc %>%
+  distinct(trifd, .keep_all = TRUE)
+
+df_edc.repeat = df_edc %>%
+  filter(duplicated(trifd) | duplicated(trifd, fromLast = TRUE))
+
+df_edc.unique.sum = summarySE(df_edc.unique, measurevar = "sum_onsite_releases", groupvars = "chemical")
+df_edc.repeat.sum = summarySE(df_edc.repeat, measurevar = "sum_onsite_releases", groupvars = "chemical")
+
+mean(df_edc.unique$sum_onsite_releases) #avg = 139045.7
+mean(df_edc.repeat$sum_onsite_releases) #avg = 1204829
+
+t.test(df_edc.unique$sum_onsite_releases, df_edc.repeat$sum_onsite_releases, paired = FALSE) # p = 0.1763
+
+write.csv(df_edc.unique.sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/edc.unique.summary.csv")
+write.csv(df_edc.repeat.sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/edc.repeat.summary.csv")
+
+#lkt
+df_lkt.unique = df_lkt %>%
+  distinct(trifd, .keep_all = TRUE)
+
+df_lkt.repeat = df_lkt %>%
+  filter(duplicated(trifd) | duplicated(trifd, fromLast = TRUE))
+
+df_lkt.unique.sum = summarySE(df_lkt.unique, measurevar = "sum_onsite_releases", groupvars = "chemical")
+df_lkt.repeat.sum = summarySE(df_lkt.repeat, measurevar = "sum_onsite_releases", groupvars = "chemical")
+
+mean(df_lkt.unique$sum_onsite_releases) #avg = 71690.75
+mean(df_lkt.repeat$sum_onsite_releases) #avg = 1261905
+
+t.test(df_lkt.unique$sum_onsite_releases, df_lkt.repeat$sum_onsite_releases, paired = FALSE) # p = 0.1731
+
+write.csv(df_lkt.unique.sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/lkt.unique.summary.csv")
+write.csv(df_lkt.repeat.sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/lkt.repeat.summary.csv")
+
+#overall
+df_combined = rbind(df_carc, df_cns, df_cardio, df_edc, df_lkt)
+df_combined = df_combined[!duplicated(df_combined),]
+
+df.unique = df_combined %>%
+  distinct(trifd, .keep_all = TRUE)
+
+df.repeat = df_combined %>%
+  filter(duplicated(trifd) | duplicated(trifd, fromLast = TRUE))
+
+df.unique.sum = summarySE(df.unique, measurevar = "sum_onsite_releases", groupvars = "chemical")
+df.repeat.sum = summarySE(df.repeat, measurevar = "sum_onsite_releases", groupvars = "chemical")
+
+mean(df.unique$sum_onsite_releases) #avg = 52002.29
+mean(df.repeat$sum_onsite_releases) #avg = 316733.5
+
+t.test(df.unique$sum_onsite_releases, df.repeat$sum_onsite_releases, paired = FALSE) # p = 0.000267
+
+write.csv(df.unique.sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/unique.summary.csv")
+write.csv(df.repeat.sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/repeat.summary.csv")
+
+
+
+```
 
 
 
