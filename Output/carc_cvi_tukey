@@ -1,0 +1,555 @@
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = CVI.Score ~ chemical, data = carc)
+
+$chemical
+                                                            diff
+3,3'-Dichlorobenzidine 2HCl-3,3'-Dichlorobenzidine -0.1770534610
+Acetaldehyde-3,3'-Dichlorobenzidine                -0.1661170992
+Acrylonitrile-3,3'-Dichlorobenzidine               -0.1204851242
+Aniline-3,3'-Dichlorobenzidine                     -0.1141807011
+Arsenic-3,3'-Dichlorobenzidine                     -0.1483987106
+Benzene-3,3'-Dichlorobenzidine                     -0.1370883421
+Bromoform-3,3'-Dichlorobenzidine                   -0.1449899975
+Cadmium-3,3'-Dichlorobenzidine                     -0.1431382405
+Chromium-3,3'-Dichlorobenzidine                    -0.1716498763
+Creosote-3,3'-Dichlorobenzidine                    -0.1123867863
+Lead-3,3'-Dichlorobenzidine                        -0.1677972732
+MBOCA-3,3'-Dichlorobenzidine                       -0.1581018249
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine      -0.0811528877
+Nickel-3,3'-Dichlorobenzidine                      -0.1630387811
+Styrene-3,3'-Dichlorobenzidine                     -0.1435634825
+Vinyl chloride-3,3'-Dichlorobenzidine              -0.0917765918
+Acetaldehyde-3,3'-Dichlorobenzidine 2HCl            0.0109363618
+Acrylonitrile-3,3'-Dichlorobenzidine 2HCl           0.0565683367
+Aniline-3,3'-Dichlorobenzidine 2HCl                 0.0628727599
+Arsenic-3,3'-Dichlorobenzidine 2HCl                 0.0286547504
+Benzene-3,3'-Dichlorobenzidine 2HCl                 0.0399651189
+Bromoform-3,3'-Dichlorobenzidine 2HCl               0.0320634635
+Cadmium-3,3'-Dichlorobenzidine 2HCl                 0.0339152205
+Chromium-3,3'-Dichlorobenzidine 2HCl                0.0054035846
+Creosote-3,3'-Dichlorobenzidine 2HCl                0.0646666746
+Lead-3,3'-Dichlorobenzidine 2HCl                    0.0092561878
+MBOCA-3,3'-Dichlorobenzidine 2HCl                   0.0189516361
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine 2HCl  0.0959005733
+Nickel-3,3'-Dichlorobenzidine 2HCl                  0.0140146798
+Styrene-3,3'-Dichlorobenzidine 2HCl                 0.0334899785
+Vinyl chloride-3,3'-Dichlorobenzidine 2HCl          0.0852768692
+Acrylonitrile-Acetaldehyde                          0.0456319749
+Aniline-Acetaldehyde                                0.0519363981
+Arsenic-Acetaldehyde                                0.0177183886
+Benzene-Acetaldehyde                                0.0290287571
+Bromoform-Acetaldehyde                              0.0211271017
+Cadmium-Acetaldehyde                                0.0229788587
+Chromium-Acetaldehyde                              -0.0055327772
+Creosote-Acetaldehyde                               0.0537303128
+Lead-Acetaldehyde                                  -0.0016801740
+MBOCA-Acetaldehyde                                  0.0080152743
+N-Nitrosodiphenylamine-Acetaldehyde                 0.0849642115
+Nickel-Acetaldehyde                                 0.0030783181
+Styrene-Acetaldehyde                                0.0225536167
+Vinyl chloride-Acetaldehyde                         0.0743405074
+Aniline-Acrylonitrile                               0.0063044232
+Arsenic-Acrylonitrile                              -0.0279135864
+Benzene-Acrylonitrile                              -0.0166032179
+Bromoform-Acrylonitrile                            -0.0245048732
+Cadmium-Acrylonitrile                              -0.0226531162
+Chromium-Acrylonitrile                             -0.0511647521
+Creosote-Acrylonitrile                              0.0080983379
+Lead-Acrylonitrile                                 -0.0473121489
+MBOCA-Acrylonitrile                                -0.0376167006
+N-Nitrosodiphenylamine-Acrylonitrile                0.0393322366
+Nickel-Acrylonitrile                               -0.0425536569
+Styrene-Acrylonitrile                              -0.0230783583
+Vinyl chloride-Acrylonitrile                        0.0287085325
+Arsenic-Aniline                                    -0.0342180095
+Benzene-Aniline                                    -0.0229076410
+Bromoform-Aniline                                  -0.0308092964
+Cadmium-Aniline                                    -0.0289575394
+Chromium-Aniline                                   -0.0574691753
+Creosote-Aniline                                    0.0017939147
+Lead-Aniline                                       -0.0536165721
+MBOCA-Aniline                                      -0.0439211238
+N-Nitrosodiphenylamine-Aniline                      0.0330278134
+Nickel-Aniline                                     -0.0488580800
+Styrene-Aniline                                    -0.0293827814
+Vinyl chloride-Aniline                              0.0224041093
+Benzene-Arsenic                                     0.0113103685
+Bromoform-Arsenic                                   0.0034087131
+Cadmium-Arsenic                                     0.0052604702
+Chromium-Arsenic                                   -0.0232511657
+Creosote-Arsenic                                    0.0360119243
+Lead-Arsenic                                       -0.0193985625
+MBOCA-Arsenic                                      -0.0097031143
+N-Nitrosodiphenylamine-Arsenic                      0.0672458229
+Nickel-Arsenic                                     -0.0146400705
+Styrene-Arsenic                                     0.0048352281
+Vinyl chloride-Arsenic                              0.0566221189
+Bromoform-Benzene                                  -0.0079016554
+Cadmium-Benzene                                    -0.0060498983
+Chromium-Benzene                                   -0.0345615342
+Creosote-Benzene                                    0.0247015558
+Lead-Benzene                                       -0.0307089311
+MBOCA-Benzene                                      -0.0210134828
+N-Nitrosodiphenylamine-Benzene                      0.0559354544
+Nickel-Benzene                                     -0.0259504390
+Styrene-Benzene                                    -0.0064751404
+Vinyl chloride-Benzene                              0.0453117504
+Cadmium-Bromoform                                   0.0018517570
+Chromium-Bromoform                                 -0.0266598789
+Creosote-Bromoform                                  0.0326032111
+Lead-Bromoform                                     -0.0228072757
+MBOCA-Bromoform                                    -0.0131118274
+N-Nitrosodiphenylamine-Bromoform                    0.0638371098
+Nickel-Bromoform                                   -0.0180487836
+Styrene-Bromoform                                   0.0014265150
+Vinyl chloride-Bromoform                            0.0532134057
+Chromium-Cadmium                                   -0.0285116359
+Creosote-Cadmium                                    0.0307514541
+Lead-Cadmium                                       -0.0246590327
+MBOCA-Cadmium                                      -0.0149635844
+N-Nitrosodiphenylamine-Cadmium                      0.0619853528
+Nickel-Cadmium                                     -0.0199005407
+Styrene-Cadmium                                    -0.0004252421
+Vinyl chloride-Cadmium                              0.0513616487
+Creosote-Chromium                                   0.0592630900
+Lead-Chromium                                       0.0038526032
+MBOCA-Chromium                                      0.0135480514
+N-Nitrosodiphenylamine-Chromium                     0.0904969887
+Nickel-Chromium                                     0.0086110952
+Styrene-Chromium                                    0.0280863938
+Vinyl chloride-Chromium                             0.0798732846
+Lead-Creosote                                      -0.0554104868
+MBOCA-Creosote                                     -0.0457150385
+N-Nitrosodiphenylamine-Creosote                     0.0312338987
+Nickel-Creosote                                    -0.0506519948
+Styrene-Creosote                                   -0.0311766962
+Vinyl chloride-Creosote                             0.0206101946
+MBOCA-Lead                                          0.0096954483
+N-Nitrosodiphenylamine-Lead                         0.0866443855
+Nickel-Lead                                         0.0047584920
+Styrene-Lead                                        0.0242337906
+Vinyl chloride-Lead                                 0.0760206814
+N-Nitrosodiphenylamine-MBOCA                        0.0769489372
+Nickel-MBOCA                                       -0.0049369562
+Styrene-MBOCA                                       0.0145383424
+Vinyl chloride-MBOCA                                0.0663252331
+Nickel-N-Nitrosodiphenylamine                      -0.0818858935
+Styrene-N-Nitrosodiphenylamine                     -0.0624105948
+Vinyl chloride-N-Nitrosodiphenylamine              -0.0106237041
+Styrene-Nickel                                      0.0194752986
+Vinyl chloride-Nickel                               0.0712621894
+Vinyl chloride-Styrene                              0.0517868908
+                                                             lwr
+3,3'-Dichlorobenzidine 2HCl-3,3'-Dichlorobenzidine -0.5699012488
+Acetaldehyde-3,3'-Dichlorobenzidine                -0.4442696322
+Acrylonitrile-3,3'-Dichlorobenzidine               -0.4000684411
+Aniline-3,3'-Dichlorobenzidine                     -0.3962730421
+Arsenic-3,3'-Dichlorobenzidine                     -0.4269419877
+Benzene-3,3'-Dichlorobenzidine                     -0.4150593003
+Bromoform-3,3'-Dichlorobenzidine                   -0.5378377853
+Cadmium-3,3'-Dichlorobenzidine                     -0.4228459880
+Chromium-3,3'-Dichlorobenzidine                    -0.4495309826
+Creosote-3,3'-Dichlorobenzidine                    -0.3932416655
+Lead-3,3'-Dichlorobenzidine                        -0.4456136090
+MBOCA-3,3'-Dichlorobenzidine                       -0.4509132777
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine      -0.3917263335
+Nickel-3,3'-Dichlorobenzidine                      -0.4408869277
+Styrene-3,3'-Dichlorobenzidine                     -0.4214974849
+Vinyl chloride-3,3'-Dichlorobenzidine              -0.3737393840
+Acetaldehyde-3,3'-Dichlorobenzidine 2HCl           -0.2672161712
+Acrylonitrile-3,3'-Dichlorobenzidine 2HCl          -0.2230149801
+Aniline-3,3'-Dichlorobenzidine 2HCl                -0.2192195811
+Arsenic-3,3'-Dichlorobenzidine 2HCl                -0.2498885267
+Benzene-3,3'-Dichlorobenzidine 2HCl                -0.2380058393
+Bromoform-3,3'-Dichlorobenzidine 2HCl              -0.3607843244
+Cadmium-3,3'-Dichlorobenzidine 2HCl                -0.2457925271
+Chromium-3,3'-Dichlorobenzidine 2HCl               -0.2724775217
+Creosote-3,3'-Dichlorobenzidine 2HCl               -0.2161882045
+Lead-3,3'-Dichlorobenzidine 2HCl                   -0.2685601481
+MBOCA-3,3'-Dichlorobenzidine 2HCl                  -0.2738598167
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine 2HCl -0.2146728726
+Nickel-3,3'-Dichlorobenzidine 2HCl                 -0.2638334668
+Styrene-3,3'-Dichlorobenzidine 2HCl                -0.2444440239
+Vinyl chloride-3,3'-Dichlorobenzidine 2HCl         -0.1966859230
+Acrylonitrile-Acetaldehyde                          0.0109004582
+Aniline-Acetaldehyde                                0.0007940866
+Arsenic-Acetaldehyde                               -0.0072976939
+Benzene-Acetaldehyde                                0.0114987613
+Bromoform-Acetaldehyde                             -0.2570254313
+Cadmium-Acetaldehyde                               -0.0127404811
+Chromium-Acetaldehyde                              -0.0215751095
+Creosote-Acetaldehyde                               0.0099249440
+Lead-Acetaldehyde                                  -0.0165584689
+MBOCA-Acetaldehyde                                 -0.0856756756
+N-Nitrosodiphenylamine-Acetaldehyde                -0.0546614038
+Nickel-Acetaldehyde                                -0.0123825925
+Styrene-Acetaldehyde                                0.0056197205
+Vinyl chloride-Acetaldehyde                         0.0239176614
+Aniline-Acrylonitrile                              -0.0521210464
+Arsenic-Acrylonitrile                              -0.0656469118
+Benzene-Acrylonitrile                              -0.0498492735
+Bromoform-Acrylonitrile                            -0.3040881901
+Cadmium-Acrylonitrile                              -0.0681928867
+Chromium-Acrylonitrile                             -0.0836509936
+Creosote-Acrylonitrile                             -0.0440256470
+Lead-Acrylonitrile                                 -0.0792396155
+MBOCA-Acrylonitrile                                -0.1354737063
+N-Nitrosodiphenylamine-Acrylonitrile               -0.1031223594
+Nickel-Acrylonitrile                               -0.0747567502
+Styrene-Acrylonitrile                              -0.0560139971
+Vinyl chloride-Acrylonitrile                       -0.0290882050
+Arsenic-Aniline                                    -0.0874445219
+Benzene-Aniline                                    -0.0730530096
+Bromoform-Aniline                                  -0.3129016374
+Cadmium-Aniline                                    -0.0879755745
+Chromium-Aniline                                   -0.1071140507
+Creosote-Aniline                                   -0.0624413370
+Lead-Aniline                                       -0.1028976120
+MBOCA-Aniline                                      -0.1487316735
+N-Nitrosodiphenylamine-Aniline                     -0.1142901070
+Nickel-Aniline                                     -0.0983181345
+Styrene-Aniline                                    -0.0793228863
+Vinyl chloride-Aniline                             -0.0465141077
+Benzene-Arsenic                                    -0.0115987200
+Bromoform-Arsenic                                  -0.2751345639
+Cadmium-Arsenic                                    -0.0333840226
+Chromium-Arsenic                                   -0.0450429535
+Creosote-Arsenic                                   -0.0102096716
+Lead-Arsenic                                       -0.0403482462
+MBOCA-Arsenic                                      -0.1045478278
+N-Nitrosodiphenylamine-Arsenic                     -0.0731565917
+Nickel-Arsenic                                     -0.0360074602
+Styrene-Arsenic                                    -0.0176210055
+Vinyl chloride-Arsenic                              0.0040865215
+Bromoform-Benzene                                  -0.2858726135
+Cadmium-Benzene                                    -0.0403266133
+Chromium-Benzene                                   -0.0470666685
+Creosote-Benzene                                   -0.0179356614
+Lead-Benzene                                       -0.0416809689
+MBOCA-Benzene                                      -0.1141639849
+N-Nitrosodiphenylamine-Benzene                     -0.0833280886
+Nickel-Benzene                                     -0.0377004055
+Styrene-Benzene                                    -0.0201052100
+Vinyl chloride-Benzene                             -0.0040996386
+Cadmium-Bromoform                                  -0.2778559906
+Chromium-Bromoform                                 -0.3045409852
+Creosote-Bromoform                                 -0.2482516680
+Lead-Bromoform                                     -0.3006236116
+MBOCA-Bromoform                                    -0.3059232802
+N-Nitrosodiphenylamine-Bromoform                   -0.2467363360
+Nickel-Bromoform                                   -0.2958969303
+Styrene-Bromoform                                  -0.2765074874
+Vinyl chloride-Bromoform                           -0.2287493865
+Chromium-Cadmium                                   -0.0620518933
+Creosote-Cadmium                                   -0.0220358812
+Lead-Cadmium                                       -0.0576583675
+MBOCA-Cadmium                                      -0.1131755314
+N-Nitrosodiphenylamine-Cadmium                     -0.0807132978
+Nickel-Cadmium                                     -0.0531666224
+Styrene-Cadmium                                    -0.0344009581
+Vinyl chloride-Cadmium                             -0.0070340347
+Creosote-Chromium                                   0.0172156410
+Lead-Chromium                                      -0.0045403278
+MBOCA-Chromium                                     -0.0793339798
+N-Nitrosodiphenylamine-Chromium                    -0.0485871229
+Nickel-Chromium                                    -0.0007759910
+Styrene-Chromium                                    0.0164315891
+Vinyl chloride-Chromium                             0.0309698999
+Lead-Creosote                                      -0.0970277332
+MBOCA-Creosote                                     -0.1471479012
+N-Nitrosodiphenylamine-Creosote                    -0.1137003761
+Nickel-Creosote                                    -0.0924810672
+Styrene-Creosote                                   -0.0735723137
+Vinyl chloride-Creosote                            -0.0430537272
+MBOCA-Lead                                         -0.0829926251
+N-Nitrosodiphenylamine-Lead                        -0.0523102737
+Nickel-Lead                                        -0.0024612462
+Styrene-Lead                                        0.0142417085
+Vinyl chloride-Lead                                 0.0274866906
+N-Nitrosodiphenylamine-MBOCA                       -0.0899792741
+Nickel-MBOCA                                       -0.0977203332
+Styrene-MBOCA                                      -0.0785018217
+Vinyl chloride-MBOCA                               -0.0381361410
+Nickel-N-Nitrosodiphenylamine                      -0.2209041419
+Styrene-N-Nitrosodiphenylamine                     -0.2016003592
+Vinyl chloride-N-Nitrosodiphenylamine              -0.1576934054
+Styrene-Nickel                                      0.0086347358
+Vinyl chloride-Nickel                               0.0225464387
+Vinyl chloride-Styrene                              0.0025838273
+                                                             upr
+3,3'-Dichlorobenzidine 2HCl-3,3'-Dichlorobenzidine  0.2157943269
+Acetaldehyde-3,3'-Dichlorobenzidine                 0.1120354338
+Acrylonitrile-3,3'-Dichlorobenzidine                0.1590981926
+Aniline-3,3'-Dichlorobenzidine                      0.1679116399
+Arsenic-3,3'-Dichlorobenzidine                      0.1301445664
+Benzene-3,3'-Dichlorobenzidine                      0.1408826160
+Bromoform-3,3'-Dichlorobenzidine                    0.2478577904
+Cadmium-3,3'-Dichlorobenzidine                      0.1365695071
+Chromium-3,3'-Dichlorobenzidine                     0.1062312300
+Creosote-3,3'-Dichlorobenzidine                     0.1684680928
+Lead-3,3'-Dichlorobenzidine                         0.1100190627
+MBOCA-3,3'-Dichlorobenzidine                        0.1347096279
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine       0.2294205582
+Nickel-3,3'-Dichlorobenzidine                       0.1148093655
+Styrene-3,3'-Dichlorobenzidine                      0.1343705198
+Vinyl chloride-3,3'-Dichlorobenzidine               0.1901862005
+Acetaldehyde-3,3'-Dichlorobenzidine 2HCl            0.2890888948
+Acrylonitrile-3,3'-Dichlorobenzidine 2HCl           0.3361516536
+Aniline-3,3'-Dichlorobenzidine 2HCl                 0.3449651009
+Arsenic-3,3'-Dichlorobenzidine 2HCl                 0.3071980274
+Benzene-3,3'-Dichlorobenzidine 2HCl                 0.3179360770
+Bromoform-3,3'-Dichlorobenzidine 2HCl               0.4249112514
+Cadmium-3,3'-Dichlorobenzidine 2HCl                 0.3136229681
+Chromium-3,3'-Dichlorobenzidine 2HCl                0.2832846909
+Creosote-3,3'-Dichlorobenzidine 2HCl                0.3455215538
+Lead-3,3'-Dichlorobenzidine 2HCl                    0.2870725237
+MBOCA-3,3'-Dichlorobenzidine 2HCl                   0.3117630889
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine 2HCl  0.4064740191
+Nickel-3,3'-Dichlorobenzidine 2HCl                  0.2918628265
+Styrene-3,3'-Dichlorobenzidine 2HCl                 0.3114239808
+Vinyl chloride-3,3'-Dichlorobenzidine 2HCl          0.3672396615
+Acrylonitrile-Acetaldehyde                          0.0803634917
+Aniline-Acetaldehyde                                0.1030787096
+Arsenic-Acetaldehyde                                0.0427344710
+Benzene-Acetaldehyde                                0.0465587528
+Bromoform-Acetaldehyde                              0.2992796347
+Cadmium-Acetaldehyde                                0.0586981985
+Chromium-Acetaldehyde                               0.0105095552
+Creosote-Acetaldehyde                               0.0975356816
+Lead-Acetaldehyde                                   0.0131981209
+MBOCA-Acetaldehyde                                  0.1017062242
+N-Nitrosodiphenylamine-Acetaldehyde                 0.2245898268
+Nickel-Acetaldehyde                                 0.0185392286
+Styrene-Acetaldehyde                                0.0394875129
+Vinyl chloride-Acetaldehyde                         0.1247633535
+Aniline-Acrylonitrile                               0.0647298927
+Arsenic-Acrylonitrile                               0.0098197390
+Benzene-Acrylonitrile                               0.0166428377
+Bromoform-Acrylonitrile                             0.2550784436
+Cadmium-Acrylonitrile                               0.0228866543
+Chromium-Acrylonitrile                             -0.0186785106
+Creosote-Acrylonitrile                              0.0602223228
+Lead-Acrylonitrile                                 -0.0153846823
+MBOCA-Acrylonitrile                                 0.0602403050
+N-Nitrosodiphenylamine-Acrylonitrile                0.1817868325
+Nickel-Acrylonitrile                               -0.0103505636
+Styrene-Acrylonitrile                               0.0098572805
+Vinyl chloride-Acrylonitrile                        0.0865052700
+Arsenic-Aniline                                     0.0190085028
+Benzene-Aniline                                     0.0272377275
+Bromoform-Aniline                                   0.2512830446
+Cadmium-Aniline                                     0.0300604957
+Chromium-Aniline                                   -0.0078242998
+Creosote-Aniline                                    0.0660291665
+Lead-Aniline                                       -0.0043355322
+MBOCA-Aniline                                       0.0608894259
+N-Nitrosodiphenylamine-Aniline                      0.1803457339
+Nickel-Aniline                                      0.0006019744
+Styrene-Aniline                                     0.0205573234
+Vinyl chloride-Aniline                              0.0913223264
+Benzene-Arsenic                                     0.0342194570
+Bromoform-Arsenic                                   0.2819519902
+Cadmium-Arsenic                                     0.0439049629
+Chromium-Arsenic                                   -0.0014593780
+Creosote-Arsenic                                    0.0822335201
+Lead-Arsenic                                        0.0015511211
+MBOCA-Arsenic                                       0.0851415992
+N-Nitrosodiphenylamine-Arsenic                      0.2076482376
+Nickel-Arsenic                                      0.0067273192
+Styrene-Arsenic                                     0.0272914617
+Vinyl chloride-Arsenic                              0.1091577162
+Bromoform-Benzene                                   0.2700693028
+Cadmium-Benzene                                     0.0282268166
+Chromium-Benzene                                   -0.0220564000
+Creosote-Benzene                                    0.0673387730
+Lead-Benzene                                       -0.0197368932
+MBOCA-Benzene                                       0.0721370193
+N-Nitrosodiphenylamine-Benzene                      0.1951989974
+Nickel-Benzene                                     -0.0142004726
+Styrene-Benzene                                     0.0071549292
+Vinyl chloride-Benzene                              0.0947231393
+Cadmium-Bromoform                                   0.2815595046
+Chromium-Bromoform                                  0.2512212274
+Creosote-Bromoform                                  0.3134580903
+Lead-Bromoform                                      0.2550090602
+MBOCA-Bromoform                                     0.2796996254
+N-Nitrosodiphenylamine-Bromoform                    0.3744105557
+Nickel-Bromoform                                    0.2597993630
+Styrene-Bromoform                                   0.2793605173
+Vinyl chloride-Bromoform                            0.3351761980
+Chromium-Cadmium                                    0.0050286215
+Creosote-Cadmium                                    0.0835387895
+Lead-Cadmium                                        0.0083403021
+MBOCA-Cadmium                                       0.0832483625
+N-Nitrosodiphenylamine-Cadmium                      0.2046840034
+Nickel-Cadmium                                      0.0133655411
+Styrene-Cadmium                                     0.0335504740
+Vinyl chloride-Cadmium                              0.1097573321
+Creosote-Chromium                                   0.1013105390
+Lead-Chromium                                       0.0122455342
+MBOCA-Chromium                                      0.1064300826
+N-Nitrosodiphenylamine-Chromium                     0.2295811002
+Nickel-Chromium                                     0.0179981814
+Styrene-Chromium                                    0.0397411985
+Vinyl chloride-Chromium                             0.1287766693
+Lead-Creosote                                      -0.0137932404
+MBOCA-Creosote                                      0.0557178241
+N-Nitrosodiphenylamine-Creosote                     0.1761681734
+Nickel-Creosote                                    -0.0088229224
+Styrene-Creosote                                    0.0112189213
+Vinyl chloride-Creosote                             0.0842741164
+MBOCA-Lead                                          0.1023835217
+N-Nitrosodiphenylamine-Lead                         0.2255990447
+Nickel-Lead                                         0.0119782303
+Styrene-Lead                                        0.0342258728
+Vinyl chloride-Lead                                 0.1245546723
+N-Nitrosodiphenylamine-MBOCA                        0.2438771486
+Nickel-MBOCA                                        0.0878464208
+Styrene-MBOCA                                       0.1075785065
+Vinyl chloride-MBOCA                                0.1707866073
+Nickel-N-Nitrosodiphenylamine                       0.0571323550
+Styrene-N-Nitrosodiphenylamine                      0.0767791695
+Vinyl chloride-N-Nitrosodiphenylamine               0.1364459973
+Styrene-Nickel                                      0.0303158614
+Vinyl chloride-Nickel                               0.1199779401
+Vinyl chloride-Styrene                              0.1009899542
+                                                       p adj
+3,3'-Dichlorobenzidine 2HCl-3,3'-Dichlorobenzidine 0.9814070
+Acetaldehyde-3,3'-Dichlorobenzidine                0.8129217
+Acrylonitrile-3,3'-Dichlorobenzidine               0.9881456
+Aniline-3,3'-Dichlorobenzidine                     0.9938867
+Arsenic-3,3'-Dichlorobenzidine                     0.9176504
+Benzene-3,3'-Dichlorobenzidine                     0.9568888
+Bromoform-3,3'-Dichlorobenzidine                   0.9978356
+Cadmium-3,3'-Dichlorobenzidine                     0.9407124
+Chromium-3,3'-Dichlorobenzidine                    0.7693140
+Creosote-3,3'-Dichlorobenzidine                    0.9946036
+Lead-3,3'-Dichlorobenzidine                        0.7990125
+MBOCA-3,3'-Dichlorobenzidine                       0.9085526
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine      0.9999735
+Nickel-3,3'-Dichlorobenzidine                      0.8333170
+Styrene-3,3'-Dichlorobenzidine                     0.9359111
+Vinyl chloride-3,3'-Dichlorobenzidine              0.9995260
+Acetaldehyde-3,3'-Dichlorobenzidine 2HCl           1.0000000
+Acrylonitrile-3,3'-Dichlorobenzidine 2HCl          0.9999993
+Aniline-3,3'-Dichlorobenzidine 2HCl                0.9999971
+Arsenic-3,3'-Dichlorobenzidine 2HCl                1.0000000
+Benzene-3,3'-Dichlorobenzidine 2HCl                1.0000000
+Bromoform-3,3'-Dichlorobenzidine 2HCl              1.0000000
+Cadmium-3,3'-Dichlorobenzidine 2HCl                1.0000000
+Chromium-3,3'-Dichlorobenzidine 2HCl               1.0000000
+Creosote-3,3'-Dichlorobenzidine 2HCl               0.9999955
+Lead-3,3'-Dichlorobenzidine 2HCl                   1.0000000
+MBOCA-3,3'-Dichlorobenzidine 2HCl                  1.0000000
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine 2HCl 0.9997570
+Nickel-3,3'-Dichlorobenzidine 2HCl                 1.0000000
+Styrene-3,3'-Dichlorobenzidine 2HCl                1.0000000
+Vinyl chloride-3,3'-Dichlorobenzidine 2HCl         0.9998141
+Acrylonitrile-Acetaldehyde                         0.0006954
+Aniline-Acetaldehyde                               0.0420046
+Arsenic-Acetaldehyde                               0.5399259
+Benzene-Acetaldehyde                               0.0000014
+Bromoform-Acetaldehyde                             1.0000000
+Cadmium-Acetaldehyde                               0.7091585
+Chromium-Acetaldehyde                              0.9990327
+Creosote-Acetaldehyde                              0.0026507
+Lead-Acetaldehyde                                  1.0000000
+MBOCA-Acetaldehyde                                 1.0000000
+N-Nitrosodiphenylamine-Acetaldehyde                0.7894303
+Nickel-Acetaldehyde                                0.9999994
+Styrene-Acetaldehyde                               0.0005207
+Vinyl chloride-Acetaldehyde                        0.0000454
+Aniline-Acrylonitrile                              1.0000000
+Arsenic-Acrylonitrile                              0.4567907
+Benzene-Acrylonitrile                              0.9518759
+Bromoform-Acrylonitrile                            1.0000000
+Cadmium-Acrylonitrile                              0.9535038
+Chromium-Acrylonitrile                             0.0000070
+Creosote-Acrylonitrile                             1.0000000
+Lead-Acrylonitrile                                 0.0000397
+MBOCA-Acrylonitrile                                0.9965488
+N-Nitrosodiphenylamine-Acrylonitrile               0.9999442
+Nickel-Acrylonitrile                               0.0006162
+Styrene-Acrylonitrile                              0.5601476
+Vinyl chloride-Acrylonitrile                       0.9540894
+Arsenic-Aniline                                    0.7102415
+Benzene-Aniline                                    0.9787886
+Bromoform-Aniline                                  1.0000000
+Cadmium-Aniline                                    0.9588025
+Chromium-Aniline                                   0.0070602
+Creosote-Aniline                                   1.0000000
+Lead-Aniline                                       0.0176318
+MBOCA-Aniline                                      0.9911399
+N-Nitrosodiphenylamine-Aniline                     0.9999969
+Nickel-Aniline                                     0.0571446
+Styrene-Aniline                                    0.8303277
+Vinyl chloride-Aniline                             0.9995334
+Benzene-Arsenic                                    0.9564768
+Bromoform-Arsenic                                  1.0000000
+Cadmium-Arsenic                                    1.0000000
+Chromium-Arsenic                                   0.0228857
+Creosote-Arsenic                                   0.3588688
+Lead-Arsenic                                       0.1079901
+MBOCA-Arsenic                                      1.0000000
+N-Nitrosodiphenylamine-Arsenic                     0.9668742
+Nickel-Arsenic                                     0.6015887
+Styrene-Arsenic                                    0.9999983
+Vinyl chloride-Arsenic                             0.0200279
+Bromoform-Benzene                                  1.0000000
+Cadmium-Benzene                                    0.9999999
+Chromium-Benzene                                   0.0000000
+Creosote-Benzene                                   0.8471012
+Lead-Benzene                                       0.0000000
+MBOCA-Benzene                                      0.9999966
+N-Nitrosodiphenylamine-Benzene                     0.9943794
+Nickel-Benzene                                     0.0000000
+Styrene-Benzene                                    0.9692702
+Vinyl chloride-Benzene                             0.1176647
+Cadmium-Bromoform                                  1.0000000
+Chromium-Bromoform                                 1.0000000
+Creosote-Bromoform                                 1.0000000
+Lead-Bromoform                                     1.0000000
+MBOCA-Bromoform                                    1.0000000
+N-Nitrosodiphenylamine-Bromoform                   0.9999991
+Nickel-Bromoform                                   1.0000000
+Styrene-Bromoform                                  1.0000000
+Vinyl chloride-Bromoform                           0.9999997
+Chromium-Cadmium                                   0.2127001
+Creosote-Cadmium                                   0.8412408
+Lead-Cadmium                                       0.4374674
+MBOCA-Cadmium                                      1.0000000
+N-Nitrosodiphenylamine-Cadmium                     0.9871430
+Nickel-Cadmium                                     0.8108847
+Styrene-Cadmium                                    1.0000000
+Vinyl chloride-Cadmium                             0.1657773
+Creosote-Chromium                                  0.0001426
+Lead-Chromium                                      0.9777795
+MBOCA-Chromium                                     1.0000000
+N-Nitrosodiphenylamine-Chromium                    0.6909456
+Nickel-Chromium                                    0.1173248
+Styrene-Chromium                                   0.0000000
+Vinyl chloride-Chromium                            0.0000022
+Lead-Creosote                                      0.0005244
+MBOCA-Creosote                                     0.9814069
+N-Nitrosodiphenylamine-Creosote                    0.9999982
+Nickel-Creosote                                    0.0033307
+Styrene-Creosote                                   0.4681980
+Vinyl chloride-Creosote                            0.9995571
+MBOCA-Lead                                         1.0000000
+N-Nitrosodiphenylamine-Lead                        0.7561162
+Nickel-Lead                                        0.6696214
+Styrene-Lead                                       0.0000000
+Vinyl chloride-Lead                                0.0000082
+N-Nitrosodiphenylamine-MBOCA                       0.9768606
+Nickel-MBOCA                                       1.0000000
+Styrene-MBOCA                                      1.0000000
+Vinyl chloride-MBOCA                               0.7294799
+Nickel-N-Nitrosodiphenylamine                      0.8290439
+Styrene-N-Nitrosodiphenylamine                     0.9823232
+Vinyl chloride-N-Nitrosodiphenylamine              1.0000000
+Styrene-Nickel                                     0.0000001
+Vinyl chloride-Nickel                              0.0000559
+Vinyl chloride-Styrene                             0.0272683
+

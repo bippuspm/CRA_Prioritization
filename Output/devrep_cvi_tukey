@@ -1,0 +1,191 @@
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = CVI.Score ~ chemical, data = devrep)
+
+$chemical
+                                                 diff           lwr
+Arsenic-Acrylonitrile                   -0.0279135864 -0.0644250246
+Benzene-Acrylonitrile                   -0.0166032179 -0.0487726938
+Bisphenol A-Acrylonitrile               -0.0232233062 -0.0686893724
+Cadmium-Acrylonitrile                   -0.0226531162 -0.0667182098
+Cobalt-Acrylonitrile                    -0.0326137485 -0.0658986292
+Creosote-Acrylonitrile                   0.0080983379 -0.0423377589
+DecaBDE-Acrylonitrile                   -0.0545995624 -0.2127797832
+Hexachloro-1,3-butadiene-Acrylonitrile   0.0660797573 -0.0242700930
+Lead-Acrylonitrile                      -0.0473121489 -0.0782057346
+Molybdenum-Acrylonitrile                -0.0001045155 -0.0423923899
+Nonylphenol-Acrylonitrile               -0.0077651670 -0.0448976857
+Styrene-Acrylonitrile                   -0.0230783583 -0.0549474694
+Vinyl chloride-Acrylonitrile             0.0287085325 -0.0272166209
+Benzene-Arsenic                          0.0113103685 -0.0108568739
+Bisphenol A-Arsenic                      0.0046902802 -0.0343439949
+Cadmium-Arsenic                          0.0052604702 -0.0321326298
+Cobalt-Arsenic                          -0.0047001622 -0.0284571555
+Creosote-Arsenic                         0.0360119243 -0.0087129157
+DecaBDE-Arsenic                         -0.0266859761 -0.1831388242
+Hexachloro-1,3-butadiene-Arsenic         0.0939933436  0.0067029839
+Lead-Arsenic                            -0.0193985625 -0.0396698499
+Molybdenum-Arsenic                       0.0278090709 -0.0074723091
+Nonylphenol-Arsenic                      0.0201484193 -0.0087537501
+Styrene-Arsenic                          0.0048352281 -0.0168938238
+Vinyl chloride-Arsenic                   0.0566221189  0.0057877385
+Bisphenol A-Benzene                     -0.0066200883 -0.0416267262
+Cadmium-Benzene                         -0.0060498983 -0.0392166587
+Cobalt-Benzene                          -0.0160105307 -0.0323257014
+Creosote-Benzene                         0.0247015558 -0.0165549756
+DecaBDE-Benzene                         -0.0379963446 -0.1934932376
+Hexachloro-1,3-butadiene-Benzene         0.0826829751 -0.0028821870
+Lead-Benzene                            -0.0307089311 -0.0413256704
+Molybdenum-Benzene                       0.0164987024 -0.0142676077
+Nonylphenol-Benzene                      0.0088380508 -0.0143379165
+Styrene-Benzene                         -0.0064751404 -0.0196638387
+Vinyl chloride-Benzene                   0.0453117504 -0.0024995903
+Cadmium-Bisphenol A                      0.0005701900 -0.0456068821
+Cobalt-Bisphenol A                      -0.0093904424 -0.0454247703
+Creosote-Bisphenol A                     0.0313216441 -0.0209697450
+DecaBDE-Bisphenol A                     -0.0313762563 -0.1901577783
+Hexachloro-1,3-butadiene-Bisphenol A     0.0893030635 -0.0020954320
+Lead-Bisphenol A                        -0.0240888427 -0.0579267379
+Molybdenum-Bisphenol A                   0.0231187907 -0.0213655193
+Nonylphenol-Bisphenol A                  0.0154581391 -0.0241576842
+Styrene-Bisphenol A                      0.0001449479 -0.0345858707
+Vinyl chloride-Bisphenol A               0.0519318387 -0.0056720873
+Cobalt-Cadmium                          -0.0099606323 -0.0442103343
+Creosote-Cadmium                         0.0307514541 -0.0203265124
+DecaBDE-Cadmium                         -0.0319464462 -0.1903324968
+Hexachloro-1,3-butadiene-Cadmium         0.0887328735 -0.0019768518
+Lead-Cadmium                            -0.0246590327 -0.0565897772
+Molybdenum-Cadmium                       0.0225486007 -0.0205028003
+Nonylphenol-Cadmium                      0.0148879492 -0.0231118239
+Styrene-Cadmium                         -0.0004252421 -0.0333007505
+Vinyl chloride-Cadmium                   0.0513616487 -0.0051430554
+Creosote-Cobalt                          0.0407120864 -0.0014199616
+DecaBDE-Cobalt                          -0.0219858139 -0.1777172874
+Hexachloro-1,3-butadiene-Cobalt          0.0986935058  0.0127027792
+Lead-Cobalt                             -0.0146984004 -0.0283264322
+Molybdenum-Cobalt                        0.0325092330  0.0005784652
+Nonylphenol-Cobalt                       0.0248485815  0.0001476998
+Styrene-Cobalt                           0.0095353903 -0.0061792481
+Vinyl chloride-Cobalt                    0.0613222810  0.0127534393
+DecaBDE-Creosote                        -0.0626979003 -0.2229733146
+Hexachloro-1,3-butadiene-Creosote        0.0579814194 -0.0359883717
+Lead-Creosote                           -0.0554104868 -0.0956800762
+Molybdenum-Creosote                     -0.0082028534 -0.0577557596
+Nonylphenol-Creosote                    -0.0158635049 -0.0610967906
+Styrene-Creosote                        -0.0311766962 -0.0721994513
+Vinyl chloride-Creosote                  0.0206101946 -0.0409921509
+Hexachloro-1,3-butadiene-DecaBDE         0.1206793197 -0.0562599467
+Lead-DecaBDE                             0.0072874135 -0.1479505399
+Molybdenum-DecaBDE                       0.0544950469 -0.1034057855
+Nonylphenol-DecaBDE                      0.0468343954 -0.1097645589
+Styrene-DecaBDE                          0.0315212042 -0.1239138266
+Vinyl chloride-DecaBDE                   0.0833080949 -0.0787783984
+Lead-Hexachloro-1,3-butadiene           -0.1133919062 -0.1984855923
+Molybdenum-Hexachloro-1,3-butadiene     -0.0661842728 -0.1560440864
+Nonylphenol-Hexachloro-1,3-butadiene    -0.0738449243 -0.1613968845
+Styrene-Hexachloro-1,3-butadiene        -0.0891581156 -0.1746108044
+Vinyl chloride-Hexachloro-1,3-butadiene -0.0373712248 -0.1343977395
+Molybdenum-Lead                          0.0472076334  0.0177779836
+Nonylphenol-Lead                         0.0395469819  0.0181772857
+Styrene-Lead                             0.0242337906  0.0145652739
+Vinyl chloride-Lead                      0.0760206814  0.0290583268
+Nonylphenol-Molybdenum                  -0.0076606515 -0.0435843846
+Styrene-Molybdenum                      -0.0229738428 -0.0534259510
+Vinyl chloride-Molybdenum                0.0288130480 -0.0263169205
+Styrene-Nonylphenol                     -0.0153131912 -0.0380703994
+Vinyl chloride-Nonylphenol               0.0364736995 -0.0148085884
+Vinyl chloride-Styrene                   0.0517868908  0.0041771296
+                                                  upr     p adj
+Arsenic-Acrylonitrile                    0.0085978518 0.3635053
+Benzene-Acrylonitrile                    0.0155662581 0.9049768
+Bisphenol A-Acrylonitrile                0.0222427601 0.9116089
+Cadmium-Acrylonitrile                    0.0214119774 0.9075433
+Cobalt-Acrylonitrile                     0.0006711321 0.0615990
+Creosote-Acrylonitrile                   0.0585344347 0.9999995
+DecaBDE-Acrylonitrile                    0.1035806583 0.9969795
+Hexachloro-1,3-butadiene-Acrylonitrile   0.1564296076 0.4410316
+Lead-Acrylonitrile                      -0.0164185632 0.0000253
+Molybdenum-Acrylonitrile                 0.0421833589 1.0000000
+Nonylphenol-Acrylonitrile                0.0293673517 0.9999879
+Styrene-Acrylonitrile                    0.0087907529 0.4586153
+Vinyl chloride-Acrylonitrile             0.0846336859 0.9084712
+Benzene-Arsenic                          0.0334776109 0.9122800
+Bisphenol A-Arsenic                      0.0437245553 1.0000000
+Cadmium-Arsenic                          0.0426535701 0.9999999
+Cobalt-Arsenic                           0.0190568312 0.9999938
+Creosote-Arsenic                         0.0807367642 0.2781131
+DecaBDE-Arsenic                          0.1297668720 0.9999990
+Hexachloro-1,3-butadiene-Arsenic         0.1812837034 0.0212795
+Lead-Arsenic                             0.0008727248 0.0774194
+Molybdenum-Arsenic                       0.0630904508 0.3122669
+Nonylphenol-Arsenic                      0.0490505887 0.5258939
+Styrene-Arsenic                          0.0265642800 0.9999750
+Vinyl chloride-Arsenic                   0.1074564993 0.0136391
+Bisphenol A-Benzene                      0.0283865496 0.9999964
+Cadmium-Benzene                          0.0271168620 0.9999976
+Cobalt-Benzene                           0.0003046401 0.0606699
+Creosote-Benzene                         0.0659580871 0.7626235
+DecaBDE-Benzene                          0.1175005485 0.9999263
+Hexachloro-1,3-butadiene-Benzene         0.1682481373 0.0705801
+Lead-Benzene                            -0.0200921917 0.0000000
+Molybdenum-Benzene                       0.0472650124 0.8770616
+Nonylphenol-Benzene                      0.0320140182 0.9920889
+Styrene-Benzene                          0.0067135579 0.9335274
+Vinyl chloride-Benzene                   0.0931230910 0.0846798
+Cadmium-Bisphenol A                      0.0467472621 1.0000000
+Cobalt-Bisphenol A                       0.0266438856 0.9998475
+Creosote-Bisphenol A                     0.0836130332 0.7620849
+DecaBDE-Bisphenol A                      0.1274052658 0.9999938
+Hexachloro-1,3-butadiene-Bisphenol A     0.1807015589 0.0633521
+Lead-Bisphenol A                         0.0097490525 0.4889312
+Molybdenum-Bisphenol A                   0.0676031006 0.9003352
+Nonylphenol-Bisphenol A                  0.0550739625 0.9902110
+Styrene-Bisphenol A                      0.0348757665 1.0000000
+Vinyl chloride-Bisphenol A               0.1095357647 0.1296920
+Cobalt-Cadmium                           0.0242890697 0.9994904
+Creosote-Cadmium                         0.0818294207 0.7554894
+DecaBDE-Cadmium                          0.1264396044 0.9999921
+Hexachloro-1,3-butadiene-Cadmium         0.1794425988 0.0626281
+Lead-Cadmium                             0.0072717118 0.3463133
+Molybdenum-Cadmium                       0.0656000017 0.8949204
+Nonylphenol-Cadmium                      0.0528877222 0.9898384
+Styrene-Cadmium                          0.0324502663 1.0000000
+Vinyl chloride-Cadmium                   0.1078663528 0.1213880
+Creosote-Cobalt                          0.0828441345 0.0705931
+DecaBDE-Cobalt                           0.1337456596 0.9999999
+Hexachloro-1,3-butadiene-Cobalt          0.1846842324 0.0089249
+Lead-Cobalt                             -0.0010703686 0.0208464
+Molybdenum-Cobalt                        0.0644400008 0.0412193
+Nonylphenol-Cobalt                       0.0495494632 0.0469400
+Styrene-Cobalt                           0.0252500286 0.7451550
+Vinyl chloride-Cobalt                    0.1098911228 0.0018795
+DecaBDE-Creosote                         0.0975775139 0.9899809
+Hexachloro-1,3-butadiene-Creosote        0.1519512105 0.7222200
+Lead-Creosote                           -0.0151408974 0.0003405
+Molybdenum-Creosote                      0.0413500528 0.9999993
+Nonylphenol-Creosote                     0.0293697808 0.9964642
+Styrene-Creosote                         0.0098460589 0.3737371
+Vinyl chloride-Creosote                  0.0822125401 0.9977918
+Hexachloro-1,3-butadiene-DecaBDE         0.2976185862 0.5639113
+Lead-DecaBDE                             0.1625253670 1.0000000
+Molybdenum-DecaBDE                       0.2123958793 0.9969839
+Nonylphenol-DecaBDE                      0.2034333498 0.9993122
+Styrene-DecaBDE                          0.1869562350 0.9999916
+Vinyl chloride-DecaBDE                   0.2453945883 0.9076807
+Lead-Hexachloro-1,3-butadiene           -0.0282982200 0.0006677
+Molybdenum-Hexachloro-1,3-butadiene      0.0236755408 0.4286099
+Nonylphenol-Hexachloro-1,3-butadiene     0.0137070359 0.2098287
+Styrene-Hexachloro-1,3-butadiene        -0.0037054267 0.0312186
+Vinyl chloride-Hexachloro-1,3-butadiene  0.0596552900 0.9913188
+Molybdenum-Lead                          0.0766372832 0.0000068
+Nonylphenol-Lead                         0.0609166781 0.0000001
+Styrene-Lead                             0.0339023074 0.0000000
+Vinyl chloride-Lead                      0.1229830360 0.0000052
+Nonylphenol-Molybdenum                   0.0282630815 0.9999848
+Styrene-Molybdenum                       0.0074782655 0.3864663
+Vinyl chloride-Molybdenum                0.0839430165 0.8964369
+Styrene-Nonylphenol                      0.0074440169 0.5869318
+Vinyl chloride-Nonylphenol               0.0877559875 0.4905631
+Vinyl chloride-Styrene                   0.0993966519 0.0186998
+

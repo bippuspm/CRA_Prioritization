@@ -1,0 +1,165 @@
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = CVI.Score ~ chemical, data = cns)
+
+$chemical
+                                     diff           lwr           upr
+Acrylonitrile-Acetaldehyde    0.045631975  0.0116242110  0.0796397389
+Aniline-Acetaldehyde          0.051936398  0.0018598158  0.1020129804
+Arsenic-Acetaldehyde          0.017718389 -0.0067763962  0.0422131733
+Benzene-Acetaldehyde          0.029028757  0.0118640602  0.0461934539
+Bromoform-Acetaldehyde        0.021127102 -0.2512291486  0.2934833520
+Cobalt-Acetaldehyde           0.013018226 -0.0062012241  0.0322376769
+DecaBDE-Acetaldehyde         -0.008967588 -0.1666268904  0.1486917154
+Ethylbenzene-Acetaldehyde     0.019500913  0.0031714227  0.0358304030
+Lead-Acetaldehyde            -0.001680174 -0.0162484275  0.0128880795
+Naphthalene-Acetaldehyde      0.016284593 -0.0005186912  0.0330878762
+Styrene-Acetaldehyde          0.022553617  0.0059725975  0.0391346358
+Vinyl chloride-Acetaldehyde   0.074340507  0.0249683981  0.1237126168
+Aniline-Acrylonitrile         0.006304423 -0.0509035470  0.0635123933
+Arsenic-Acrylonitrile        -0.027913586 -0.0648606057  0.0090334330
+Benzene-Acrylonitrile        -0.016603218 -0.0491564754  0.0159500397
+Bromoform-Acrylonitrile      -0.024504873 -0.2982620920  0.2492523456
+Cobalt-Acrylonitrile         -0.032613749 -0.0662957175  0.0010682205
+DecaBDE-Acrylonitrile        -0.054599562 -0.2146668718  0.1054677470
+Ethylbenzene-Acrylonitrile   -0.026131062 -0.0582517720  0.0059896479
+Lead-Acrylonitrile           -0.047312149 -0.0785742948 -0.0160500030
+Naphthalene-Acrylonitrile    -0.029347382 -0.0617115308  0.0030167660
+Styrene-Acrylonitrile        -0.023078358 -0.0553276676  0.0091709511
+Vinyl chloride-Acrylonitrile  0.028708532 -0.0278838075  0.0853008725
+Arsenic-Aniline              -0.034218010 -0.0863353610  0.0178993419
+Benzene-Aniline              -0.022907641 -0.0720080551  0.0261927730
+Bromoform-Aniline            -0.030809296 -0.3070232550  0.2454046622
+Cobalt-Aniline               -0.038918172 -0.0887740753  0.0109377319
+DecaBDE-Aniline              -0.060903986 -0.2251375986  0.1033296273
+Ethylbenzene-Aniline         -0.032435485 -0.0812501971  0.0163792266
+Lead-Aniline                 -0.053616572 -0.1018706688 -0.0053624753
+Naphthalene-Aniline          -0.035651806 -0.0846270461  0.0133234350
+Styrene-Aniline              -0.029382781 -0.0782822092  0.0195166464
+Vinyl chloride-Aniline        0.022404109 -0.0450779552  0.0898861738
+Benzene-Arsenic               0.011310369 -0.0111213289  0.0337420659
+Bromoform-Arsenic             0.003408713 -0.2693301387  0.2761475650
+Cobalt-Arsenic               -0.004700162 -0.0287405762  0.0193402519
+DecaBDE-Arsenic              -0.026685976 -0.1850053053  0.1316333532
+Ethylbenzene-Arsenic          0.001782524 -0.0200167069  0.0235817555
+Lead-Arsenic                 -0.019398563 -0.0399116862  0.0011145611
+Naphthalene-Arsenic          -0.001433796 -0.0235901625  0.0207225704
+Styrene-Arsenic               0.004835228 -0.0171530512  0.0268235074
+Vinyl chloride-Arsenic        0.056622119  0.0051812847  0.1080629530
+Bromoform-Benzene            -0.007901655 -0.2800801146  0.2642768039
+Cobalt-Benzene               -0.016010531 -0.0325203413  0.0004992799
+DecaBDE-Benzene              -0.037996345 -0.1953483142  0.1193556251
+Ethylbenzene-Benzene         -0.009527844 -0.0225600666  0.0035043781
+Lead-Benzene                 -0.030708931 -0.0414523281 -0.0199655340
+Naphthalene-Benzene          -0.012744165 -0.0263653580  0.0008770290
+Styrene-Benzene              -0.006475140 -0.0198211797  0.0068708989
+Vinyl chloride-Benzene        0.045311750 -0.0030699792  0.0936934799
+Cobalt-Bromoform             -0.008108875 -0.2804246371  0.2642068865
+DecaBDE-Bromoform            -0.030094689 -0.3441694297  0.2839800513
+Ethylbenzene-Bromoform       -0.001626189 -0.2737532531  0.2705008754
+Lead-Bromoform               -0.022807276 -0.2948343347  0.2492197834
+Naphthalene-Bromoform        -0.004842509 -0.2769984152  0.2673133969
+Styrene-Bromoform             0.001426515 -0.2707157586  0.2735687885
+Vinyl chloride-Bromoform      0.053213406 -0.2228737038  0.3293005152
+DecaBDE-Cobalt               -0.021985814 -0.1795751626  0.1356035347
+Ethylbenzene-Cobalt           0.006482686 -0.0091569836  0.0221223565
+Lead-Cobalt                  -0.014698400 -0.0284890145 -0.0009077863
+Naphthalene-Cobalt            0.003266366 -0.0128673678  0.0194001001
+Styrene-Cobalt                0.009535390 -0.0063667236  0.0254375041
+Vinyl chloride-Cobalt         0.061322281  0.0121740134  0.1104705487
+Ethylbenzene-DecaBDE          0.028468500 -0.1287945525  0.1857315532
+Lead-DecaBDE                  0.007287414 -0.1498025274  0.1643773545
+Naphthalene-DecaBDE           0.025252180 -0.1320607752  0.1825651353
+Styrene-DecaBDE               0.031521204 -0.1257681652  0.1888105736
+Vinyl chloride-DecaBDE        0.083308095 -0.0807120889  0.2473282788
+Lead-Ethylbenzene            -0.021181087 -0.0305323440 -0.0118298296
+Naphthalene-Ethylbenzene     -0.003216320 -0.0157687043  0.0093360637
+Styrene-Ethylbenzene          0.003052704 -0.0092005487  0.0153059563
+Vinyl chloride-Ethylbenzene   0.054839595  0.0067478366  0.1029313526
+Naphthalene-Lead              0.017964767  0.0078087779  0.0281207551
+Styrene-Lead                  0.024233791  0.0144499286  0.0340176527
+Vinyl chloride-Lead           0.076020681  0.0284980663  0.1235432965
+Styrene-Naphthalene           0.006269024 -0.0066088752  0.0191469234
+Vinyl chloride-Naphthalene    0.058055915  0.0098012231  0.1063106067
+Vinyl chloride-Styrene        0.051786891  0.0036091456  0.0999646360
+                                 p adj
+Acrylonitrile-Acetaldehyde   0.0006405
+Aniline-Acetaldehyde         0.0337439
+Arsenic-Acetaldehyde         0.4461072
+Benzene-Acetaldehyde         0.0000017
+Bromoform-Acetaldehyde       1.0000000
+Cobalt-Acetaldehyde          0.5581958
+DecaBDE-Acetaldehyde         1.0000000
+Ethylbenzene-Acetaldehyde    0.0051096
+Lead-Acetaldehyde            1.0000000
+Naphthalene-Acetaldehyde     0.0681915
+Styrene-Acetaldehyde         0.0004850
+Vinyl chloride-Acetaldehyde  0.0000467
+Aniline-Acrylonitrile        1.0000000
+Arsenic-Acrylonitrile        0.3720685
+Benzene-Acrylonitrile        0.8990611
+Bromoform-Acrylonitrile      1.0000000
+Cobalt-Acrylonitrile         0.0687594
+DecaBDE-Acrylonitrile        0.9960317
+Ethylbenzene-Acrylonitrile   0.2548563
+Lead-Acrylonitrile           0.0000410
+Naphthalene-Acrylonitrile    0.1216672
+Styrene-Acrylonitrile        0.4645896
+Vinyl chloride-Acrylonitrile 0.9025795
+Arsenic-Aniline              0.6092645
+Benzene-Aniline              0.9455451
+Bromoform-Aniline            1.0000000
+Cobalt-Aniline               0.3183898
+DecaBDE-Aniline              0.9915331
+Ethylbenzene-Aniline         0.5899110
+Lead-Aniline                 0.0144895
+Naphthalene-Aniline          0.4352103
+Styrene-Aniline              0.7390428
+Vinyl chloride-Aniline       0.9969185
+Benzene-Arsenic              0.9064214
+Bromoform-Arsenic            1.0000000
+Cobalt-Arsenic               0.9999873
+DecaBDE-Arsenic              0.9999976
+Ethylbenzene-Arsenic         1.0000000
+Lead-Arsenic                 0.0854441
+Naphthalene-Arsenic          1.0000000
+Styrene-Arsenic              0.9999539
+Vinyl chloride-Arsenic       0.0163982
+Bromoform-Benzene            1.0000000
+Cobalt-Benzene               0.0677734
+DecaBDE-Benzene              0.9998744
+Ethylbenzene-Benzene         0.4278182
+Lead-Benzene                 0.0000000
+Naphthalene-Benzene          0.0938500
+Styrene-Benzene              0.9280060
+Vinyl chloride-Benzene       0.0930422
+Cobalt-Bromoform             1.0000000
+DecaBDE-Bromoform            1.0000000
+Ethylbenzene-Bromoform       1.0000000
+Lead-Bromoform               1.0000000
+Naphthalene-Bromoform        1.0000000
+Styrene-Bromoform            1.0000000
+Vinyl chloride-Bromoform     0.9999891
+DecaBDE-Cobalt               0.9999997
+Ethylbenzene-Cobalt          0.9781781
+Lead-Cobalt                  0.0245483
+Naphthalene-Cobalt           0.9999813
+Styrene-Cobalt               0.7417574
+Vinyl chloride-Cobalt        0.0024864
+Ethylbenzene-DecaBDE         0.9999946
+Lead-DecaBDE                 1.0000000
+Naphthalene-DecaBDE          0.9999986
+Styrene-DecaBDE              0.9999833
+Vinyl chloride-DecaBDE       0.9017830
+Lead-Ethylbenzene            0.0000000
+Naphthalene-Ethylbenzene     0.9997660
+Styrene-Ethylbenzene         0.9998255
+Vinyl chloride-Ethylbenzene  0.0101578
+Naphthalene-Lead             0.0000004
+Styrene-Lead                 0.0000000
+Vinyl chloride-Lead          0.0000091
+Styrene-Naphthalene          0.9263040
+Vinyl chloride-Naphthalene   0.0045443
+Vinyl chloride-Styrene       0.0221381
+

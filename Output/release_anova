@@ -1,0 +1,12 @@
+Call:
+   aov(formula = onsite_releases_2017_2022 ~ trifd_type * chemical, 
+    data = tri_classified)
+
+Terms:
+                  trifd_type     chemical trifd_type:chemical    Residuals
+Sum of Squares  5.367354e+14 9.403665e+15        1.986393e+15 4.722469e+18
+Deg. of Freedom            1           29                  25        20972
+
+Residual standard error: 15005990
+4 out of 60 effects not estimable
+Estimated effects may be unbalanced

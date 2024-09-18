@@ -1,0 +1,523 @@
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = CVI.Score ~ chemical, data = lkt)
+
+$chemical
+                                                      diff
+Arsenic-Acrylonitrile                        -0.0279135864
+Barium-Acrylonitrile                         -0.0304655885
+Bromoform-Acrylonitrile                      -0.0245048732
+Cadmium-Acrylonitrile                        -0.0226531162
+Cobalt-Acrylonitrile                         -0.0326137485
+Creosote-Acrylonitrile                        0.0080983379
+DecaBDE-Acrylonitrile                        -0.0545995624
+Ethylbenzene-Acrylonitrile                   -0.0261310621
+Hexachloro-1,3-butadiene-Acrylonitrile        0.0660797573
+Hydrogen fluoride-Acrylonitrile              -0.0420669144
+Lead-Acrylonitrile                           -0.0473121489
+Maleic anhydride-Acrylonitrile                0.0146155228
+MBOCA-Acrylonitrile                          -0.0376167006
+Molybdenum trioxide-Acrylonitrile            -0.0001045155
+Naphthalene-Acrylonitrile                    -0.0293473824
+Nickel-Acrylonitrile                         -0.0425536569
+Styrene-Acrylonitrile                        -0.0230783583
+Vinyl chloride-Acrylonitrile                  0.0287085325
+Barium-Arsenic                               -0.0025520021
+Bromoform-Arsenic                             0.0034087131
+Cadmium-Arsenic                               0.0052604702
+Cobalt-Arsenic                               -0.0047001622
+Creosote-Arsenic                              0.0360119243
+DecaBDE-Arsenic                              -0.0266859761
+Ethylbenzene-Arsenic                          0.0017825243
+Hexachloro-1,3-butadiene-Arsenic              0.0939933436
+Hydrogen fluoride-Arsenic                    -0.0141533280
+Lead-Arsenic                                 -0.0193985625
+Maleic anhydride-Arsenic                      0.0425291092
+MBOCA-Arsenic                                -0.0097031143
+Molybdenum trioxide-Arsenic                   0.0278090709
+Naphthalene-Arsenic                          -0.0014337960
+Nickel-Arsenic                               -0.0146400705
+Styrene-Arsenic                               0.0048352281
+Vinyl chloride-Arsenic                        0.0566221189
+Bromoform-Barium                              0.0059607152
+Cadmium-Barium                                0.0078124722
+Cobalt-Barium                                -0.0021481601
+Creosote-Barium                               0.0385639264
+DecaBDE-Barium                               -0.0241339740
+Ethylbenzene-Barium                           0.0043345264
+Hexachloro-1,3-butadiene-Barium               0.0965453457
+Hydrogen fluoride-Barium                     -0.0116013259
+Lead-Barium                                  -0.0168465605
+Maleic anhydride-Barium                       0.0450811113
+MBOCA-Barium                                 -0.0071511122
+Molybdenum trioxide-Barium                    0.0303610730
+Naphthalene-Barium                            0.0011182061
+Nickel-Barium                                -0.0120880684
+Styrene-Barium                                0.0073872302
+Vinyl chloride-Barium                         0.0591741210
+Cadmium-Bromoform                             0.0018517570
+Cobalt-Bromoform                             -0.0081088753
+Creosote-Bromoform                            0.0326032111
+DecaBDE-Bromoform                            -0.0300946892
+Ethylbenzene-Bromoform                       -0.0016261888
+Hexachloro-1,3-butadiene-Bromoform            0.0905846305
+Hydrogen fluoride-Bromoform                  -0.0175620412
+Lead-Bromoform                               -0.0228072757
+Maleic anhydride-Bromoform                    0.0391203961
+MBOCA-Bromoform                              -0.0131118274
+Molybdenum trioxide-Bromoform                 0.0244003577
+Naphthalene-Bromoform                        -0.0048425092
+Nickel-Bromoform                             -0.0180487836
+Styrene-Bromoform                             0.0014265150
+Vinyl chloride-Bromoform                      0.0532134057
+Cobalt-Cadmium                               -0.0099606323
+Creosote-Cadmium                              0.0307514541
+DecaBDE-Cadmium                              -0.0319464462
+Ethylbenzene-Cadmium                         -0.0034779459
+Hexachloro-1,3-butadiene-Cadmium              0.0887328735
+Hydrogen fluoride-Cadmium                    -0.0194137982
+Lead-Cadmium                                 -0.0246590327
+Maleic anhydride-Cadmium                      0.0372686391
+MBOCA-Cadmium                                -0.0149635844
+Molybdenum trioxide-Cadmium                   0.0225486007
+Naphthalene-Cadmium                          -0.0066942662
+Nickel-Cadmium                               -0.0199005407
+Styrene-Cadmium                              -0.0004252421
+Vinyl chloride-Cadmium                        0.0513616487
+Creosote-Cobalt                               0.0407120864
+DecaBDE-Cobalt                               -0.0219858139
+Ethylbenzene-Cobalt                           0.0064826865
+Hexachloro-1,3-butadiene-Cobalt               0.0986935058
+Hydrogen fluoride-Cobalt                     -0.0094531659
+Lead-Cobalt                                  -0.0146984004
+Maleic anhydride-Cobalt                       0.0472292714
+MBOCA-Cobalt                                 -0.0050029521
+Molybdenum trioxide-Cobalt                    0.0325092330
+Naphthalene-Cobalt                            0.0032663661
+Nickel-Cobalt                                -0.0099399083
+Styrene-Cobalt                                0.0095353903
+Vinyl chloride-Cobalt                         0.0613222810
+DecaBDE-Creosote                             -0.0626979003
+Ethylbenzene-Creosote                        -0.0342294000
+Hexachloro-1,3-butadiene-Creosote             0.0579814194
+Hydrogen fluoride-Creosote                   -0.0501652523
+Lead-Creosote                                -0.0554104868
+Maleic anhydride-Creosote                     0.0065171849
+MBOCA-Creosote                               -0.0457150385
+Molybdenum trioxide-Creosote                 -0.0082028534
+Naphthalene-Creosote                         -0.0374457203
+Nickel-Creosote                              -0.0506519948
+Styrene-Creosote                             -0.0311766962
+Vinyl chloride-Creosote                       0.0206101946
+Ethylbenzene-DecaBDE                          0.0284685004
+Hexachloro-1,3-butadiene-DecaBDE              0.1206793197
+Hydrogen fluoride-DecaBDE                     0.0125326480
+Lead-DecaBDE                                  0.0072874135
+Maleic anhydride-DecaBDE                      0.0692150853
+MBOCA-DecaBDE                                 0.0169828618
+Molybdenum trioxide-DecaBDE                   0.0544950469
+Naphthalene-DecaBDE                           0.0252521800
+Nickel-DecaBDE                                0.0120459056
+Styrene-DecaBDE                               0.0315212042
+Vinyl chloride-DecaBDE                        0.0833080949
+Hexachloro-1,3-butadiene-Ethylbenzene         0.0922108194
+Hydrogen fluoride-Ethylbenzene               -0.0159358523
+Lead-Ethylbenzene                            -0.0211810868
+Maleic anhydride-Ethylbenzene                 0.0407465849
+MBOCA-Ethylbenzene                           -0.0114856386
+Molybdenum trioxide-Ethylbenzene              0.0260265466
+Naphthalene-Ethylbenzene                     -0.0032163203
+Nickel-Ethylbenzene                          -0.0164225948
+Styrene-Ethylbenzene                          0.0030527038
+Vinyl chloride-Ethylbenzene                   0.0548395946
+Hydrogen fluoride-Hexachloro-1,3-butadiene   -0.1081466717
+Lead-Hexachloro-1,3-butadiene                -0.1133919062
+Maleic anhydride-Hexachloro-1,3-butadiene    -0.0514642344
+MBOCA-Hexachloro-1,3-butadiene               -0.1036964579
+Molybdenum trioxide-Hexachloro-1,3-butadiene -0.0661842728
+Naphthalene-Hexachloro-1,3-butadiene         -0.0954271397
+Nickel-Hexachloro-1,3-butadiene              -0.1086334142
+Styrene-Hexachloro-1,3-butadiene             -0.0891581156
+Vinyl chloride-Hexachloro-1,3-butadiene      -0.0373712248
+Lead-Hydrogen fluoride                       -0.0052452345
+Maleic anhydride-Hydrogen fluoride            0.0566824372
+MBOCA-Hydrogen fluoride                       0.0044502138
+Molybdenum trioxide-Hydrogen fluoride         0.0419623989
+Naphthalene-Hydrogen fluoride                 0.0127195320
+Nickel-Hydrogen fluoride                     -0.0004867425
+Styrene-Hydrogen fluoride                     0.0189885561
+Vinyl chloride-Hydrogen fluoride              0.0707754469
+Maleic anhydride-Lead                         0.0619276718
+MBOCA-Lead                                    0.0096954483
+Molybdenum trioxide-Lead                      0.0472076334
+Naphthalene-Lead                              0.0179647665
+Nickel-Lead                                   0.0047584920
+Styrene-Lead                                  0.0242337906
+Vinyl chloride-Lead                           0.0760206814
+MBOCA-Maleic anhydride                       -0.0522322235
+Molybdenum trioxide-Maleic anhydride         -0.0147200383
+Naphthalene-Maleic anhydride                 -0.0439629052
+Nickel-Maleic anhydride                      -0.0571691797
+Styrene-Maleic anhydride                     -0.0376938811
+Vinyl chloride-Maleic anhydride               0.0140930097
+Molybdenum trioxide-MBOCA                     0.0375121851
+Naphthalene-MBOCA                             0.0082693182
+Nickel-MBOCA                                 -0.0049369562
+Styrene-MBOCA                                 0.0145383424
+Vinyl chloride-MBOCA                          0.0663252331
+Naphthalene-Molybdenum trioxide              -0.0292428669
+Nickel-Molybdenum trioxide                   -0.0424491414
+Styrene-Molybdenum trioxide                  -0.0229738428
+Vinyl chloride-Molybdenum trioxide            0.0288130480
+Nickel-Naphthalene                           -0.0132062745
+Styrene-Naphthalene                           0.0062690241
+Vinyl chloride-Naphthalene                    0.0580559149
+Styrene-Nickel                                0.0194752986
+Vinyl chloride-Nickel                         0.0712621894
+Vinyl chloride-Styrene                        0.0517868908
+                                                      lwr
+Arsenic-Acrylonitrile                        -0.066679733
+Barium-Acrylonitrile                         -0.088644620
+Bromoform-Acrylonitrile                      -0.311740829
+Cadmium-Acrylonitrile                        -0.069439382
+Cobalt-Acrylonitrile                         -0.067954086
+Creosote-Acrylonitrile                       -0.045452363
+DecaBDE-Acrylonitrile                        -0.222547961
+Ethylbenzene-Acrylonitrile                   -0.059833270
+Hexachloro-1,3-butadiene-Acrylonitrile       -0.029849510
+Hydrogen fluoride-Acrylonitrile              -0.077009293
+Lead-Acrylonitrile                           -0.080113521
+Maleic anhydride-Acrylonitrile               -0.029356302
+MBOCA-Acrylonitrile                          -0.138152208
+Molybdenum trioxide-Acrylonitrile            -0.045003813
+Naphthalene-Acrylonitrile                    -0.063305015
+Nickel-Acrylonitrile                         -0.075638200
+Styrene-Acrylonitrile                        -0.056915498
+Vinyl chloride-Acrylonitrile                 -0.030670193
+Barium-Arsenic                               -0.055202871
+Bromoform-Arsenic                            -0.282758735
+Cadmium-Arsenic                              -0.034441784
+Cobalt-Arsenic                               -0.029924232
+Creosote-Arsenic                             -0.011474830
+DecaBDE-Arsenic                              -0.192800331
+Ethylbenzene-Arsenic                         -0.021090016
+Hexachloro-1,3-butadiene-Arsenic              0.001312501
+Hydrogen fluoride-Arsenic                    -0.038816744
+Lead-Arsenic                                 -0.040921672
+Maleic anhydride-Arsenic                      0.006185807
+MBOCA-Arsenic                                -0.107143878
+Molybdenum trioxide-Arsenic                  -0.009651057
+Naphthalene-Arsenic                          -0.024681055
+Nickel-Arsenic                               -0.036592320
+Styrene-Arsenic                              -0.018235668
+Vinyl chloride-Arsenic                        0.002648539
+Bromoform-Barium                             -0.283476314
+Cadmium-Barium                               -0.050994454
+Cobalt-Barium                                -0.052330222
+Creosote-Barium                              -0.025755413
+DecaBDE-Barium                               -0.195819630
+Ethylbenzene-Barium                          -0.044707688
+Hexachloro-1,3-butadiene-Barium              -0.005786097
+Hydrogen fluoride-Barium                     -0.061503929
+Lead-Barium                                  -0.065274134
+Maleic anhydride-Barium                      -0.011512362
+MBOCA-Barium                                 -0.113812671
+Molybdenum trioxide-Barium                   -0.026956000
+Naphthalene-Barium                           -0.048099887
+Nickel-Barium                                -0.060707888
+Styrene-Barium                               -0.041747807
+Vinyl chloride-Barium                        -0.010072778
+Cadmium-Bromoform                            -0.285512035
+Cobalt-Bromoform                             -0.293832402
+Creosote-Bromoform                           -0.255939111
+DecaBDE-Bromoform                            -0.359633244
+Ethylbenzene-Bromoform                       -0.287151727
+Hexachloro-1,3-butadiene-Bromoform           -0.208733626
+Hydrogen fluoride-Bromoform                  -0.303236618
+Lead-Bromoform                               -0.308227885
+Maleic anhydride-Bromoform                   -0.247798609
+MBOCA-Bromoform                              -0.313937994
+Molybdenum trioxide-Bromoform                -0.262662251
+Naphthalene-Bromoform                        -0.290398309
+Nickel-Bromoform                             -0.303502074
+Styrene-Bromoform                            -0.284114981
+Vinyl chloride-Bromoform                     -0.236467155
+Cobalt-Cadmium                               -0.046325372
+Creosote-Cadmium                             -0.023480754
+DecaBDE-Cadmium                              -0.200113386
+Ethylbenzene-Cadmium                         -0.038252846
+Hexachloro-1,3-butadiene-Cadmium             -0.007578492
+Hydrogen fluoride-Cadmium                    -0.055391912
+Lead-Cadmium                                 -0.058561612
+Maleic anhydride-Cadmium                     -0.007530649
+MBOCA-Cadmium                                -0.115863748
+Molybdenum trioxide-Cadmium                  -0.023161374
+Naphthalene-Cadmium                          -0.041716769
+Nickel-Cadmium                               -0.054077168
+Styrene-Cadmium                              -0.035330927
+Vinyl chloride-Cadmium                       -0.008632417
+Creosote-Cobalt                              -0.004021762
+DecaBDE-Cobalt                               -0.187334247
+Ethylbenzene-Cobalt                          -0.009927020
+Hexachloro-1,3-butadiene-Cobalt               0.007392553
+Hydrogen fluoride-Cobalt                     -0.028278932
+Lead-Cobalt                                  -0.029168011
+Maleic anhydride-Cobalt                       0.014564903
+MBOCA-Cobalt                                 -0.101132176
+Molybdenum trioxide-Cobalt                   -0.001393371
+Naphthalene-Cobalt                           -0.013661730
+Nickel-Cobalt                                -0.025040458
+Styrene-Cobalt                               -0.007149682
+Vinyl chloride-Cobalt                         0.009754145
+DecaBDE-Creosote                             -0.232870878
+Ethylbenzene-Creosote                        -0.077680713
+Hexachloro-1,3-butadiene-Creosote            -0.041791333
+Hydrogen fluoride-Creosote                   -0.094585378
+Lead-Creosote                                -0.098166863
+Maleic anhydride-Creosote                    -0.045306546
+MBOCA-Creosote                               -0.149924279
+Molybdenum trioxide-Creosote                 -0.060815824
+Naphthalene-Creosote                         -0.081095446
+Nickel-Creosote                              -0.093625995
+Styrene-Creosote                             -0.074732749
+Vinyl chloride-Creosote                      -0.044796310
+Ethylbenzene-DecaBDE                         -0.136537571
+Hexachloro-1,3-butadiene-DecaBDE             -0.067186561
+Hydrogen fluoride-DecaBDE                    -0.152731185
+Lead-DecaBDE                                 -0.157537023
+Maleic anhydride-DecaBDE                     -0.098190668
+MBOCA-DecaBDE                                -0.173276311
+Molybdenum trioxide-DecaBDE                  -0.113156710
+Naphthalene-DecaBDE                          -0.139806251
+Nickel-DecaBDE                               -0.152835117
+Styrene-DecaBDE                              -0.133512480
+Vinyl chloride-DecaBDE                       -0.088787802
+Hexachloro-1,3-butadiene-Ethylbenzene         0.001531366
+Hydrogen fluoride-Ethylbenzene               -0.031469971
+Lead-Ethylbenzene                            -0.030992763
+Maleic anhydride-Ethylbenzene                 0.009861955
+MBOCA-Ethylbenzene                           -0.107024778
+Molybdenum trioxide-Ethylbenzene             -0.006164848
+Naphthalene-Ethylbenzene                     -0.016386735
+Nickel-Ethylbenzene                          -0.027142948
+Styrene-Ethylbenzene                         -0.009803851
+Vinyl chloride-Ethylbenzene                   0.004379986
+Hydrogen fluoride-Hexachloro-1,3-butadiene   -0.199294323
+Lead-Hexachloro-1,3-butadiene                -0.203740423
+Maleic anhydride-Hexachloro-1,3-butadiene    -0.146440262
+MBOCA-Hexachloro-1,3-butadiene               -0.234823544
+Molybdenum trioxide-Hexachloro-1,3-butadiene -0.161593242
+Naphthalene-Hexachloro-1,3-butadiene         -0.186201835
+Nickel-Hexachloro-1,3-butadiene              -0.199085122
+Styrene-Hexachloro-1,3-butadiene             -0.179887805
+Vinyl chloride-Hexachloro-1,3-butadiene      -0.140389464
+Lead-Hydrogen fluoride                       -0.018713716
+Maleic anhydride-Hydrogen fluoride            0.024449048
+MBOCA-Hydrogen fluoride                      -0.091533421
+Molybdenum trioxide-Hydrogen fluoride         0.008474835
+Naphthalene-Hydrogen fluoride                -0.003361227
+Nickel-Hydrogen fluoride                     -0.014630893
+Styrene-Hydrogen fluoride                     0.003163828
+Vinyl chloride-Hydrogen fluoride              0.019479218
+Maleic anhydride-Lead                         0.032028650
+MBOCA-Lead                                   -0.085529645
+Molybdenum trioxide-Lead                      0.015960600
+Naphthalene-Lead                              0.007308737
+Nickel-Lead                                  -0.002658862
+Styrene-Lead                                  0.013968209
+Vinyl chloride-Lead                           0.026158238
+MBOCA-Maleic anhydride                       -0.151858574
+Molybdenum trioxide-Maleic anhydride         -0.057544896
+Naphthalene-Maleic anhydride                 -0.075126062
+Nickel-Maleic anhydride                      -0.087378591
+Styrene-Maleic anhydride                     -0.068725696
+Vinyl chloride-Maleic anhydride              -0.043733062
+Molybdenum trioxide-MBOCA                    -0.062526983
+Naphthalene-MBOCA                            -0.087360223
+Nickel-MBOCA                                 -0.100259961
+Styrene-MBOCA                                -0.081048478
+Vinyl chloride-MBOCA                         -0.040995414
+Naphthalene-Molybdenum trioxide              -0.061701577
+Nickel-Molybdenum trioxide                   -0.073993302
+Styrene-Molybdenum trioxide                  -0.055306474
+Vinyl chloride-Molybdenum trioxide           -0.029721388
+Nickel-Naphthalene                           -0.024704446
+Styrene-Naphthalene                          -0.007242933
+Vinyl chloride-Naphthalene                    0.007425351
+Styrene-Nickel                                0.008338012
+Vinyl chloride-Nickel                         0.021213011
+Vinyl chloride-Styrene                        0.001237062
+                                                       upr     p adj
+Arsenic-Acrylonitrile                         0.0108525599 0.5317766
+Barium-Acrylonitrile                          0.0277134434 0.9437679
+Bromoform-Acrylonitrile                       0.2627310821 1.0000000
+Cadmium-Acrylonitrile                         0.0241331500 0.9733580
+Cobalt-Acrylonitrile                          0.0027265891 0.1137815
+Creosote-Acrylonitrile                        0.0616490388 1.0000000
+DecaBDE-Acrylonitrile                         0.1133488362 0.9997945
+Ethylbenzene-Acrylonitrile                    0.0075711462 0.3845187
+Hexachloro-1,3-butadiene-Acrylonitrile        0.1620090246 0.6176200
+Hydrogen fluoride-Acrylonitrile              -0.0071245354 0.0033939
+Lead-Acrylonitrile                           -0.0145107770 0.0000651
+Maleic anhydride-Acrylonitrile                0.0585873475 0.9997202
+MBOCA-Acrylonitrile                           0.0629188063 0.9986374
+Molybdenum trioxide-Acrylonitrile             0.0447947820 1.0000000
+Naphthalene-Acrylonitrile                     0.0046102503 0.1957641
+Nickel-Acrylonitrile                         -0.0094691139 0.0009497
+Styrene-Acrylonitrile                         0.0107587812 0.6360512
+Vinyl chloride-Acrylonitrile                  0.0880872583 0.9737435
+Barium-Arsenic                                0.0500988669 1.0000000
+Bromoform-Arsenic                             0.2895761611 1.0000000
+Cadmium-Arsenic                               0.0449627239 1.0000000
+Cobalt-Arsenic                                0.0205239080 1.0000000
+Creosote-Arsenic                              0.0834986784 0.4282197
+DecaBDE-Arsenic                               0.1394283787 1.0000000
+Ethylbenzene-Arsenic                          0.0246550645 1.0000000
+Hexachloro-1,3-butadiene-Arsenic              0.1866741862 0.0424604
+Hydrogen fluoride-Arsenic                     0.0105100883 0.8791522
+Lead-Arsenic                                  0.0021245472 0.1401111
+Maleic anhydride-Arsenic                      0.0788724114 0.0055496
+MBOCA-Arsenic                                 0.0877376493 1.0000000
+Molybdenum trioxide-Arsenic                   0.0652691985 0.4708153
+Naphthalene-Arsenic                           0.0218134634 1.0000000
+Nickel-Arsenic                                0.0073121785 0.6763648
+Styrene-Arsenic                               0.0279061244 0.9999997
+Vinyl chloride-Arsenic                        0.1105956988 0.0279352
+Bromoform-Barium                              0.2953977445 1.0000000
+Cadmium-Barium                                0.0666193988 1.0000000
+Cobalt-Barium                                 0.0480339022 1.0000000
+Creosote-Barium                               0.1028832662 0.8331069
+DecaBDE-Barium                                0.1475516822 1.0000000
+Ethylbenzene-Barium                           0.0533767404 1.0000000
+Hexachloro-1,3-butadiene-Barium               0.1988767888 0.0924114
+Hydrogen fluoride-Barium                      0.0383012768 0.9999987
+Lead-Barium                                   0.0315810134 0.9994785
+Maleic anhydride-Barium                       0.1016745851 0.3328522
+MBOCA-Barium                                  0.0995104463 1.0000000
+Molybdenum trioxide-Barium                    0.0876781456 0.9376955
+Naphthalene-Barium                            0.0503362995 1.0000000
+Nickel-Barium                                 0.0365317515 0.9999962
+Styrene-Barium                                0.0565222677 1.0000000
+Vinyl chloride-Barium                         0.1284210197 0.2126053
+Cadmium-Bromoform                             0.2892155489 1.0000000
+Cobalt-Bromoform                              0.2776146512 1.0000000
+Creosote-Bromoform                            0.3211455334 1.0000000
+DecaBDE-Bromoform                             0.2994438651 1.0000000
+Ethylbenzene-Bromoform                        0.2838993494 1.0000000
+Hexachloro-1,3-butadiene-Bromoform            0.3899028867 0.9999260
+Hydrogen fluoride-Bromoform                   0.2681125359 1.0000000
+Lead-Bromoform                                0.2626133335 1.0000000
+Maleic anhydride-Bromoform                    0.3260394012 1.0000000
+MBOCA-Bromoform                               0.2877143389 1.0000000
+Molybdenum trioxide-Bromoform                 0.3114629660 1.0000000
+Naphthalene-Bromoform                         0.2807132909 1.0000000
+Nickel-Bromoform                              0.2674045070 1.0000000
+Styrene-Bromoform                             0.2869680114 1.0000000
+Vinyl chloride-Bromoform                      0.3428939664 1.0000000
+Cobalt-Cadmium                                0.0264041077 0.9999831
+Creosote-Cadmium                              0.0849836625 0.8898963
+DecaBDE-Cadmium                               0.1362204931 0.9999999
+Ethylbenzene-Cadmium                          0.0312969546 1.0000000
+Hexachloro-1,3-butadiene-Cadmium              0.1850442393 0.1155178
+Hydrogen fluoride-Cadmium                     0.0165643161 0.9267883
+Lead-Cadmium                                  0.0092435462 0.5117066
+Maleic anhydride-Cadmium                      0.0820679272 0.2556437
+MBOCA-Cadmium                                 0.0859365792 1.0000000
+Molybdenum trioxide-Cadmium                   0.0682585752 0.9679400
+Naphthalene-Cadmium                           0.0283282362 0.9999999
+Nickel-Cadmium                                0.0142760865 0.8650259
+Styrene-Cadmium                               0.0344804432 1.0000000
+Vinyl chloride-Cadmium                        0.1113557145 0.2098065
+Creosote-Cobalt                               0.0854459348 0.1288426
+DecaBDE-Cobalt                                0.1433626189 1.0000000
+Ethylbenzene-Cobalt                           0.0228923927 0.9972971
+Hexachloro-1,3-butadiene-Cobalt               0.1899944584 0.0186960
+Hydrogen fluoride-Cobalt                      0.0093726002 0.9619172
+Lead-Cobalt                                  -0.0002287903 0.0416492
+Maleic anhydride-Cobalt                       0.0798936401 0.0000610
+MBOCA-Cobalt                                  0.0911262722 1.0000000
+Molybdenum trioxide-Cobalt                    0.0664118366 0.0786274
+Naphthalene-Cobalt                            0.0201944622 0.9999999
+Nickel-Cobalt                                 0.0051606414 0.6988219
+Styrene-Cobalt                                0.0262204621 0.8829487
+Vinyl chloride-Cobalt                         0.1128904175 0.0042179
+DecaBDE-Creosote                              0.1074750774 0.9988838
+Ethylbenzene-Creosote                         0.0092219126 0.3538701
+Hexachloro-1,3-butadiene-Creosote             0.1577541714 0.8670104
+Hydrogen fluoride-Creosote                   -0.0057451265 0.0098375
+Lead-Creosote                                -0.0126541104 0.0008113
+Maleic anhydride-Creosote                     0.0583409159 1.0000000
+MBOCA-Creosote                                0.0584942023 0.9906893
+Molybdenum trioxide-Creosote                  0.0444101168 1.0000000
+Naphthalene-Creosote                          0.0062040053 0.2067134
+Nickel-Creosote                              -0.0076779944 0.0049130
+Styrene-Creosote                              0.0123793565 0.5435404
+Vinyl chloride-Creosote                       0.0860166989 0.9998677
+Ethylbenzene-DecaBDE                          0.1934745718 1.0000000
+Hexachloro-1,3-butadiene-DecaBDE              0.3085452003 0.7385485
+Hydrogen fluoride-DecaBDE                     0.1777964814 1.0000000
+Lead-DecaBDE                                  0.1721118497 1.0000000
+Maleic anhydride-DecaBDE                      0.2366208383 0.9953065
+MBOCA-DecaBDE                                 0.2072420348 1.0000000
+Molybdenum trioxide-DecaBDE                   0.2221468041 0.9997949
+Naphthalene-DecaBDE                           0.1903106109 1.0000000
+Nickel-DecaBDE                                0.1769269286 1.0000000
+Styrene-DecaBDE                               0.1965548879 0.9999999
+Vinyl chloride-DecaBDE                        0.2554039922 0.9734152
+Hexachloro-1,3-butadiene-Ethylbenzene         0.1828902731 0.0411275
+Hydrogen fluoride-Ethylbenzene               -0.0004017335 0.0369928
+Lead-Ethylbenzene                            -0.0113694103 0.0000000
+Maleic anhydride-Ethylbenzene                 0.0716312148 0.0005534
+MBOCA-Ethylbenzene                            0.0840535008 1.0000000
+Molybdenum trioxide-Ethylbenzene              0.0582179415 0.3055035
+Naphthalene-Ethylbenzene                      0.0099540941 0.9999971
+Nickel-Ethylbenzene                          -0.0057022411 0.0000121
+Styrene-Ethylbenzene                          0.0159092586 0.9999981
+Vinyl chloride-Ethylbenzene                   0.1052992029 0.0173392
+Hydrogen fluoride-Hexachloro-1,3-butadiene   -0.0169990204 0.0043845
+Lead-Hexachloro-1,3-butadiene                -0.0230433894 0.0015562
+Maleic anhydride-Hexachloro-1,3-butadiene     0.0435117933 0.9241168
+MBOCA-Hexachloro-1,3-butadiene                0.0274306279 0.3465371
+Molybdenum trioxide-Hexachloro-1,3-butadiene  0.0292246964 0.6043704
+Naphthalene-Hexachloro-1,3-butadiene         -0.0046524444 0.0271939
+Nickel-Hexachloro-1,3-butadiene              -0.0181817062 0.0035422
+Styrene-Hexachloro-1,3-butadiene              0.0015715736 0.0607517
+Vinyl chloride-Hexachloro-1,3-butadiene       0.0656470142 0.9990887
+Lead-Hydrogen fluoride                        0.0082232474 0.9977367
+Maleic anhydride-Hydrogen fluoride            0.0889158263 0.0000001
+MBOCA-Hydrogen fluoride                       0.1004338486 1.0000000
+Molybdenum trioxide-Hydrogen fluoride         0.0754499625 0.0016049
+Naphthalene-Hydrogen fluoride                 0.0288002914 0.3461311
+Nickel-Hydrogen fluoride                      0.0136574079 1.0000000
+Styrene-Hydrogen fluoride                     0.0348132839 0.0035994
+Vinyl chloride-Hydrogen fluoride              0.1220716756 0.0001985
+Maleic anhydride-Lead                         0.0918266938 0.0000000
+MBOCA-Lead                                    0.1049205411 1.0000000
+Molybdenum trioxide-Lead                      0.0784546663 0.0000182
+Naphthalene-Lead                              0.0286207963 0.0000005
+Nickel-Lead                                   0.0121758459 0.7405770
+Styrene-Lead                                  0.0344993719 0.0000000
+Vinyl chloride-Lead                           0.1258831245 0.0000139
+MBOCA-Maleic anhydride                        0.0473941268 0.9431575
+Molybdenum trioxide-Maleic anhydride          0.0281048193 0.9995566
+Naphthalene-Maleic anhydride                 -0.0127997485 0.0001151
+Nickel-Maleic anhydride                      -0.0269597689 0.0000000
+Styrene-Maleic anhydride                     -0.0066620664 0.0028886
+Vinyl chloride-Maleic anhydride               0.0719190816 0.9999972
+Molybdenum trioxide-MBOCA                     0.1375513536 0.9985989
+Naphthalene-MBOCA                             0.1038988593 1.0000000
+Nickel-MBOCA                                  0.0903860488 1.0000000
+Styrene-MBOCA                                 0.1101251632 1.0000000
+Vinyl chloride-MBOCA                          0.1736458807 0.7948940
+Naphthalene-Molybdenum trioxide               0.0032158436 0.1405937
+Nickel-Molybdenum trioxide                   -0.0109049810 0.0003559
+Styrene-Molybdenum trioxide                   0.0093587889 0.5579891
+Vinyl chloride-Molybdenum trioxide            0.0873474835 0.9686077
+Nickel-Naphthalene                           -0.0017081026 0.0075409
+Styrene-Naphthalene                           0.0197809809 0.9828424
+Vinyl chloride-Naphthalene                    0.1086864793 0.0077434
+Styrene-Nickel                                0.0306125848 0.0000001
+Vinyl chloride-Nickel                         0.1213113674 0.0000910
+Vinyl chloride-Styrene                        0.1023367200 0.0376082
+

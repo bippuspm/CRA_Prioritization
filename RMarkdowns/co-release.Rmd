@@ -1,0 +1,612 @@
+---
+title: "Analysis of co-releases of chemicals in endpoint groups"
+author: "Paige Varner"
+date: "2024-09-13"
+output: html_document
+---
+
+
+#load libraries
+```{r}
+library("dplyr")
+library("tidyr")
+library("bigrquery")
+library("DBI")
+library("pheatmap")
+library("RColorBrewer")
+library("Rmisc")
+library("stats")
+library("rstatix")
+library("ggplot2")
+detach(package:Rmisc)
+detach(package:plyr)
+
+install.packages("tidyverse")
+
+endpoints = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/TSCA_endpoints.csv")
+
+```
+
+
+#query data from BQ (dataframe with TRI ID, facility name, chemicals, and total sum of on site releases for the 5 year span)
+```{r}
+	# set up database connection
+	con <- dbConnect(
+	  bigrquery::bigquery(),
+	  project = "edf-aq-data",
+	  dataset = "tri",
+)
+
+SQL = "	
+	SELECT
+	trifd,
+	facility_name,
+	chemical,
+	SUM(on_site_release_total) as sum_onsite_releases_2017_2022
+	FROM `edf-aq-data.tri.tri_basic_2017-2022` 
+	GROUP BY trifd, facility_name, chemical"
+
+tri = dbGetQuery(con,SQL)
+
+tri = filter(tri, sum_onsite_releases_2017_2022 > 0)
+```
+
+
+
+#fixing multiple names for same chemical (need to add up releases for chemicals of the same name after fixing the names for individual trifds)
+```{r}
+#fix chemical names
+tri$chemical = gsub("o-Xylene", "Xylene", tri$chemical)
+tri$chemical = gsub("p-Xylene", "Xylene", tri$chemical)
+tri$chemical = gsub("m-Xylene", "Xylene", tri$chemical)
+tri$chemical = gsub("Xylene (Mixed Isomers)", "Xylene", tri$chemical)
+
+tri$chemical = gsub("Hydrogen cyanide", "Cyanide Compounds", tri$chemical)
+
+tri$chemical = gsub("Nickel compounds", "Nickel", tri$chemical)
+
+tri$chemical = gsub("Arsenic compounds", "Arsenic", tri$chemical)
+
+tri$chemical = gsub("Cadmium compounds", "Cadmium", tri$chemical)
+
+tri$chemical = gsub("Chromium compounds", "Chromium", tri$chemical)
+
+tri$chemical = gsub("Lead compounds", "Lead", tri$chemical)
+
+tri$chemical = gsub("Cobalt compounds", "Cobalt", tri$chemical)
+
+tri$chemical = gsub("Nonylphenol Ethoxylates", "Nonylphenol", tri$chemical)
+
+tri$chemical = gsub("Barium compounds", "Barium", tri$chemical)
+
+
+#add up chemicals with same name for each trifd to get total releases of those chemicals 
+tri <- tri %>%
+  group_by(trifd, chemical) %>%
+  summarise(onsite_releases_2017_2022 = sum(sum_onsite_releases_2017_2022, na.rm = TRUE))
+
+```
+
+#add endpoint designations to tri data, filter based on endpoints
+```{r}
+tri_endpoints <- tri %>%
+  left_join(endpoints, by = c("chemical" = "tri_name")) %>%
+  filter(!is.na(analysis_name))
+
+carc <- tri_endpoints %>%
+  filter(carc %in% c("Known", "Probable"))
+
+cns <- tri_endpoints %>%
+  filter(cns %in% "yes")
+
+cardioresp = tri_endpoints %>%
+  filter(cardio == "yes" | resp == "yes")
+
+devrep = tri_endpoints %>%
+  filter(dev == "yes" | repro == "yes")
+
+lkt = tri_endpoints %>%
+  filter(lkt %in% "yes")
+```
+
+
+#calculate percent co-releases overall for each group: # of coreleases/unique facilities where # of coreleases is total number of facilities - unique facilities
+```{r}
+#cns = 39%
+((length(cns[["trifd"]]) - length(unique(cns[["trifd"]]))) / length(unique(cns[["trifd"]])))*100
+
+#carc = 42%
+((length(carc[["trifd"]]) - length(unique(carc[["trifd"]]))) / length(unique(carc[["trifd"]])))*100
+
+#cardioresp = 63%
+((length(cardioresp[["trifd"]]) - length(unique(cardioresp[["trifd"]]))) / length(unique(cardioresp[["trifd"]])))*100
+
+#lkt = 43%
+((length(lkt[["trifd"]]) - length(unique(lkt[["trifd"]]))) / length(unique(lkt[["trifd"]])))*100
+
+#devrep = 20%
+((length(devrep[["trifd"]]) - length(unique(devrep[["trifd"]]))) / length(unique(devrep[["trifd"]])))*100
+```
+
+
+
+# Function to count unique trifd for a given pair of chemicals
+```{r}
+count_unique_trifd <- function(data, chem1, chem2) {
+  data %>%
+    filter(chemical %in% c(chem1, chem2)) %>%
+    group_by(trifd) %>%
+    filter(n_distinct(chemical) == 2) %>%  # Ensure both chemicals are present
+    ungroup() %>%  # Ungroup to avoid errors in summarisation
+    summarise(unique_trifd_count = n_distinct(trifd)) %>%  # Count unique trifd
+    pull(unique_trifd_count)  # Extract the count as a numeric value
+}
+```
+
+
+#co-releases in carc
+```{r}
+# Get all unique chemicals
+chemicals <- unique(carc$chemical)
+
+# Get all possible pairs of chemicals
+chemical_pairs <- combn(chemicals, 2, simplify = FALSE)
+
+# Loop through each pair and get the count of unique trifd
+results <- lapply(chemical_pairs, function(pair) {
+  count <- count_unique_trifd(carc, pair[1], pair[2])
+  data.frame(chemical1 = pair[1], chemical2 = pair[2], unique_trifd_count = count)
+})
+
+# Combine the results into a single dataframe
+carc_co <- do.call(rbind, results)
+
+#make dataframe of number of facilities releasing each chemical
+unique_carc <- carc %>%
+  group_by(chemical) %>%
+  summarise(total_release = n_distinct(trifd)) 
+
+# Join dataframes to get total_release for chemical1 and chemical2
+carc_co <- carc_co %>%
+  left_join(unique_carc, by = c("chemical1" = "chemical")) %>%
+  rename(total_release1 = total_release)
+
+carc_co <- carc_co %>%
+  left_join(unique_carc, by = c("chemical2" = "chemical")) %>%
+  rename(total_release2 = total_release)
+
+# Calculate percent corelease for heatmaps 
+carc_co <- carc_co %>%
+  mutate(perc_co = 100 * ((2 * unique_trifd_count) / (total_release1 + total_release2)))
+
+```
+
+
+#co-releases in cns
+```{r}
+# Get all unique chemicals
+chemicals <- unique(cns$chemical)
+
+# Get all possible pairs of chemicals
+chemical_pairs <- combn(chemicals, 2, simplify = FALSE)
+
+# Loop through each pair and get the count of unique trifd
+results <- lapply(chemical_pairs, function(pair) {
+  count <- count_unique_trifd(cns, pair[1], pair[2])
+  data.frame(chemical1 = pair[1], chemical2 = pair[2], unique_trifd_count = count)
+})
+
+# Combine the results into a single dataframe
+cns_co <- do.call(rbind, results)
+
+#make dataframe of number of facilities releasing each chemical
+unique_cns <- cns %>%
+  group_by(chemical) %>%
+  summarise(total_release = n_distinct(trifd)) 
+
+# Join dataframes to get total_release for chemical1 and chemical2
+cns_co <- cns_co %>%
+  left_join(unique_cns, by = c("chemical1" = "chemical")) %>%
+  rename(total_release1 = total_release)
+
+cns_co <- cns_co %>%
+  left_join(unique_cns, by = c("chemical2" = "chemical")) %>%
+  rename(total_release2 = total_release)
+
+# Calculate percent corelease for heatmaps 
+cns_co <- cns_co %>%
+  mutate(perc_co = 100 * ((2 * unique_trifd_count) / (total_release1 + total_release2)))
+
+```
+
+
+#co-releases in cardioresp
+```{r}
+# Get all unique chemicals
+chemicals <- unique(cardioresp$chemical)
+
+# Get all possible pairs of chemicals
+chemical_pairs <- combn(chemicals, 2, simplify = FALSE)
+
+# Loop through each pair and get the count of unique trifd
+results <- lapply(chemical_pairs, function(pair) {
+  count <- count_unique_trifd(cardioresp, pair[1], pair[2])
+  data.frame(chemical1 = pair[1], chemical2 = pair[2], unique_trifd_count = count)
+})
+
+# Combine the results into a single dataframe
+cardioresp_co <- do.call(rbind, results)
+
+#make dataframe of number of facilities releasing each chemical
+unique_cardioresp <- cardioresp %>%
+  group_by(chemical) %>%
+  summarise(total_release = n_distinct(trifd)) 
+
+# Join dataframes to get total_release for chemical1 and chemical2
+cardioresp_co <- cardioresp_co %>%
+  left_join(unique_cardioresp, by = c("chemical1" = "chemical")) %>%
+  rename(total_release1 = total_release)
+
+cardioresp_co <- cardioresp_co %>%
+  left_join(unique_cardioresp, by = c("chemical2" = "chemical")) %>%
+  rename(total_release2 = total_release)
+
+# Calculate percent corelease for heatmaps 
+cardioresp_co <- cardioresp_co %>%
+  mutate(perc_co = 100 * ((2 * unique_trifd_count) / (total_release1 + total_release2)))
+
+```
+
+
+#co-releases in devrep
+```{r}
+# Get all unique chemicals
+chemicals <- unique(devrep$chemical)
+
+# Get all possible pairs of chemicals
+chemical_pairs <- combn(chemicals, 2, simplify = FALSE)
+
+# Loop through each pair and get the count of unique trifd
+results <- lapply(chemical_pairs, function(pair) {
+  count <- count_unique_trifd(devrep, pair[1], pair[2])
+  data.frame(chemical1 = pair[1], chemical2 = pair[2], unique_trifd_count = count)
+})
+
+# Combine the results into a single dataframe
+devrep_co <- do.call(rbind, results)
+
+#make dataframe of number of facilities releasing each chemical
+unique_devrep <- devrep %>%
+  group_by(chemical) %>%
+  summarise(total_release = n_distinct(trifd)) 
+
+# Join dataframes to get total_release for chemical1 and chemical2
+devrep_co <- devrep_co %>%
+  left_join(unique_devrep, by = c("chemical1" = "chemical")) %>%
+  rename(total_release1 = total_release)
+
+devrep_co <- devrep_co %>%
+  left_join(unique_devrep, by = c("chemical2" = "chemical")) %>%
+  rename(total_release2 = total_release)
+
+# Calculate percent corelease for heatmaps 
+devrep_co <- devrep_co %>%
+  mutate(perc_co = 100 * ((2 * unique_trifd_count) / (total_release1 + total_release2)))
+
+```
+
+
+#co-releases in lkt
+```{r}
+# Get all unique chemicals
+chemicals <- unique(lkt$chemical)
+
+# Get all possible pairs of chemicals
+chemical_pairs <- combn(chemicals, 2, simplify = FALSE)
+
+# Loop through each pair and get the count of unique trifd
+results <- lapply(chemical_pairs, function(pair) {
+  count <- count_unique_trifd(lkt, pair[1], pair[2])
+  data.frame(chemical1 = pair[1], chemical2 = pair[2], unique_trifd_count = count)
+})
+
+# Combine the results into a single dataframe
+lkt_co <- do.call(rbind, results)
+
+#make dataframe of number of facilities releasing each chemical
+unique_lkt <- lkt %>%
+  group_by(chemical) %>%
+  summarise(total_release = n_distinct(trifd)) 
+
+# Join dataframes to get total_release for chemical1 and chemical2
+lkt_co <- lkt_co %>%
+  left_join(unique_lkt, by = c("chemical1" = "chemical")) %>%
+  rename(total_release1 = total_release)
+
+lkt_co <- lkt_co %>%
+  left_join(unique_lkt, by = c("chemical2" = "chemical")) %>%
+  rename(total_release2 = total_release)
+
+# Calculate percent corelease for heatmaps 
+lkt_co <- lkt_co %>%
+  mutate(perc_co = 100 * ((2 * unique_trifd_count) / (total_release1 + total_release2)))
+
+```
+
+
+
+#carc heatmap 
+```{r}
+#remove unwanted columns from carc_co and reformat the dataframe
+carc_co_wide <- carc_co %>%
+  select (-unique_trifd_count, -total_release1, -total_release2) %>%
+    mutate(
+    chemical1 = ifelse(chemical1 == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical1),
+    chemical2 = ifelse(chemical2 == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical2)
+  ) %>%
+  mutate(
+    chemical1 = ifelse(chemical1 == "3,3'-Dichlorobenzidine dihydrochloride", "3,3'-Dichlorobenzidine 2HCl", chemical1),
+    chemical2 = ifelse(chemical2 == "3,3'-Dichlorobenzidine dihydrochloride", "3,3'-Dichlorobenzidine 2HCl", chemical2)
+  ) %>%
+  pivot_wider(
+    names_from = chemical1,    
+    values_from = perc_co,   
+    values_fill = list(unique_trifd_count = NA)  
+  )
+
+# Convert "chemical2" to row names
+carc_co_wide <- as.data.frame(carc_co_wide)    
+rownames(carc_co_wide) <- carc_co_wide$chemical2  
+carc_co_wide$chemical2 <- NULL                 
+
+#transpose columns and rows (output is a matrix, which is what is needed for pheatmap)
+carc_co_transposed <- t(carc_co_wide)
+
+#create breaks for colors
+breaks <- c(0, 2, 4, 6, 8, 10, 20, 30, 50, 70)
+colors <- brewer.pal(9, "Blues")
+
+#make heatmap
+pheatmap(carc_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, main = "Carcinogens", color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/carc_heat.png", width = 12, height = 9)
+```
+
+
+
+#carc heatmap 
+```{r}
+#remove unwanted columns from carc_co and reformat the dataframe
+carc_co_wide <- carc_co %>%
+  select (-unique_trifd_count, -total_release1, -total_release2) %>%
+    mutate(
+    chemical1 = ifelse(chemical1 == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical1),
+    chemical2 = ifelse(chemical2 == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical2)
+  ) %>%
+  mutate(
+    chemical1 = ifelse(chemical1 == "3,3'-Dichlorobenzidine dihydrochloride", "3,3'-Dichlorobenzidine 2HCl", chemical1),
+    chemical2 = ifelse(chemical2 == "3,3'-Dichlorobenzidine dihydrochloride", "3,3'-Dichlorobenzidine 2HCl", chemical2)
+  ) %>%
+  pivot_wider(
+    names_from = chemical1,    
+    values_from = perc_co,   
+    values_fill = list(unique_trifd_count = NA)  
+  )
+
+# Convert "chemical2" to row names
+carc_co_wide <- as.data.frame(carc_co_wide)    
+rownames(carc_co_wide) <- carc_co_wide$chemical2  
+carc_co_wide$chemical2 <- NULL                 
+
+#transpose columns and rows (output is a matrix, which is what is needed for pheatmap)
+carc_co_transposed <- t(carc_co_wide)
+
+#create breaks for colors
+breaks <- c(0, 2, 4, 6, 8, 10, 20, 30, 50, 70)
+colors <- brewer.pal(9, "Blues")
+
+#make heatmap
+pheatmap(carc_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, main = "Carcinogens", color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/carc_heat.png", width = 12, height = 9)
+```
+
+
+#cns heatmap 
+```{r}
+#remove unwanted columns from carc_co and reformat the dataframe
+cns_co_wide <- cns_co %>%
+  select (-unique_trifd_count, -total_release1, -total_release2) %>%
+    mutate(
+    chemical1 = ifelse(chemical1 == "Decabromodiphenyl oxide", "DecaBDE", chemical1),
+    chemical2 = ifelse(chemical2 == "Decabromodiphenyl oxide", "DecaBDE", chemical2)
+  ) %>%
+  pivot_wider(
+    names_from = chemical1,    
+    values_from = perc_co,   
+    values_fill = list(unique_trifd_count = NA)  
+  )
+
+# Convert "chemical2" to row names
+cns_co_wide <- as.data.frame(cns_co_wide)    
+rownames(cns_co_wide) <- cns_co_wide$chemical2  
+cns_co_wide$chemical2 <- NULL                 
+
+#transpose columns and rows (output is a matrix, which is what is needed for pheatmap)
+cns_co_transposed <- t(cns_co_wide)
+
+#create breaks for colors
+breaks <- c(0, 2, 4, 6, 8, 10, 20, 30, 50, 70)
+colors <- brewer.pal(9, "Blues")
+
+#make heatmap
+pheatmap(cns_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, main = "Central Nervous System Toxicants", color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/cns_heat.png", width = 10, height = 7)
+```
+
+
+#cardioresp heatmap 
+```{r}
+#remove unwanted columns from carc_co and reformat the dataframe
+cardioresp_co_wide <- cardioresp_co %>%
+  select (-unique_trifd_count, -total_release1, -total_release2) %>%
+    mutate(
+    chemical1 = ifelse(chemical1 == "Molybdenum trioxide", "Molybdenum", chemical1),
+    chemical2 = ifelse(chemical2 == "Molybdenum trioxide", "Molybdenum", chemical2)) %>%
+  pivot_wider(
+    names_from = chemical1,    
+    values_from = perc_co,   
+    values_fill = list(unique_trifd_count = NA)  
+  )
+
+# Convert "chemical2" to row names
+cardioresp_co_wide <- as.data.frame(cardioresp_co_wide)    
+rownames(cardioresp_co_wide) <- cardioresp_co_wide$chemical2  
+cardioresp_co_wide$chemical2 <- NULL         
+
+#transpose columns and rows (output is a matrix, which is what is needed for pheatmap)
+cardioresp_co_transposed <- t(cardioresp_co_wide)
+
+#create breaks for colors
+breaks <- c(0, 2, 4, 6, 8, 10, 20, 30, 50, 70)
+colors <- brewer.pal(9, "Blues")
+
+#make heatmap
+pheatmap(cardioresp_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, main = "Cardiorespiratory Toxicants", color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/cardioresp_heat.png", width = 12, height = 9)
+```
+
+
+#devrep heatmap 
+```{r}
+#remove unwanted columns from carc_co and reformat the dataframe
+devrep_co_wide <- devrep_co %>%
+  select (-unique_trifd_count, -total_release1, -total_release2) %>%
+    mutate(
+    chemical1 = ifelse(chemical1 == "Molybdenum trioxide", "Molybdenum", chemical1),
+    chemical2 = ifelse(chemical2 == "Molybdenum trioxide", "Molybdenum", chemical2)
+  ) %>%
+      mutate(
+    chemical1 = ifelse(chemical1 == "4,4'-Isopropylidenediphenol", "Bisphenol A", chemical1),
+    chemical2 = ifelse(chemical2 == "4,4'-Isopropylidenediphenol", "Bisphenol A", chemical2)
+  ) %>%
+    mutate(
+    chemical1 = ifelse(chemical1 == "Decabromodiphenyl oxide", "DecaBDE", chemical1),
+    chemical2 = ifelse(chemical2 == "Decabromodiphenyl oxide", "DecaBDE", chemical2)
+  ) %>%
+  pivot_wider(
+    names_from = chemical1,    
+    values_from = perc_co,   
+    values_fill = list(unique_trifd_count = NA)  
+  )
+
+# Convert "chemical2" to row names
+devrep_co_wide <- as.data.frame(devrep_co_wide)    
+rownames(devrep_co_wide) <- devrep_co_wide$chemical2  
+devrep_co_wide$chemical2 <- NULL                 
+
+#transpose columns and rows (output is a matrix, which is what is needed for pheatmap)
+devrep_co_transposed <- t(devrep_co_wide)
+
+#create breaks for colors
+breaks <- c(0, 2, 4, 6, 8, 10, 20, 30, 50, 70)
+colors <- brewer.pal(9, "Blues")
+
+#make heatmap
+pheatmap(devrep_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, main = "Developmental/Reproductive Toxicants", color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/devrep_heat.png", width = 12, height = 9)
+```
+
+
+
+#lkt heatmap 
+```{r}
+#remove unwanted columns from carc_co and reformat the dataframe
+lkt_co_wide <- lkt_co %>%
+  select (-unique_trifd_count, -total_release1, -total_release2) %>%
+    mutate(
+    chemical1 = ifelse(chemical1 == "Molybdenum trioxide", "Molybdenum", chemical1),
+    chemical2 = ifelse(chemical2 == "Molybdenum trioxide", "Molybdenum", chemical2)
+  ) %>%
+    mutate(
+    chemical1 = ifelse(chemical1 == "Decabromodiphenyl oxide", "DecaBDE", chemical1),
+    chemical2 = ifelse(chemical2 == "Decabromodiphenyl oxide", "DecaBDE", chemical2)
+  ) %>%
+      mutate(
+    chemical1 = ifelse(chemical1 == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical1),
+    chemical2 = ifelse(chemical2 == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical2)
+  ) %>%
+  pivot_wider(
+    names_from = chemical1,    
+    values_from = perc_co,   
+    values_fill = list(unique_trifd_count = NA)  
+  )
+
+# Convert "chemical2" to row names
+lkt_co_wide <- as.data.frame(lkt_co_wide)    
+rownames(lkt_co_wide) <- lkt_co_wide$chemical2  
+lkt_co_wide$chemical2 <- NULL                 
+
+#transpose columns and rows (output is a matrix, which is what is needed for pheatmap)
+lkt_co_transposed <- t(lkt_co_wide)
+
+#create breaks for colors
+breaks <- c(0, 2, 4, 6, 8, 10, 20, 30, 50, 70)
+colors <- brewer.pal(9, "Blues")
+
+#make heatmap
+pheatmap(lkt_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, main = "Liver, Kidney, and/or Toxicants", color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/lkt_heat.png", width = 13, height = 10)
+```
+
+
+#comparing lbs of chemicals released from single-chemical release facilities and multi-chemical release facilities
+```{r}
+# Identify unique and repeated trifd
+tri_classified <- tri_endpoints %>%
+  group_by(trifd) %>%
+  mutate(trifd_count = n()) %>%  # Count occurrences of each trifd
+  ungroup()
+
+#Average for trifd that are unique (count == 1)
+average_unique_trifd <- tri_classified %>%
+  filter(trifd_count == 1) %>%
+  group_by(chemical) %>%
+  summarise(average_release_unique_trifd = mean(onsite_releases_2017_2022, na.rm = TRUE))
+
+#Average for trifd that are repeated (count > 1)
+average_repeated_trifd <- tri_classified %>%
+  filter(trifd_count > 1) %>%
+  group_by(chemical) %>%
+  summarise(average_release_repeated_trifd = mean(onsite_releases_2017_2022, na.rm = TRUE))
+
+#merge dataframes and save
+releases_unique_repeated <- full_join(average_unique_trifd, average_repeated_trifd, by = "chemical")
+
+write.csv(releases_unique_repeated, file = "~/TSCA/CRA/CRA_Prioritization/Output/unique.repeated.summary.csv")
+
+#format data to run anova by classifying trifd as unique or repeated
+tri_classified <- tri_endpoints %>%
+  group_by(trifd) %>%
+  mutate(trifd_count = n()) %>%  
+  ungroup() %>%
+  mutate(trifd_type = ifelse(trifd_count == 1, "unique", "repeated"))
+
+#Run ANOVA
+anova = aov(onsite_releases_2017_2022 ~ trifd_type*chemical, data = tri_classified)
+summary(anova)
+capture.output(anova, file = "~/TSCA/CRA/CRA_Prioritization/Output/release_anova")
+
+tukey = TukeyHSD(x = anova, conf.level = 0.95)
+capture.output(tukey, file = "~/TSCA/CRA/CRA_Prioritization/Output/release_tukey")
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

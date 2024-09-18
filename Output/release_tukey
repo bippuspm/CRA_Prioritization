@@ -1,0 +1,2023 @@
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = onsite_releases_2017_2022 ~ trifd_type * chemical, data = tri_classified)
+
+$trifd_type
+                     diff       lwr      upr     p adj
+unique-repeated -332387.2 -754376.8 89602.46 0.1226308
+
+$chemical
+                                                                                   diff
+3,3'-Dichlorobenzidine dihydrochloride-3,3'-Dichlorobenzidine              3.323379e+05
+4,4'-Isopropylidenediphenol-3,3'-Dichlorobenzidine                         1.077961e+05
+4,4'-Methylenebis(2-chloroaniline)-3,3'-Dichlorobenzidine                  1.661700e+05
+Acetaldehyde-3,3'-Dichlorobenzidine                                        2.212956e+05
+Acrylonitrile-3,3'-Dichlorobenzidine                                       3.977353e+05
+Aniline-3,3'-Dichlorobenzidine                                             4.676489e+05
+Arsenic-3,3'-Dichlorobenzidine                                             5.724429e+06
+Barium-3,3'-Dichlorobenzidine                                              2.051985e+05
+Benzene-3,3'-Dichlorobenzidine                                             7.156896e+04
+Bromoform-3,3'-Dichlorobenzidine                                           1.873964e+05
+Cadmium-3,3'-Dichlorobenzidine                                             1.243807e+05
+Chromium-3,3'-Dichlorobenzidine                                            4.778842e+04
+Cobalt-3,3'-Dichlorobenzidine                                              5.293538e+04
+Creosote-3,3'-Dichlorobenzidine                                            2.056822e+05
+Cyanide compounds-3,3'-Dichlorobenzidine                                   3.601039e+05
+Decabromodiphenyl oxide-3,3'-Dichlorobenzidine                             1.432729e+05
+Ethylbenzene-3,3'-Dichlorobenzidine                                        7.940866e+04
+Hexachloro-1,3-butadiene-3,3'-Dichlorobenzidine                            2.299970e+04
+Hydrogen fluoride-3,3'-Dichlorobenzidine                                   2.482701e+05
+Lead-3,3'-Dichlorobenzidine                                                6.545407e+05
+Maleic anhydride-3,3'-Dichlorobenzidine                                    1.242549e+05
+Molybdenum trioxide-3,3'-Dichlorobenzidine                                 5.171520e+04
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine                             -5.252083e+01
+Naphthalene-3,3'-Dichlorobenzidine                                         6.636439e+04
+Nickel-3,3'-Dichlorobenzidine                                              7.099570e+04
+Nonylphenol-3,3'-Dichlorobenzidine                                         1.476119e+05
+Styrene-3,3'-Dichlorobenzidine                                             3.651533e+05
+Vinyl chloride-3,3'-Dichlorobenzidine                                      1.561232e+05
+Xylene-3,3'-Dichlorobenzidine                                              5.968201e+04
+4,4'-Isopropylidenediphenol-3,3'-Dichlorobenzidine dihydrochloride        -2.245418e+05
+4,4'-Methylenebis(2-chloroaniline)-3,3'-Dichlorobenzidine dihydrochloride -1.661680e+05
+Acetaldehyde-3,3'-Dichlorobenzidine dihydrochloride                       -1.110423e+05
+Acrylonitrile-3,3'-Dichlorobenzidine dihydrochloride                       6.539731e+04
+Aniline-3,3'-Dichlorobenzidine dihydrochloride                             1.353110e+05
+Arsenic-3,3'-Dichlorobenzidine dihydrochloride                             5.392091e+06
+Barium-3,3'-Dichlorobenzidine dihydrochloride                             -1.271394e+05
+Benzene-3,3'-Dichlorobenzidine dihydrochloride                            -2.607690e+05
+Bromoform-3,3'-Dichlorobenzidine dihydrochloride                          -1.449416e+05
+Cadmium-3,3'-Dichlorobenzidine dihydrochloride                            -2.079572e+05
+Chromium-3,3'-Dichlorobenzidine dihydrochloride                           -2.845495e+05
+Cobalt-3,3'-Dichlorobenzidine dihydrochloride                             -2.794026e+05
+Creosote-3,3'-Dichlorobenzidine dihydrochloride                           -1.266557e+05
+Cyanide compounds-3,3'-Dichlorobenzidine dihydrochloride                   2.776593e+04
+Decabromodiphenyl oxide-3,3'-Dichlorobenzidine dihydrochloride            -1.890650e+05
+Ethylbenzene-3,3'-Dichlorobenzidine dihydrochloride                       -2.529293e+05
+Hexachloro-1,3-butadiene-3,3'-Dichlorobenzidine dihydrochloride           -3.093382e+05
+Hydrogen fluoride-3,3'-Dichlorobenzidine dihydrochloride                  -8.406780e+04
+Lead-3,3'-Dichlorobenzidine dihydrochloride                                3.222027e+05
+Maleic anhydride-3,3'-Dichlorobenzidine dihydrochloride                   -2.080830e+05
+Molybdenum trioxide-3,3'-Dichlorobenzidine dihydrochloride                -2.806228e+05
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine dihydrochloride             -3.323905e+05
+Naphthalene-3,3'-Dichlorobenzidine dihydrochloride                        -2.659736e+05
+Nickel-3,3'-Dichlorobenzidine dihydrochloride                             -2.613422e+05
+Nonylphenol-3,3'-Dichlorobenzidine dihydrochloride                        -1.847261e+05
+Styrene-3,3'-Dichlorobenzidine dihydrochloride                             3.281540e+04
+Vinyl chloride-3,3'-Dichlorobenzidine dihydrochloride                     -1.762147e+05
+Xylene-3,3'-Dichlorobenzidine dihydrochloride                             -2.726559e+05
+4,4'-Methylenebis(2-chloroaniline)-4,4'-Isopropylidenediphenol             5.837382e+04
+Acetaldehyde-4,4'-Isopropylidenediphenol                                   1.134995e+05
+Acrylonitrile-4,4'-Isopropylidenediphenol                                  2.899391e+05
+Aniline-4,4'-Isopropylidenediphenol                                        3.598528e+05
+Arsenic-4,4'-Isopropylidenediphenol                                        5.616633e+06
+Barium-4,4'-Isopropylidenediphenol                                         9.740236e+04
+Benzene-4,4'-Isopropylidenediphenol                                       -3.622718e+04
+Bromoform-4,4'-Isopropylidenediphenol                                      7.960023e+04
+Cadmium-4,4'-Isopropylidenediphenol                                        1.658457e+04
+Chromium-4,4'-Isopropylidenediphenol                                      -6.000773e+04
+Cobalt-4,4'-Isopropylidenediphenol                                        -5.486076e+04
+Creosote-4,4'-Isopropylidenediphenol                                       9.788609e+04
+Cyanide compounds-4,4'-Isopropylidenediphenol                              2.523077e+05
+Decabromodiphenyl oxide-4,4'-Isopropylidenediphenol                        3.547678e+04
+Ethylbenzene-4,4'-Isopropylidenediphenol                                  -2.838749e+04
+Hexachloro-1,3-butadiene-4,4'-Isopropylidenediphenol                      -8.479644e+04
+Hydrogen fluoride-4,4'-Isopropylidenediphenol                              1.404740e+05
+Lead-4,4'-Isopropylidenediphenol                                           5.467445e+05
+Maleic anhydride-4,4'-Isopropylidenediphenol                               1.645875e+04
+Molybdenum trioxide-4,4'-Isopropylidenediphenol                           -5.608095e+04
+N-Nitrosodiphenylamine-4,4'-Isopropylidenediphenol                        -1.078487e+05
+Naphthalene-4,4'-Isopropylidenediphenol                                   -4.143175e+04
+Nickel-4,4'-Isopropylidenediphenol                                        -3.680045e+04
+Nonylphenol-4,4'-Isopropylidenediphenol                                    3.981571e+04
+Styrene-4,4'-Isopropylidenediphenol                                        2.573572e+05
+Vinyl chloride-4,4'-Isopropylidenediphenol                                 4.832709e+04
+Xylene-4,4'-Isopropylidenediphenol                                        -4.811413e+04
+Acetaldehyde-4,4'-Methylenebis(2-chloroaniline)                            5.512568e+04
+Acrylonitrile-4,4'-Methylenebis(2-chloroaniline)                           2.315653e+05
+Aniline-4,4'-Methylenebis(2-chloroaniline)                                 3.014789e+05
+Arsenic-4,4'-Methylenebis(2-chloroaniline)                                 5.558259e+06
+Barium-4,4'-Methylenebis(2-chloroaniline)                                  3.902854e+04
+Benzene-4,4'-Methylenebis(2-chloroaniline)                                -9.460100e+04
+Bromoform-4,4'-Methylenebis(2-chloroaniline)                               2.122641e+04
+Cadmium-4,4'-Methylenebis(2-chloroaniline)                                -4.178925e+04
+Chromium-4,4'-Methylenebis(2-chloroaniline)                               -1.183815e+05
+Cobalt-4,4'-Methylenebis(2-chloroaniline)                                 -1.132346e+05
+Creosote-4,4'-Methylenebis(2-chloroaniline)                                3.951227e+04
+Cyanide compounds-4,4'-Methylenebis(2-chloroaniline)                       1.939339e+05
+Decabromodiphenyl oxide-4,4'-Methylenebis(2-chloroaniline)                -2.289704e+04
+Ethylbenzene-4,4'-Methylenebis(2-chloroaniline)                           -8.676131e+04
+Hexachloro-1,3-butadiene-4,4'-Methylenebis(2-chloroaniline)               -1.431703e+05
+Hydrogen fluoride-4,4'-Methylenebis(2-chloroaniline)                       8.210018e+04
+Lead-4,4'-Methylenebis(2-chloroaniline)                                    4.883707e+05
+Maleic anhydride-4,4'-Methylenebis(2-chloroaniline)                       -4.191507e+04
+Molybdenum trioxide-4,4'-Methylenebis(2-chloroaniline)                    -1.144548e+05
+N-Nitrosodiphenylamine-4,4'-Methylenebis(2-chloroaniline)                 -1.662225e+05
+Naphthalene-4,4'-Methylenebis(2-chloroaniline)                            -9.980557e+04
+Nickel-4,4'-Methylenebis(2-chloroaniline)                                 -9.517427e+04
+Nonylphenol-4,4'-Methylenebis(2-chloroaniline)                            -1.855811e+04
+Styrene-4,4'-Methylenebis(2-chloroaniline)                                 1.989834e+05
+Vinyl chloride-4,4'-Methylenebis(2-chloroaniline)                         -1.004673e+04
+Xylene-4,4'-Methylenebis(2-chloroaniline)                                 -1.064880e+05
+Acrylonitrile-Acetaldehyde                                                 1.764396e+05
+Aniline-Acetaldehyde                                                       2.463533e+05
+Arsenic-Acetaldehyde                                                       5.503134e+06
+Barium-Acetaldehyde                                                       -1.609714e+04
+Benzene-Acetaldehyde                                                      -1.497267e+05
+Bromoform-Acetaldehyde                                                    -3.389926e+04
+Cadmium-Acetaldehyde                                                      -9.691493e+04
+Chromium-Acetaldehyde                                                     -1.735072e+05
+Cobalt-Acetaldehyde                                                       -1.683603e+05
+Creosote-Acetaldehyde                                                     -1.561341e+04
+Cyanide compounds-Acetaldehyde                                             1.388082e+05
+Decabromodiphenyl oxide-Acetaldehyde                                      -7.802272e+04
+Ethylbenzene-Acetaldehyde                                                 -1.418870e+05
+Hexachloro-1,3-butadiene-Acetaldehyde                                     -1.982959e+05
+Hydrogen fluoride-Acetaldehyde                                             2.697451e+04
+Lead-Acetaldehyde                                                          4.332450e+05
+Maleic anhydride-Acetaldehyde                                             -9.704074e+04
+Molybdenum trioxide-Acetaldehyde                                          -1.695804e+05
+N-Nitrosodiphenylamine-Acetaldehyde                                       -2.213482e+05
+Naphthalene-Acetaldehyde                                                  -1.549313e+05
+Nickel-Acetaldehyde                                                       -1.502999e+05
+Nonylphenol-Acetaldehyde                                                  -7.368379e+04
+Styrene-Acetaldehyde                                                       1.438577e+05
+Vinyl chloride-Acetaldehyde                                               -6.517241e+04
+Xylene-Acetaldehyde                                                       -1.616136e+05
+Aniline-Acrylonitrile                                                      6.991366e+04
+Arsenic-Acrylonitrile                                                      5.326694e+06
+Barium-Acrylonitrile                                                      -1.925368e+05
+Benzene-Acrylonitrile                                                     -3.261663e+05
+Bromoform-Acrylonitrile                                                   -2.103389e+05
+Cadmium-Acrylonitrile                                                     -2.733545e+05
+Chromium-Acrylonitrile                                                    -3.499468e+05
+Cobalt-Acrylonitrile                                                      -3.447999e+05
+Creosote-Acrylonitrile                                                    -1.920530e+05
+Cyanide compounds-Acrylonitrile                                           -3.763138e+04
+Decabromodiphenyl oxide-Acrylonitrile                                     -2.544623e+05
+Ethylbenzene-Acrylonitrile                                                -3.183266e+05
+Hexachloro-1,3-butadiene-Acrylonitrile                                    -3.747355e+05
+Hydrogen fluoride-Acrylonitrile                                           -1.494651e+05
+Lead-Acrylonitrile                                                         2.568054e+05
+Maleic anhydride-Acrylonitrile                                            -2.734804e+05
+Molybdenum trioxide-Acrylonitrile                                         -3.460201e+05
+N-Nitrosodiphenylamine-Acrylonitrile                                      -3.977878e+05
+Naphthalene-Acrylonitrile                                                 -3.313709e+05
+Nickel-Acrylonitrile                                                      -3.267396e+05
+Nonylphenol-Acrylonitrile                                                 -2.501234e+05
+Styrene-Acrylonitrile                                                     -3.258191e+04
+Vinyl chloride-Acrylonitrile                                              -2.416120e+05
+Xylene-Acrylonitrile                                                      -3.380532e+05
+Arsenic-Aniline                                                            5.256780e+06
+Barium-Aniline                                                            -2.624504e+05
+Benzene-Aniline                                                           -3.960800e+05
+Bromoform-Aniline                                                         -2.802525e+05
+Cadmium-Aniline                                                           -3.432682e+05
+Chromium-Aniline                                                          -4.198605e+05
+Cobalt-Aniline                                                            -4.147135e+05
+Creosote-Aniline                                                          -2.619667e+05
+Cyanide compounds-Aniline                                                 -1.075450e+05
+Decabromodiphenyl oxide-Aniline                                           -3.243760e+05
+Ethylbenzene-Aniline                                                      -3.882403e+05
+Hexachloro-1,3-butadiene-Aniline                                          -4.446492e+05
+Hydrogen fluoride-Aniline                                                 -2.193788e+05
+Lead-Aniline                                                               1.868917e+05
+Maleic anhydride-Aniline                                                  -3.433940e+05
+Molybdenum trioxide-Aniline                                               -4.159337e+05
+N-Nitrosodiphenylamine-Aniline                                            -4.677014e+05
+Naphthalene-Aniline                                                       -4.012845e+05
+Nickel-Aniline                                                            -3.966532e+05
+Nonylphenol-Aniline                                                       -3.200371e+05
+Styrene-Aniline                                                           -1.024956e+05
+Vinyl chloride-Aniline                                                    -3.115257e+05
+Xylene-Aniline                                                            -4.079669e+05
+Barium-Arsenic                                                            -5.519231e+06
+Benzene-Arsenic                                                           -5.652860e+06
+Bromoform-Arsenic                                                         -5.537033e+06
+Cadmium-Arsenic                                                           -5.600049e+06
+Chromium-Arsenic                                                          -5.676641e+06
+Cobalt-Arsenic                                                            -5.671494e+06
+Creosote-Arsenic                                                          -5.518747e+06
+Cyanide compounds-Arsenic                                                 -5.364325e+06
+Decabromodiphenyl oxide-Arsenic                                           -5.581156e+06
+Ethylbenzene-Arsenic                                                      -5.645021e+06
+Hexachloro-1,3-butadiene-Arsenic                                          -5.701430e+06
+Hydrogen fluoride-Arsenic                                                 -5.476159e+06
+Lead-Arsenic                                                              -5.069889e+06
+Maleic anhydride-Arsenic                                                  -5.600174e+06
+Molybdenum trioxide-Arsenic                                               -5.672714e+06
+N-Nitrosodiphenylamine-Arsenic                                            -5.724482e+06
+Naphthalene-Arsenic                                                       -5.658065e+06
+Nickel-Arsenic                                                            -5.653434e+06
+Nonylphenol-Arsenic                                                       -5.576817e+06
+Styrene-Arsenic                                                           -5.359276e+06
+Vinyl chloride-Arsenic                                                    -5.568306e+06
+Xylene-Arsenic                                                            -5.664747e+06
+Benzene-Barium                                                            -1.336295e+05
+Bromoform-Barium                                                          -1.780212e+04
+Cadmium-Barium                                                            -8.081779e+04
+Chromium-Barium                                                           -1.574101e+05
+Cobalt-Barium                                                             -1.522631e+05
+Creosote-Barium                                                            4.837350e+02
+Cyanide compounds-Barium                                                   1.549054e+05
+Decabromodiphenyl oxide-Barium                                            -6.192558e+04
+Ethylbenzene-Barium                                                       -1.257898e+05
+Hexachloro-1,3-butadiene-Barium                                           -1.821988e+05
+Hydrogen fluoride-Barium                                                   4.307165e+04
+Lead-Barium                                                                4.493422e+05
+Maleic anhydride-Barium                                                   -8.094360e+04
+Molybdenum trioxide-Barium                                                -1.534833e+05
+N-Nitrosodiphenylamine-Barium                                             -2.052510e+05
+Naphthalene-Barium                                                        -1.388341e+05
+Nickel-Barium                                                             -1.342028e+05
+Nonylphenol-Barium                                                        -5.758665e+04
+Styrene-Barium                                                             1.599548e+05
+Vinyl chloride-Barium                                                     -4.907527e+04
+Xylene-Barium                                                             -1.455165e+05
+Bromoform-Benzene                                                          1.158274e+05
+Cadmium-Benzene                                                            5.281175e+04
+Chromium-Benzene                                                          -2.378055e+04
+Cobalt-Benzene                                                            -1.863358e+04
+Creosote-Benzene                                                           1.341133e+05
+Cyanide compounds-Benzene                                                  2.885349e+05
+Decabromodiphenyl oxide-Benzene                                            7.170396e+04
+Ethylbenzene-Benzene                                                       7.839697e+03
+Hexachloro-1,3-butadiene-Benzene                                          -4.856926e+04
+Hydrogen fluoride-Benzene                                                  1.767012e+05
+Lead-Benzene                                                               5.829717e+05
+Maleic anhydride-Benzene                                                   5.268594e+04
+Molybdenum trioxide-Benzene                                               -1.985376e+04
+N-Nitrosodiphenylamine-Benzene                                            -7.162148e+04
+Naphthalene-Benzene                                                       -5.204570e+03
+Nickel-Benzene                                                            -5.732618e+02
+Nonylphenol-Benzene                                                        7.604289e+04
+Styrene-Benzene                                                            2.935844e+05
+Vinyl chloride-Benzene                                                     8.455427e+04
+Xylene-Benzene                                                            -1.188695e+04
+Cadmium-Bromoform                                                         -6.301567e+04
+Chromium-Bromoform                                                        -1.396080e+05
+Cobalt-Bromoform                                                          -1.344610e+05
+Creosote-Bromoform                                                         1.828586e+04
+Cyanide compounds-Bromoform                                                1.727075e+05
+                                                                                  lwr
+3,3'-Dichlorobenzidine dihydrochloride-3,3'-Dichlorobenzidine             -79230093.0
+4,4'-Isopropylidenediphenol-3,3'-Dichlorobenzidine                        -56443595.5
+4,4'-Methylenebis(2-chloroaniline)-3,3'-Dichlorobenzidine                 -58390193.7
+Acetaldehyde-3,3'-Dichlorobenzidine                                       -56092752.6
+Acrylonitrile-3,3'-Dichlorobenzidine                                      -56131228.7
+Aniline-3,3'-Dichlorobenzidine                                            -56386836.9
+Arsenic-3,3'-Dichlorobenzidine                                            -50640754.5
+Barium-3,3'-Dichlorobenzidine                                             -56613742.1
+Benzene-3,3'-Dichlorobenzidine                                            -56213132.0
+Bromoform-3,3'-Dichlorobenzidine                                          -68715690.0
+Cadmium-3,3'-Dichlorobenzidine                                            -56385352.5
+Chromium-3,3'-Dichlorobenzidine                                           -56224758.6
+Cobalt-3,3'-Dichlorobenzidine                                             -56252294.2
+Creosote-3,3'-Dichlorobenzidine                                           -56471741.5
+Cyanide compounds-3,3'-Dichlorobenzidine                                  -56066220.1
+Decabromodiphenyl oxide-3,3'-Dichlorobenzidine                            -60000271.6
+Ethylbenzene-3,3'-Dichlorobenzidine                                       -56197835.9
+Hexachloro-1,3-butadiene-3,3'-Dichlorobenzidine                           -58081184.5
+Hydrogen fluoride-3,3'-Dichlorobenzidine                                  -56049650.3
+Lead-3,3'-Dichlorobenzidine                                               -55608715.8
+Maleic anhydride-3,3'-Dichlorobenzidine                                   -56332627.6
+Molybdenum trioxide-3,3'-Dichlorobenzidine                                -56420120.0
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine                             -60766862.9
+Naphthalene-3,3'-Dichlorobenzidine                                        -56213948.0
+Nickel-3,3'-Dichlorobenzidine                                             -56197068.1
+Nonylphenol-3,3'-Dichlorobenzidine                                        -56227163.3
+Styrene-3,3'-Dichlorobenzidine                                            -55915063.8
+Vinyl chloride-3,3'-Dichlorobenzidine                                     -56711235.8
+Xylene-3,3'-Dichlorobenzidine                                             -56300185.1
+4,4'-Isopropylidenediphenol-3,3'-Dichlorobenzidine dihydrochloride        -56775933.5
+4,4'-Methylenebis(2-chloroaniline)-3,3'-Dichlorobenzidine dihydrochloride -58722531.7
+Acetaldehyde-3,3'-Dichlorobenzidine dihydrochloride                       -56425090.5
+Acrylonitrile-3,3'-Dichlorobenzidine dihydrochloride                      -56463566.7
+Aniline-3,3'-Dichlorobenzidine dihydrochloride                            -56719174.8
+Arsenic-3,3'-Dichlorobenzidine dihydrochloride                            -50973092.5
+Barium-3,3'-Dichlorobenzidine dihydrochloride                             -56946080.1
+Benzene-3,3'-Dichlorobenzidine dihydrochloride                            -56545470.0
+Bromoform-3,3'-Dichlorobenzidine dihydrochloride                          -69048028.0
+Cadmium-3,3'-Dichlorobenzidine dihydrochloride                            -56717690.4
+Chromium-3,3'-Dichlorobenzidine dihydrochloride                           -56557096.6
+Cobalt-3,3'-Dichlorobenzidine dihydrochloride                             -56584632.2
+Creosote-3,3'-Dichlorobenzidine dihydrochloride                           -56804079.5
+Cyanide compounds-3,3'-Dichlorobenzidine dihydrochloride                  -56398558.0
+Decabromodiphenyl oxide-3,3'-Dichlorobenzidine dihydrochloride            -60332609.6
+Ethylbenzene-3,3'-Dichlorobenzidine dihydrochloride                       -56530173.9
+Hexachloro-1,3-butadiene-3,3'-Dichlorobenzidine dihydrochloride           -58413522.5
+Hydrogen fluoride-3,3'-Dichlorobenzidine dihydrochloride                  -56381988.3
+Lead-3,3'-Dichlorobenzidine dihydrochloride                               -55941053.8
+Maleic anhydride-3,3'-Dichlorobenzidine dihydrochloride                   -56664965.5
+Molybdenum trioxide-3,3'-Dichlorobenzidine dihydrochloride                -56752457.9
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine dihydrochloride             -61099200.9
+Naphthalene-3,3'-Dichlorobenzidine dihydrochloride                        -56546285.9
+Nickel-3,3'-Dichlorobenzidine dihydrochloride                             -56529406.0
+Nonylphenol-3,3'-Dichlorobenzidine dihydrochloride                        -56559501.2
+Styrene-3,3'-Dichlorobenzidine dihydrochloride                            -56247401.7
+Vinyl chloride-3,3'-Dichlorobenzidine dihydrochloride                     -57043573.7
+Xylene-3,3'-Dichlorobenzidine dihydrochloride                             -56632523.0
+4,4'-Methylenebis(2-chloroaniline)-4,4'-Isopropylidenediphenol            -17167397.8
+Acetaldehyde-4,4'-Isopropylidenediphenol                                   -6143617.0
+Acrylonitrile-4,4'-Isopropylidenediphenol                                  -7672676.6
+Aniline-4,4'-Isopropylidenediphenol                                        -9655736.8
+Arsenic-4,4'-Isopropylidenediphenol                                        -1085114.8
+Barium-4,4'-Isopropylidenediphenol                                         -9714401.4
+Benzene-4,4'-Isopropylidenediphenol                                        -6023467.3
+Bromoform-4,4'-Isopropylidenediphenol                                     -40113866.8
+Cadmium-4,4'-Isopropylidenediphenol                                        -7808338.7
+Chromium-4,4'-Isopropylidenediphenol                                       -5931892.6
+Cobalt-4,4'-Isopropylidenediphenol                                         -6232106.3
+Creosote-4,4'-Isopropylidenediphenol                                       -8858108.7
+Cyanide compounds-4,4'-Isopropylidenediphenol                              -6945574.8
+Decabromodiphenyl oxide-4,4'-Isopropylidenediphenol                       -21990086.4
+Ethylbenzene-4,4'-Isopropylidenediphenol                                   -5945121.3
+Hexachloro-1,3-butadiene-4,4'-Isopropylidenediphenol                      -15704518.1
+Hydrogen fluoride-4,4'-Isopropylidenediphenol                              -5969790.4
+Lead-4,4'-Isopropylidenediphenol                                           -5235427.0
+Maleic anhydride-4,4'-Isopropylidenediphenol                               -7417184.9
+Molybdenum trioxide-4,4'-Isopropylidenediphenol                            -7602447.3
+N-Nitrosodiphenylamine-4,4'-Isopropylidenediphenol                        -23782407.3
+Naphthalene-4,4'-Isopropylidenediphenol                                    -5987274.1
+Nickel-4,4'-Isopropylidenediphenol                                         -5865563.6
+Nonylphenol-4,4'-Isopropylidenediphenol                                    -6742127.4
+Styrene-4,4'-Isopropylidenediphenol                                        -5687583.6
+Vinyl chloride-4,4'-Isopropylidenediphenol                                -10040082.0
+Xylene-4,4'-Isopropylidenediphenol                                         -6704997.7
+Acetaldehyde-4,4'-Methylenebis(2-chloroaniline)                           -16374704.9
+Acrylonitrile-4,4'-Methylenebis(2-chloroaniline)                          -16920433.9
+Aniline-4,4'-Methylenebis(2-chloroaniline)                                -17894670.7
+Arsenic-4,4'-Methylenebis(2-chloroaniline)                                -11045994.8
+Barium-4,4'-Methylenebis(2-chloroaniline)                                 -18045753.0
+Benzene-4,4'-Methylenebis(2-chloroaniline)                                -16423559.1
+Bromoform-4,4'-Methylenebis(2-chloroaniline)                              -42947397.3
+Cadmium-4,4'-Methylenebis(2-chloroaniline)                                -17130301.5
+Chromium-4,4'-Methylenebis(2-chloroaniline)                               -16405396.6
+Cobalt-4,4'-Methylenebis(2-chloroaniline)                                 -16512813.5
+Creosote-4,4'-Methylenebis(2-chloroaniline)                               -17595613.8
+Cyanide compounds-4,4'-Methylenebis(2-chloroaniline)                      -16616697.8
+Decabromodiphenyl oxide-4,4'-Methylenebis(2-chloroaniline)                -26779452.5
+Ethylbenzene-4,4'-Methylenebis(2-chloroaniline)                           -16389999.2
+Hexachloro-1,3-butadiene-4,4'-Methylenebis(2-chloroaniline)               -21932239.3
+Hydrogen fluoride-4,4'-Methylenebis(2-chloroaniline)                      -16292366.5
+Lead-4,4'-Methylenebis(2-chloroaniline)                                   -15766515.8
+Maleic anhydride-4,4'-Methylenebis(2-chloroaniline)                       -16954835.7
+Molybdenum trioxide-4,4'-Methylenebis(2-chloroaniline)                    -17077222.0
+N-Nitrosodiphenylamine-4,4'-Methylenebis(2-chloroaniline)                 -28295789.7
+Naphthalene-4,4'-Methylenebis(2-chloroaniline)                            -16413630.0
+Nickel-4,4'-Methylenebis(2-chloroaniline)                                 -16366692.6
+Nonylphenol-4,4'-Methylenebis(2-chloroaniline)                            -16655342.1
+Styrene-4,4'-Methylenebis(2-chloroaniline)                                -16114512.5
+Vinyl chloride-4,4'-Methylenebis(2-chloroaniline)                         -18246379.3
+Xylene-4,4'-Methylenebis(2-chloroaniline)                                 -16692684.8
+Acrylonitrile-Acetaldehyde                                                 -5874624.5
+Aniline-Acetaldehyde                                                       -8328269.9
+Arsenic-Acetaldehyde                                                        1245722.1
+Barium-Acetaldehyde                                                        -8351780.7
+Benzene-Acetaldehyde                                                       -3159572.4
+Bromoform-Acetaldehyde                                                    -39892736.7
+Cadmium-Acetaldehyde                                                       -5965607.4
+Chromium-Acetaldehyde                                                      -2946801.1
+Cobalt-Acetaldehyde                                                        -3540375.9
+Creosote-Acetaldehyde                                                      -7324646.8
+Cyanide compounds-Acetaldehyde                                             -4863355.2
+Decabromodiphenyl oxide-Acetaldehyde                                      -21486842.4
+Ethylbenzene-Acetaldehyde                                                  -3008917.8
+Hexachloro-1,3-butadiene-Acetaldehyde                                     -14935589.8
+Hydrogen fluoride-Acetaldehyde                                             -3220710.6
+Lead-Acetaldehyde                                                          -2144667.8
+Maleic anhydride-Acetaldehyde                                              -5432880.4
+Molybdenum trioxide-Acetaldehyde                                           -5661371.9
+N-Nitrosodiphenylamine-Acetaldehyde                                       -23323228.0
+Naphthalene-Acetaldehyde                                                   -3081562.1
+Nickel-Acetaldehyde                                                        -2831084.8
+Nonylphenol-Acetaldehyde                                                   -4456249.2
+Styrene-Acetaldehyde                                                       -2780941.1
+Vinyl chloride-Acetaldehyde                                                -8724740.9
+Xylene-Acetaldehyde                                                        -4348047.2
+Aniline-Acrylonitrile                                                      -9818256.3
+Arsenic-Acrylonitrile                                                      -1183090.6
+Barium-Acrylonitrile                                                       -9874239.3
+Benzene-Acrylonitrile                                                      -6097727.1
+Bromoform-Acrylonitrile                                                   -40372244.5
+Cadmium-Acrylonitrile                                                      -7934509.4
+Chromium-Acrylonitrile                                                     -6001752.0
+Cobalt-Acrylonitrile                                                       -6313236.2
+Creosote-Acrylonitrile                                                     -9005322.1
+Cyanide compounds-Acrylonitrile                                            -7057131.5
+Decabromodiphenyl oxide-Acrylonitrile                                     -22222377.7
+Ethylbenzene-Acrylonitrile                                                 -6016713.1
+Hexachloro-1,3-butadiene-Acrylonitrile                                    -15913061.5
+Hydrogen fluoride-Acrylonitrile                                            -6048549.9
+Lead-Acrylonitrile                                                         -5301735.5
+Maleic anhydride-Acrylonitrile                                             -7534535.9
+Molybdenum trioxide-Acrylonitrile                                          -7722436.3
+N-Nitrosodiphenylamine-Acrylonitrile                                      -24018723.3
+Naphthalene-Acrylonitrile                                                  -6059975.5
+Nickel-Acrylonitrile                                                       -5933730.7
+Nonylphenol-Acrylonitrile                                                  -6842438.8
+Styrene-Acrylonitrile                                                      -5760250.8
+Vinyl chloride-Acrylonitrile                                              -10203532.9
+Xylene-Acrylonitrile                                                       -6801641.2
+Arsenic-Aniline                                                            -3647492.8
+Barium-Aniline                                                            -11692417.6
+Benzene-Aniline                                                            -8775799.5
+Bromoform-Aniline                                                         -40899059.1
+Cadmium-Aniline                                                           -10120899.8
+Chromium-Aniline                                                           -8717552.2
+Cobalt-Aniline                                                             -8931227.9
+Creosote-Aniline                                                          -10966288.1
+Cyanide compounds-Aniline                                                  -9390980.2
+Decabromodiphenyl oxide-Aniline                                           -23116876.7
+Ethylbenzene-Aniline                                                       -8717729.7
+Hexachloro-1,3-butadiene-Aniline                                          -17128424.5
+Hydrogen fluoride-Aniline                                                  -8687435.6
+Lead-Aniline                                                               -8047558.0
+Maleic anhydride-Aniline                                                   -9810796.6
+Molybdenum trioxide-Aniline                                                -9972099.3
+N-Nitrosodiphenylamine-Aniline                                            -24857399.7
+Naphthalene-Aniline                                                        -8751475.9
+Nickel-Aniline                                                             -8663885.8
+Nonylphenol-Aniline                                                        -9284824.1
+Styrene-Aniline                                                            -8452045.0
+Vinyl chloride-Aniline                                                    -11979801.2
+Xylene-Aniline                                                             -9278522.4
+Barium-Arsenic                                                            -14193649.6
+Benzene-Arsenic                                                            -9502677.4
+Bromoform-Arsenic                                                         -45468084.0
+Cadmium-Arsenic                                                           -11940669.3
+Chromium-Arsenic                                                           -9344484.8
+Cobalt-Arsenic                                                             -9810625.4
+Creosote-Arsenic                                                          -13211853.7
+Cyanide compounds-Arsenic                                                 -10912618.8
+Decabromodiphenyl oxide-Arsenic                                           -27124124.6
+Ethylbenzene-Arsenic                                                       -9384243.3
+Hexachloro-1,3-butadiene-Arsenic                                          -20632931.6
+Hydrogen fluoride-Arsenic                                                  -9514646.3
+Lead-Arsenic                                                               -8592324.5
+Maleic anhydride-Arsenic                                                  -11451080.7
+Molybdenum trioxide-Arsenic                                               -11666185.0
+N-Nitrosodiphenylamine-Arsenic                                            -28950733.6
+Naphthalene-Arsenic                                                        -9443178.9
+Nickel-Arsenic                                                             -9251839.8
+Nonylphenol-Arsenic                                                       -10573696.4
+Styrene-Arsenic                                                            -9142973.6
+Vinyl chloride-Arsenic                                                    -14554409.0
+Xylene-Arsenic                                                            -10490526.6
+Benzene-Barium                                                             -8268686.9
+Bromoform-Barium                                                          -40586840.9
+Cadmium-Barium                                                             -9649597.1
+Chromium-Barium                                                            -8207947.1
+Cobalt-Barium                                                              -8428160.5
+Creosote-Barium                                                           -10513409.8
+Cyanide compounds-Barium                                                   -8908296.4
+Decabromodiphenyl oxide-Barium                                            -22765615.8
+Ethylbenzene-Barium                                                        -8209096.9
+Hexachloro-1,3-butadiene-Barium                                           -16744439.5
+Hydrogen fluoride-Barium                                                   -8182950.8
+Lead-Barium                                                                -7535995.8
+Maleic anhydride-Barium                                                    -9332493.3
+Molybdenum trioxide-Barium                                                 -9495847.0
+N-Nitrosodiphenylamine-Barium                                             -24511975.2
+Naphthalene-Barium                                                         -8243472.0
+Nickel-Barium                                                              -8153342.1
+Nonylphenol-Barium                                                         -8794111.5
+Styrene-Barium                                                             -7944021.7
+Vinyl chloride-Barium                                                     -11542904.6
+Xylene-Barium                                                              -8785320.5
+Bromoform-Benzene                                                         -39701536.4
+Cadmium-Benzene                                                            -5527250.0
+Chromium-Benzene                                                           -2118224.8
+Cobalt-Benzene                                                             -2858708.8
+Creosote-Benzene                                                           -6945258.7
+Cyanide compounds-Benzene                                                  -4371634.3
+Decabromodiphenyl oxide-Benzene                                           -21259800.9
+Ethylbenzene-Benzene                                                       -2209231.3
+Hexachloro-1,3-butadiene-Benzene                                          -14673321.2
+Hydrogen fluoride-Benzene                                                  -2514580.4
+Lead-Benzene                                                               -1244915.7
+Maleic anhydride-Benzene                                                   -4963958.6
+Molybdenum trioxide-Benzene                                                -5202064.8
+N-Nitrosodiphenylamine-Benzene                                            -23101870.9
+Naphthalene-Benzene                                                        -2298827.4
+Nickel-Benzene                                                             -1970889.3
+Nonylphenol-Benzene                                                        -3911740.6
+Styrene-Benzene                                                            -1997700.4
+Vinyl chloride-Benzene                                                     -8382066.3
+Xylene-Benzene                                                             -3783062.4
+Cadmium-Bromoform                                                         -40197848.9
+Chromium-Bromoform                                                        -39939789.5
+Cobalt-Bromoform                                                          -39980838.2
+Creosote-Bromoform                                                        -40352313.1
+Cyanide compounds-Bromoform                                               -39844600.3
+                                                                                 upr
+3,3'-Dichlorobenzidine dihydrochloride-3,3'-Dichlorobenzidine             79894768.9
+4,4'-Isopropylidenediphenol-3,3'-Dichlorobenzidine                        56659187.8
+4,4'-Methylenebis(2-chloroaniline)-3,3'-Dichlorobenzidine                 58722533.6
+Acetaldehyde-3,3'-Dichlorobenzidine                                       56535343.9
+Acrylonitrile-3,3'-Dichlorobenzidine                                      56926699.2
+Aniline-3,3'-Dichlorobenzidine                                            57322134.7
+Arsenic-3,3'-Dichlorobenzidine                                            62089613.1
+Barium-3,3'-Dichlorobenzidine                                             57024139.1
+Benzene-3,3'-Dichlorobenzidine                                            56356269.9
+Bromoform-3,3'-Dichlorobenzidine                                          69090482.8
+Cadmium-3,3'-Dichlorobenzidine                                            56634113.9
+Chromium-3,3'-Dichlorobenzidine                                           56320335.5
+Cobalt-3,3'-Dichlorobenzidine                                             56358165.0
+Creosote-3,3'-Dichlorobenzidine                                           56883106.0
+Cyanide compounds-3,3'-Dichlorobenzidine                                  56786427.8
+Decabromodiphenyl oxide-3,3'-Dichlorobenzidine                            60286817.5
+Ethylbenzene-3,3'-Dichlorobenzidine                                       56356653.2
+Hexachloro-1,3-butadiene-3,3'-Dichlorobenzidine                           58127183.9
+Hydrogen fluoride-3,3'-Dichlorobenzidine                                  56546190.6
+Lead-3,3'-Dichlorobenzidine                                               56917797.1
+Maleic anhydride-3,3'-Dichlorobenzidine                                   56581137.4
+Molybdenum trioxide-3,3'-Dichlorobenzidine                                56523550.4
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine                             60766757.9
+Naphthalene-3,3'-Dichlorobenzidine                                        56346676.8
+Nickel-3,3'-Dichlorobenzidine                                             56339059.5
+Nonylphenol-3,3'-Dichlorobenzidine                                        56522387.0
+Styrene-3,3'-Dichlorobenzidine                                            56645370.5
+Vinyl chloride-3,3'-Dichlorobenzidine                                     57023482.2
+Xylene-3,3'-Dichlorobenzidine                                             56419549.1
+4,4'-Isopropylidenediphenol-3,3'-Dichlorobenzidine dihydrochloride        56326849.9
+4,4'-Methylenebis(2-chloroaniline)-3,3'-Dichlorobenzidine dihydrochloride 58390195.7
+Acetaldehyde-3,3'-Dichlorobenzidine dihydrochloride                       56203005.9
+Acrylonitrile-3,3'-Dichlorobenzidine dihydrochloride                      56594361.3
+Aniline-3,3'-Dichlorobenzidine dihydrochloride                            56989796.8
+Arsenic-3,3'-Dichlorobenzidine dihydrochloride                            61757275.2
+Barium-3,3'-Dichlorobenzidine dihydrochloride                             56691801.2
+Benzene-3,3'-Dichlorobenzidine dihydrochloride                            56023932.0
+Bromoform-3,3'-Dichlorobenzidine dihydrochloride                          68758144.8
+Cadmium-3,3'-Dichlorobenzidine dihydrochloride                            56301775.9
+Chromium-3,3'-Dichlorobenzidine dihydrochloride                           55987997.5
+Cobalt-3,3'-Dichlorobenzidine dihydrochloride                             56025827.1
+Creosote-3,3'-Dichlorobenzidine dihydrochloride                           56550768.0
+Cyanide compounds-3,3'-Dichlorobenzidine dihydrochloride                  56454089.9
+Decabromodiphenyl oxide-3,3'-Dichlorobenzidine dihydrochloride            59954479.6
+Ethylbenzene-3,3'-Dichlorobenzidine dihydrochloride                       56024315.3
+Hexachloro-1,3-butadiene-3,3'-Dichlorobenzidine dihydrochloride           57794846.0
+Hydrogen fluoride-3,3'-Dichlorobenzidine dihydrochloride                  56213852.7
+Lead-3,3'-Dichlorobenzidine dihydrochloride                               56585459.2
+Maleic anhydride-3,3'-Dichlorobenzidine dihydrochloride                   56248799.4
+Molybdenum trioxide-3,3'-Dichlorobenzidine dihydrochloride                56191212.4
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine dihydrochloride             60434419.9
+Naphthalene-3,3'-Dichlorobenzidine dihydrochloride                        56014338.8
+Nickel-3,3'-Dichlorobenzidine dihydrochloride                             56006721.5
+Nonylphenol-3,3'-Dichlorobenzidine dihydrochloride                        56190049.0
+Styrene-3,3'-Dichlorobenzidine dihydrochloride                            56313032.5
+Vinyl chloride-3,3'-Dichlorobenzidine dihydrochloride                     56691144.3
+Xylene-3,3'-Dichlorobenzidine dihydrochloride                             56087211.2
+4,4'-Methylenebis(2-chloroaniline)-4,4'-Isopropylidenediphenol            17284145.4
+Acetaldehyde-4,4'-Isopropylidenediphenol                                   6370616.0
+Acrylonitrile-4,4'-Isopropylidenediphenol                                  8252554.8
+Aniline-4,4'-Isopropylidenediphenol                                       10375442.3
+Arsenic-4,4'-Isopropylidenediphenol                                       12318381.2
+Barium-4,4'-Isopropylidenediphenol                                         9909206.2
+Benzene-4,4'-Isopropylidenediphenol                                        5951012.9
+Bromoform-4,4'-Isopropylidenediphenol                                     40273067.3
+Cadmium-4,4'-Isopropylidenediphenol                                        7841507.8
+Chromium-4,4'-Isopropylidenediphenol                                       5811877.1
+Cobalt-4,4'-Isopropylidenediphenol                                         6122384.8
+Creosote-4,4'-Isopropylidenediphenol                                       9053880.8
+Cyanide compounds-4,4'-Isopropylidenediphenol                              7450190.2
+Decabromodiphenyl oxide-4,4'-Isopropylidenediphenol                       22061040.0
+Ethylbenzene-4,4'-Isopropylidenediphenol                                   5888346.3
+Hexachloro-1,3-butadiene-4,4'-Isopropylidenediphenol                      15534925.2
+Hydrogen fluoride-4,4'-Isopropylidenediphenol                              6250738.4
+Lead-4,4'-Isopropylidenediphenol                                           6328916.0
+Maleic anhydride-4,4'-Isopropylidenediphenol                               7450102.4
+Molybdenum trioxide-4,4'-Isopropylidenediphenol                            7490285.4
+N-Nitrosodiphenylamine-4,4'-Isopropylidenediphenol                        23566709.9
+Naphthalene-4,4'-Isopropylidenediphenol                                    5904410.6
+Nickel-4,4'-Isopropylidenediphenol                                         5791962.7
+Nonylphenol-4,4'-Isopropylidenediphenol                                    6821758.8
+Styrene-4,4'-Isopropylidenediphenol                                        6202298.0
+Vinyl chloride-4,4'-Isopropylidenediphenol                                10136736.2
+Xylene-4,4'-Isopropylidenediphenol                                         6608769.5
+Acetaldehyde-4,4'-Methylenebis(2-chloroaniline)                           16484956.3
+Acrylonitrile-4,4'-Methylenebis(2-chloroaniline)                          17383564.5
+Aniline-4,4'-Methylenebis(2-chloroaniline)                                18497628.6
+Arsenic-4,4'-Methylenebis(2-chloroaniline)                                22162513.4
+Barium-4,4'-Methylenebis(2-chloroaniline)                                 18123810.0
+Benzene-4,4'-Methylenebis(2-chloroaniline)                                16234357.1
+Bromoform-4,4'-Methylenebis(2-chloroaniline)                              42989850.1
+Cadmium-4,4'-Methylenebis(2-chloroaniline)                                17046723.0
+Chromium-4,4'-Methylenebis(2-chloroaniline)                               16168633.5
+Cobalt-4,4'-Methylenebis(2-chloroaniline)                                 16286344.4
+Creosote-4,4'-Methylenebis(2-chloroaniline)                               17674638.3
+Cyanide compounds-4,4'-Methylenebis(2-chloroaniline)                      17004565.7
+Decabromodiphenyl oxide-4,4'-Methylenebis(2-chloroaniline)                26733658.5
+Ethylbenzene-4,4'-Methylenebis(2-chloroaniline)                           16216476.6
+Hexachloro-1,3-butadiene-4,4'-Methylenebis(2-chloroaniline)               21645898.8
+Hydrogen fluoride-4,4'-Methylenebis(2-chloroaniline)                      16456566.9
+Lead-4,4'-Methylenebis(2-chloroaniline)                                   16743257.2
+Maleic anhydride-4,4'-Methylenebis(2-chloroaniline)                       16871005.6
+Molybdenum trioxide-4,4'-Methylenebis(2-chloroaniline)                    16848312.5
+N-Nitrosodiphenylamine-4,4'-Methylenebis(2-chloroaniline)                 27963344.7
+Naphthalene-4,4'-Methylenebis(2-chloroaniline)                            16214018.9
+Nickel-4,4'-Methylenebis(2-chloroaniline)                                 16176344.0
+Nonylphenol-4,4'-Methylenebis(2-chloroaniline)                            16618225.8
+Styrene-4,4'-Methylenebis(2-chloroaniline)                                16512479.3
+Vinyl chloride-4,4'-Methylenebis(2-chloroaniline)                         18226285.9
+Xylene-4,4'-Methylenebis(2-chloroaniline)                                 16479708.9
+Acrylonitrile-Acetaldehyde                                                 6227503.7
+Aniline-Acetaldehyde                                                       8820976.4
+Arsenic-Acetaldehyde                                                       9760545.3
+Barium-Acetaldehyde                                                        8319586.5
+Benzene-Acetaldehyde                                                       2860119.1
+Bromoform-Acetaldehyde                                                    39824938.2
+Cadmium-Acetaldehyde                                                       5771777.5
+Chromium-Acetaldehyde                                                      2599786.6
+Cobalt-Acetaldehyde                                                        3203655.4
+Creosote-Acetaldehyde                                                      7293420.0
+Cyanide compounds-Acetaldehyde                                             5140971.7
+Decabromodiphenyl oxide-Acetaldehyde                                      21330797.0
+Ethylbenzene-Acetaldehyde                                                  2725143.9
+Hexachloro-1,3-butadiene-Acetaldehyde                                     14538997.9
+Hydrogen fluoride-Acetaldehyde                                             3274659.6
+Lead-Acetaldehyde                                                          3011157.8
+Maleic anhydride-Acetaldehyde                                              5238798.9
+Molybdenum trioxide-Acetaldehyde                                           5322211.0
+N-Nitrosodiphenylamine-Acetaldehyde                                       22880531.7
+Naphthalene-Acetaldehyde                                                   2771699.6
+Nickel-Acetaldehyde                                                        2530484.9
+Nonylphenol-Acetaldehyde                                                   4308881.6
+Styrene-Acetaldehyde                                                       3068656.5
+Vinyl chloride-Acetaldehyde                                                8594396.0
+Xylene-Acetaldehyde                                                        4024820.0
+Aniline-Acrylonitrile                                                      9958083.6
+Arsenic-Acrylonitrile                                                     11836478.7
+Barium-Acrylonitrile                                                       9489165.8
+Benzene-Acrylonitrile                                                      5445394.5
+Bromoform-Acrylonitrile                                                   39951566.8
+Cadmium-Acrylonitrile                                                      7387800.3
+Chromium-Acrylonitrile                                                     5301858.3
+Cobalt-Acrylonitrile                                                       5623636.5
+Creosote-Acrylonitrile                                                     8621216.1
+Cyanide compounds-Acrylonitrile                                            6981868.8
+Decabromodiphenyl oxide-Acrylonitrile                                     21713453.0
+Ethylbenzene-Acrylonitrile                                                 5380059.9
+Hexachloro-1,3-butadiene-Acrylonitrile                                    15163590.4
+Hydrogen fluoride-Acrylonitrile                                            5749619.7
+Lead-Acrylonitrile                                                         5815346.3
+Maleic anhydride-Acrylonitrile                                             6987575.2
+Molybdenum trioxide-Acrylonitrile                                          7030396.1
+N-Nitrosodiphenylamine-Acrylonitrile                                      23223147.7
+Naphthalene-Acrylonitrile                                                  5397233.7
+Nickel-Acrylonitrile                                                       5280251.6
+Nonylphenol-Acrylonitrile                                                  6342192.0
+Styrene-Acrylonitrile                                                      5695087.0
+Vinyl chloride-Acrylonitrile                                               9720308.9
+Xylene-Acrylonitrile                                                       6125534.7
+Arsenic-Aniline                                                           14161053.6
+Barium-Aniline                                                            11167516.7
+Benzene-Aniline                                                            7983639.6
+Bromoform-Aniline                                                         40338554.1
+Cadmium-Aniline                                                            9434363.4
+Chromium-Aniline                                                           7877831.2
+Cobalt-Aniline                                                             8101800.9
+Creosote-Aniline                                                          10442354.8
+Cyanide compounds-Aniline                                                  9175890.1
+Decabromodiphenyl oxide-Aniline                                           22468124.7
+Ethylbenzene-Aniline                                                       7941249.2
+Hexachloro-1,3-butadiene-Aniline                                          16239126.1
+Hydrogen fluoride-Aniline                                                  8248678.1
+Lead-Aniline                                                               8421341.5
+Maleic anhydride-Aniline                                                   9124008.6
+Molybdenum trioxide-Aniline                                                9140231.9
+N-Nitrosodiphenylamine-Aniline                                            23921996.8
+Naphthalene-Aniline                                                        7948906.8
+Nickel-Aniline                                                             7870579.4
+Nonylphenol-Aniline                                                        8644750.0
+Styrene-Aniline                                                            8247053.9
+Vinyl chloride-Aniline                                                    11356749.9
+Xylene-Aniline                                                             8462588.6
+Barium-Arsenic                                                             3155188.0
+Benzene-Arsenic                                                           -1803043.3
+Bromoform-Arsenic                                                         34394018.2
+Cadmium-Arsenic                                                             740572.1
+Chromium-Arsenic                                                          -2008797.0
+Cobalt-Arsenic                                                            -1532362.5
+Creosote-Arsenic                                                           2174359.5
+Cyanide compounds-Arsenic                                                   183967.9
+Decabromodiphenyl oxide-Arsenic                                           15961811.9
+Ethylbenzene-Arsenic                                                      -1905798.0
+Hexachloro-1,3-butadiene-Arsenic                                           9230072.3
+Hydrogen fluoride-Arsenic                                                 -1437672.0
+Lead-Arsenic                                                              -1547452.8
+Maleic anhydride-Arsenic                                                    250731.9
+Molybdenum trioxide-Arsenic                                                 320756.7
+N-Nitrosodiphenylamine-Arsenic                                            17501769.9
+Naphthalene-Arsenic                                                       -1872951.0
+Nickel-Arsenic                                                            -2055027.4
+Nonylphenol-Arsenic                                                        -579938.5
+Styrene-Arsenic                                                           -1575578.3
+Vinyl chloride-Arsenic                                                     3417796.8
+Xylene-Arsenic                                                             -838968.0
+Benzene-Barium                                                             8001427.9
+Bromoform-Barium                                                          40551236.7
+Cadmium-Barium                                                             9487961.6
+Chromium-Barium                                                            7893126.9
+Cobalt-Barium                                                              8123634.2
+Creosote-Barium                                                           10514377.2
+Cyanide compounds-Barium                                                   9218107.2
+Decabromodiphenyl oxide-Barium                                            22641764.6
+Ethylbenzene-Barium                                                        7957517.2
+Hexachloro-1,3-butadiene-Barium                                           16380041.9
+Hydrogen fluoride-Barium                                                   8269094.1
+Lead-Barium                                                                8434680.1
+Maleic anhydride-Barium                                                    9170606.1
+Molybdenum trioxide-Barium                                                 9188880.4
+N-Nitrosodiphenylamine-Barium                                             24101473.1
+Naphthalene-Barium                                                         7965803.8
+Nickel-Barium                                                              7884936.5
+Nonylphenol-Barium                                                         8678938.2
+Styrene-Barium                                                             8263931.4
+Vinyl chloride-Barium                                                     11444754.1
+Xylene-Barium                                                              8494287.5
+Bromoform-Benzene                                                         39933191.2
+Cadmium-Benzene                                                            5632873.5
+Chromium-Benzene                                                           2070663.7
+Cobalt-Benzene                                                             2821441.6
+Creosote-Benzene                                                           7213485.2
+Cyanide compounds-Benzene                                                  4948704.2
+Decabromodiphenyl oxide-Benzene                                           21403208.8
+Ethylbenzene-Benzene                                                       2224910.7
+Hexachloro-1,3-butadiene-Benzene                                          14576182.7
+Hydrogen fluoride-Benzene                                                  2867982.7
+Lead-Benzene                                                               2410859.0
+Maleic anhydride-Benzene                                                   5069330.5
+Molybdenum trioxide-Benzene                                                5162357.2
+N-Nitrosodiphenylamine-Benzene                                            22958628.0
+Naphthalene-Benzene                                                        2288418.3
+Nickel-Benzene                                                             1969742.8
+Nonylphenol-Benzene                                                        4063826.4
+Styrene-Benzene                                                            2584869.2
+Vinyl chloride-Benzene                                                     8551174.8
+Xylene-Benzene                                                             3759288.5
+Cadmium-Bromoform                                                         40071817.6
+Chromium-Bromoform                                                        39660573.5
+Cobalt-Bromoform                                                          39711916.2
+Creosote-Bromoform                                                        40388884.8
+Cyanide compounds-Bromoform                                               40190015.3
+                                                                              p adj
+3,3'-Dichlorobenzidine dihydrochloride-3,3'-Dichlorobenzidine             1.0000000
+4,4'-Isopropylidenediphenol-3,3'-Dichlorobenzidine                        1.0000000
+4,4'-Methylenebis(2-chloroaniline)-3,3'-Dichlorobenzidine                 1.0000000
+Acetaldehyde-3,3'-Dichlorobenzidine                                       1.0000000
+Acrylonitrile-3,3'-Dichlorobenzidine                                      1.0000000
+Aniline-3,3'-Dichlorobenzidine                                            1.0000000
+Arsenic-3,3'-Dichlorobenzidine                                            1.0000000
+Barium-3,3'-Dichlorobenzidine                                             1.0000000
+Benzene-3,3'-Dichlorobenzidine                                            1.0000000
+Bromoform-3,3'-Dichlorobenzidine                                          1.0000000
+Cadmium-3,3'-Dichlorobenzidine                                            1.0000000
+Chromium-3,3'-Dichlorobenzidine                                           1.0000000
+Cobalt-3,3'-Dichlorobenzidine                                             1.0000000
+Creosote-3,3'-Dichlorobenzidine                                           1.0000000
+Cyanide compounds-3,3'-Dichlorobenzidine                                  1.0000000
+Decabromodiphenyl oxide-3,3'-Dichlorobenzidine                            1.0000000
+Ethylbenzene-3,3'-Dichlorobenzidine                                       1.0000000
+Hexachloro-1,3-butadiene-3,3'-Dichlorobenzidine                           1.0000000
+Hydrogen fluoride-3,3'-Dichlorobenzidine                                  1.0000000
+Lead-3,3'-Dichlorobenzidine                                               1.0000000
+Maleic anhydride-3,3'-Dichlorobenzidine                                   1.0000000
+Molybdenum trioxide-3,3'-Dichlorobenzidine                                1.0000000
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine                             1.0000000
+Naphthalene-3,3'-Dichlorobenzidine                                        1.0000000
+Nickel-3,3'-Dichlorobenzidine                                             1.0000000
+Nonylphenol-3,3'-Dichlorobenzidine                                        1.0000000
+Styrene-3,3'-Dichlorobenzidine                                            1.0000000
+Vinyl chloride-3,3'-Dichlorobenzidine                                     1.0000000
+Xylene-3,3'-Dichlorobenzidine                                             1.0000000
+4,4'-Isopropylidenediphenol-3,3'-Dichlorobenzidine dihydrochloride        1.0000000
+4,4'-Methylenebis(2-chloroaniline)-3,3'-Dichlorobenzidine dihydrochloride 1.0000000
+Acetaldehyde-3,3'-Dichlorobenzidine dihydrochloride                       1.0000000
+Acrylonitrile-3,3'-Dichlorobenzidine dihydrochloride                      1.0000000
+Aniline-3,3'-Dichlorobenzidine dihydrochloride                            1.0000000
+Arsenic-3,3'-Dichlorobenzidine dihydrochloride                            1.0000000
+Barium-3,3'-Dichlorobenzidine dihydrochloride                             1.0000000
+Benzene-3,3'-Dichlorobenzidine dihydrochloride                            1.0000000
+Bromoform-3,3'-Dichlorobenzidine dihydrochloride                          1.0000000
+Cadmium-3,3'-Dichlorobenzidine dihydrochloride                            1.0000000
+Chromium-3,3'-Dichlorobenzidine dihydrochloride                           1.0000000
+Cobalt-3,3'-Dichlorobenzidine dihydrochloride                             1.0000000
+Creosote-3,3'-Dichlorobenzidine dihydrochloride                           1.0000000
+Cyanide compounds-3,3'-Dichlorobenzidine dihydrochloride                  1.0000000
+Decabromodiphenyl oxide-3,3'-Dichlorobenzidine dihydrochloride            1.0000000
+Ethylbenzene-3,3'-Dichlorobenzidine dihydrochloride                       1.0000000
+Hexachloro-1,3-butadiene-3,3'-Dichlorobenzidine dihydrochloride           1.0000000
+Hydrogen fluoride-3,3'-Dichlorobenzidine dihydrochloride                  1.0000000
+Lead-3,3'-Dichlorobenzidine dihydrochloride                               1.0000000
+Maleic anhydride-3,3'-Dichlorobenzidine dihydrochloride                   1.0000000
+Molybdenum trioxide-3,3'-Dichlorobenzidine dihydrochloride                1.0000000
+N-Nitrosodiphenylamine-3,3'-Dichlorobenzidine dihydrochloride             1.0000000
+Naphthalene-3,3'-Dichlorobenzidine dihydrochloride                        1.0000000
+Nickel-3,3'-Dichlorobenzidine dihydrochloride                             1.0000000
+Nonylphenol-3,3'-Dichlorobenzidine dihydrochloride                        1.0000000
+Styrene-3,3'-Dichlorobenzidine dihydrochloride                            1.0000000
+Vinyl chloride-3,3'-Dichlorobenzidine dihydrochloride                     1.0000000
+Xylene-3,3'-Dichlorobenzidine dihydrochloride                             1.0000000
+4,4'-Methylenebis(2-chloroaniline)-4,4'-Isopropylidenediphenol            1.0000000
+Acetaldehyde-4,4'-Isopropylidenediphenol                                  1.0000000
+Acrylonitrile-4,4'-Isopropylidenediphenol                                 1.0000000
+Aniline-4,4'-Isopropylidenediphenol                                       1.0000000
+Arsenic-4,4'-Isopropylidenediphenol                                       0.2841865
+Barium-4,4'-Isopropylidenediphenol                                        1.0000000
+Benzene-4,4'-Isopropylidenediphenol                                       1.0000000
+Bromoform-4,4'-Isopropylidenediphenol                                     1.0000000
+Cadmium-4,4'-Isopropylidenediphenol                                       1.0000000
+Chromium-4,4'-Isopropylidenediphenol                                      1.0000000
+Cobalt-4,4'-Isopropylidenediphenol                                        1.0000000
+Creosote-4,4'-Isopropylidenediphenol                                      1.0000000
+Cyanide compounds-4,4'-Isopropylidenediphenol                             1.0000000
+Decabromodiphenyl oxide-4,4'-Isopropylidenediphenol                       1.0000000
+Ethylbenzene-4,4'-Isopropylidenediphenol                                  1.0000000
+Hexachloro-1,3-butadiene-4,4'-Isopropylidenediphenol                      1.0000000
+Hydrogen fluoride-4,4'-Isopropylidenediphenol                             1.0000000
+Lead-4,4'-Isopropylidenediphenol                                          1.0000000
+Maleic anhydride-4,4'-Isopropylidenediphenol                              1.0000000
+Molybdenum trioxide-4,4'-Isopropylidenediphenol                           1.0000000
+N-Nitrosodiphenylamine-4,4'-Isopropylidenediphenol                        1.0000000
+Naphthalene-4,4'-Isopropylidenediphenol                                   1.0000000
+Nickel-4,4'-Isopropylidenediphenol                                        1.0000000
+Nonylphenol-4,4'-Isopropylidenediphenol                                   1.0000000
+Styrene-4,4'-Isopropylidenediphenol                                       1.0000000
+Vinyl chloride-4,4'-Isopropylidenediphenol                                1.0000000
+Xylene-4,4'-Isopropylidenediphenol                                        1.0000000
+Acetaldehyde-4,4'-Methylenebis(2-chloroaniline)                           1.0000000
+Acrylonitrile-4,4'-Methylenebis(2-chloroaniline)                          1.0000000
+Aniline-4,4'-Methylenebis(2-chloroaniline)                                1.0000000
+Arsenic-4,4'-Methylenebis(2-chloroaniline)                                0.9999948
+Barium-4,4'-Methylenebis(2-chloroaniline)                                 1.0000000
+Benzene-4,4'-Methylenebis(2-chloroaniline)                                1.0000000
+Bromoform-4,4'-Methylenebis(2-chloroaniline)                              1.0000000
+Cadmium-4,4'-Methylenebis(2-chloroaniline)                                1.0000000
+Chromium-4,4'-Methylenebis(2-chloroaniline)                               1.0000000
+Cobalt-4,4'-Methylenebis(2-chloroaniline)                                 1.0000000
+Creosote-4,4'-Methylenebis(2-chloroaniline)                               1.0000000
+Cyanide compounds-4,4'-Methylenebis(2-chloroaniline)                      1.0000000
+Decabromodiphenyl oxide-4,4'-Methylenebis(2-chloroaniline)                1.0000000
+Ethylbenzene-4,4'-Methylenebis(2-chloroaniline)                           1.0000000
+Hexachloro-1,3-butadiene-4,4'-Methylenebis(2-chloroaniline)               1.0000000
+Hydrogen fluoride-4,4'-Methylenebis(2-chloroaniline)                      1.0000000
+Lead-4,4'-Methylenebis(2-chloroaniline)                                   1.0000000
+Maleic anhydride-4,4'-Methylenebis(2-chloroaniline)                       1.0000000
+Molybdenum trioxide-4,4'-Methylenebis(2-chloroaniline)                    1.0000000
+N-Nitrosodiphenylamine-4,4'-Methylenebis(2-chloroaniline)                 1.0000000
+Naphthalene-4,4'-Methylenebis(2-chloroaniline)                            1.0000000
+Nickel-4,4'-Methylenebis(2-chloroaniline)                                 1.0000000
+Nonylphenol-4,4'-Methylenebis(2-chloroaniline)                            1.0000000
+Styrene-4,4'-Methylenebis(2-chloroaniline)                                1.0000000
+Vinyl chloride-4,4'-Methylenebis(2-chloroaniline)                         1.0000000
+Xylene-4,4'-Methylenebis(2-chloroaniline)                                 1.0000000
+Acrylonitrile-Acetaldehyde                                                1.0000000
+Aniline-Acetaldehyde                                                      1.0000000
+Arsenic-Acetaldehyde                                                      0.0005059
+Barium-Acetaldehyde                                                       1.0000000
+Benzene-Acetaldehyde                                                      1.0000000
+Bromoform-Acetaldehyde                                                    1.0000000
+Cadmium-Acetaldehyde                                                      1.0000000
+Chromium-Acetaldehyde                                                     1.0000000
+Cobalt-Acetaldehyde                                                       1.0000000
+Creosote-Acetaldehyde                                                     1.0000000
+Cyanide compounds-Acetaldehyde                                            1.0000000
+Decabromodiphenyl oxide-Acetaldehyde                                      1.0000000
+Ethylbenzene-Acetaldehyde                                                 1.0000000
+Hexachloro-1,3-butadiene-Acetaldehyde                                     1.0000000
+Hydrogen fluoride-Acetaldehyde                                            1.0000000
+Lead-Acetaldehyde                                                         1.0000000
+Maleic anhydride-Acetaldehyde                                             1.0000000
+Molybdenum trioxide-Acetaldehyde                                          1.0000000
+N-Nitrosodiphenylamine-Acetaldehyde                                       1.0000000
+Naphthalene-Acetaldehyde                                                  1.0000000
+Nickel-Acetaldehyde                                                       1.0000000
+Nonylphenol-Acetaldehyde                                                  1.0000000
+Styrene-Acetaldehyde                                                      1.0000000
+Vinyl chloride-Acetaldehyde                                               1.0000000
+Xylene-Acetaldehyde                                                       1.0000000
+Aniline-Acrylonitrile                                                     1.0000000
+Arsenic-Acrylonitrile                                                     0.3346189
+Barium-Acrylonitrile                                                      1.0000000
+Benzene-Acrylonitrile                                                     1.0000000
+Bromoform-Acrylonitrile                                                   1.0000000
+Cadmium-Acrylonitrile                                                     1.0000000
+Chromium-Acrylonitrile                                                    1.0000000
+Cobalt-Acrylonitrile                                                      1.0000000
+Creosote-Acrylonitrile                                                    1.0000000
+Cyanide compounds-Acrylonitrile                                           1.0000000
+Decabromodiphenyl oxide-Acrylonitrile                                     1.0000000
+Ethylbenzene-Acrylonitrile                                                1.0000000
+Hexachloro-1,3-butadiene-Acrylonitrile                                    1.0000000
+Hydrogen fluoride-Acrylonitrile                                           1.0000000
+Lead-Acrylonitrile                                                        1.0000000
+Maleic anhydride-Acrylonitrile                                            1.0000000
+Molybdenum trioxide-Acrylonitrile                                         1.0000000
+N-Nitrosodiphenylamine-Acrylonitrile                                      1.0000000
+Naphthalene-Acrylonitrile                                                 1.0000000
+Nickel-Acrylonitrile                                                      1.0000000
+Nonylphenol-Acrylonitrile                                                 1.0000000
+Styrene-Acrylonitrile                                                     1.0000000
+Vinyl chloride-Acrylonitrile                                              1.0000000
+Xylene-Acrylonitrile                                                      1.0000000
+Arsenic-Aniline                                                           0.9292516
+Barium-Aniline                                                            1.0000000
+Benzene-Aniline                                                           1.0000000
+Bromoform-Aniline                                                         1.0000000
+Cadmium-Aniline                                                           1.0000000
+Chromium-Aniline                                                          1.0000000
+Cobalt-Aniline                                                            1.0000000
+Creosote-Aniline                                                          1.0000000
+Cyanide compounds-Aniline                                                 1.0000000
+Decabromodiphenyl oxide-Aniline                                           1.0000000
+Ethylbenzene-Aniline                                                      1.0000000
+Hexachloro-1,3-butadiene-Aniline                                          1.0000000
+Hydrogen fluoride-Aniline                                                 1.0000000
+Lead-Aniline                                                              1.0000000
+Maleic anhydride-Aniline                                                  1.0000000
+Molybdenum trioxide-Aniline                                               1.0000000
+N-Nitrosodiphenylamine-Aniline                                            1.0000000
+Naphthalene-Aniline                                                       1.0000000
+Nickel-Aniline                                                            1.0000000
+Nonylphenol-Aniline                                                       1.0000000
+Styrene-Aniline                                                           1.0000000
+Vinyl chloride-Aniline                                                    1.0000000
+Xylene-Aniline                                                            1.0000000
+Barium-Arsenic                                                            0.8520733
+Benzene-Arsenic                                                           0.0000157
+Bromoform-Arsenic                                                         1.0000000
+Cadmium-Arsenic                                                           0.1877929
+Chromium-Arsenic                                                          0.0000028
+Cobalt-Arsenic                                                            0.0001161
+Creosote-Arsenic                                                          0.6371978
+Cyanide compounds-Arsenic                                                 0.0753420
+Decabromodiphenyl oxide-Arsenic                                           1.0000000
+Ethylbenzene-Arsenic                                                      0.0000065
+Hexachloro-1,3-butadiene-Arsenic                                          0.9999202
+Hydrogen fluoride-Arsenic                                                 0.0001531
+Lead-Arsenic                                                              0.0000289
+Maleic anhydride-Arsenic                                                  0.0845203
+Molybdenum trioxide-Arsenic                                               0.0956568
+N-Nitrosodiphenylamine-Arsenic                                            1.0000000
+Naphthalene-Arsenic                                                       0.0000089
+Nickel-Arsenic                                                            0.0000016
+Nonylphenol-Arsenic                                                       0.0098395
+Styrene-Arsenic                                                           0.0000462
+Vinyl chloride-Arsenic                                                    0.8842018
+Xylene-Arsenic                                                            0.0039605
+Benzene-Barium                                                            1.0000000
+Bromoform-Barium                                                          1.0000000
+Cadmium-Barium                                                            1.0000000
+Chromium-Barium                                                           1.0000000
+Cobalt-Barium                                                             1.0000000
+Creosote-Barium                                                           1.0000000
+Cyanide compounds-Barium                                                  1.0000000
+Decabromodiphenyl oxide-Barium                                            1.0000000
+Ethylbenzene-Barium                                                       1.0000000
+Hexachloro-1,3-butadiene-Barium                                           1.0000000
+Hydrogen fluoride-Barium                                                  1.0000000
+Lead-Barium                                                               1.0000000
+Maleic anhydride-Barium                                                   1.0000000
+Molybdenum trioxide-Barium                                                1.0000000
+N-Nitrosodiphenylamine-Barium                                             1.0000000
+Naphthalene-Barium                                                        1.0000000
+Nickel-Barium                                                             1.0000000
+Nonylphenol-Barium                                                        1.0000000
+Styrene-Barium                                                            1.0000000
+Vinyl chloride-Barium                                                     1.0000000
+Xylene-Barium                                                             1.0000000
+Bromoform-Benzene                                                         1.0000000
+Cadmium-Benzene                                                           1.0000000
+Chromium-Benzene                                                          1.0000000
+Cobalt-Benzene                                                            1.0000000
+Creosote-Benzene                                                          1.0000000
+Cyanide compounds-Benzene                                                 1.0000000
+Decabromodiphenyl oxide-Benzene                                           1.0000000
+Ethylbenzene-Benzene                                                      1.0000000
+Hexachloro-1,3-butadiene-Benzene                                          1.0000000
+Hydrogen fluoride-Benzene                                                 1.0000000
+Lead-Benzene                                                              0.9999982
+Maleic anhydride-Benzene                                                  1.0000000
+Molybdenum trioxide-Benzene                                               1.0000000
+N-Nitrosodiphenylamine-Benzene                                            1.0000000
+Naphthalene-Benzene                                                       1.0000000
+Nickel-Benzene                                                            1.0000000
+Nonylphenol-Benzene                                                       1.0000000
+Styrene-Benzene                                                           1.0000000
+Vinyl chloride-Benzene                                                    1.0000000
+Xylene-Benzene                                                            1.0000000
+Cadmium-Bromoform                                                         1.0000000
+Chromium-Bromoform                                                        1.0000000
+Cobalt-Bromoform                                                          1.0000000
+Creosote-Bromoform                                                        1.0000000
+Cyanide compounds-Bromoform                                               1.0000000
+ [ reached getOption("max.print") -- omitted 185 rows ]
+
+$`trifd_type:chemical`
+                                                                                                       diff
+unique:3,3'-Dichlorobenzidine-repeated:3,3'-Dichlorobenzidine                                            NA
+repeated:3,3'-Dichlorobenzidine dihydrochloride-repeated:3,3'-Dichlorobenzidine                          NA
+unique:3,3'-Dichlorobenzidine dihydrochloride-repeated:3,3'-Dichlorobenzidine                 -4.920991e+01
+repeated:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine                           4.683840e+03
+unique:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine                             1.436672e+05
+repeated:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine                    9.193342e+00
+unique:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine                     -5.642232e+01
+repeated:Acetaldehyde-repeated:3,3'-Dichlorobenzidine                                          1.305234e+05
+unique:Acetaldehyde-repeated:3,3'-Dichlorobenzidine                                            4.534571e+04
+repeated:Acrylonitrile-repeated:3,3'-Dichlorobenzidine                                         4.116823e+05
+unique:Acrylonitrile-repeated:3,3'-Dichlorobenzidine                                           1.623039e+04
+repeated:Aniline-repeated:3,3'-Dichlorobenzidine                                               4.937488e+05
+unique:Aniline-repeated:3,3'-Dichlorobenzidine                                                 8.024713e+03
+repeated:Arsenic-repeated:3,3'-Dichlorobenzidine                                               6.212593e+06
+unique:Arsenic-repeated:3,3'-Dichlorobenzidine                                                 5.023219e+01
+repeated:Barium-repeated:3,3'-Dichlorobenzidine                                                1.996708e+05
+unique:Barium-repeated:3,3'-Dichlorobenzidine                                                  5.475700e+03
+repeated:Benzene-repeated:3,3'-Dichlorobenzidine                                               2.379683e+04
+unique:Benzene-repeated:3,3'-Dichlorobenzidine                                                 4.203385e+03
+repeated:Bromoform-repeated:3,3'-Dichlorobenzidine                                            -6.099999e+01
+unique:Bromoform-repeated:3,3'-Dichlorobenzidine                                               4.246660e+04
+repeated:Cadmium-repeated:3,3'-Dichlorobenzidine                                               1.205994e+05
+unique:Cadmium-repeated:3,3'-Dichlorobenzidine                                                -3.257999e+01
+repeated:Chromium-repeated:3,3'-Dichlorobenzidine                                              1.355545e+04
+unique:Chromium-repeated:3,3'-Dichlorobenzidine                                                2.194919e+02
+repeated:Cobalt-repeated:3,3'-Dichlorobenzidine                                                3.012024e+04
+unique:Cobalt-repeated:3,3'-Dichlorobenzidine                                                  2.817385e+02
+repeated:Creosote-repeated:3,3'-Dichlorobenzidine                                              4.205717e+04
+unique:Creosote-repeated:3,3'-Dichlorobenzidine                                                2.289514e+04
+repeated:Cyanide compounds-repeated:3,3'-Dichlorobenzidine                                     3.639939e+05
+unique:Cyanide compounds-repeated:3,3'-Dichlorobenzidine                                       9.071595e+03
+repeated:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine                               1.481000e+03
+unique:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine                                -5.833332e+01
+repeated:Ethylbenzene-repeated:3,3'-Dichlorobenzidine                                          1.137103e+04
+unique:Ethylbenzene-repeated:3,3'-Dichlorobenzidine                                            1.021407e+04
+repeated:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine                              8.776272e+02
+unique:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine                                3.216300e+02
+repeated:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine                                     1.921592e+05
+unique:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine                                       3.511871e+04
+repeated:Lead-repeated:3,3'-Dichlorobenzidine                                                  1.271920e+06
+unique:Lead-repeated:3,3'-Dichlorobenzidine                                                    1.135533e+04
+repeated:Maleic anhydride-repeated:3,3'-Dichlorobenzidine                                      3.305662e+04
+unique:Maleic anhydride-repeated:3,3'-Dichlorobenzidine                                        1.835877e+03
+repeated:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine                                   4.518247e+04
+unique:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine                                     2.351667e+02
+repeated:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine                               -5.252082e+01
+unique:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine                                            NA
+repeated:Naphthalene-repeated:3,3'-Dichlorobenzidine                                           1.037878e+04
+unique:Naphthalene-repeated:3,3'-Dichlorobenzidine                                             5.519759e+03
+repeated:Nickel-repeated:3,3'-Dichlorobenzidine                                                2.900896e+04
+unique:Nickel-repeated:3,3'-Dichlorobenzidine                                                  6.637344e+02
+repeated:Nonylphenol-repeated:3,3'-Dichlorobenzidine                                           1.088008e+04
+unique:Nonylphenol-repeated:3,3'-Dichlorobenzidine                                             1.073711e+03
+repeated:Styrene-repeated:3,3'-Dichlorobenzidine                                               3.174656e+04
+unique:Styrene-repeated:3,3'-Dichlorobenzidine                                                 1.812279e+05
+repeated:Vinyl chloride-repeated:3,3'-Dichlorobenzidine                                        5.703800e+04
+unique:Vinyl chloride-repeated:3,3'-Dichlorobenzidine                                          7.526014e+04
+repeated:Xylene-repeated:3,3'-Dichlorobenzidine                                                5.968201e+04
+unique:Xylene-repeated:3,3'-Dichlorobenzidine                                                            NA
+repeated:3,3'-Dichlorobenzidine dihydrochloride-unique:3,3'-Dichlorobenzidine                            NA
+unique:3,3'-Dichlorobenzidine dihydrochloride-unique:3,3'-Dichlorobenzidine                              NA
+repeated:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine                                       NA
+unique:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine                                         NA
+repeated:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine                                NA
+unique:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine                                  NA
+repeated:Acetaldehyde-unique:3,3'-Dichlorobenzidine                                                      NA
+unique:Acetaldehyde-unique:3,3'-Dichlorobenzidine                                                        NA
+repeated:Acrylonitrile-unique:3,3'-Dichlorobenzidine                                                     NA
+unique:Acrylonitrile-unique:3,3'-Dichlorobenzidine                                                       NA
+repeated:Aniline-unique:3,3'-Dichlorobenzidine                                                           NA
+unique:Aniline-unique:3,3'-Dichlorobenzidine                                                             NA
+repeated:Arsenic-unique:3,3'-Dichlorobenzidine                                                           NA
+unique:Arsenic-unique:3,3'-Dichlorobenzidine                                                             NA
+repeated:Barium-unique:3,3'-Dichlorobenzidine                                                            NA
+unique:Barium-unique:3,3'-Dichlorobenzidine                                                              NA
+repeated:Benzene-unique:3,3'-Dichlorobenzidine                                                           NA
+unique:Benzene-unique:3,3'-Dichlorobenzidine                                                             NA
+repeated:Bromoform-unique:3,3'-Dichlorobenzidine                                                         NA
+unique:Bromoform-unique:3,3'-Dichlorobenzidine                                                           NA
+repeated:Cadmium-unique:3,3'-Dichlorobenzidine                                                           NA
+unique:Cadmium-unique:3,3'-Dichlorobenzidine                                                             NA
+repeated:Chromium-unique:3,3'-Dichlorobenzidine                                                          NA
+unique:Chromium-unique:3,3'-Dichlorobenzidine                                                            NA
+repeated:Cobalt-unique:3,3'-Dichlorobenzidine                                                            NA
+unique:Cobalt-unique:3,3'-Dichlorobenzidine                                                              NA
+repeated:Creosote-unique:3,3'-Dichlorobenzidine                                                          NA
+unique:Creosote-unique:3,3'-Dichlorobenzidine                                                            NA
+repeated:Cyanide compounds-unique:3,3'-Dichlorobenzidine                                                 NA
+unique:Cyanide compounds-unique:3,3'-Dichlorobenzidine                                                   NA
+repeated:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine                                           NA
+unique:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine                                             NA
+repeated:Ethylbenzene-unique:3,3'-Dichlorobenzidine                                                      NA
+unique:Ethylbenzene-unique:3,3'-Dichlorobenzidine                                                        NA
+repeated:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine                                          NA
+unique:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine                                            NA
+repeated:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine                                                 NA
+unique:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine                                                   NA
+repeated:Lead-unique:3,3'-Dichlorobenzidine                                                              NA
+unique:Lead-unique:3,3'-Dichlorobenzidine                                                                NA
+repeated:Maleic anhydride-unique:3,3'-Dichlorobenzidine                                                  NA
+unique:Maleic anhydride-unique:3,3'-Dichlorobenzidine                                                    NA
+repeated:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine                                               NA
+unique:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine                                                 NA
+repeated:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine                                            NA
+unique:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine                                              NA
+repeated:Naphthalene-unique:3,3'-Dichlorobenzidine                                                       NA
+unique:Naphthalene-unique:3,3'-Dichlorobenzidine                                                         NA
+repeated:Nickel-unique:3,3'-Dichlorobenzidine                                                            NA
+unique:Nickel-unique:3,3'-Dichlorobenzidine                                                              NA
+repeated:Nonylphenol-unique:3,3'-Dichlorobenzidine                                                       NA
+unique:Nonylphenol-unique:3,3'-Dichlorobenzidine                                                         NA
+repeated:Styrene-unique:3,3'-Dichlorobenzidine                                                           NA
+unique:Styrene-unique:3,3'-Dichlorobenzidine                                                             NA
+repeated:Vinyl chloride-unique:3,3'-Dichlorobenzidine                                                    NA
+unique:Vinyl chloride-unique:3,3'-Dichlorobenzidine                                                      NA
+repeated:Xylene-unique:3,3'-Dichlorobenzidine                                                            NA
+unique:Xylene-unique:3,3'-Dichlorobenzidine                                                              NA
+unique:3,3'-Dichlorobenzidine dihydrochloride-repeated:3,3'-Dichlorobenzidine dihydrochloride            NA
+repeated:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                     NA
+unique:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                       NA
+repeated:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine dihydrochloride              NA
+unique:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine dihydrochloride                NA
+repeated:Acetaldehyde-repeated:3,3'-Dichlorobenzidine dihydrochloride                                    NA
+unique:Acetaldehyde-repeated:3,3'-Dichlorobenzidine dihydrochloride                                      NA
+repeated:Acrylonitrile-repeated:3,3'-Dichlorobenzidine dihydrochloride                                   NA
+unique:Acrylonitrile-repeated:3,3'-Dichlorobenzidine dihydrochloride                                     NA
+repeated:Aniline-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+unique:Aniline-repeated:3,3'-Dichlorobenzidine dihydrochloride                                           NA
+repeated:Arsenic-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+unique:Arsenic-repeated:3,3'-Dichlorobenzidine dihydrochloride                                           NA
+repeated:Barium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+unique:Barium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                            NA
+repeated:Benzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+unique:Benzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                           NA
+repeated:Bromoform-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+unique:Bromoform-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+repeated:Cadmium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+unique:Cadmium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                           NA
+repeated:Chromium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+unique:Chromium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+repeated:Cobalt-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+unique:Cobalt-repeated:3,3'-Dichlorobenzidine dihydrochloride                                            NA
+repeated:Creosote-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+unique:Creosote-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+repeated:Cyanide compounds-repeated:3,3'-Dichlorobenzidine dihydrochloride                               NA
+unique:Cyanide compounds-repeated:3,3'-Dichlorobenzidine dihydrochloride                                 NA
+repeated:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                         NA
+unique:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                           NA
+repeated:Ethylbenzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                    NA
+unique:Ethylbenzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                      NA
+repeated:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine dihydrochloride                        NA
+unique:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine dihydrochloride                          NA
+repeated:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine dihydrochloride                               NA
+unique:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine dihydrochloride                                 NA
+repeated:Lead-repeated:3,3'-Dichlorobenzidine dihydrochloride                                            NA
+unique:Lead-repeated:3,3'-Dichlorobenzidine dihydrochloride                                              NA
+repeated:Maleic anhydride-repeated:3,3'-Dichlorobenzidine dihydrochloride                                NA
+unique:Maleic anhydride-repeated:3,3'-Dichlorobenzidine dihydrochloride                                  NA
+repeated:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                             NA
+unique:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                               NA
+repeated:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine dihydrochloride                          NA
+unique:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine dihydrochloride                            NA
+repeated:Naphthalene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                     NA
+unique:Naphthalene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+repeated:Nickel-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+unique:Nickel-repeated:3,3'-Dichlorobenzidine dihydrochloride                                            NA
+repeated:Nonylphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                                     NA
+unique:Nonylphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+repeated:Styrene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+unique:Styrene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                           NA
+repeated:Vinyl chloride-repeated:3,3'-Dichlorobenzidine dihydrochloride                                  NA
+unique:Vinyl chloride-repeated:3,3'-Dichlorobenzidine dihydrochloride                                    NA
+repeated:Xylene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+unique:Xylene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                            NA
+repeated:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine dihydrochloride             4.733050e+03
+unique:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine dihydrochloride               1.437164e+05
+repeated:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine dihydrochloride      5.840325e+01
+unique:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine dihydrochloride       -7.212409e+00
+repeated:Acetaldehyde-unique:3,3'-Dichlorobenzidine dihydrochloride                            1.305726e+05
+unique:Acetaldehyde-unique:3,3'-Dichlorobenzidine dihydrochloride                              4.539492e+04
+repeated:Acrylonitrile-unique:3,3'-Dichlorobenzidine dihydrochloride                           4.117315e+05
+unique:Acrylonitrile-unique:3,3'-Dichlorobenzidine dihydrochloride                             1.627960e+04
+repeated:Aniline-unique:3,3'-Dichlorobenzidine dihydrochloride                                 4.937980e+05
+unique:Aniline-unique:3,3'-Dichlorobenzidine dihydrochloride                                   8.073922e+03
+repeated:Arsenic-unique:3,3'-Dichlorobenzidine dihydrochloride                                 6.212642e+06
+unique:Arsenic-unique:3,3'-Dichlorobenzidine dihydrochloride                                   9.944210e+01
+repeated:Barium-unique:3,3'-Dichlorobenzidine dihydrochloride                                  1.997200e+05
+unique:Barium-unique:3,3'-Dichlorobenzidine dihydrochloride                                    5.524910e+03
+repeated:Benzene-unique:3,3'-Dichlorobenzidine dihydrochloride                                 2.384604e+04
+unique:Benzene-unique:3,3'-Dichlorobenzidine dihydrochloride                                   4.252595e+03
+repeated:Bromoform-unique:3,3'-Dichlorobenzidine dihydrochloride                              -1.179008e+01
+unique:Bromoform-unique:3,3'-Dichlorobenzidine dihydrochloride                                 4.251581e+04
+repeated:Cadmium-unique:3,3'-Dichlorobenzidine dihydrochloride                                 1.206486e+05
+unique:Cadmium-unique:3,3'-Dichlorobenzidine dihydrochloride                                   1.662992e+01
+repeated:Chromium-unique:3,3'-Dichlorobenzidine dihydrochloride                                1.360466e+04
+unique:Chromium-unique:3,3'-Dichlorobenzidine dihydrochloride                                  2.687018e+02
+repeated:Cobalt-unique:3,3'-Dichlorobenzidine dihydrochloride                                  3.016945e+04
+unique:Cobalt-unique:3,3'-Dichlorobenzidine dihydrochloride                                    3.309484e+02
+repeated:Creosote-unique:3,3'-Dichlorobenzidine dihydrochloride                                4.210638e+04
+unique:Creosote-unique:3,3'-Dichlorobenzidine dihydrochloride                                  2.294435e+04
+repeated:Cyanide compounds-unique:3,3'-Dichlorobenzidine dihydrochloride                       3.640431e+05
+unique:Cyanide compounds-unique:3,3'-Dichlorobenzidine dihydrochloride                         9.120805e+03
+repeated:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine dihydrochloride                 1.530210e+03
+unique:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine dihydrochloride                  -9.123416e+00
+repeated:Ethylbenzene-unique:3,3'-Dichlorobenzidine dihydrochloride                            1.142024e+04
+unique:Ethylbenzene-unique:3,3'-Dichlorobenzidine dihydrochloride                              1.026328e+04
+repeated:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine dihydrochloride                9.268371e+02
+unique:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine dihydrochloride                  3.708399e+02
+repeated:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine dihydrochloride                       1.922084e+05
+unique:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine dihydrochloride                         3.516792e+04
+repeated:Lead-unique:3,3'-Dichlorobenzidine dihydrochloride                                    1.271970e+06
+unique:Lead-unique:3,3'-Dichlorobenzidine dihydrochloride                                      1.140454e+04
+repeated:Maleic anhydride-unique:3,3'-Dichlorobenzidine dihydrochloride                        3.310583e+04
+unique:Maleic anhydride-unique:3,3'-Dichlorobenzidine dihydrochloride                          1.885087e+03
+repeated:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine dihydrochloride                     4.523168e+04
+unique:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine dihydrochloride                       2.843766e+02
+repeated:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine dihydrochloride                 -3.310916e+00
+unique:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine dihydrochloride                              NA
+repeated:Naphthalene-unique:3,3'-Dichlorobenzidine dihydrochloride                             1.042799e+04
+unique:Naphthalene-unique:3,3'-Dichlorobenzidine dihydrochloride                               5.568969e+03
+repeated:Nickel-unique:3,3'-Dichlorobenzidine dihydrochloride                                  2.905817e+04
+unique:Nickel-unique:3,3'-Dichlorobenzidine dihydrochloride                                    7.129443e+02
+repeated:Nonylphenol-unique:3,3'-Dichlorobenzidine dihydrochloride                             1.092929e+04
+unique:Nonylphenol-unique:3,3'-Dichlorobenzidine dihydrochloride                               1.122920e+03
+repeated:Styrene-unique:3,3'-Dichlorobenzidine dihydrochloride                                 3.179577e+04
+unique:Styrene-unique:3,3'-Dichlorobenzidine dihydrochloride                                   1.812771e+05
+repeated:Vinyl chloride-unique:3,3'-Dichlorobenzidine dihydrochloride                          5.708721e+04
+unique:Vinyl chloride-unique:3,3'-Dichlorobenzidine dihydrochloride                            7.530935e+04
+repeated:Xylene-unique:3,3'-Dichlorobenzidine dihydrochloride                                  5.973122e+04
+unique:Xylene-unique:3,3'-Dichlorobenzidine dihydrochloride                                              NA
+unique:4,4'-Isopropylidenediphenol-repeated:4,4'-Isopropylidenediphenol                        1.389834e+05
+repeated:4,4'-Methylenebis(2-chloroaniline)-repeated:4,4'-Isopropylidenediphenol              -4.674646e+03
+unique:4,4'-Methylenebis(2-chloroaniline)-repeated:4,4'-Isopropylidenediphenol                -4.740262e+03
+repeated:Acetaldehyde-repeated:4,4'-Isopropylidenediphenol                                     1.258396e+05
+unique:Acetaldehyde-repeated:4,4'-Isopropylidenediphenol                                       4.066187e+04
+repeated:Acrylonitrile-repeated:4,4'-Isopropylidenediphenol                                    4.069984e+05
+unique:Acrylonitrile-repeated:4,4'-Isopropylidenediphenol                                      1.154655e+04
+repeated:Aniline-repeated:4,4'-Isopropylidenediphenol                                          4.890650e+05
+unique:Aniline-repeated:4,4'-Isopropylidenediphenol                                            3.340873e+03
+repeated:Arsenic-repeated:4,4'-Isopropylidenediphenol                                          6.207909e+06
+unique:Arsenic-repeated:4,4'-Isopropylidenediphenol                                           -4.633608e+03
+repeated:Barium-repeated:4,4'-Isopropylidenediphenol                                           1.949870e+05
+unique:Barium-repeated:4,4'-Isopropylidenediphenol                                             7.918603e+02
+repeated:Benzene-repeated:4,4'-Isopropylidenediphenol                                          1.911299e+04
+unique:Benzene-repeated:4,4'-Isopropylidenediphenol                                           -4.804546e+02
+repeated:Bromoform-repeated:4,4'-Isopropylidenediphenol                                       -4.744840e+03
+unique:Bromoform-repeated:4,4'-Isopropylidenediphenol                                          3.778276e+04
+repeated:Cadmium-repeated:4,4'-Isopropylidenediphenol                                          1.159155e+05
+unique:Cadmium-repeated:4,4'-Isopropylidenediphenol                                           -4.716420e+03
+repeated:Chromium-repeated:4,4'-Isopropylidenediphenol                                         8.871615e+03
+                                                                                                      lwr
+unique:3,3'-Dichlorobenzidine-repeated:3,3'-Dichlorobenzidine                                          NA
+repeated:3,3'-Dichlorobenzidine dihydrochloride-repeated:3,3'-Dichlorobenzidine                        NA
+unique:3,3'-Dichlorobenzidine dihydrochloride-repeated:3,3'-Dichlorobenzidine                 -86514623.4
+repeated:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine                          -61576841.4
+unique:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine                            -62470984.6
+repeated:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine                   -66076588.3
+unique:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine                     -66076653.9
+repeated:Acetaldehyde-repeated:3,3'-Dichlorobenzidine                                         -61138851.8
+unique:Acetaldehyde-repeated:3,3'-Dichlorobenzidine                                           -61292180.2
+repeated:Acrylonitrile-repeated:3,3'-Dichlorobenzidine                                        -61139825.2
+unique:Acrylonitrile-repeated:3,3'-Dichlorobenzidine                                          -62474554.5
+repeated:Aniline-repeated:3,3'-Dichlorobenzidine                                              -61460624.6
+unique:Aniline-repeated:3,3'-Dichlorobenzidine                                                -64877905.9
+repeated:Arsenic-repeated:3,3'-Dichlorobenzidine                                              -55088194.2
+unique:Arsenic-repeated:3,3'-Dichlorobenzidine                                                -62549883.6
+repeated:Barium-repeated:3,3'-Dichlorobenzidine                                               -61609326.4
+unique:Barium-repeated:3,3'-Dichlorobenzidine                                                 -74918343.3
+repeated:Benzene-repeated:3,3'-Dichlorobenzidine                                              -61184055.7
+unique:Benzene-repeated:3,3'-Dichlorobenzidine                                                -61352637.1
+repeated:Bromoform-repeated:3,3'-Dichlorobenzidine                                            -86514635.2
+unique:Bromoform-repeated:3,3'-Dichlorobenzidine                                              -86472107.6
+repeated:Cadmium-repeated:3,3'-Dichlorobenzidine                                              -61331882.0
+unique:Cadmium-repeated:3,3'-Dichlorobenzidine                                                -74923851.6
+repeated:Chromium-repeated:3,3'-Dichlorobenzidine                                             -61177823.9
+unique:Chromium-repeated:3,3'-Dichlorobenzidine                                               -61310616.4
+repeated:Cobalt-repeated:3,3'-Dichlorobenzidine                                               -61199131.0
+unique:Cobalt-repeated:3,3'-Dichlorobenzidine                                                 -61836131.4
+repeated:Creosote-repeated:3,3'-Dichlorobenzidine                                             -62081491.7
+unique:Creosote-repeated:3,3'-Dichlorobenzidine                                               -62019921.4
+repeated:Cyanide compounds-repeated:3,3'-Dichlorobenzidine                                    -61030708.0
+unique:Cyanide compounds-repeated:3,3'-Dichlorobenzidine                                      -62211773.4
+repeated:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine                              -68394295.3
+unique:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine                                -70638912.4
+repeated:Ethylbenzene-repeated:3,3'-Dichlorobenzidine                                         -61188453.3
+unique:Ethylbenzene-repeated:3,3'-Dichlorobenzidine                                           -61260638.6
+repeated:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine                             -63321306.8
+unique:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine                               -86514252.6
+repeated:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine                                    -61044895.1
+unique:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine                                      -61271624.4
+repeated:Lead-repeated:3,3'-Dichlorobenzidine                                                 -59916506.4
+unique:Lead-repeated:3,3'-Dichlorobenzidine                                                   -61170425.2
+repeated:Maleic anhydride-repeated:3,3'-Dichlorobenzidine                                     -61450174.0
+unique:Maleic anhydride-repeated:3,3'-Dichlorobenzidine                                       -61880455.6
+repeated:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine                                  -61366514.4
+unique:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine                                    -70638618.9
+repeated:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine                               -66076650.0
+unique:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine                                          NA
+repeated:Naphthalene-repeated:3,3'-Dichlorobenzidine                                          -61192438.6
+unique:Naphthalene-repeated:3,3'-Dichlorobenzidine                                            -61304121.0
+repeated:Nickel-repeated:3,3'-Dichlorobenzidine                                               -61157298.2
+unique:Nickel-repeated:3,3'-Dichlorobenzidine                                                 -61244654.1
+repeated:Nonylphenol-repeated:3,3'-Dichlorobenzidine                                          -61382255.5
+unique:Nonylphenol-repeated:3,3'-Dichlorobenzidine                                            -61470217.3
+repeated:Styrene-repeated:3,3'-Dichlorobenzidine                                              -61217672.5
+unique:Styrene-repeated:3,3'-Dichlorobenzidine                                                -61026944.4
+repeated:Vinyl chloride-repeated:3,3'-Dichlorobenzidine                                       -62037981.1
+unique:Vinyl chloride-repeated:3,3'-Dichlorobenzidine                                         -63409081.2
+repeated:Xylene-repeated:3,3'-Dichlorobenzidine                                               -61224894.7
+unique:Xylene-repeated:3,3'-Dichlorobenzidine                                                          NA
+repeated:3,3'-Dichlorobenzidine dihydrochloride-unique:3,3'-Dichlorobenzidine                          NA
+unique:3,3'-Dichlorobenzidine dihydrochloride-unique:3,3'-Dichlorobenzidine                            NA
+repeated:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine                                     NA
+unique:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine                                       NA
+repeated:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine                              NA
+unique:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine                                NA
+repeated:Acetaldehyde-unique:3,3'-Dichlorobenzidine                                                    NA
+unique:Acetaldehyde-unique:3,3'-Dichlorobenzidine                                                      NA
+repeated:Acrylonitrile-unique:3,3'-Dichlorobenzidine                                                   NA
+unique:Acrylonitrile-unique:3,3'-Dichlorobenzidine                                                     NA
+repeated:Aniline-unique:3,3'-Dichlorobenzidine                                                         NA
+unique:Aniline-unique:3,3'-Dichlorobenzidine                                                           NA
+repeated:Arsenic-unique:3,3'-Dichlorobenzidine                                                         NA
+unique:Arsenic-unique:3,3'-Dichlorobenzidine                                                           NA
+repeated:Barium-unique:3,3'-Dichlorobenzidine                                                          NA
+unique:Barium-unique:3,3'-Dichlorobenzidine                                                            NA
+repeated:Benzene-unique:3,3'-Dichlorobenzidine                                                         NA
+unique:Benzene-unique:3,3'-Dichlorobenzidine                                                           NA
+repeated:Bromoform-unique:3,3'-Dichlorobenzidine                                                       NA
+unique:Bromoform-unique:3,3'-Dichlorobenzidine                                                         NA
+repeated:Cadmium-unique:3,3'-Dichlorobenzidine                                                         NA
+unique:Cadmium-unique:3,3'-Dichlorobenzidine                                                           NA
+repeated:Chromium-unique:3,3'-Dichlorobenzidine                                                        NA
+unique:Chromium-unique:3,3'-Dichlorobenzidine                                                          NA
+repeated:Cobalt-unique:3,3'-Dichlorobenzidine                                                          NA
+unique:Cobalt-unique:3,3'-Dichlorobenzidine                                                            NA
+repeated:Creosote-unique:3,3'-Dichlorobenzidine                                                        NA
+unique:Creosote-unique:3,3'-Dichlorobenzidine                                                          NA
+repeated:Cyanide compounds-unique:3,3'-Dichlorobenzidine                                               NA
+unique:Cyanide compounds-unique:3,3'-Dichlorobenzidine                                                 NA
+repeated:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine                                         NA
+unique:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine                                           NA
+repeated:Ethylbenzene-unique:3,3'-Dichlorobenzidine                                                    NA
+unique:Ethylbenzene-unique:3,3'-Dichlorobenzidine                                                      NA
+repeated:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine                                        NA
+unique:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine                                          NA
+repeated:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine                                               NA
+unique:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine                                                 NA
+repeated:Lead-unique:3,3'-Dichlorobenzidine                                                            NA
+unique:Lead-unique:3,3'-Dichlorobenzidine                                                              NA
+repeated:Maleic anhydride-unique:3,3'-Dichlorobenzidine                                                NA
+unique:Maleic anhydride-unique:3,3'-Dichlorobenzidine                                                  NA
+repeated:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine                                             NA
+unique:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine                                               NA
+repeated:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine                                          NA
+unique:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine                                            NA
+repeated:Naphthalene-unique:3,3'-Dichlorobenzidine                                                     NA
+unique:Naphthalene-unique:3,3'-Dichlorobenzidine                                                       NA
+repeated:Nickel-unique:3,3'-Dichlorobenzidine                                                          NA
+unique:Nickel-unique:3,3'-Dichlorobenzidine                                                            NA
+repeated:Nonylphenol-unique:3,3'-Dichlorobenzidine                                                     NA
+unique:Nonylphenol-unique:3,3'-Dichlorobenzidine                                                       NA
+repeated:Styrene-unique:3,3'-Dichlorobenzidine                                                         NA
+unique:Styrene-unique:3,3'-Dichlorobenzidine                                                           NA
+repeated:Vinyl chloride-unique:3,3'-Dichlorobenzidine                                                  NA
+unique:Vinyl chloride-unique:3,3'-Dichlorobenzidine                                                    NA
+repeated:Xylene-unique:3,3'-Dichlorobenzidine                                                          NA
+unique:Xylene-unique:3,3'-Dichlorobenzidine                                                            NA
+unique:3,3'-Dichlorobenzidine dihydrochloride-repeated:3,3'-Dichlorobenzidine dihydrochloride          NA
+repeated:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                   NA
+unique:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                     NA
+repeated:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine dihydrochloride            NA
+unique:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine dihydrochloride              NA
+repeated:Acetaldehyde-repeated:3,3'-Dichlorobenzidine dihydrochloride                                  NA
+unique:Acetaldehyde-repeated:3,3'-Dichlorobenzidine dihydrochloride                                    NA
+repeated:Acrylonitrile-repeated:3,3'-Dichlorobenzidine dihydrochloride                                 NA
+unique:Acrylonitrile-repeated:3,3'-Dichlorobenzidine dihydrochloride                                   NA
+repeated:Aniline-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+unique:Aniline-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+repeated:Arsenic-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+unique:Arsenic-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+repeated:Barium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+unique:Barium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+repeated:Benzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+unique:Benzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+repeated:Bromoform-repeated:3,3'-Dichlorobenzidine dihydrochloride                                     NA
+unique:Bromoform-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+repeated:Cadmium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+unique:Cadmium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+repeated:Chromium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                      NA
+unique:Chromium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+repeated:Cobalt-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+unique:Cobalt-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+repeated:Creosote-repeated:3,3'-Dichlorobenzidine dihydrochloride                                      NA
+unique:Creosote-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+repeated:Cyanide compounds-repeated:3,3'-Dichlorobenzidine dihydrochloride                             NA
+unique:Cyanide compounds-repeated:3,3'-Dichlorobenzidine dihydrochloride                               NA
+repeated:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                       NA
+unique:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                         NA
+repeated:Ethylbenzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                  NA
+unique:Ethylbenzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                    NA
+repeated:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine dihydrochloride                      NA
+unique:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine dihydrochloride                        NA
+repeated:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine dihydrochloride                             NA
+unique:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine dihydrochloride                               NA
+repeated:Lead-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+unique:Lead-repeated:3,3'-Dichlorobenzidine dihydrochloride                                            NA
+repeated:Maleic anhydride-repeated:3,3'-Dichlorobenzidine dihydrochloride                              NA
+unique:Maleic anhydride-repeated:3,3'-Dichlorobenzidine dihydrochloride                                NA
+repeated:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                           NA
+unique:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                             NA
+repeated:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine dihydrochloride                        NA
+unique:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine dihydrochloride                          NA
+repeated:Naphthalene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                   NA
+unique:Naphthalene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                     NA
+repeated:Nickel-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+unique:Nickel-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+repeated:Nonylphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                                   NA
+unique:Nonylphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                                     NA
+repeated:Styrene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+unique:Styrene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+repeated:Vinyl chloride-repeated:3,3'-Dichlorobenzidine dihydrochloride                                NA
+unique:Vinyl chloride-repeated:3,3'-Dichlorobenzidine dihydrochloride                                  NA
+repeated:Xylene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+unique:Xylene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+repeated:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine dihydrochloride            -61576792.2
+unique:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine dihydrochloride              -62470935.4
+repeated:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine dihydrochloride     -66076539.1
+unique:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine dihydrochloride       -66076604.7
+repeated:Acetaldehyde-unique:3,3'-Dichlorobenzidine dihydrochloride                           -61138802.6
+unique:Acetaldehyde-unique:3,3'-Dichlorobenzidine dihydrochloride                             -61292131.0
+repeated:Acrylonitrile-unique:3,3'-Dichlorobenzidine dihydrochloride                          -61139776.0
+unique:Acrylonitrile-unique:3,3'-Dichlorobenzidine dihydrochloride                            -62474505.3
+repeated:Aniline-unique:3,3'-Dichlorobenzidine dihydrochloride                                -61460575.4
+unique:Aniline-unique:3,3'-Dichlorobenzidine dihydrochloride                                  -64877856.7
+repeated:Arsenic-unique:3,3'-Dichlorobenzidine dihydrochloride                                -55088145.0
+unique:Arsenic-unique:3,3'-Dichlorobenzidine dihydrochloride                                  -62549834.3
+repeated:Barium-unique:3,3'-Dichlorobenzidine dihydrochloride                                 -61609277.2
+unique:Barium-unique:3,3'-Dichlorobenzidine dihydrochloride                                   -74918294.1
+repeated:Benzene-unique:3,3'-Dichlorobenzidine dihydrochloride                                -61184006.5
+unique:Benzene-unique:3,3'-Dichlorobenzidine dihydrochloride                                  -61352587.9
+repeated:Bromoform-unique:3,3'-Dichlorobenzidine dihydrochloride                              -86514586.0
+unique:Bromoform-unique:3,3'-Dichlorobenzidine dihydrochloride                                -86472058.4
+repeated:Cadmium-unique:3,3'-Dichlorobenzidine dihydrochloride                                -61331832.8
+unique:Cadmium-unique:3,3'-Dichlorobenzidine dihydrochloride                                  -74923802.4
+repeated:Chromium-unique:3,3'-Dichlorobenzidine dihydrochloride                               -61177774.7
+unique:Chromium-unique:3,3'-Dichlorobenzidine dihydrochloride                                 -61310567.2
+repeated:Cobalt-unique:3,3'-Dichlorobenzidine dihydrochloride                                 -61199081.8
+unique:Cobalt-unique:3,3'-Dichlorobenzidine dihydrochloride                                   -61836082.2
+repeated:Creosote-unique:3,3'-Dichlorobenzidine dihydrochloride                               -62081442.5
+unique:Creosote-unique:3,3'-Dichlorobenzidine dihydrochloride                                 -62019872.2
+repeated:Cyanide compounds-unique:3,3'-Dichlorobenzidine dihydrochloride                      -61030658.7
+unique:Cyanide compounds-unique:3,3'-Dichlorobenzidine dihydrochloride                        -62211724.2
+repeated:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine dihydrochloride                -68394246.1
+unique:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine dihydrochloride                  -70638863.1
+repeated:Ethylbenzene-unique:3,3'-Dichlorobenzidine dihydrochloride                           -61188404.1
+unique:Ethylbenzene-unique:3,3'-Dichlorobenzidine dihydrochloride                             -61260589.4
+repeated:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine dihydrochloride               -63321257.6
+unique:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine dihydrochloride                 -86514203.3
+repeated:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine dihydrochloride                      -61044845.9
+unique:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine dihydrochloride                        -61271575.2
+repeated:Lead-unique:3,3'-Dichlorobenzidine dihydrochloride                                   -59916457.2
+unique:Lead-unique:3,3'-Dichlorobenzidine dihydrochloride                                     -61170376.0
+repeated:Maleic anhydride-unique:3,3'-Dichlorobenzidine dihydrochloride                       -61450124.8
+unique:Maleic anhydride-unique:3,3'-Dichlorobenzidine dihydrochloride                         -61880406.4
+repeated:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine dihydrochloride                    -61366465.2
+unique:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine dihydrochloride                      -70638569.6
+repeated:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine dihydrochloride                 -66076600.8
+unique:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine dihydrochloride                            NA
+repeated:Naphthalene-unique:3,3'-Dichlorobenzidine dihydrochloride                            -61192389.4
+unique:Naphthalene-unique:3,3'-Dichlorobenzidine dihydrochloride                              -61304071.8
+repeated:Nickel-unique:3,3'-Dichlorobenzidine dihydrochloride                                 -61157249.0
+unique:Nickel-unique:3,3'-Dichlorobenzidine dihydrochloride                                   -61244604.9
+repeated:Nonylphenol-unique:3,3'-Dichlorobenzidine dihydrochloride                            -61382206.3
+unique:Nonylphenol-unique:3,3'-Dichlorobenzidine dihydrochloride                              -61470168.1
+repeated:Styrene-unique:3,3'-Dichlorobenzidine dihydrochloride                                -61217623.3
+unique:Styrene-unique:3,3'-Dichlorobenzidine dihydrochloride                                  -61026895.2
+repeated:Vinyl chloride-unique:3,3'-Dichlorobenzidine dihydrochloride                         -62037931.9
+unique:Vinyl chloride-unique:3,3'-Dichlorobenzidine dihydrochloride                           -63409032.0
+repeated:Xylene-unique:3,3'-Dichlorobenzidine dihydrochloride                                 -61224845.5
+unique:Xylene-unique:3,3'-Dichlorobenzidine dihydrochloride                                            NA
+unique:4,4'-Isopropylidenediphenol-repeated:4,4'-Isopropylidenediphenol                       -14964238.9
+repeated:4,4'-Methylenebis(2-chloroaniline)-repeated:4,4'-Isopropylidenediphenol              -25959046.9
+unique:4,4'-Methylenebis(2-chloroaniline)-repeated:4,4'-Isopropylidenediphenol                -25959112.5
+repeated:Acetaldehyde-repeated:4,4'-Isopropylidenediphenol                                     -7713104.9
+unique:Acetaldehyde-repeated:4,4'-Isopropylidenediphenol                                       -8314263.9
+repeated:Acrylonitrile-repeated:4,4'-Isopropylidenediphenol                                    -9396101.6
+unique:Acrylonitrile-repeated:4,4'-Isopropylidenediphenol                                     -14569636.6
+repeated:Aniline-repeated:4,4'-Isopropylidenediphenol                                         -11588065.7
+unique:Aniline-repeated:4,4'-Isopropylidenediphenol                                           -22749608.4
+repeated:Arsenic-repeated:4,4'-Isopropylidenediphenol                                          -1872885.3
+unique:Arsenic-repeated:4,4'-Isopropylidenediphenol                                           -14837263.9
+repeated:Barium-repeated:4,4'-Isopropylidenediphenol                                          -11112747.0
+unique:Barium-repeated:4,4'-Isopropylidenediphenol                                            -43829464.4
+repeated:Benzene-repeated:4,4'-Isopropylidenediphenol                                          -7323496.4
+unique:Benzene-repeated:4,4'-Isopropylidenediphenol                                            -8496043.0
+repeated:Bromoform-repeated:4,4'-Isopropylidenediphenol                                       -61586270.1
+unique:Bromoform-repeated:4,4'-Isopropylidenediphenol                                         -61543742.5
+repeated:Cadmium-repeated:4,4'-Isopropylidenediphenol                                          -9044879.5
+unique:Cadmium-repeated:4,4'-Isopropylidenediphenol                                           -43834972.7
+repeated:Chromium-repeated:4,4'-Isopropylidenediphenol                                         -7195128.3
+                                                                                                      upr
+unique:3,3'-Dichlorobenzidine-repeated:3,3'-Dichlorobenzidine                                          NA
+repeated:3,3'-Dichlorobenzidine dihydrochloride-repeated:3,3'-Dichlorobenzidine                        NA
+unique:3,3'-Dichlorobenzidine dihydrochloride-repeated:3,3'-Dichlorobenzidine                 86514524.97
+repeated:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine                          61586209.07
+unique:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine                            62758319.01
+repeated:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine                   66076606.68
+unique:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine                     66076541.06
+repeated:Acetaldehyde-repeated:3,3'-Dichlorobenzidine                                         61399898.70
+unique:Acetaldehyde-repeated:3,3'-Dichlorobenzidine                                           61382871.58
+repeated:Acrylonitrile-repeated:3,3'-Dichlorobenzidine                                        61963189.68
+unique:Acrylonitrile-repeated:3,3'-Dichlorobenzidine                                          62507015.29
+repeated:Aniline-repeated:3,3'-Dichlorobenzidine                                              62448122.21
+unique:Aniline-repeated:3,3'-Dichlorobenzidine                                                64893955.35
+repeated:Arsenic-repeated:3,3'-Dichlorobenzidine                                              67513380.60
+unique:Arsenic-repeated:3,3'-Dichlorobenzidine                                                62549984.02
+repeated:Barium-repeated:3,3'-Dichlorobenzidine                                               62008668.09
+unique:Barium-repeated:3,3'-Dichlorobenzidine                                                 74929294.74
+repeated:Benzene-repeated:3,3'-Dichlorobenzidine                                              61231649.33
+unique:Benzene-repeated:3,3'-Dichlorobenzidine                                                61361043.91
+repeated:Bromoform-repeated:3,3'-Dichlorobenzidine                                            86514513.18
+unique:Bromoform-repeated:3,3'-Dichlorobenzidine                                              86557040.78
+repeated:Cadmium-repeated:3,3'-Dichlorobenzidine                                              61573080.70
+unique:Cadmium-repeated:3,3'-Dichlorobenzidine                                                74923786.46
+repeated:Chromium-repeated:3,3'-Dichlorobenzidine                                             61204934.84
+unique:Chromium-repeated:3,3'-Dichlorobenzidine                                               61311055.39
+repeated:Cobalt-repeated:3,3'-Dichlorobenzidine                                               61259371.49
+unique:Cobalt-repeated:3,3'-Dichlorobenzidine                                                 61836694.84
+repeated:Creosote-repeated:3,3'-Dichlorobenzidine                                             62165606.07
+unique:Creosote-repeated:3,3'-Dichlorobenzidine                                               62065711.66
+repeated:Cyanide compounds-repeated:3,3'-Dichlorobenzidine                                    61758695.69
+unique:Cyanide compounds-repeated:3,3'-Dichlorobenzidine                                      62229916.64
+repeated:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine                              68397257.30
+unique:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine                                70638795.69
+repeated:Ethylbenzene-repeated:3,3'-Dichlorobenzidine                                         61211195.38
+unique:Ethylbenzene-repeated:3,3'-Dichlorobenzidine                                           61281066.76
+repeated:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine                             63323062.07
+unique:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine                               86514895.81
+repeated:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine                                    61429213.52
+unique:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine                                      61341861.78
+repeated:Lead-repeated:3,3'-Dichlorobenzidine                                                 62460347.30
+unique:Lead-repeated:3,3'-Dichlorobenzidine                                                   61193135.86
+repeated:Maleic anhydride-repeated:3,3'-Dichlorobenzidine                                     61516287.25
+unique:Maleic anhydride-repeated:3,3'-Dichlorobenzidine                                       61884127.37
+repeated:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine                                  61456879.37
+unique:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine                                    70639089.19
+repeated:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine                               66076544.96
+unique:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine                                          NA
+repeated:Naphthalene-repeated:3,3'-Dichlorobenzidine                                          61213196.13
+unique:Naphthalene-repeated:3,3'-Dichlorobenzidine                                            61315160.55
+repeated:Nickel-repeated:3,3'-Dichlorobenzidine                                               61215316.11
+unique:Nickel-repeated:3,3'-Dichlorobenzidine                                                 61245981.58
+repeated:Nonylphenol-repeated:3,3'-Dichlorobenzidine                                          61404015.68
+unique:Nonylphenol-repeated:3,3'-Dichlorobenzidine                                            61472364.70
+repeated:Styrene-repeated:3,3'-Dichlorobenzidine                                              61281165.62
+unique:Styrene-repeated:3,3'-Dichlorobenzidine                                                61389400.28
+repeated:Vinyl chloride-repeated:3,3'-Dichlorobenzidine                                       62152057.14
+unique:Vinyl chloride-repeated:3,3'-Dichlorobenzidine                                         63559601.53
+repeated:Xylene-repeated:3,3'-Dichlorobenzidine                                               61344258.72
+unique:Xylene-repeated:3,3'-Dichlorobenzidine                                                          NA
+repeated:3,3'-Dichlorobenzidine dihydrochloride-unique:3,3'-Dichlorobenzidine                          NA
+unique:3,3'-Dichlorobenzidine dihydrochloride-unique:3,3'-Dichlorobenzidine                            NA
+repeated:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine                                     NA
+unique:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine                                       NA
+repeated:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine                              NA
+unique:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine                                NA
+repeated:Acetaldehyde-unique:3,3'-Dichlorobenzidine                                                    NA
+unique:Acetaldehyde-unique:3,3'-Dichlorobenzidine                                                      NA
+repeated:Acrylonitrile-unique:3,3'-Dichlorobenzidine                                                   NA
+unique:Acrylonitrile-unique:3,3'-Dichlorobenzidine                                                     NA
+repeated:Aniline-unique:3,3'-Dichlorobenzidine                                                         NA
+unique:Aniline-unique:3,3'-Dichlorobenzidine                                                           NA
+repeated:Arsenic-unique:3,3'-Dichlorobenzidine                                                         NA
+unique:Arsenic-unique:3,3'-Dichlorobenzidine                                                           NA
+repeated:Barium-unique:3,3'-Dichlorobenzidine                                                          NA
+unique:Barium-unique:3,3'-Dichlorobenzidine                                                            NA
+repeated:Benzene-unique:3,3'-Dichlorobenzidine                                                         NA
+unique:Benzene-unique:3,3'-Dichlorobenzidine                                                           NA
+repeated:Bromoform-unique:3,3'-Dichlorobenzidine                                                       NA
+unique:Bromoform-unique:3,3'-Dichlorobenzidine                                                         NA
+repeated:Cadmium-unique:3,3'-Dichlorobenzidine                                                         NA
+unique:Cadmium-unique:3,3'-Dichlorobenzidine                                                           NA
+repeated:Chromium-unique:3,3'-Dichlorobenzidine                                                        NA
+unique:Chromium-unique:3,3'-Dichlorobenzidine                                                          NA
+repeated:Cobalt-unique:3,3'-Dichlorobenzidine                                                          NA
+unique:Cobalt-unique:3,3'-Dichlorobenzidine                                                            NA
+repeated:Creosote-unique:3,3'-Dichlorobenzidine                                                        NA
+unique:Creosote-unique:3,3'-Dichlorobenzidine                                                          NA
+repeated:Cyanide compounds-unique:3,3'-Dichlorobenzidine                                               NA
+unique:Cyanide compounds-unique:3,3'-Dichlorobenzidine                                                 NA
+repeated:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine                                         NA
+unique:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine                                           NA
+repeated:Ethylbenzene-unique:3,3'-Dichlorobenzidine                                                    NA
+unique:Ethylbenzene-unique:3,3'-Dichlorobenzidine                                                      NA
+repeated:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine                                        NA
+unique:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine                                          NA
+repeated:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine                                               NA
+unique:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine                                                 NA
+repeated:Lead-unique:3,3'-Dichlorobenzidine                                                            NA
+unique:Lead-unique:3,3'-Dichlorobenzidine                                                              NA
+repeated:Maleic anhydride-unique:3,3'-Dichlorobenzidine                                                NA
+unique:Maleic anhydride-unique:3,3'-Dichlorobenzidine                                                  NA
+repeated:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine                                             NA
+unique:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine                                               NA
+repeated:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine                                          NA
+unique:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine                                            NA
+repeated:Naphthalene-unique:3,3'-Dichlorobenzidine                                                     NA
+unique:Naphthalene-unique:3,3'-Dichlorobenzidine                                                       NA
+repeated:Nickel-unique:3,3'-Dichlorobenzidine                                                          NA
+unique:Nickel-unique:3,3'-Dichlorobenzidine                                                            NA
+repeated:Nonylphenol-unique:3,3'-Dichlorobenzidine                                                     NA
+unique:Nonylphenol-unique:3,3'-Dichlorobenzidine                                                       NA
+repeated:Styrene-unique:3,3'-Dichlorobenzidine                                                         NA
+unique:Styrene-unique:3,3'-Dichlorobenzidine                                                           NA
+repeated:Vinyl chloride-unique:3,3'-Dichlorobenzidine                                                  NA
+unique:Vinyl chloride-unique:3,3'-Dichlorobenzidine                                                    NA
+repeated:Xylene-unique:3,3'-Dichlorobenzidine                                                          NA
+unique:Xylene-unique:3,3'-Dichlorobenzidine                                                            NA
+unique:3,3'-Dichlorobenzidine dihydrochloride-repeated:3,3'-Dichlorobenzidine dihydrochloride          NA
+repeated:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                   NA
+unique:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                     NA
+repeated:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine dihydrochloride            NA
+unique:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine dihydrochloride              NA
+repeated:Acetaldehyde-repeated:3,3'-Dichlorobenzidine dihydrochloride                                  NA
+unique:Acetaldehyde-repeated:3,3'-Dichlorobenzidine dihydrochloride                                    NA
+repeated:Acrylonitrile-repeated:3,3'-Dichlorobenzidine dihydrochloride                                 NA
+unique:Acrylonitrile-repeated:3,3'-Dichlorobenzidine dihydrochloride                                   NA
+repeated:Aniline-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+unique:Aniline-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+repeated:Arsenic-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+unique:Arsenic-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+repeated:Barium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+unique:Barium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+repeated:Benzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+unique:Benzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+repeated:Bromoform-repeated:3,3'-Dichlorobenzidine dihydrochloride                                     NA
+unique:Bromoform-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+repeated:Cadmium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+unique:Cadmium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+repeated:Chromium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                      NA
+unique:Chromium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+repeated:Cobalt-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+unique:Cobalt-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+repeated:Creosote-repeated:3,3'-Dichlorobenzidine dihydrochloride                                      NA
+unique:Creosote-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+repeated:Cyanide compounds-repeated:3,3'-Dichlorobenzidine dihydrochloride                             NA
+unique:Cyanide compounds-repeated:3,3'-Dichlorobenzidine dihydrochloride                               NA
+repeated:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                       NA
+unique:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                         NA
+repeated:Ethylbenzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                  NA
+unique:Ethylbenzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                    NA
+repeated:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine dihydrochloride                      NA
+unique:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine dihydrochloride                        NA
+repeated:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine dihydrochloride                             NA
+unique:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine dihydrochloride                               NA
+repeated:Lead-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+unique:Lead-repeated:3,3'-Dichlorobenzidine dihydrochloride                                            NA
+repeated:Maleic anhydride-repeated:3,3'-Dichlorobenzidine dihydrochloride                              NA
+unique:Maleic anhydride-repeated:3,3'-Dichlorobenzidine dihydrochloride                                NA
+repeated:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                           NA
+unique:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                             NA
+repeated:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine dihydrochloride                        NA
+unique:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine dihydrochloride                          NA
+repeated:Naphthalene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                   NA
+unique:Naphthalene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                     NA
+repeated:Nickel-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+unique:Nickel-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+repeated:Nonylphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                                   NA
+unique:Nonylphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                                     NA
+repeated:Styrene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+unique:Styrene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                         NA
+repeated:Vinyl chloride-repeated:3,3'-Dichlorobenzidine dihydrochloride                                NA
+unique:Vinyl chloride-repeated:3,3'-Dichlorobenzidine dihydrochloride                                  NA
+repeated:Xylene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+unique:Xylene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+repeated:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine dihydrochloride            61586258.28
+unique:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine dihydrochloride              62758368.22
+repeated:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine dihydrochloride     66076655.89
+unique:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine dihydrochloride       66076590.27
+repeated:Acetaldehyde-unique:3,3'-Dichlorobenzidine dihydrochloride                           61399947.91
+unique:Acetaldehyde-unique:3,3'-Dichlorobenzidine dihydrochloride                             61382920.79
+repeated:Acrylonitrile-unique:3,3'-Dichlorobenzidine dihydrochloride                          61963238.89
+unique:Acrylonitrile-unique:3,3'-Dichlorobenzidine dihydrochloride                            62507064.50
+repeated:Aniline-unique:3,3'-Dichlorobenzidine dihydrochloride                                62448171.42
+unique:Aniline-unique:3,3'-Dichlorobenzidine dihydrochloride                                  64894004.56
+repeated:Arsenic-unique:3,3'-Dichlorobenzidine dihydrochloride                                67513429.81
+unique:Arsenic-unique:3,3'-Dichlorobenzidine dihydrochloride                                  62550033.23
+repeated:Barium-unique:3,3'-Dichlorobenzidine dihydrochloride                                 62008717.30
+unique:Barium-unique:3,3'-Dichlorobenzidine dihydrochloride                                   74929343.95
+repeated:Benzene-unique:3,3'-Dichlorobenzidine dihydrochloride                                61231698.54
+unique:Benzene-unique:3,3'-Dichlorobenzidine dihydrochloride                                  61361093.12
+repeated:Bromoform-unique:3,3'-Dichlorobenzidine dihydrochloride                              86514562.39
+unique:Bromoform-unique:3,3'-Dichlorobenzidine dihydrochloride                                86557089.99
+repeated:Cadmium-unique:3,3'-Dichlorobenzidine dihydrochloride                                61573129.91
+unique:Cadmium-unique:3,3'-Dichlorobenzidine dihydrochloride                                  74923835.67
+repeated:Chromium-unique:3,3'-Dichlorobenzidine dihydrochloride                               61204984.05
+unique:Chromium-unique:3,3'-Dichlorobenzidine dihydrochloride                                 61311104.60
+repeated:Cobalt-unique:3,3'-Dichlorobenzidine dihydrochloride                                 61259420.70
+unique:Cobalt-unique:3,3'-Dichlorobenzidine dihydrochloride                                   61836744.05
+repeated:Creosote-unique:3,3'-Dichlorobenzidine dihydrochloride                               62165655.28
+unique:Creosote-unique:3,3'-Dichlorobenzidine dihydrochloride                                 62065760.87
+repeated:Cyanide compounds-unique:3,3'-Dichlorobenzidine dihydrochloride                      61758744.90
+unique:Cyanide compounds-unique:3,3'-Dichlorobenzidine dihydrochloride                        62229965.85
+repeated:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine dihydrochloride                68397306.51
+unique:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine dihydrochloride                  70638844.90
+repeated:Ethylbenzene-unique:3,3'-Dichlorobenzidine dihydrochloride                           61211244.59
+unique:Ethylbenzene-unique:3,3'-Dichlorobenzidine dihydrochloride                             61281115.97
+repeated:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine dihydrochloride               63323111.28
+unique:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine dihydrochloride                 86514945.02
+repeated:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine dihydrochloride                      61429262.73
+unique:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine dihydrochloride                        61341910.99
+repeated:Lead-unique:3,3'-Dichlorobenzidine dihydrochloride                                   62460396.51
+unique:Lead-unique:3,3'-Dichlorobenzidine dihydrochloride                                     61193185.07
+repeated:Maleic anhydride-unique:3,3'-Dichlorobenzidine dihydrochloride                       61516336.46
+unique:Maleic anhydride-unique:3,3'-Dichlorobenzidine dihydrochloride                         61884176.58
+repeated:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine dihydrochloride                    61456928.58
+unique:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine dihydrochloride                      70639138.40
+repeated:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine dihydrochloride                 66076594.17
+unique:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine dihydrochloride                            NA
+repeated:Naphthalene-unique:3,3'-Dichlorobenzidine dihydrochloride                            61213245.34
+unique:Naphthalene-unique:3,3'-Dichlorobenzidine dihydrochloride                              61315209.76
+repeated:Nickel-unique:3,3'-Dichlorobenzidine dihydrochloride                                 61215365.32
+unique:Nickel-unique:3,3'-Dichlorobenzidine dihydrochloride                                   61246030.79
+repeated:Nonylphenol-unique:3,3'-Dichlorobenzidine dihydrochloride                            61404064.89
+unique:Nonylphenol-unique:3,3'-Dichlorobenzidine dihydrochloride                              61472413.91
+repeated:Styrene-unique:3,3'-Dichlorobenzidine dihydrochloride                                61281214.83
+unique:Styrene-unique:3,3'-Dichlorobenzidine dihydrochloride                                  61389449.49
+repeated:Vinyl chloride-unique:3,3'-Dichlorobenzidine dihydrochloride                         62152106.35
+unique:Vinyl chloride-unique:3,3'-Dichlorobenzidine dihydrochloride                           63559650.74
+repeated:Xylene-unique:3,3'-Dichlorobenzidine dihydrochloride                                 61344307.93
+unique:Xylene-unique:3,3'-Dichlorobenzidine dihydrochloride                                            NA
+unique:4,4'-Isopropylidenediphenol-repeated:4,4'-Isopropylidenediphenol                       15242205.66
+repeated:4,4'-Methylenebis(2-chloroaniline)-repeated:4,4'-Isopropylidenediphenol              25949697.61
+unique:4,4'-Methylenebis(2-chloroaniline)-repeated:4,4'-Isopropylidenediphenol                25949631.99
+repeated:Acetaldehyde-repeated:4,4'-Isopropylidenediphenol                                     7964784.05
+unique:Acetaldehyde-repeated:4,4'-Isopropylidenediphenol                                       8395587.62
+repeated:Acrylonitrile-repeated:4,4'-Isopropylidenediphenol                                   10210098.46
+unique:Acrylonitrile-repeated:4,4'-Isopropylidenediphenol                                     14592729.69
+repeated:Aniline-repeated:4,4'-Isopropylidenediphenol                                         12566195.70
+unique:Aniline-repeated:4,4'-Isopropylidenediphenol                                           22756290.10
+repeated:Arsenic-repeated:4,4'-Isopropylidenediphenol                                         14288703.95
+unique:Arsenic-repeated:4,4'-Isopropylidenediphenol                                           14827996.68
+repeated:Barium-repeated:4,4'-Isopropylidenediphenol                                          11502720.94
+unique:Barium-repeated:4,4'-Isopropylidenediphenol                                            43831048.12
+repeated:Benzene-repeated:4,4'-Isopropylidenediphenol                                          7361722.36
+unique:Benzene-repeated:4,4'-Isopropylidenediphenol                                            8495082.08
+repeated:Bromoform-repeated:4,4'-Isopropylidenediphenol                                       61576780.39
+unique:Bromoform-repeated:4,4'-Isopropylidenediphenol                                         61619307.99
+repeated:Cadmium-repeated:4,4'-Isopropylidenediphenol                                          9276710.57
+unique:Cadmium-repeated:4,4'-Isopropylidenediphenol                                           43825539.84
+repeated:Chromium-repeated:4,4'-Isopropylidenediphenol                                         7212871.52
+                                                                                                  p adj
+unique:3,3'-Dichlorobenzidine-repeated:3,3'-Dichlorobenzidine                                        NA
+repeated:3,3'-Dichlorobenzidine dihydrochloride-repeated:3,3'-Dichlorobenzidine                      NA
+unique:3,3'-Dichlorobenzidine dihydrochloride-repeated:3,3'-Dichlorobenzidine                 1.0000000
+repeated:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine                          1.0000000
+unique:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine                            1.0000000
+repeated:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine                   1.0000000
+unique:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine                     1.0000000
+repeated:Acetaldehyde-repeated:3,3'-Dichlorobenzidine                                         1.0000000
+unique:Acetaldehyde-repeated:3,3'-Dichlorobenzidine                                           1.0000000
+repeated:Acrylonitrile-repeated:3,3'-Dichlorobenzidine                                        1.0000000
+unique:Acrylonitrile-repeated:3,3'-Dichlorobenzidine                                          1.0000000
+repeated:Aniline-repeated:3,3'-Dichlorobenzidine                                              1.0000000
+unique:Aniline-repeated:3,3'-Dichlorobenzidine                                                1.0000000
+repeated:Arsenic-repeated:3,3'-Dichlorobenzidine                                              1.0000000
+unique:Arsenic-repeated:3,3'-Dichlorobenzidine                                                1.0000000
+repeated:Barium-repeated:3,3'-Dichlorobenzidine                                               1.0000000
+unique:Barium-repeated:3,3'-Dichlorobenzidine                                                 1.0000000
+repeated:Benzene-repeated:3,3'-Dichlorobenzidine                                              1.0000000
+unique:Benzene-repeated:3,3'-Dichlorobenzidine                                                1.0000000
+repeated:Bromoform-repeated:3,3'-Dichlorobenzidine                                            1.0000000
+unique:Bromoform-repeated:3,3'-Dichlorobenzidine                                              1.0000000
+repeated:Cadmium-repeated:3,3'-Dichlorobenzidine                                              1.0000000
+unique:Cadmium-repeated:3,3'-Dichlorobenzidine                                                1.0000000
+repeated:Chromium-repeated:3,3'-Dichlorobenzidine                                             1.0000000
+unique:Chromium-repeated:3,3'-Dichlorobenzidine                                               1.0000000
+repeated:Cobalt-repeated:3,3'-Dichlorobenzidine                                               1.0000000
+unique:Cobalt-repeated:3,3'-Dichlorobenzidine                                                 1.0000000
+repeated:Creosote-repeated:3,3'-Dichlorobenzidine                                             1.0000000
+unique:Creosote-repeated:3,3'-Dichlorobenzidine                                               1.0000000
+repeated:Cyanide compounds-repeated:3,3'-Dichlorobenzidine                                    1.0000000
+unique:Cyanide compounds-repeated:3,3'-Dichlorobenzidine                                      1.0000000
+repeated:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine                              1.0000000
+unique:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine                                1.0000000
+repeated:Ethylbenzene-repeated:3,3'-Dichlorobenzidine                                         1.0000000
+unique:Ethylbenzene-repeated:3,3'-Dichlorobenzidine                                           1.0000000
+repeated:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine                             1.0000000
+unique:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine                               1.0000000
+repeated:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine                                    1.0000000
+unique:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine                                      1.0000000
+repeated:Lead-repeated:3,3'-Dichlorobenzidine                                                 1.0000000
+unique:Lead-repeated:3,3'-Dichlorobenzidine                                                   1.0000000
+repeated:Maleic anhydride-repeated:3,3'-Dichlorobenzidine                                     1.0000000
+unique:Maleic anhydride-repeated:3,3'-Dichlorobenzidine                                       1.0000000
+repeated:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine                                  1.0000000
+unique:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine                                    1.0000000
+repeated:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine                               1.0000000
+unique:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine                                        NA
+repeated:Naphthalene-repeated:3,3'-Dichlorobenzidine                                          1.0000000
+unique:Naphthalene-repeated:3,3'-Dichlorobenzidine                                            1.0000000
+repeated:Nickel-repeated:3,3'-Dichlorobenzidine                                               1.0000000
+unique:Nickel-repeated:3,3'-Dichlorobenzidine                                                 1.0000000
+repeated:Nonylphenol-repeated:3,3'-Dichlorobenzidine                                          1.0000000
+unique:Nonylphenol-repeated:3,3'-Dichlorobenzidine                                            1.0000000
+repeated:Styrene-repeated:3,3'-Dichlorobenzidine                                              1.0000000
+unique:Styrene-repeated:3,3'-Dichlorobenzidine                                                1.0000000
+repeated:Vinyl chloride-repeated:3,3'-Dichlorobenzidine                                       1.0000000
+unique:Vinyl chloride-repeated:3,3'-Dichlorobenzidine                                         1.0000000
+repeated:Xylene-repeated:3,3'-Dichlorobenzidine                                               1.0000000
+unique:Xylene-repeated:3,3'-Dichlorobenzidine                                                        NA
+repeated:3,3'-Dichlorobenzidine dihydrochloride-unique:3,3'-Dichlorobenzidine                        NA
+unique:3,3'-Dichlorobenzidine dihydrochloride-unique:3,3'-Dichlorobenzidine                          NA
+repeated:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine                                   NA
+unique:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine                                     NA
+repeated:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine                            NA
+unique:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine                              NA
+repeated:Acetaldehyde-unique:3,3'-Dichlorobenzidine                                                  NA
+unique:Acetaldehyde-unique:3,3'-Dichlorobenzidine                                                    NA
+repeated:Acrylonitrile-unique:3,3'-Dichlorobenzidine                                                 NA
+unique:Acrylonitrile-unique:3,3'-Dichlorobenzidine                                                   NA
+repeated:Aniline-unique:3,3'-Dichlorobenzidine                                                       NA
+unique:Aniline-unique:3,3'-Dichlorobenzidine                                                         NA
+repeated:Arsenic-unique:3,3'-Dichlorobenzidine                                                       NA
+unique:Arsenic-unique:3,3'-Dichlorobenzidine                                                         NA
+repeated:Barium-unique:3,3'-Dichlorobenzidine                                                        NA
+unique:Barium-unique:3,3'-Dichlorobenzidine                                                          NA
+repeated:Benzene-unique:3,3'-Dichlorobenzidine                                                       NA
+unique:Benzene-unique:3,3'-Dichlorobenzidine                                                         NA
+repeated:Bromoform-unique:3,3'-Dichlorobenzidine                                                     NA
+unique:Bromoform-unique:3,3'-Dichlorobenzidine                                                       NA
+repeated:Cadmium-unique:3,3'-Dichlorobenzidine                                                       NA
+unique:Cadmium-unique:3,3'-Dichlorobenzidine                                                         NA
+repeated:Chromium-unique:3,3'-Dichlorobenzidine                                                      NA
+unique:Chromium-unique:3,3'-Dichlorobenzidine                                                        NA
+repeated:Cobalt-unique:3,3'-Dichlorobenzidine                                                        NA
+unique:Cobalt-unique:3,3'-Dichlorobenzidine                                                          NA
+repeated:Creosote-unique:3,3'-Dichlorobenzidine                                                      NA
+unique:Creosote-unique:3,3'-Dichlorobenzidine                                                        NA
+repeated:Cyanide compounds-unique:3,3'-Dichlorobenzidine                                             NA
+unique:Cyanide compounds-unique:3,3'-Dichlorobenzidine                                               NA
+repeated:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine                                       NA
+unique:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine                                         NA
+repeated:Ethylbenzene-unique:3,3'-Dichlorobenzidine                                                  NA
+unique:Ethylbenzene-unique:3,3'-Dichlorobenzidine                                                    NA
+repeated:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine                                      NA
+unique:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine                                        NA
+repeated:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine                                             NA
+unique:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine                                               NA
+repeated:Lead-unique:3,3'-Dichlorobenzidine                                                          NA
+unique:Lead-unique:3,3'-Dichlorobenzidine                                                            NA
+repeated:Maleic anhydride-unique:3,3'-Dichlorobenzidine                                              NA
+unique:Maleic anhydride-unique:3,3'-Dichlorobenzidine                                                NA
+repeated:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine                                           NA
+unique:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine                                             NA
+repeated:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine                                        NA
+unique:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine                                          NA
+repeated:Naphthalene-unique:3,3'-Dichlorobenzidine                                                   NA
+unique:Naphthalene-unique:3,3'-Dichlorobenzidine                                                     NA
+repeated:Nickel-unique:3,3'-Dichlorobenzidine                                                        NA
+unique:Nickel-unique:3,3'-Dichlorobenzidine                                                          NA
+repeated:Nonylphenol-unique:3,3'-Dichlorobenzidine                                                   NA
+unique:Nonylphenol-unique:3,3'-Dichlorobenzidine                                                     NA
+repeated:Styrene-unique:3,3'-Dichlorobenzidine                                                       NA
+unique:Styrene-unique:3,3'-Dichlorobenzidine                                                         NA
+repeated:Vinyl chloride-unique:3,3'-Dichlorobenzidine                                                NA
+unique:Vinyl chloride-unique:3,3'-Dichlorobenzidine                                                  NA
+repeated:Xylene-unique:3,3'-Dichlorobenzidine                                                        NA
+unique:Xylene-unique:3,3'-Dichlorobenzidine                                                          NA
+unique:3,3'-Dichlorobenzidine dihydrochloride-repeated:3,3'-Dichlorobenzidine dihydrochloride        NA
+repeated:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                 NA
+unique:4,4'-Isopropylidenediphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                   NA
+repeated:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine dihydrochloride          NA
+unique:4,4'-Methylenebis(2-chloroaniline)-repeated:3,3'-Dichlorobenzidine dihydrochloride            NA
+repeated:Acetaldehyde-repeated:3,3'-Dichlorobenzidine dihydrochloride                                NA
+unique:Acetaldehyde-repeated:3,3'-Dichlorobenzidine dihydrochloride                                  NA
+repeated:Acrylonitrile-repeated:3,3'-Dichlorobenzidine dihydrochloride                               NA
+unique:Acrylonitrile-repeated:3,3'-Dichlorobenzidine dihydrochloride                                 NA
+repeated:Aniline-repeated:3,3'-Dichlorobenzidine dihydrochloride                                     NA
+unique:Aniline-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+repeated:Arsenic-repeated:3,3'-Dichlorobenzidine dihydrochloride                                     NA
+unique:Arsenic-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+repeated:Barium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                      NA
+unique:Barium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+repeated:Benzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                     NA
+unique:Benzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+repeated:Bromoform-repeated:3,3'-Dichlorobenzidine dihydrochloride                                   NA
+unique:Bromoform-repeated:3,3'-Dichlorobenzidine dihydrochloride                                     NA
+repeated:Cadmium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                     NA
+unique:Cadmium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+repeated:Chromium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                    NA
+unique:Chromium-repeated:3,3'-Dichlorobenzidine dihydrochloride                                      NA
+repeated:Cobalt-repeated:3,3'-Dichlorobenzidine dihydrochloride                                      NA
+unique:Cobalt-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+repeated:Creosote-repeated:3,3'-Dichlorobenzidine dihydrochloride                                    NA
+unique:Creosote-repeated:3,3'-Dichlorobenzidine dihydrochloride                                      NA
+repeated:Cyanide compounds-repeated:3,3'-Dichlorobenzidine dihydrochloride                           NA
+unique:Cyanide compounds-repeated:3,3'-Dichlorobenzidine dihydrochloride                             NA
+repeated:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                     NA
+unique:Decabromodiphenyl oxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                       NA
+repeated:Ethylbenzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                NA
+unique:Ethylbenzene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                  NA
+repeated:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine dihydrochloride                    NA
+unique:Hexachloro-1,3-butadiene-repeated:3,3'-Dichlorobenzidine dihydrochloride                      NA
+repeated:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine dihydrochloride                           NA
+unique:Hydrogen fluoride-repeated:3,3'-Dichlorobenzidine dihydrochloride                             NA
+repeated:Lead-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+unique:Lead-repeated:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+repeated:Maleic anhydride-repeated:3,3'-Dichlorobenzidine dihydrochloride                            NA
+unique:Maleic anhydride-repeated:3,3'-Dichlorobenzidine dihydrochloride                              NA
+repeated:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                         NA
+unique:Molybdenum trioxide-repeated:3,3'-Dichlorobenzidine dihydrochloride                           NA
+repeated:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine dihydrochloride                      NA
+unique:N-Nitrosodiphenylamine-repeated:3,3'-Dichlorobenzidine dihydrochloride                        NA
+repeated:Naphthalene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                 NA
+unique:Naphthalene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                   NA
+repeated:Nickel-repeated:3,3'-Dichlorobenzidine dihydrochloride                                      NA
+unique:Nickel-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+repeated:Nonylphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                                 NA
+unique:Nonylphenol-repeated:3,3'-Dichlorobenzidine dihydrochloride                                   NA
+repeated:Styrene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                     NA
+unique:Styrene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                       NA
+repeated:Vinyl chloride-repeated:3,3'-Dichlorobenzidine dihydrochloride                              NA
+unique:Vinyl chloride-repeated:3,3'-Dichlorobenzidine dihydrochloride                                NA
+repeated:Xylene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                      NA
+unique:Xylene-repeated:3,3'-Dichlorobenzidine dihydrochloride                                        NA
+repeated:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine dihydrochloride            1.0000000
+unique:4,4'-Isopropylidenediphenol-unique:3,3'-Dichlorobenzidine dihydrochloride              1.0000000
+repeated:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine dihydrochloride     1.0000000
+unique:4,4'-Methylenebis(2-chloroaniline)-unique:3,3'-Dichlorobenzidine dihydrochloride       1.0000000
+repeated:Acetaldehyde-unique:3,3'-Dichlorobenzidine dihydrochloride                           1.0000000
+unique:Acetaldehyde-unique:3,3'-Dichlorobenzidine dihydrochloride                             1.0000000
+repeated:Acrylonitrile-unique:3,3'-Dichlorobenzidine dihydrochloride                          1.0000000
+unique:Acrylonitrile-unique:3,3'-Dichlorobenzidine dihydrochloride                            1.0000000
+repeated:Aniline-unique:3,3'-Dichlorobenzidine dihydrochloride                                1.0000000
+unique:Aniline-unique:3,3'-Dichlorobenzidine dihydrochloride                                  1.0000000
+repeated:Arsenic-unique:3,3'-Dichlorobenzidine dihydrochloride                                1.0000000
+unique:Arsenic-unique:3,3'-Dichlorobenzidine dihydrochloride                                  1.0000000
+repeated:Barium-unique:3,3'-Dichlorobenzidine dihydrochloride                                 1.0000000
+unique:Barium-unique:3,3'-Dichlorobenzidine dihydrochloride                                   1.0000000
+repeated:Benzene-unique:3,3'-Dichlorobenzidine dihydrochloride                                1.0000000
+unique:Benzene-unique:3,3'-Dichlorobenzidine dihydrochloride                                  1.0000000
+repeated:Bromoform-unique:3,3'-Dichlorobenzidine dihydrochloride                              1.0000000
+unique:Bromoform-unique:3,3'-Dichlorobenzidine dihydrochloride                                1.0000000
+repeated:Cadmium-unique:3,3'-Dichlorobenzidine dihydrochloride                                1.0000000
+unique:Cadmium-unique:3,3'-Dichlorobenzidine dihydrochloride                                  1.0000000
+repeated:Chromium-unique:3,3'-Dichlorobenzidine dihydrochloride                               1.0000000
+unique:Chromium-unique:3,3'-Dichlorobenzidine dihydrochloride                                 1.0000000
+repeated:Cobalt-unique:3,3'-Dichlorobenzidine dihydrochloride                                 1.0000000
+unique:Cobalt-unique:3,3'-Dichlorobenzidine dihydrochloride                                   1.0000000
+repeated:Creosote-unique:3,3'-Dichlorobenzidine dihydrochloride                               1.0000000
+unique:Creosote-unique:3,3'-Dichlorobenzidine dihydrochloride                                 1.0000000
+repeated:Cyanide compounds-unique:3,3'-Dichlorobenzidine dihydrochloride                      1.0000000
+unique:Cyanide compounds-unique:3,3'-Dichlorobenzidine dihydrochloride                        1.0000000
+repeated:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine dihydrochloride                1.0000000
+unique:Decabromodiphenyl oxide-unique:3,3'-Dichlorobenzidine dihydrochloride                  1.0000000
+repeated:Ethylbenzene-unique:3,3'-Dichlorobenzidine dihydrochloride                           1.0000000
+unique:Ethylbenzene-unique:3,3'-Dichlorobenzidine dihydrochloride                             1.0000000
+repeated:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine dihydrochloride               1.0000000
+unique:Hexachloro-1,3-butadiene-unique:3,3'-Dichlorobenzidine dihydrochloride                 1.0000000
+repeated:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine dihydrochloride                      1.0000000
+unique:Hydrogen fluoride-unique:3,3'-Dichlorobenzidine dihydrochloride                        1.0000000
+repeated:Lead-unique:3,3'-Dichlorobenzidine dihydrochloride                                   1.0000000
+unique:Lead-unique:3,3'-Dichlorobenzidine dihydrochloride                                     1.0000000
+repeated:Maleic anhydride-unique:3,3'-Dichlorobenzidine dihydrochloride                       1.0000000
+unique:Maleic anhydride-unique:3,3'-Dichlorobenzidine dihydrochloride                         1.0000000
+repeated:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine dihydrochloride                    1.0000000
+unique:Molybdenum trioxide-unique:3,3'-Dichlorobenzidine dihydrochloride                      1.0000000
+repeated:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine dihydrochloride                 1.0000000
+unique:N-Nitrosodiphenylamine-unique:3,3'-Dichlorobenzidine dihydrochloride                          NA
+repeated:Naphthalene-unique:3,3'-Dichlorobenzidine dihydrochloride                            1.0000000
+unique:Naphthalene-unique:3,3'-Dichlorobenzidine dihydrochloride                              1.0000000
+repeated:Nickel-unique:3,3'-Dichlorobenzidine dihydrochloride                                 1.0000000
+unique:Nickel-unique:3,3'-Dichlorobenzidine dihydrochloride                                   1.0000000
+repeated:Nonylphenol-unique:3,3'-Dichlorobenzidine dihydrochloride                            1.0000000
+unique:Nonylphenol-unique:3,3'-Dichlorobenzidine dihydrochloride                              1.0000000
+repeated:Styrene-unique:3,3'-Dichlorobenzidine dihydrochloride                                1.0000000
+unique:Styrene-unique:3,3'-Dichlorobenzidine dihydrochloride                                  1.0000000
+repeated:Vinyl chloride-unique:3,3'-Dichlorobenzidine dihydrochloride                         1.0000000
+unique:Vinyl chloride-unique:3,3'-Dichlorobenzidine dihydrochloride                           1.0000000
+repeated:Xylene-unique:3,3'-Dichlorobenzidine dihydrochloride                                 1.0000000
+unique:Xylene-unique:3,3'-Dichlorobenzidine dihydrochloride                                          NA
+unique:4,4'-Isopropylidenediphenol-repeated:4,4'-Isopropylidenediphenol                       1.0000000
+repeated:4,4'-Methylenebis(2-chloroaniline)-repeated:4,4'-Isopropylidenediphenol              1.0000000
+unique:4,4'-Methylenebis(2-chloroaniline)-repeated:4,4'-Isopropylidenediphenol                1.0000000
+repeated:Acetaldehyde-repeated:4,4'-Isopropylidenediphenol                                    1.0000000
+unique:Acetaldehyde-repeated:4,4'-Isopropylidenediphenol                                      1.0000000
+repeated:Acrylonitrile-repeated:4,4'-Isopropylidenediphenol                                   1.0000000
+unique:Acrylonitrile-repeated:4,4'-Isopropylidenediphenol                                     1.0000000
+repeated:Aniline-repeated:4,4'-Isopropylidenediphenol                                         1.0000000
+unique:Aniline-repeated:4,4'-Isopropylidenediphenol                                           1.0000000
+repeated:Arsenic-repeated:4,4'-Isopropylidenediphenol                                         0.6037858
+unique:Arsenic-repeated:4,4'-Isopropylidenediphenol                                           1.0000000
+repeated:Barium-repeated:4,4'-Isopropylidenediphenol                                          1.0000000
+unique:Barium-repeated:4,4'-Isopropylidenediphenol                                            1.0000000
+repeated:Benzene-repeated:4,4'-Isopropylidenediphenol                                         1.0000000
+unique:Benzene-repeated:4,4'-Isopropylidenediphenol                                           1.0000000
+repeated:Bromoform-repeated:4,4'-Isopropylidenediphenol                                       1.0000000
+unique:Bromoform-repeated:4,4'-Isopropylidenediphenol                                         1.0000000
+repeated:Cadmium-repeated:4,4'-Isopropylidenediphenol                                         1.0000000
+unique:Cadmium-repeated:4,4'-Isopropylidenediphenol                                           1.0000000
+repeated:Chromium-repeated:4,4'-Isopropylidenediphenol                                        1.0000000
+ [ reached getOption("max.print") -- omitted 1520 rows ]
+

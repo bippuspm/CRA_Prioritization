@@ -1,0 +1,36 @@
+chemical,CAS,tri_name,analysis_name,carc,cns,dev,repro,resp,cardio,lkt
+1-Hexadecanol,36653-82-4,1-Hexadecanol,1-Hexadecanol,no,no,no,no,yes,no,yes
+"2,5-Furandione (Maleic anhydride)",108-31-6,Maleic anhydride,Maleic anhydride,no,no,no,no,yes,no,yes
+"3,3'-Dichlorobenzidine",91-94-1,"3,3'-Dichlorobenzidine","3,3'-Dichlorobenzidine",Probable,no,no,no,no,no,no
+"3,3'-Dichlorobenzidine dihydrochloride  ",612-83-9,"3,3'-Dichlorobenzidine dihydrochloride","3,3'-Dichlorobenzidine 2HCl",Probable,no,no,no,no,no,no
+"4,4'-Methylene bis(2-chloroaniline)*",101-14-4,"4,4'-Methylenebis(2-chloroaniline)",MBOCA,Known,no,no,no,no,no,yes
+"4-tert-Octylphenol (4-(1,1,3,3-Tetramethylbutyl)phenol)*",140-66-9,"p-(1,1,3,3-Tetramethylbutyl)phenol",4-tert-Octylphenol,no,no,yes,yes,no,no,no
+Acetaldehyde*,75-07-0,Acetaldehyde,Acetaldehyde,Probable,yes,no,no,yes,no,no
+Acrylonitrile*,107-13-1,Acrylonitrile,Acrylonitrile,Probable,yes,yes,yes,yes,no,yes
+Arsenic & Arsenic Compounds,Category,Arsenic,Arsenic,Known,yes,yes,yes,yes,yes,yes
+Barium Carbonate,513-77-9,Barium,Barium,no,no,no,no,no,yes,yes
+Benzenamine (aniline)*,62-53-3,Aniline,Aniline,Probable,yes,no,no,no,yes,no
+Benzene*,71-43-2,Benzene,Benzene,Known,yes,yes,no,yes,no,no
+Bisphenol A (BPA)*,80-05-7,"4,4'-Isopropylidenediphenol",Bisphenol A,no,no,yes,yes,no,no,no
+Cadmium & Cadmium Compounds,Category,Cadmium,Cadmium,Probable,no,yes,no,yes,yes,yes
+Chromium & Chromium Compounds,Category,Chromium,Chromium,Known,no,no,no,yes,no,no
+Cobalt & Cobalt Compounds,Category,Cobalt,Cobalt,Possible,yes,no,yes,yes,yes,yes
+Creosotes,8001-58-9,Creosote,Creosote,Probable,no,yes,no,no,no,yes
+Cyanide Compounds (Limited to dissociable compounds),Category,Cyanide compounds,Cyanide,no,no,no,no,no,no,no
+Decabromodiphenyl ethers  (DecaBDE),1163-19-5,Decabromodiphenyl oxide,DecaBDE,Possible,yes,yes,yes,no,no,yes
+Ethylbenzene*,100-41-4,Ethylbenzene,Ethylbenzene,Possible,yes,no,no,no,no,yes
+Hexachlorobutadiene,87-68-3,"Hexachloro-1,3-butadiene",Hexachlorobutadiene,Possible,no,yes,no,no,no,yes
+Hydrogen fluoride*,62778-11-4,Hydrogen fluoride,Hydrogen fluoride,no,no,no,no,yes,yes,yes
+Lead & Lead Compounds,Category,Lead,Lead,Probable,yes,yes,yes,no,yes,yes
+Molybdenum and Molybdenum Compounds,Category,Molybdenum trioxide,Molybdenum,Possible,no,no,yes,yes,no,yes
+Naphthalene*,91-20-3,Naphthalene,Naphthalene,Possible,yes,no,no,yes,no,yes
+Nickel & Nickel Compounds,Category,Nickel,Nickel,Known,no,no,no,yes,no,yes
+N-nitrosodiphenylamine,86-30-6,N-Nitrosodiphenylamine,N-Nitrosodiphenylamine,Probable,no,no,no,no,no,no
+Nonylphenol and Nonylphenol Ethoxylates (NP/NPEs),Category,Nonylphenol,Nonylphenols,no,no,yes,yes,no,no,no
+Styrene*,100-42-5,Styrene,Styrene,Probable,yes,yes,no,no,no,yes
+Tribromomethane (Bromoform)*,75-25-2,Bromoform,Bromoform,Probable,yes,no,no,no,no,yes
+Triglycidyl isocyanurate*,2451-62-9,Triglycidyl isocyanurate,Triglycidyl isocyanurate,no,no,no,no,yes,no,no
+Vinyl chloride*,75-01-4,Vinyl chloride,Vinyl chloride,Known,yes,yes,no,yes,no,yes
+m-Xylene,108-38-3,Xylene,Xylenes,no,yes,yes,no,yes,no,no
+o-Xylene,95-47-6,Xylene,Xylenes,no,yes,yes,no,yes,no,no
+p-Xylene,106-42-3,Xylene,Xylenes,no,yes,yes,no,yes,no,no

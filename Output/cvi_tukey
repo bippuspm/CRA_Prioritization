@@ -1,0 +1,18 @@
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = CVI.Score ~ endpoint_group, data = tri_cvi_endpoints_long)
+
+$endpoint_group
+                           diff           lwr         upr     p adj
+cardioresp-carc    0.0002168757 -2.779484e-03 0.003213236 0.9996619
+cns-carc           0.0046958357  1.513423e-03 0.007878248 0.0005459
+devrep-carc        0.0044545067  1.061168e-03 0.007847846 0.0031564
+lkt-carc           0.0031370160  1.045537e-04 0.006169478 0.0384154
+cns-cardioresp     0.0044789600  1.360207e-03 0.007597713 0.0008509
+devrep-cardioresp  0.0042376310  9.039218e-04 0.007571340 0.0047763
+lkt-cardioresp     0.0029201404 -4.544501e-05 0.005885726 0.0560238
+devrep-cns        -0.0002413289 -3.743213e-03 0.003260556 0.9997217
+lkt-cns           -0.0015588196 -4.712274e-03 0.001594635 0.6607788
+lkt-devrep        -0.0013174907 -4.683686e-03 0.002048705 0.8231944
+
