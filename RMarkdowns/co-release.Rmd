@@ -179,6 +179,8 @@ carc_co <- carc_co %>%
 carc_co <- carc_co %>%
   mutate(perc_co = 100 * ((2 * unique_trifd_count) / (total_release1 + total_release2)))
 
+# save data in csv
+write.csv(carc_co, file = "~/TSCA/CRA/CRA_Prioritization/Output/carc_corelease.csv")
 ```
 
 
@@ -216,6 +218,9 @@ cns_co <- cns_co %>%
 # Calculate percent corelease for heatmaps 
 cns_co <- cns_co %>%
   mutate(perc_co = 100 * ((2 * unique_trifd_count) / (total_release1 + total_release2)))
+
+# save data in csv
+write.csv(cns_co, file = "~/TSCA/CRA/CRA_Prioritization/Output/cns_corelease.csv")
 
 ```
 
@@ -255,6 +260,9 @@ cardioresp_co <- cardioresp_co %>%
 cardioresp_co <- cardioresp_co %>%
   mutate(perc_co = 100 * ((2 * unique_trifd_count) / (total_release1 + total_release2)))
 
+# save data in csv
+write.csv(cardioresp_co, file = "~/TSCA/CRA/CRA_Prioritization/Output/cardioresp_corelease.csv")
+
 ```
 
 
@@ -293,6 +301,9 @@ devrep_co <- devrep_co %>%
 devrep_co <- devrep_co %>%
   mutate(perc_co = 100 * ((2 * unique_trifd_count) / (total_release1 + total_release2)))
 
+# save data in csv
+write.csv(devrep_co, file = "~/TSCA/CRA/CRA_Prioritization/Output/devrep_corelease.csv")
+
 ```
 
 
@@ -330,6 +341,9 @@ lkt_co <- lkt_co %>%
 # Calculate percent corelease for heatmaps 
 lkt_co <- lkt_co %>%
   mutate(perc_co = 100 * ((2 * unique_trifd_count) / (total_release1 + total_release2)))
+
+# save data in csv
+write.csv(lkt_co, file = "~/TSCA/CRA/CRA_Prioritization/Output/lkt_corelease.csv")
 
 ```
 
