@@ -385,43 +385,6 @@ pheatmap(carc_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, border_
 ```
 
 
-
-#carc heatmap 
-```{r}
-#remove unwanted columns from carc_co and reformat the dataframe
-carc_co_wide <- carc_co %>%
-  select (-unique_trifd_count, -total_release1, -total_release2) %>%
-    mutate(
-    chemical1 = ifelse(chemical1 == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical1),
-    chemical2 = ifelse(chemical2 == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical2)
-  ) %>%
-  mutate(
-    chemical1 = ifelse(chemical1 == "3,3'-Dichlorobenzidine dihydrochloride", "3,3'-Dichlorobenzidine 2HCl", chemical1),
-    chemical2 = ifelse(chemical2 == "3,3'-Dichlorobenzidine dihydrochloride", "3,3'-Dichlorobenzidine 2HCl", chemical2)
-  ) %>%
-  pivot_wider(
-    names_from = chemical1,    
-    values_from = perc_co,   
-    values_fill = list(unique_trifd_count = NA)  
-  )
-
-# Convert "chemical2" to row names
-carc_co_wide <- as.data.frame(carc_co_wide)    
-rownames(carc_co_wide) <- carc_co_wide$chemical2  
-carc_co_wide$chemical2 <- NULL                 
-
-#transpose columns and rows (output is a matrix, which is what is needed for pheatmap)
-carc_co_transposed <- t(carc_co_wide)
-
-#create breaks for colors
-breaks <- c(0, 2, 4, 6, 8, 10, 20, 30, 50, 70)
-colors <- brewer.pal(9, "Blues")
-
-#make heatmap
-pheatmap(carc_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, main = "Carcinogens", color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/carc_heat.png", width = 12, height = 9)
-```
-
-
 #cns heatmap 
 ```{r}
 #remove unwanted columns from carc_co and reformat the dataframe
@@ -525,7 +488,6 @@ pheatmap(devrep_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, borde
 ```
 
 
-
 #lkt heatmap 
 ```{r}
 #remove unwanted columns from carc_co and reformat the dataframe
@@ -562,7 +524,7 @@ breaks <- c(0, 2, 4, 6, 8, 10, 20, 30, 50, 70)
 colors <- brewer.pal(9, "Blues")
 
 #make heatmap
-pheatmap(lkt_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, main = "Liver, Kidney, and/or Toxicants", color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/lkt_heat.png", width = 13, height = 10)
+pheatmap(lkt_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, main = "Liver, Kidney, and/or Thyroid Toxicants", color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/lkt_heat.png", width = 13, height = 10)
 ```
 
 
