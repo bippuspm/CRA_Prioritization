@@ -561,6 +561,8 @@ tri_classified <- tri_endpoints %>%
   mutate(trifd_type = ifelse(trifd_count == 1, "unique", "repeated"))
 
 #Run ANOVA
+options(max.print=10000000)
+
 anova = aov(onsite_releases_2017_2022 ~ trifd_type*chemical, data = tri_classified)
 summary(anova)
 capture.output(anova, file = "~/TSCA/CRA/CRA_Prioritization/Output/release_anova")
@@ -568,8 +570,18 @@ capture.output(anova, file = "~/TSCA/CRA/CRA_Prioritization/Output/release_anova
 tukey = TukeyHSD(x = anova, conf.level = 0.95)
 capture.output(tukey, file = "~/TSCA/CRA/CRA_Prioritization/Output/release_tukey")
 
-```
+#ttest for overall difference in unique vs. repeated, and their overall averages (p-value = 0.04055)
+t.test(repeated$onsite_releases_2017_2022, unique$onsite_releases_2017_2022, conf.level = 0.95)
 
+repeated = tri_classified %>%
+  filter(trifd_type == "repeated")
+mean(repeated$onsite_releases_2017_2022) #364,847.9
+
+unique = tri_classified %>%
+  filter(trifd_type == "unique")
+mean(unique$onsite_releases_2017_2022) #32,460.69
+
+```
 
 
 

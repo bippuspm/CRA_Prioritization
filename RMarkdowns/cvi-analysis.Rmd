@@ -158,7 +158,8 @@ CVI_summary = tri_cvi_endpoints_long %>%
   sd_CVI = sd(CVI.Score, na.rm = TRUE),          
   n = n(),                                       
   se_CVI = sd_CVI / sqrt(n), 
-  .groups = "drop")
+  .groups = "drop") %>%
+  st_drop_geometry()
 
 write.csv(CVI_summary, file = "~/TSCA/CRA/CRA_Prioritization/Output/cvi_summary.csv")
 ```
@@ -174,7 +175,8 @@ carc_CVI_summary = carc %>%
   sd_CVI = sd(CVI.Score, na.rm = TRUE),          
   n = n(),                                       
   se_CVI = sd_CVI / sqrt(n), 
-  .groups = "drop")
+  .groups = "drop") %>%
+  st_drop_geometry()
 
 cns_CVI_summary = cns %>%
   group_by(chemical) %>%
@@ -183,7 +185,8 @@ cns_CVI_summary = cns %>%
   sd_CVI = sd(CVI.Score, na.rm = TRUE),          
   n = n(),                                       
   se_CVI = sd_CVI / sqrt(n), 
-  .groups = "drop")
+  .groups = "drop") %>%
+  st_drop_geometry()
 
 cardioresp_CVI_summary = cardioresp %>%
   group_by(chemical) %>%
@@ -192,7 +195,8 @@ cardioresp_CVI_summary = cardioresp %>%
   sd_CVI = sd(CVI.Score, na.rm = TRUE),          
   n = n(),                                       
   se_CVI = sd_CVI / sqrt(n), 
-  .groups = "drop")
+  .groups = "drop") %>%
+  st_drop_geometry()
 
 devrep_CVI_summary = devrep %>%
   group_by(chemical) %>%
@@ -201,7 +205,8 @@ devrep_CVI_summary = devrep %>%
   sd_CVI = sd(CVI.Score, na.rm = TRUE),          
   n = n(),                                       
   se_CVI = sd_CVI / sqrt(n), 
-  .groups = "drop")
+  .groups = "drop") %>%
+  st_drop_geometry()
 
 lkt_CVI_summary = lkt %>%
   group_by(chemical) %>%
@@ -210,7 +215,8 @@ lkt_CVI_summary = lkt %>%
   sd_CVI = sd(CVI.Score, na.rm = TRUE),          
   n = n(),                                       
   se_CVI = sd_CVI / sqrt(n), 
-  .groups = "drop")
+  .groups = "drop") %>%
+  st_drop_geometry()
 
 write.csv(carc_CVI_summary, file = "~/TSCA/CRA/CRA_Prioritization/Output/carc_cvi_summary.csv")
 write.csv(cns_CVI_summary, file = "~/TSCA/CRA/CRA_Prioritization/Output/cns_cvi_summary.csv")
@@ -320,6 +326,30 @@ capture.output(lkt_cvi_tukey, file = "~/TSCA/CRA/CRA_Prioritization/Output/lkt_c
 ```
 
 
+
+#filter for most vulnerable census tracts by baseline vulnerability
+```{r}
+#baseline vulnerability 
+cutoff = quantile(tri_cvi_endpoints$Baseline.Vulnerabilities, 0.75, na.rm = TRUE)
+
+tri_cvi_25thperc = tri_cvi_endpoints %>%
+  filter(CVI.Score > cutoff)
+
+write.csv(tri_cvi_25thperc, file = "~/TSCA/CRA/CRA_Prioritization/Output/tri_cvi_25thperc_baseline.csv")
+```
+
+
+#sum up releases per chemical to see which chemicals are released in the highest amounts in the top 75th - 100th percentile of baseline vulnerability
+```{r}
+
+baseline_sum = tri_cvi_25thperc %>%
+  group_by(chemical) %>%
+  summarise(total_onsite_releases = sum(onsite_releases_2017_2022, na.rm = TRUE))
+
+baseline_sum = st_drop_geometry(baseline_sum)
+
+write.csv(baseline_sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/25thperc_baseline_sum_allchems.csv")
+```
 
 
 
