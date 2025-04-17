@@ -16,7 +16,7 @@ Cadmium & Cadmium Compounds,Category,Cadmium,Cadmium,Probable,no,yes,no,yes,yes,
 Chromium & Chromium Compounds,Category,Chromium,Chromium,Known,no,no,no,yes,no,no
 Cobalt & Cobalt Compounds,Category,Cobalt,Cobalt,Possible,yes,no,yes,yes,yes,yes
 Creosotes,8001-58-9,Creosote,Creosote,Probable,no,yes,no,no,no,yes
-Cyanide Compounds (Limited to dissociable compounds),Category,Cyanide compounds,Cyanide,no,no,no,no,no,no,no
+Cyanide Compounds (Limited to dissociable compounds),Category,Cyanide compounds,Cyanide,no,yes,no,no,no,no,no
 Decabromodiphenyl ethers  (DecaBDE),1163-19-5,Decabromodiphenyl oxide,DecaBDE,Possible,yes,yes,yes,no,no,yes
 Ethylbenzene*,100-41-4,Ethylbenzene,Ethylbenzene,Possible,yes,no,no,no,no,yes
 Hexachlorobutadiene,87-68-3,"Hexachloro-1,3-butadiene",Hexachlorobutadiene,Possible,no,yes,no,no,no,yes
@@ -31,6 +31,4 @@ Styrene*,100-42-5,Styrene,Styrene,Probable,yes,yes,no,no,no,yes
 Tribromomethane (Bromoform)*,75-25-2,Bromoform,Bromoform,Probable,yes,no,no,no,no,yes
 Triglycidyl isocyanurate*,2451-62-9,Triglycidyl isocyanurate,Triglycidyl isocyanurate,no,no,no,no,yes,no,no
 Vinyl chloride*,75-01-4,Vinyl chloride,Vinyl chloride,Known,yes,yes,no,yes,no,yes
-m-Xylene,108-38-3,Xylene,Xylenes,no,yes,yes,no,yes,no,no
-o-Xylene,95-47-6,Xylene,Xylenes,no,yes,yes,no,yes,no,no
-p-Xylene,106-42-3,Xylene,Xylenes,no,yes,yes,no,yes,no,no
+Xylenes,108-38-3,Xylenes,Xylenes,no,yes,yes,no,yes,no,no

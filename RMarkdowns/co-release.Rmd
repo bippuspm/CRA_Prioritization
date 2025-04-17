@@ -18,10 +18,9 @@ library("Rmisc")
 library("stats")
 library("rstatix")
 library("ggplot2")
+library("car")
 detach(package:Rmisc)
 detach(package:plyr)
-
-install.packages("tidyverse")
 
 endpoints = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/TSCA_endpoints.csv")
 
@@ -56,12 +55,12 @@ tri = filter(tri, sum_onsite_releases_2017_2022 > 0)
 #fixing multiple names for same chemical (need to add up releases for chemicals of the same name after fixing the names for individual trifds)
 ```{r}
 #fix chemical names
-tri$chemical = gsub("o-Xylene", "Xylene", tri$chemical)
-tri$chemical = gsub("p-Xylene", "Xylene", tri$chemical)
-tri$chemical = gsub("m-Xylene", "Xylene", tri$chemical)
-tri$chemical = gsub("Xylene (Mixed Isomers)", "Xylene", tri$chemical)
+tri$chemical <- gsub("Xylene \\(mixed isomers\\)", "Xylenes", tri$chemical)
+tri$chemical = gsub("o-Xylene", "Xylenes", tri$chemical)
+tri$chemical = gsub("p-Xylene", "Xylenes", tri$chemical)
+tri$chemical = gsub("m-Xylene", "Xylenes", tri$chemical)
 
-tri$chemical = gsub("Hydrogen cyanide", "Cyanide Compounds", tri$chemical)
+tri$chemical = gsub("Hydrogen cyanide", "Cyanide compounds", tri$chemical)
 
 tri$chemical = gsub("Nickel compounds", "Nickel", tri$chemical)
 
@@ -112,19 +111,19 @@ lkt = tri_endpoints %>%
 
 #calculate percent co-releases overall for each group: # of coreleases/unique facilities where # of coreleases is total number of facilities - unique facilities
 ```{r}
-#cns = 39%
+#cns = 52%
 ((length(cns[["trifd"]]) - length(unique(cns[["trifd"]]))) / length(unique(cns[["trifd"]])))*100
 
 #carc = 42%
 ((length(carc[["trifd"]]) - length(unique(carc[["trifd"]]))) / length(unique(carc[["trifd"]])))*100
 
-#cardioresp = 63%
+#cardioresp = 68%
 ((length(cardioresp[["trifd"]]) - length(unique(cardioresp[["trifd"]]))) / length(unique(cardioresp[["trifd"]])))*100
 
 #lkt = 43%
 ((length(lkt[["trifd"]]) - length(unique(lkt[["trifd"]]))) / length(unique(lkt[["trifd"]])))*100
 
-#devrep = 20%
+#devrep = 28%
 ((length(devrep[["trifd"]]) - length(unique(devrep[["trifd"]]))) / length(unique(devrep[["trifd"]])))*100
 ```
 
@@ -351,180 +350,425 @@ write.csv(lkt_co, file = "~/TSCA/CRA/CRA_Prioritization/Output/lkt_corelease.csv
 
 #carc heatmap 
 ```{r}
-#remove unwanted columns from carc_co and reformat the dataframe
+library(tidyverse)
+
+# Prepare data in a wide format
 carc_co_wide <- carc_co %>%
-  select (-unique_trifd_count, -total_release1, -total_release2) %>%
-    mutate(
-    chemical1 = ifelse(chemical1 == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical1),
-    chemical2 = ifelse(chemical2 == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical2)
-  ) %>%
+  select(-unique_trifd_count) %>%  # Keep total_release1 and total_release2
   mutate(
+    chemical1 = ifelse(chemical1 == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical1),
+    chemical2 = ifelse(chemical2 == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical2),
     chemical1 = ifelse(chemical1 == "3,3'-Dichlorobenzidine dihydrochloride", "3,3'-Dichlorobenzidine 2HCl", chemical1),
-    chemical2 = ifelse(chemical2 == "3,3'-Dichlorobenzidine dihydrochloride", "3,3'-Dichlorobenzidine 2HCl", chemical2)
+    chemical2 = ifelse(chemical2 == "3,3'-Dichlorobenzidine dihydrochloride", "3,3'-Dichlorobenzidine 2HCl", chemical2),
+    # Create a version of chemical labels for processing, separate release values
+    chemical1_label = paste0(chemical1, " (", total_release1, ")"),
+    chemical2_label = paste0(chemical2, " (", total_release2, ")")
   ) %>%
   pivot_wider(
-    names_from = chemical1,    
-    values_from = perc_co,   
-    values_fill = list(unique_trifd_count = NA)  
+    names_from = chemical1_label,
+    values_from = perc_co,
+    values_fill = list(perc_co = NA)
   )
 
-# Convert "chemical2" to row names
-carc_co_wide <- as.data.frame(carc_co_wide)    
-rownames(carc_co_wide) <- carc_co_wide$chemical2  
-carc_co_wide$chemical2 <- NULL                 
+# Ensure chemical2 values are unique by appending a suffix if duplicates exist
+carc_co_wide$chemical2_label <- make.unique(as.character(carc_co_wide$chemical2_label))
 
-#transpose columns and rows (output is a matrix, which is what is needed for pheatmap)
-carc_co_transposed <- t(carc_co_wide)
+# Remove the suffixes from `chemical2_label` (e.g., "Lead (6824).1" -> "Lead (6824)")
+carc_co_wide$chemical2_label <- sub("\\.\\d+$", "", carc_co_wide$chemical2_label)
 
-#create breaks for colors
-breaks <- c(0, 2, 4, 6, 8, 10, 20, 30, 50, 70)
-colors <- brewer.pal(9, "Blues")
+# Remove total_release1 and total_release2 columns from the dataset before pivoting back to long format
+carc_co_wide_clean <- carc_co_wide %>%
+  select(-total_release1, -total_release2)
 
-#make heatmap
-pheatmap(carc_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, main = "Carcinogens", color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/carc_heat.png", width = 12, height = 9)
+# Ensure that all columns (including chemical1_label) are treated as characters
+carc_co_wide_clean[] <- lapply(carc_co_wide_clean, as.character)
+
+# Convert back to long format without including total release columns
+carc_co_long <- carc_co_wide_clean %>%
+  pivot_longer(cols = -chemical2_label, names_to = "chemical1", values_to = "value") %>%
+  drop_na() %>%
+  rename(chemical2 = chemical2_label)  # Rename the column back to `chemical2`
+
+# Order chemicals so they match the triangular shape
+chemical_levels <- unique(c(carc_co_long$chemical1, carc_co_long$chemical2))
+carc_co_long <- carc_co_long %>%
+  mutate(
+    chemical1 = factor(chemical1, levels = chemical_levels),
+    chemical2 = factor(chemical2, levels = chemical_levels)
+  )
+
+# Keep only the lower triangle (remove upper diagonal)
+carc_co_long <- carc_co_long %>%
+  filter(as.numeric(chemical2) >= as.numeric(chemical1))
+
+# Convert to numeric, non-numeric entries will become NA
+carc_co_long$value <- as.numeric(carc_co_long$value)
+
+# Check for NA values after conversion
+sum(is.na(carc_co_long$value))
+
+carc_co_long <- carc_co_long %>%
+  drop_na(value)
+
+# Create heatmap with black tile borders and updated labels
+carc_heat = ggplot(carc_co_long, aes(x = chemical1, y = chemical2, fill = value)) +
+  geom_tile(color = "gray", size = 0.5) +  # Black border around each tile
+  scale_fill_gradientn(colors = brewer.pal(9, "Blues"), na.value = "transparent", name = "Co-Release Percentage") +  
+  scale_x_discrete(position = "top") +  # Moves x-axis labels to the top
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 0, vjust = 0, size = 10, color = "black"),  # Set x-axis text color to black
+    axis.text.y = element_text(size = 10, color = "black"),  # Set y-axis text color to black
+    axis.title.x = element_blank(),  
+    axis.title.y = element_blank(),  
+    panel.grid = element_blank()  
+  )
+
+carc_heat
+
+# Save the heatmap
+ggsave(filename = "carc_heat.png", device = "png", plot = carc_heat, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 7.5, height = 4.5)
+
+
 ```
 
 
 #cns heatmap 
 ```{r}
-#remove unwanted columns from carc_co and reformat the dataframe
+# Prepare data in a wide format
 cns_co_wide <- cns_co %>%
-  select (-unique_trifd_count, -total_release1, -total_release2) %>%
-    mutate(
+  select(-unique_trifd_count) %>%  # Keep total_release1 and total_release2
+  mutate(
     chemical1 = ifelse(chemical1 == "Decabromodiphenyl oxide", "DecaBDE", chemical1),
-    chemical2 = ifelse(chemical2 == "Decabromodiphenyl oxide", "DecaBDE", chemical2)
+    chemical2 = ifelse(chemical2 == "Decabromodiphenyl oxide", "DecaBDE", chemical2),
+    chemical1 = ifelse(chemical1 == "Cyanide compounds", "Cyanide", chemical1),
+    chemical2 = ifelse(chemical2 == "Cyanide compounds", "Cyanide", chemical2),
+    # Create a version of chemical labels for processing, separate release values
+    chemical1_label = paste0(chemical1, " (", total_release1, ")"),
+    chemical2_label = paste0(chemical2, " (", total_release2, ")")
   ) %>%
   pivot_wider(
-    names_from = chemical1,    
-    values_from = perc_co,   
-    values_fill = list(unique_trifd_count = NA)  
+    names_from = chemical1_label,
+    values_from = perc_co,
+    values_fill = list(perc_co = NA)
   )
 
-# Convert "chemical2" to row names
-cns_co_wide <- as.data.frame(cns_co_wide)    
-rownames(cns_co_wide) <- cns_co_wide$chemical2  
-cns_co_wide$chemical2 <- NULL                 
+# Ensure chemical2 values are unique by appending a suffix if duplicates exist
+cns_co_wide$chemical2_label <- make.unique(as.character(cns_co_wide$chemical2_label))
 
-#transpose columns and rows (output is a matrix, which is what is needed for pheatmap)
-cns_co_transposed <- t(cns_co_wide)
+# Remove the suffixes from `chemical2_label` (e.g., "Lead (6824).1" -> "Lead (6824)")
+cns_co_wide$chemical2_label <- sub("\\.\\d+$", "", cns_co_wide$chemical2_label)
 
-#create breaks for colors
-breaks <- c(0, 2, 4, 6, 8, 10, 20, 30, 50, 70)
-colors <- brewer.pal(9, "Blues")
+# Remove total_release1 and total_release2 columns from the dataset before pivoting back to long format
+cns_co_wide_clean <- cns_co_wide %>%
+  select(-total_release1, -total_release2)
 
-#make heatmap
-pheatmap(cns_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, main = "Central Nervous System Toxicants", color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/cns_heat.png", width = 10, height = 7)
+# Ensure that all columns (including chemical1_label) are treated as characters
+cns_co_wide_clean[] <- lapply(cns_co_wide_clean, as.character)
+
+# Convert back to long format without including total release columns
+cns_co_long <- cns_co_wide_clean %>%
+  pivot_longer(cols = -chemical2_label, names_to = "chemical1", values_to = "value") %>%
+  drop_na() %>%
+  rename(chemical2 = chemical2_label)  # Rename the column back to `chemical2`
+
+# Order chemicals so they match the triangular shape
+chemical_levels <- unique(c(cns_co_long$chemical1, cns_co_long$chemical2))
+cns_co_long <- cns_co_long %>%
+  mutate(
+    chemical1 = factor(chemical1, levels = chemical_levels),
+    chemical2 = factor(chemical2, levels = chemical_levels)
+  )
+
+# Keep only the lower triangle (remove upper diagonal)
+cns_co_long <- cns_co_long %>%
+  filter(as.numeric(chemical2) >= as.numeric(chemical1))
+
+# Convert to numeric, non-numeric entries will become NA
+cns_co_long$value <- as.numeric(cns_co_long$value)
+
+# Check for NA values after conversion
+sum(is.na(cns_co_long$value))
+
+cns_co_long <- cns_co_long %>%
+  drop_na(value)
+
+# Create heatmap with black tile borders and updated labels
+cns_heat = ggplot(cns_co_long, aes(x = chemical1, y = chemical2, fill = value)) +
+  geom_tile(color = "gray", size = 0.5) +  # Black border around each tile
+  scale_fill_gradientn(colors = brewer.pal(9, "Blues"), na.value = "transparent", name = "Co-Release Percentage") +  
+  scale_x_discrete(position = "top") +  # Moves x-axis labels to the top
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 0, vjust = 0, size = 10, color = "black"),  # Set x-axis text color to black
+    axis.text.y = element_text(size = 10, color = "black"),  # Set y-axis text color to black
+    axis.title.x = element_blank(),  
+    axis.title.y = element_blank(),  
+    panel.grid = element_blank()  
+  )
+
+cns_heat
+
+# Save the heatmap
+ggsave(filename = "cns_heat.png", device = "png", plot = cns_heat, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 8, height = 5)
+
 ```
 
 
 #cardioresp heatmap 
 ```{r}
-#remove unwanted columns from carc_co and reformat the dataframe
+# Prepare data in a wide format
 cardioresp_co_wide <- cardioresp_co %>%
-  select (-unique_trifd_count, -total_release1, -total_release2) %>%
-    mutate(
+  select(-unique_trifd_count) %>%  # Keep total_release1 and total_release2
+  mutate(
     chemical1 = ifelse(chemical1 == "Molybdenum trioxide", "Molybdenum", chemical1),
-    chemical2 = ifelse(chemical2 == "Molybdenum trioxide", "Molybdenum", chemical2)) %>%
+    chemical2 = ifelse(chemical2 == "Molybdenum trioxide", "Molybdenum", chemical2),
+    # Create a version of chemical labels for processing, separate release values
+    chemical1_label = paste0(chemical1, " (", total_release1, ")"),
+    chemical2_label = paste0(chemical2, " (", total_release2, ")")
+  ) %>%
   pivot_wider(
-    names_from = chemical1,    
-    values_from = perc_co,   
-    values_fill = list(unique_trifd_count = NA)  
+    names_from = chemical1_label,
+    values_from = perc_co,
+    values_fill = list(perc_co = NA)
   )
 
-# Convert "chemical2" to row names
-cardioresp_co_wide <- as.data.frame(cardioresp_co_wide)    
-rownames(cardioresp_co_wide) <- cardioresp_co_wide$chemical2  
-cardioresp_co_wide$chemical2 <- NULL         
+# Ensure chemical2 values are unique by appending a suffix if duplicates exist
+cardioresp_co_wide$chemical2_label <- make.unique(as.character(cardioresp_co_wide$chemical2_label))
 
-#transpose columns and rows (output is a matrix, which is what is needed for pheatmap)
-cardioresp_co_transposed <- t(cardioresp_co_wide)
+# Remove the suffixes from `chemical2_label` (e.g., "Lead (6824).1" -> "Lead (6824)")
+cardioresp_co_wide$chemical2_label <- sub("\\.\\d+$", "", cardioresp_co_wide$chemical2_label)
 
-#create breaks for colors
-breaks <- c(0, 2, 4, 6, 8, 10, 20, 30, 50, 70)
-colors <- brewer.pal(9, "Blues")
+# Remove total_release1 and total_release2 columns from the dataset before pivoting back to long format
+cardioresp_co_wide_clean <- cardioresp_co_wide %>%
+  select(-total_release1, -total_release2)
 
-#make heatmap
-pheatmap(cardioresp_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, main = "Cardiorespiratory Toxicants", color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/cardioresp_heat.png", width = 12, height = 9)
+# Ensure that all columns (including chemical1_label) are treated as characters
+cardioresp_co_wide_clean[] <- lapply(cardioresp_co_wide_clean, as.character)
+
+# Convert back to long format without including total release columns
+cardioresp_co_long <- cardioresp_co_wide_clean %>%
+  pivot_longer(cols = -chemical2_label, names_to = "chemical1", values_to = "value") %>%
+  drop_na() %>%
+  rename(chemical2 = chemical2_label)  # Rename the column back to `chemical2`
+
+# Order chemicals so they match the triangular shape
+chemical_levels <- unique(c(cardioresp_co_long$chemical1, cardioresp_co_long$chemical2))
+cardioresp_co_long <- cardioresp_co_long %>%
+  mutate(
+    chemical1 = factor(chemical1, levels = chemical_levels),
+    chemical2 = factor(chemical2, levels = chemical_levels)
+  )
+
+# Keep only the lower triangle (remove upper diagonal)
+cardioresp_co_long <- cardioresp_co_long %>%
+  filter(as.numeric(chemical2) >= as.numeric(chemical1))
+
+# Convert to numeric, non-numeric entries will become NA
+cardioresp_co_long$value <- as.numeric(cardioresp_co_long$value)
+
+# Check for NA values after conversion
+sum(is.na(cardioresp_co_long$value))
+
+cardioresp_co_long <- cardioresp_co_long %>%
+  drop_na(value)
+
+# Create heatmap with black tile borders and updated labels
+cardioresp_heat = ggplot(cardioresp_co_long, aes(x = chemical1, y = chemical2, fill = value)) +
+  geom_tile(color = "gray", size = 0.5) +  # Black border around each tile
+  scale_fill_gradientn(colors = brewer.pal(9, "Blues"), na.value = "transparent", name = "Co-Release Percentage") +  
+  scale_x_discrete(position = "top") +  # Moves x-axis labels to the top
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 0, vjust = 0, size = 10, color = "black"),  # Set x-axis text color to black
+    axis.text.y = element_text(size = 10, color = "black"),  # Set y-axis text color to black
+    axis.title.x = element_blank(),  
+    axis.title.y = element_blank(),  
+    panel.grid = element_blank()  
+  )
+
+cardioresp_heat
+
+# Save the heatmap
+ggsave(filename = "cardioresp_heat.png", device = "png", plot = cardioresp_heat, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 8, height = 5)
+
 ```
 
 
 #devrep heatmap 
 ```{r}
-#remove unwanted columns from carc_co and reformat the dataframe
+
+# Prepare data in a wide format
 devrep_co_wide <- devrep_co %>%
-  select (-unique_trifd_count, -total_release1, -total_release2) %>%
-    mutate(
+  select(-unique_trifd_count) %>%  # Keep total_release1 and total_release2
+  mutate(
     chemical1 = ifelse(chemical1 == "Molybdenum trioxide", "Molybdenum", chemical1),
-    chemical2 = ifelse(chemical2 == "Molybdenum trioxide", "Molybdenum", chemical2)
-  ) %>%
-      mutate(
+    chemical2 = ifelse(chemical2 == "Molybdenum trioxide", "Molybdenum", chemical2),
     chemical1 = ifelse(chemical1 == "4,4'-Isopropylidenediphenol", "Bisphenol A", chemical1),
-    chemical2 = ifelse(chemical2 == "4,4'-Isopropylidenediphenol", "Bisphenol A", chemical2)
-  ) %>%
-    mutate(
+    chemical2 = ifelse(chemical2 == "4,4'-Isopropylidenediphenol", "Bisphenol A", chemical2),
     chemical1 = ifelse(chemical1 == "Decabromodiphenyl oxide", "DecaBDE", chemical1),
-    chemical2 = ifelse(chemical2 == "Decabromodiphenyl oxide", "DecaBDE", chemical2)
+    chemical2 = ifelse(chemical2 == "Decabromodiphenyl oxide", "DecaBDE", chemical2),
+    chemical1 = ifelse(chemical1 == "Hexachloro-1,3-butadiene", "Hexachlorobutadiene", chemical1),
+    chemical2 = ifelse(chemical2 == "Hexachloro-1,3-butadiene", "Hexachlorobutadiene", chemical2),
+    # Create a version of chemical labels for processing, separate release values
+    chemical1_label = paste0(chemical1, " (", total_release1, ")"),
+    chemical2_label = paste0(chemical2, " (", total_release2, ")")
   ) %>%
   pivot_wider(
-    names_from = chemical1,    
-    values_from = perc_co,   
-    values_fill = list(unique_trifd_count = NA)  
+    names_from = chemical1_label,
+    values_from = perc_co,
+    values_fill = list(perc_co = NA)
   )
 
-# Convert "chemical2" to row names
-devrep_co_wide <- as.data.frame(devrep_co_wide)    
-rownames(devrep_co_wide) <- devrep_co_wide$chemical2  
-devrep_co_wide$chemical2 <- NULL                 
+# Ensure chemical2 values are unique by appending a suffix if duplicates exist
+devrep_co_wide$chemical2_label <- make.unique(as.character(devrep_co_wide$chemical2_label))
 
-#transpose columns and rows (output is a matrix, which is what is needed for pheatmap)
-devrep_co_transposed <- t(devrep_co_wide)
+# Remove the suffixes from `chemical2_label` (e.g., "Lead (6824).1" -> "Lead (6824)")
+devrep_co_wide$chemical2_label <- sub("\\.\\d+$", "", devrep_co_wide$chemical2_label)
 
-#create breaks for colors
-breaks <- c(0, 2, 4, 6, 8, 10, 20, 30, 50, 70)
-colors <- brewer.pal(9, "Blues")
+# Remove total_release1 and total_release2 columns from the dataset before pivoting back to long format
+devrep_co_wide_clean <- devrep_co_wide %>%
+  select(-total_release1, -total_release2)
 
-#make heatmap
-pheatmap(devrep_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, main = "Developmental/Reproductive Toxicants", color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/devrep_heat.png", width = 12, height = 9)
+# Ensure that all columns (including chemical1_label) are treated as characters
+devrep_co_wide_clean[] <- lapply(devrep_co_wide_clean, as.character)
+
+# Convert back to long format without including total release columns
+devrep_co_long <- devrep_co_wide_clean %>%
+  pivot_longer(cols = -chemical2_label, names_to = "chemical1", values_to = "value") %>%
+  drop_na() %>%
+  rename(chemical2 = chemical2_label)  # Rename the column back to `chemical2`
+
+# Order chemicals so they match the triangular shape
+chemical_levels <- unique(c(devrep_co_long$chemical1, devrep_co_long$chemical2))
+devrep_co_long <- devrep_co_long %>%
+  mutate(
+    chemical1 = factor(chemical1, levels = chemical_levels),
+    chemical2 = factor(chemical2, levels = chemical_levels)
+  )
+
+# Keep only the lower triangle (remove upper diagonal)
+devrep_co_long <- devrep_co_long %>%
+  filter(as.numeric(chemical2) >= as.numeric(chemical1))
+
+# Convert to numeric, non-numeric entries will become NA
+devrep_co_long$value <- as.numeric(devrep_co_long$value)
+
+# Check for NA values after conversion
+sum(is.na(devrep_co_long$value))
+
+devrep_co_long <- devrep_co_long %>%
+  drop_na(value)
+
+# Create heatmap with black tile borders and updated labels
+devrep_heat = ggplot(devrep_co_long, aes(x = chemical1, y = chemical2, fill = value)) +
+  geom_tile(color = "gray", size = 0.5) +  # Black border around each tile
+  scale_fill_gradientn(colors = brewer.pal(9, "Blues"), na.value = "transparent", name = "Co-Release Percentage") +  
+  scale_x_discrete(position = "top") +  # Moves x-axis labels to the top
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 0, vjust = 0, size = 10, color = "black"),  # Set x-axis text color to black
+    axis.text.y = element_text(size = 10, color = "black"),  # Set y-axis text color to black
+    axis.title.x = element_blank(),  
+    axis.title.y = element_blank(),  
+    panel.grid = element_blank()  
+  )
+
+devrep_heat
+
+# Save the heatmap
+ggsave(filename = "devrep_heat.png", device = "png", plot = devrep_heat, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 8, height = 5)
+
+
 ```
 
 
 #lkt heatmap 
 ```{r}
-#remove unwanted columns from carc_co and reformat the dataframe
+  
+# Prepare data in a wide format
 lkt_co_wide <- lkt_co %>%
-  select (-unique_trifd_count, -total_release1, -total_release2) %>%
-    mutate(
+  select(-unique_trifd_count) %>%  # Keep total_release1 and total_release2
+  mutate(
     chemical1 = ifelse(chemical1 == "Molybdenum trioxide", "Molybdenum", chemical1),
-    chemical2 = ifelse(chemical2 == "Molybdenum trioxide", "Molybdenum", chemical2)
-  ) %>%
-    mutate(
+    chemical2 = ifelse(chemical2 == "Molybdenum trioxide", "Molybdenum", chemical2),
     chemical1 = ifelse(chemical1 == "Decabromodiphenyl oxide", "DecaBDE", chemical1),
-    chemical2 = ifelse(chemical2 == "Decabromodiphenyl oxide", "DecaBDE", chemical2)
-  ) %>%
-      mutate(
+    chemical2 = ifelse(chemical2 == "Decabromodiphenyl oxide", "DecaBDE", chemical2),
     chemical1 = ifelse(chemical1 == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical1),
-    chemical2 = ifelse(chemical2 == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical2)
+    chemical2 = ifelse(chemical2 == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical2),
+      chemical1 = ifelse(chemical1 == "Hexachloro-1,3-butadiene", "Hexachlorobutadiene", chemical1),
+    chemical2 = ifelse(chemical2 == "Hexachloro-1,3-butadiene", "Hexachlorobutadiene", chemical2),
+    # Create a version of chemical labels for processing, separate release values
+    chemical1_label = paste0(chemical1, " (", total_release1, ")"),
+    chemical2_label = paste0(chemical2, " (", total_release2, ")")
   ) %>%
   pivot_wider(
-    names_from = chemical1,    
-    values_from = perc_co,   
-    values_fill = list(unique_trifd_count = NA)  
+    names_from = chemical1_label,
+    values_from = perc_co,
+    values_fill = list(perc_co = NA)
   )
 
-# Convert "chemical2" to row names
-lkt_co_wide <- as.data.frame(lkt_co_wide)    
-rownames(lkt_co_wide) <- lkt_co_wide$chemical2  
-lkt_co_wide$chemical2 <- NULL                 
+# Ensure chemical2 values are unique by appending a suffix if duplicates exist
+lkt_co_wide$chemical2_label <- make.unique(as.character(lkt_co_wide$chemical2_label))
 
-#transpose columns and rows (output is a matrix, which is what is needed for pheatmap)
-lkt_co_transposed <- t(lkt_co_wide)
+# Remove the suffixes from `chemical2_label` (e.g., "Lead (6824).1" -> "Lead (6824)")
+lkt_co_wide$chemical2_label <- sub("\\.\\d+$", "", lkt_co_wide$chemical2_label)
 
-#create breaks for colors
-breaks <- c(0, 2, 4, 6, 8, 10, 20, 30, 50, 70)
-colors <- brewer.pal(9, "Blues")
+# Remove total_release1 and total_release2 columns from the dataset before pivoting back to long format
+lkt_co_wide_clean <- lkt_co_wide %>%
+  select(-total_release1, -total_release2)
 
-#make heatmap
-pheatmap(lkt_co_transposed, cluster_rows = FALSE, cluster_cols = FALSE, border_color = "grey15", breaks = breaks, display_numbers = FALSE, main = "Liver, Kidney, and/or Thyroid Toxicants", color = colors, na_col = "grey50", number_color = "grey15", cellheight=32,cellwidth=32, fontsize_number = 10, angle_col = 45, legend = T, filename = "~/TSCA/CRA/CRA_Prioritization/Output/lkt_heat.png", width = 13, height = 10)
+# Ensure that all columns (including chemical1_label) are treated as characters
+lkt_co_wide_clean[] <- lapply(lkt_co_wide_clean, as.character)
+
+# Convert back to long format without including total release columns
+lkt_co_long <- lkt_co_wide_clean %>%
+  pivot_longer(cols = -chemical2_label, names_to = "chemical1", values_to = "value") %>%
+  drop_na() %>%
+  rename(chemical2 = chemical2_label)  # Rename the column back to `chemical2`
+
+# Order chemicals so they match the triangular shape
+chemical_levels <- unique(c(lkt_co_long$chemical1, lkt_co_long$chemical2))
+lkt_co_long <- lkt_co_long %>%
+  mutate(
+    chemical1 = factor(chemical1, levels = chemical_levels),
+    chemical2 = factor(chemical2, levels = chemical_levels)
+  )
+
+# Keep only the lower triangle (remove upper diagonal)
+lkt_co_long <- lkt_co_long %>%
+  filter(as.numeric(chemical2) >= as.numeric(chemical1))
+
+# Convert to numeric, non-numeric entries will become NA
+lkt_co_long$value <- as.numeric(lkt_co_long$value)
+
+# Check for NA values after conversion
+sum(is.na(lkt_co_long$value))
+
+lkt_co_long <- lkt_co_long %>%
+  drop_na(value)
+
+# Create heatmap with black tile borders and updated labels
+lkt_heat = ggplot(lkt_co_long, aes(x = chemical1, y = chemical2, fill = value)) +
+  geom_tile(color = "gray", size = 0.5) +  # Black border around each tile
+  scale_fill_gradientn(colors = brewer.pal(9, "Blues"), na.value = "transparent", name = "Co-Release Percentage") +  
+  scale_x_discrete(position = "top") +  # Moves x-axis labels to the top
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 0, vjust = 0, size = 10, color = "black"),  # Set x-axis text color to black
+    axis.text.y = element_text(size = 10, color = "black"),  # Set y-axis text color to black
+    axis.title.x = element_blank(),  
+    axis.title.y = element_blank(),  
+    panel.grid = element_blank()  
+  )
+
+lkt_heat
+
+# Save the heatmap
+ggsave(filename = "lkt_heat.png", device = "png", plot = lkt_heat, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 8, height = 5)
+
+
+
 ```
 
 
@@ -536,22 +780,29 @@ tri_classified <- tri_endpoints %>%
   mutate(trifd_count = n()) %>%  # Count occurrences of each trifd
   ungroup()
 
-#Average for trifd that are unique (count == 1)
+# Average and sample size for trifd that are unique (count == 1)
 average_unique_trifd <- tri_classified %>%
   filter(trifd_count == 1) %>%
   group_by(chemical) %>%
-  summarise(average_release_unique_trifd = mean(onsite_releases_2017_2022, na.rm = TRUE))
+  summarise(
+    average_release_unique_trifd = mean(onsite_releases_2017_2022, na.rm = TRUE),
+    sample_size_unique = n()
+  )
 
-#Average for trifd that are repeated (count > 1)
+# Average and sample size for trifd that are repeated (count > 1)
 average_repeated_trifd <- tri_classified %>%
   filter(trifd_count > 1) %>%
   group_by(chemical) %>%
-  summarise(average_release_repeated_trifd = mean(onsite_releases_2017_2022, na.rm = TRUE))
+  summarise(
+    average_release_repeated_trifd = mean(onsite_releases_2017_2022, na.rm = TRUE),
+    sample_size_repeated = n()
+  )
 
-#merge dataframes and save
+# Merge dataframes and save
 releases_unique_repeated <- full_join(average_unique_trifd, average_repeated_trifd, by = "chemical")
 
 write.csv(releases_unique_repeated, file = "~/TSCA/CRA/CRA_Prioritization/Output/unique.repeated.summary.csv")
+
 
 #format data to run anova by classifying trifd as unique or repeated
 tri_classified <- tri_endpoints %>%
@@ -560,6 +811,7 @@ tri_classified <- tri_endpoints %>%
   ungroup() %>%
   mutate(trifd_type = ifelse(trifd_count == 1, "unique", "repeated"))
 
+
 #Run ANOVA
 options(max.print=10000000)
 
@@ -567,26 +819,37 @@ anova = aov(onsite_releases_2017_2022 ~ trifd_type*chemical, data = tri_classifi
 summary(anova)
 capture.output(anova, file = "~/TSCA/CRA/CRA_Prioritization/Output/release_anova")
 
-tukey = TukeyHSD(x = anova, conf.level = 0.95)
-capture.output(tukey, file = "~/TSCA/CRA/CRA_Prioritization/Output/release_tukey")
+#Shapiro-Wilk test for normality (p < 0.05, data is not normally distributed); this data is extreeeemely skewed and needs to be log-normalized
+shapiro.test(sample(anova$residuals, 5000))
 
-#ttest for overall difference in unique vs. repeated, and their overall averages (p-value = 0.04055)
-t.test(repeated$onsite_releases_2017_2022, unique$onsite_releases_2017_2022, conf.level = 0.95)
+hist(tri_classified$onsite_releases_2017_2022)
 
+#Levene's Test for homogeneity of variances (p > 0.05, variances are homogenous)
+leveneTest(onsite_releases_2017_2022 ~ trifd_type*chemical, data = tri_classified)
+
+#log-transform and check distribution with histogram and tests (much more normal, at least visually)
+tri_classified$log_onsite_releases = log(tri_classified$onsite_releases_2017_2022)
+hist(tri_classified$log_onsite_releases)
+leveneTest(log_onsite_releases ~ trifd_type*chemical, data = tri_classified)
+
+#run ANOVA with transformed values - now everything is very significant
+anova_log = aov(log_onsite_releases ~ trifd_type*chemical, data = tri_classified)
+summary(anova_log)
+capture.output(anova_log, file = "~/TSCA/CRA/CRA_Prioritization/Output/release_anova_transformed")
+
+#posthoc tukey
+tukey = TukeyHSD(x = anova_log, conf.level = 0.95)
+capture.output(tukey, file = "~/TSCA/CRA/CRA_Prioritization/Output/release_tukey_transformed")
+
+#overall averages
 repeated = tri_classified %>%
   filter(trifd_type == "repeated")
-mean(repeated$onsite_releases_2017_2022) #364,847.9
+mean(repeated$onsite_releases_2017_2022) #319,809.4
 
 unique = tri_classified %>%
   filter(trifd_type == "unique")
-mean(unique$onsite_releases_2017_2022) #32,460.69
-
+mean(unique$onsite_releases_2017_2022) #33,101.53
 ```
-
-
-
-
-
 
 
 

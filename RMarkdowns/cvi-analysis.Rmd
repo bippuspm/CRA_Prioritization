@@ -20,6 +20,13 @@ library("tigris")
 library("sf")
 library("tidycensus")
 library("viridis")
+library("tidyr")
+library("car")
+library("pak")
+
+#install patch for Tigris as of April 2025
+#pak::pak("walkerke/tigris")
+
 detach(package:Rmisc)
 detach(package:plyr)
 ```
@@ -55,9 +62,10 @@ tri = filter(tri, sum_onsite_releases_2017_2022 > 0)
 #fix multiple chemical names
 ```{r}
 tri$chemical = gsub("Hydrogen cyanide", "Cyanide compounds", tri$chemical)
-tri$chemical = gsub("m-Xylene", "Xylene (mixed isomers)", tri$chemical)
-tri$chemical = gsub("o-Xylene", "Xylene (mixed isomers)", tri$chemical)
-tri$chemical = gsub("p-Xylene", "Xylene (mixed isomers)", tri$chemical)
+tri$chemical = gsub("Xylene \\(mixed isomers\\)", "Xylenes", tri$chemical)
+tri$chemical = gsub("o-Xylene", "Xylenes", tri$chemical)
+tri$chemical = gsub("p-Xylene", "Xylenes", tri$chemical)
+tri$chemical = gsub("m-Xylene", "Xylenes", tri$chemical)
 tri$chemical = gsub("Cadmium compounds", "Cadmium", tri$chemical)
 tri$chemical = gsub("Arsenic compounds", "Arsenic", tri$chemical)
 tri$chemical = gsub("Nickel compounds", "Nickel", tri$chemical)
@@ -155,7 +163,9 @@ CVI_summary = tri_cvi_endpoints_long %>%
   group_by(endpoint_group) %>%
   summarize(median_CVI = median(CVI.Score, na.rm = TRUE),
   mean_CVI = mean(CVI.Score, na.rm = TRUE),      
-  sd_CVI = sd(CVI.Score, na.rm = TRUE),          
+  sd_CVI = sd(CVI.Score, na.rm = TRUE),   
+  min_CVI = min(CVI.Score, na.rm = TRUE),
+  max_CVI = max(CVI.Score, na.rm = TRUE),
   n = n(),                                       
   se_CVI = sd_CVI / sqrt(n), 
   .groups = "drop") %>%
@@ -170,53 +180,74 @@ write.csv(CVI_summary, file = "~/TSCA/CRA/CRA_Prioritization/Output/cvi_summary.
 ```{r}
 carc_CVI_summary = carc %>%
   group_by(chemical) %>%
-  summarize(median_CVI = median(CVI.Score, na.rm = TRUE),
-  mean_CVI = mean(CVI.Score, na.rm = TRUE),      
-  sd_CVI = sd(CVI.Score, na.rm = TRUE),          
-  n = n(),                                       
-  se_CVI = sd_CVI / sqrt(n), 
-  .groups = "drop") %>%
+  summarize(
+    median_CVI = median(CVI.Score, na.rm = TRUE),
+    mean_CVI = mean(CVI.Score, na.rm = TRUE),      
+    sd_CVI = sd(CVI.Score, na.rm = TRUE),  
+    min_CVI = min(CVI.Score, na.rm = TRUE),
+    max_CVI = max(CVI.Score, na.rm = TRUE),        
+    n = n(),                                       
+    se_CVI = sd_CVI / sqrt(n), 
+    .groups = "drop"
+  ) %>%
   st_drop_geometry()
 
 cns_CVI_summary = cns %>%
   group_by(chemical) %>%
-  summarize(median_CVI = median(CVI.Score, na.rm = TRUE),
-  mean_CVI = mean(CVI.Score, na.rm = TRUE),      
-  sd_CVI = sd(CVI.Score, na.rm = TRUE),          
-  n = n(),                                       
-  se_CVI = sd_CVI / sqrt(n), 
-  .groups = "drop") %>%
+  summarize(
+    median_CVI = median(CVI.Score, na.rm = TRUE),
+    mean_CVI = mean(CVI.Score, na.rm = TRUE),      
+    sd_CVI = sd(CVI.Score, na.rm = TRUE),  
+    min_CVI = min(CVI.Score, na.rm = TRUE),
+    max_CVI = max(CVI.Score, na.rm = TRUE),        
+    n = n(),                                       
+    se_CVI = sd_CVI / sqrt(n), 
+    .groups = "drop"
+  ) %>%
   st_drop_geometry()
 
 cardioresp_CVI_summary = cardioresp %>%
   group_by(chemical) %>%
-  summarize(median_CVI = median(CVI.Score, na.rm = TRUE),
-  mean_CVI = mean(CVI.Score, na.rm = TRUE),      
-  sd_CVI = sd(CVI.Score, na.rm = TRUE),          
-  n = n(),                                       
-  se_CVI = sd_CVI / sqrt(n), 
-  .groups = "drop") %>%
+  summarize(
+    median_CVI = median(CVI.Score, na.rm = TRUE),
+    mean_CVI = mean(CVI.Score, na.rm = TRUE),      
+    sd_CVI = sd(CVI.Score, na.rm = TRUE),  
+    min_CVI = min(CVI.Score, na.rm = TRUE),
+    max_CVI = max(CVI.Score, na.rm = TRUE),        
+    n = n(),                                       
+    se_CVI = sd_CVI / sqrt(n), 
+    .groups = "drop"
+  ) %>%
   st_drop_geometry()
 
 devrep_CVI_summary = devrep %>%
   group_by(chemical) %>%
-  summarize(median_CVI = median(CVI.Score, na.rm = TRUE),
-  mean_CVI = mean(CVI.Score, na.rm = TRUE),      
-  sd_CVI = sd(CVI.Score, na.rm = TRUE),          
-  n = n(),                                       
-  se_CVI = sd_CVI / sqrt(n), 
-  .groups = "drop") %>%
+  summarize(
+    median_CVI = median(CVI.Score, na.rm = TRUE),
+    mean_CVI = mean(CVI.Score, na.rm = TRUE),      
+    sd_CVI = sd(CVI.Score, na.rm = TRUE),  
+    min_CVI = min(CVI.Score, na.rm = TRUE),
+    max_CVI = max(CVI.Score, na.rm = TRUE),        
+    n = n(),                                       
+    se_CVI = sd_CVI / sqrt(n), 
+    .groups = "drop"
+  ) %>%
   st_drop_geometry()
 
 lkt_CVI_summary = lkt %>%
   group_by(chemical) %>%
-  summarize(median_CVI = median(CVI.Score, na.rm = TRUE),
-  mean_CVI = mean(CVI.Score, na.rm = TRUE),      
-  sd_CVI = sd(CVI.Score, na.rm = TRUE),          
-  n = n(),                                       
-  se_CVI = sd_CVI / sqrt(n), 
-  .groups = "drop") %>%
+  summarize(
+    median_CVI = median(CVI.Score, na.rm = TRUE),
+    mean_CVI = mean(CVI.Score, na.rm = TRUE),      
+    sd_CVI = sd(CVI.Score, na.rm = TRUE),  
+    min_CVI = min(CVI.Score, na.rm = TRUE),
+    max_CVI = max(CVI.Score, na.rm = TRUE),        
+    n = n(),                                       
+    se_CVI = sd_CVI / sqrt(n), 
+    .groups = "drop"
+  ) %>%
   st_drop_geometry()
+
 
 write.csv(carc_CVI_summary, file = "~/TSCA/CRA/CRA_Prioritization/Output/carc_cvi_summary.csv")
 write.csv(cns_CVI_summary, file = "~/TSCA/CRA/CRA_Prioritization/Output/cns_cvi_summary.csv")
@@ -235,68 +266,233 @@ carc <- carc %>%
   ) 
 
 cns = cns %>%
-  mutate(chemical = ifelse(chemical == "Decabromodiphenyl oxide", "DecaBDE", chemical))
+  mutate(chemical = ifelse(chemical == "Decabromodiphenyl oxide", "DecaBDE", chemical), chemical = ifelse(chemical == "Cyanide compounds", "Cyanide", chemical))
 
 cardioresp = cardioresp %>%
   mutate(chemical = ifelse(chemical == "Molybdenum trioxide", "Molybdenum", chemical))
 
 devrep = devrep %>%
-  mutate(chemical = ifelse(chemical == "Molybdenum trioxide", "Molybdenum", chemical),chemical = ifelse(chemical == "4,4'-Isopropylidenediphenol", "Bisphenol A", chemical),chemical = ifelse(chemical == "Decabromodiphenyl oxide", "DecaBDE", chemical))
+  mutate(chemical = ifelse(chemical == "Molybdenum trioxide", "Molybdenum", chemical),chemical = ifelse(chemical == "4,4'-Isopropylidenediphenol", "Bisphenol A", chemical),chemical = ifelse(chemical == "Decabromodiphenyl oxide", "DecaBDE", chemical), chemical = ifelse(chemical == "Hexachloro-1,3-butadiene", "Hexachlorobutadiene", chemical))
 
 lkt = lkt %>%
-  mutate(chemical1 = ifelse(chemical == "Molybdenum trioxide", "Molybdenum", chemical),chemical = ifelse(chemical == "Decabromodiphenyl oxide", "DecaBDE", chemical),chemical = ifelse(chemical == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical))
+  mutate(chemical1 = ifelse(chemical == "Molybdenum trioxide", "Molybdenum", chemical),chemical = ifelse(chemical == "Decabromodiphenyl oxide", "DecaBDE", chemical),chemical = ifelse(chemical == "4,4'-Methylenebis(2-chloroaniline)", "MBOCA", chemical), chemical = ifelse(chemical == "Hexachloro-1,3-butadiene", "Hexachlorobutadiene", chemical))
 ```
 
 
 
 #violin for CVI score of each chemical within endpoint groups
 ```{r}
-#carcinogens
-carc_violin = ggplot(carc, aes(x = chemical, y = CVI.Score, fill = chemical)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1), legend.position = "none", plot.title = element_text(hjust = 0.5)) + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(carc$CVI.Score), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8)) + scale_fill_viridis(discrete = TRUE, option = "H", begin = 0.2) + ggtitle("Carcinogens")
+## carcinogens
+
+# Compute sample size for each chemical
+chemical_counts <- carc %>%
+  group_by(chemical) %>%
+  summarise(sample_size = n())
+
+chemical_labels <- setNames(
+  paste0(chemical_counts$chemical, " (", chemical_counts$sample_size, ")"),
+  chemical_counts$chemical
+)
+
+#plot
+carc_violin <- ggplot(carc, aes(x = chemical, y = CVI.Score, fill = chemical)) +
+  geom_violin(trim = FALSE) +
+  theme_bw() +
+  ylab("CVI Score") +
+  xlab("Chemical") +
+  theme(
+    axis.text.x = element_text(size = 14, angle = 60, hjust = 1), 
+    axis.text.y = element_text(size = 14),  
+    axis.title.x = element_text(size = 16, face = "bold"),  
+    axis.title.y = element_text(size = 16, face = "bold"),  
+    legend.position = "none"
+  ) +
+  stat_summary(fun = mean, geom = "point", shape = 20, size = 5, 
+               color = "black", fill = "gray") +
+  geom_hline(yintercept = mean(carc$CVI.Score), linetype = "dashed") +
+  scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2, 0.8)) +
+  scale_fill_viridis(discrete = TRUE, option = "H", begin = 0.2) +
+  scale_x_discrete(labels = chemical_labels)  
 
 carc_violin
 
-ggsave(filename = "carc_violin.png", device = "png", plot = carc_violin, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 14, height = 5)
+ggsave(filename = "carc_violin.png", device = "png", plot = carc_violin, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 13, height = 5)
 
-#CNS
-cns_violin = ggplot(cns, aes(x = chemical, y = CVI.Score, fill = chemical)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1), legend.position = "none", plot.title = element_text(hjust = 0.5)) + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(cns$CVI.Score), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8)) + scale_fill_viridis(discrete = TRUE, option = "H", begin = 0.2) + ggtitle("Central Nervous System Toxicants")
+## CNS
+
+# Compute sample size for each chemical
+chemical_counts <- cns %>%
+  group_by(chemical) %>%
+  summarise(sample_size = n())
+
+chemical_labels <- setNames(
+  paste0(chemical_counts$chemical, " (", chemical_counts$sample_size, ")"),
+  chemical_counts$chemical
+)
+
+# Plot
+cns_violin <- ggplot(cns, aes(x = chemical, y = CVI.Score, fill = chemical)) +
+  geom_violin(trim = FALSE) +
+  theme_bw() +
+  ylab("CVI Score") +
+  xlab("Chemical") +
+  theme(
+    axis.text.x = element_text(size = 14, angle = 55, hjust = 1), 
+    axis.text.y = element_text(size = 14),  
+    axis.title.x = element_text(size = 16, face = "bold"),  
+    axis.title.y = element_text(size = 16, face = "bold"),  
+    legend.position = "none"
+  ) +
+  stat_summary(fun = mean, geom = "point", shape = 20, size = 5, 
+               color = "black", fill = "gray") +
+  geom_hline(yintercept = mean(cns$CVI.Score), linetype = "dashed") +
+  scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2, 0.8)) +
+  scale_fill_viridis(discrete = TRUE, option = "H", begin = 0.2) +
+  scale_x_discrete(labels = chemical_labels) 
 
 cns_violin
 
-ggsave(filename = "cns_violin.png", device = "png", plot = cns_violin, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 14, height = 5)
+ggsave(filename = "cns_violin.png", device = "png", plot = cns_violin, 
+       path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 11, height = 5)
 
 
-#cardiorespiratory
-cardioresp_violin = ggplot(cardioresp, aes(x = chemical, y = CVI.Score, fill = chemical)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1), legend.position = "none", plot.title = element_text(hjust = 0.5)) + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(cardioresp$CVI.Score), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8)) + scale_fill_viridis(discrete = TRUE, option = "H", begin = 0.2) + ggtitle("Cardiorespiratory Toxicants")
+## cardiorespiratory
+
+# Compute sample size for each chemical
+chemical_counts <- cardioresp %>%
+  group_by(chemical) %>%
+  summarise(sample_size = n())
+
+chemical_labels <- setNames(
+  paste0(chemical_counts$chemical, " (", chemical_counts$sample_size, ")"),
+  chemical_counts$chemical
+)
+
+# Plot
+cardioresp_violin <- ggplot(cardioresp, aes(x = chemical, y = CVI.Score, fill = chemical)) +
+  geom_violin(trim = FALSE) +
+  theme_bw() +
+  ylab("CVI Score") +
+  xlab("Chemical") +
+  theme(
+    axis.text.x = element_text(size = 14, angle = 55, hjust = 1), 
+    axis.text.y = element_text(size = 14),  
+    axis.title.x = element_text(size = 16, face = "bold"),  
+    axis.title.y = element_text(size = 16, face = "bold"),  
+    legend.position = "none"
+  ) +
+  stat_summary(fun = mean, geom = "point", shape = 20, size = 5, 
+               color = "black", fill = "gray") +
+  geom_hline(yintercept = mean(cardioresp$CVI.Score), linetype = "dashed") +
+  scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2, 0.8)) +
+  scale_fill_viridis(discrete = TRUE, option = "H", begin = 0.2) +
+  scale_x_discrete(labels = chemical_labels) 
 
 cardioresp_violin
 
-ggsave(filename = "cardioresp_violin.png", device = "png", plot = cardioresp_violin, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 14, height = 5)
+ggsave(filename = "cardioresp_violin.png", device = "png", plot = cardioresp_violin, 
+       path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 14, height = 5)
 
+## dev/rep
 
-#dev/rep
-devrep_violin = ggplot(devrep, aes(x = chemical, y = CVI.Score, fill = chemical)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1), legend.position = "none", plot.title = element_text(hjust = 0.5)) + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(devrep$CVI.Score), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8)) + scale_fill_viridis(discrete = TRUE, option = "H", begin = 0.2) + ggtitle("Developmental/Reproductive Toxicants")
+# Compute sample size for each chemical
+chemical_counts <- devrep %>%
+  group_by(chemical) %>%
+  summarise(sample_size = n())
+
+chemical_labels <- setNames(
+  paste0(chemical_counts$chemical, " (", chemical_counts$sample_size, ")"),
+  chemical_counts$chemical
+)
+
+# Plot
+devrep_violin <- ggplot(devrep, aes(x = chemical, y = CVI.Score, fill = chemical)) +
+  geom_violin(trim = FALSE) +
+  theme_bw() +
+  ylab("CVI Score") +
+  xlab("Chemical") +
+  theme(
+    axis.text.x = element_text(size = 14, angle = 55, hjust = 1), 
+    axis.text.y = element_text(size = 14),  
+    axis.title.x = element_text(size = 16, face = "bold"),  
+    axis.title.y = element_text(size = 16, face = "bold"),  
+    legend.position = "none"
+  ) +
+  stat_summary(fun = mean, geom = "point", shape = 20, size = 5, 
+               color = "black", fill = "gray") +
+  geom_hline(yintercept = mean(devrep$CVI.Score), linetype = "dashed") +
+  scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2, 0.8)) +
+  scale_fill_viridis(discrete = TRUE, option = "H", begin = 0.2) +
+  scale_x_discrete(labels = chemical_labels) 
 
 devrep_violin
 
-ggsave(filename = "devrep_violin.png", device = "png", plot = devrep_violin, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 14, height = 5)
+ggsave(filename = "devrep_violin.png", device = "png", plot = devrep_violin, 
+       path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 12, height = 5)
 
-#liver, kidney, thyroid
-lkt_violin = ggplot(lkt, aes(x = chemical, y = CVI.Score, fill = chemical)) + geom_violin(trim = FALSE) + theme_bw() + ylab("CVI Score") + xlab("Chemical") + theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1), legend.position = "none", plot.title = element_text(hjust = 0.5)) + stat_summary(fun = mean, geom = "point", shape = 20, size = 5, color = "black", fill = "gray") + geom_hline(yintercept = mean(lkt$CVI.Score), linetype = "dashed")  + scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2,0.8)) + scale_fill_viridis(discrete = TRUE, option = "H", begin = 0.2) + ggtitle("Liver, Kidney, Thyroid Toxicants")
+
+## liver, kidney, thyroid
+
+# Compute sample size for each chemical
+chemical_counts <- lkt %>%
+  group_by(chemical) %>%
+  summarise(sample_size = n())
+
+chemical_labels <- setNames(
+  paste0(chemical_counts$chemical, " (", chemical_counts$sample_size, ")"),
+  chemical_counts$chemical
+)
+
+# Plot
+lkt_violin <- ggplot(lkt, aes(x = chemical, y = CVI.Score, fill = chemical)) +
+  geom_violin(trim = FALSE) +
+  theme_bw() +
+  ylab("CVI Score") +
+  xlab("Chemical") +
+  theme(
+    axis.text.x = element_text(size = 14, angle = 55, hjust = 1), 
+    axis.text.y = element_text(size = 14),  
+    axis.title.x = element_text(size = 16, face = "bold"),  
+    axis.title.y = element_text(size = 16, face = "bold"),  
+    legend.position = "none"
+  ) +
+  stat_summary(fun = mean, geom = "point", shape = 20, size = 5, 
+               color = "black", fill = "gray") +
+  geom_hline(yintercept = mean(lkt$CVI.Score), linetype = "dashed") +
+  scale_y_continuous(breaks = seq(0.2, 0.8, 0.1), limits = c(0.2, 0.8)) +
+  scale_fill_viridis(discrete = TRUE, option = "H", begin = 0.2) +
+  scale_x_discrete(labels = chemical_labels) 
 
 lkt_violin
 
-ggsave(filename = "lkt_violin.png", device = "png", plot = lkt_violin, path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 14, height = 5)
+ggsave(filename = "lkt_violin.png", device = "png", plot = lkt_violin, 
+       path = "~/TSCA/CRA/CRA_Prioritization/Output/", width = 12, height = 5)
+
+
+
 ```
 
 
 
 
-#stats for above: significant differences between CVI scores of chemicals in each endpoint group?
+#stats for above: significant differences between CVI scores of chemicals in each endpoint group
 ```{r}
-#carc
+## carc
 carc_cvi_aov = aov(CVI.Score ~ chemical, data = carc)
 summary(carc_cvi_aov)
+
+#Shapiro-Wilk test for normality (p < 0.05, data is not normally distributed; histogram looks SUPER normally distributed, though?)
+shapiro.test(carc_cvi_aov$residuals[0:5000])
+hist(carc$CVI.Score)
+
+#Levene's Test for homogeneity of variances (p < 0.05, variances are not homogenous)
+leveneTest(CVI.Score ~ chemical, data = carc)
+
+#log-transform and check distribution with histogram and tests (made data more skewed and barely reduced diff between variances; not going to log transform)
+carc$log_CVI.Score <- log(carc$CVI.Score)
+hist(carc$log_CVI.Score)
+leveneTest(log_CVI.Score ~ chemical, data = carc) 
+
 carc_cvi_tukey = TukeyHSD(x = carc_cvi_aov, conf.level = 0.95)
 capture.output(carc_cvi_tukey, file = "~/TSCA/CRA/CRA_Prioritization/Output/carc_cvi_tukey")
 
@@ -342,9 +538,12 @@ write.csv(tri_cvi_25thperc, file = "~/TSCA/CRA/CRA_Prioritization/Output/tri_cvi
 #sum up releases per chemical to see which chemicals are released in the highest amounts in the top 75th - 100th percentile of baseline vulnerability
 ```{r}
 
-baseline_sum = tri_cvi_25thperc %>%
+baseline_sum <- tri_cvi_25thperc %>%
   group_by(chemical) %>%
-  summarise(total_onsite_releases = sum(onsite_releases_2017_2022, na.rm = TRUE))
+  summarise(
+    total_onsite_releases = sum(onsite_releases_2017_2022, na.rm = TRUE),
+    sample_size = n()
+  )
 
 baseline_sum = st_drop_geometry(baseline_sum)
 
