@@ -19,6 +19,8 @@ library("stats")
 library("rstatix")
 library("ggplot2")
 library("car")
+library("grid")
+library("magick")
 detach(package:Rmisc)
 detach(package:plyr)
 
@@ -423,6 +425,7 @@ carc_heat = ggplot(carc_co_long, aes(x = chemical1, y = chemical2, fill = value)
     axis.title.y = element_blank(),  
     panel.grid = element_blank()  
   )
+
 
 carc_heat
 
@@ -853,6 +856,37 @@ mean(unique$onsite_releases_2017_2022) #33,101.53
 
 
 
+#combine images for MS
+```{r}
+# Set working directory
+setwd("~/TSCA/CRA/CRA_Prioritization/Output/")
+
+# Define file names and labels
+files <- c("carc_heat.png", "cns_heat.png", "cardioresp_heat.png", "devrep_heat.png", "lkt_heat.png")
+labels <- c("A", "B", "C", "D", "E")
+
+# Get max width to standardize all images
+max_width <- max(sapply(files, function(f) image_info(image_read(f))$width))
+
+# Read, flatten, resize, annotate
+imgs <- mapply(function(file, label) {
+  img <- image_read(file)
+  img <- image_background(img, "white", flatten = TRUE)
+  img <- image_resize(img, paste0(max_width))
+  image_annotate(img, label, size = 50, gravity = "northwest", color = "black", location = "+20+20")
+}, files, labels, SIMPLIFY = FALSE)
+
+# Combine images vertically
+combined <- image_append(image_join(imgs), stack = TRUE)
+
+# Ensure white background
+combined <- image_background(combined, "white", flatten = TRUE)
+
+# Save as high-resolution PDF (300 DPI)
+image_write(combined, path = "combined_heat.pdf", density = "300x300", format = "pdf")
+
+
+```
 
 
 

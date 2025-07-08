@@ -23,6 +23,7 @@ library("viridis")
 library("tidyr")
 library("car")
 library("pak")
+library("magick")
 
 #install patch for Tigris as of April 2025
 #pak::pak("walkerke/tigris")
@@ -552,6 +553,56 @@ write.csv(baseline_sum, file = "~/TSCA/CRA/CRA_Prioritization/Output/25thperc_ba
 
 
 
+#combine images for MS
+```{r}
+# Set working directory
+setwd("~/TSCA/CRA/CRA_Prioritization/Output/")
+
+# Define file names and labels
+files <- c("carc_violin.png", "cns_violin.png", "cardioresp_violin.png", "devrep_violin.png", "lkt_violin.png")
+labels <- c("A", "B", "C", "D", "E")
+
+# Determine max image width
+max_width <- max(sapply(files, function(f) image_info(image_read(f))$width))
+
+# Set label image height and font size
+label_height <- 100
+label_font_size <- 80
+
+# Create labeled image list
+imgs <- mapply(function(file, label) {
+  # Read and prepare the image
+  img <- image_read(file)
+  img <- image_background(img, "white", flatten = TRUE)
+  img <- image_resize(img, paste0(max_width))
+  
+  # Create a white label strip
+  label_img <- image_blank(width = max_width, height = label_height, color = "white")
+  
+  # Left-align label in the strip
+  label_img <- image_annotate(
+    label_img, label,
+    size = label_font_size,
+    gravity = "west",          # Align to left side
+    location = "+20+0",        # Slight right padding
+    color = "black"
+  )
+  
+  # Stack label above the image
+  image_append(c(label_img, img), stack = TRUE)
+}, files, labels, SIMPLIFY = FALSE)
+
+# Combine all vertically
+combined <- image_append(image_join(imgs), stack = TRUE)
+
+# Ensure white background
+combined <- image_background(combined, "white", flatten = TRUE)
+
+# Save as high-resolution PDF
+image_write(combined, path = "combined_violin.pdf", density = "300x300", format = "pdf")
+
+
+```
 
 
 
