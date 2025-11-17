@@ -37,6 +37,8 @@ detach(package:plyr)
 
 ```{r}
 	# set up database connection
+bq_auth(email = NA)
+
 	con <- dbConnect(
 	  bigrquery::bigquery(),
 	  project = "edf-aq-data",
@@ -133,6 +135,22 @@ devrep = tri_cvi_endpoints %>%
 
 lkt = tri_cvi_endpoints %>%
   filter(lkt %in% "yes")
+```
+
+
+#get unique number of tracts for each endpoint category for reporting; save spreadsheets to look at high CVI tracts for MS
+```{r}
+length(unique(carc$GEOID)) #5165
+length(unique(cns$GEOID)) #5051
+length(unique(cardioresp$GEOID)) #5393
+length(unique(devrep$GEOID)) #4913
+length(unique(lkt$GEOID)) #5280
+
+write.csv(carc, "~/TSCA/CRA/CRA_Prioritization/Output/carc_cvi_full.csv")
+write.csv(cns, "~/TSCA/CRA/CRA_Prioritization/Output/cns_cvi_full.csv")
+write.csv(cardioresp, "~/TSCA/CRA/CRA_Prioritization/Output/cardioresp_cvi_full.csv")
+write.csv(devrep, "~/TSCA/CRA/CRA_Prioritization/Output/devrep_cvi_full.csv")
+write.csv(lkt, "~/TSCA/CRA/CRA_Prioritization/Output/lkt_cvi_full.csv")
 ```
 
 

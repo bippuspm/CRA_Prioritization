@@ -32,11 +32,12 @@ endpoints = read.csv("~/TSCA/CRA/CRA_Prioritization/Data/TSCA_endpoints.csv")
 #query data from BQ (dataframe with TRI ID, facility name, chemicals, and total sum of on site releases for the 5 year span)
 ```{r}
 	# set up database connection
-	con <- dbConnect(
-	  bigrquery::bigquery(),
-	  project = "edf-aq-data",
-	  dataset = "tri",
-)
+bq_auth(email = NA)
+
+con <- dbConnect(
+  bigrquery::bigquery(),
+  project = "edf-aq-data",
+  dataset = "tri",)
 
 SQL = "	
 	SELECT
@@ -113,20 +114,30 @@ lkt = tri_endpoints %>%
 
 #calculate percent co-releases overall for each group: # of coreleases/unique facilities where # of coreleases is total number of facilities - unique facilities
 ```{r}
-#cns = 52%
+#cns = 52% (5,626 out of 10,750)
 ((length(cns[["trifd"]]) - length(unique(cns[["trifd"]]))) / length(unique(cns[["trifd"]])))*100
+(length(cns[["trifd"]]) - length(unique(cns[["trifd"]])))
+(length(unique(cns[["trifd"]])))
 
-#carc = 42%
+#carc = 42% (4,675 out of 11,005)
 ((length(carc[["trifd"]]) - length(unique(carc[["trifd"]]))) / length(unique(carc[["trifd"]])))*100
+(length(carc[["trifd"]]) - length(unique(carc[["trifd"]])))
+(length(unique(carc[["trifd"]])))
 
-#cardioresp = 68%
+#cardioresp = 68% (7,914 out of 11,706)
 ((length(cardioresp[["trifd"]]) - length(unique(cardioresp[["trifd"]]))) / length(unique(cardioresp[["trifd"]])))*100
+(length(cardioresp[["trifd"]]) - length(unique(cardioresp[["trifd"]])))
+(length(unique(cardioresp[["trifd"]])))
 
-#lkt = 43%
+#lkt = 43% (4,992 out of 11,486)
 ((length(lkt[["trifd"]]) - length(unique(lkt[["trifd"]]))) / length(unique(lkt[["trifd"]])))*100
+(length(lkt[["trifd"]]) - length(unique(lkt[["trifd"]])))
+(length(unique(lkt[["trifd"]])))
 
-#devrep = 28%
+#devrep = 28% (2,905 out of 10,426)
 ((length(devrep[["trifd"]]) - length(unique(devrep[["trifd"]]))) / length(unique(devrep[["trifd"]])))*100
+(length(devrep[["trifd"]]) - length(unique(devrep[["trifd"]])))
+(length(unique(devrep[["trifd"]])))
 ```
 
 
@@ -414,16 +425,35 @@ carc_co_long <- carc_co_long %>%
 
 # Create heatmap with black tile borders and updated labels
 carc_heat = ggplot(carc_co_long, aes(x = chemical1, y = chemical2, fill = value)) +
-  geom_tile(color = "gray", size = 0.5) +  # Black border around each tile
-  scale_fill_gradientn(colors = brewer.pal(9, "Blues"), na.value = "transparent", name = "Co-Release Percentage") +  
-  scale_x_discrete(position = "top") +  # Moves x-axis labels to the top
+  geom_tile(color = "gray", size = 0.5) +
+  geom_text(
+    aes(
+      label = ifelse(
+        value == 0, "0",
+        ifelse(value < 1,
+               sprintf("%.1f", value),
+               sprintf("%.0f", value)
+        )
+      ),
+      color = ifelse(value > max(carc_co_long$value, na.rm = TRUE) * 0.5,
+                     "white", "black")
+    ),
+    size = 3
+  ) +
+  scale_color_identity() +   # important so ggplot uses your colors directly
+  scale_fill_gradientn(
+    colors = brewer.pal(9, "Blues"),
+    na.value = "transparent",
+    name = "Co-Release Percentage"
+  ) +
+  scale_x_discrete(position = "top") +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 0, vjust = 0, size = 10, color = "black"),  # Set x-axis text color to black
-    axis.text.y = element_text(size = 10, color = "black"),  # Set y-axis text color to black
-    axis.title.x = element_blank(),  
-    axis.title.y = element_blank(),  
-    panel.grid = element_blank()  
+    axis.text.x = element_text(angle = 45, hjust = 0, vjust = 0, size = 10, color = "black"),
+    axis.text.y = element_text(size = 10, color = "black"),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    panel.grid = element_blank()
   )
 
 
@@ -498,17 +528,35 @@ cns_co_long <- cns_co_long %>%
 
 # Create heatmap with black tile borders and updated labels
 cns_heat = ggplot(cns_co_long, aes(x = chemical1, y = chemical2, fill = value)) +
-  geom_tile(color = "gray", size = 0.5) +  # Black border around each tile
-  scale_fill_gradientn(colors = brewer.pal(9, "Blues"), na.value = "transparent", name = "Co-Release Percentage") +  
-  scale_x_discrete(position = "top") +  # Moves x-axis labels to the top
+  geom_tile(color = "gray", size = 0.5) +
+  geom_text(
+    aes(
+      label = ifelse(
+        value == 0, "0",
+        ifelse(value < 1,
+               sprintf("%.1f", value),   # one decimal
+               sprintf("%.0f", value)    # no decimals
+        )),
+      color = ifelse(value > max(cns_co_long$value, na.rm = TRUE) * 0.5, "white", "black")
+    ),
+    size = 3
+  ) +
+  scale_color_identity() +   # important so ggplot uses your colors directly
+  scale_fill_gradientn(
+    colors = brewer.pal(9, "Blues"),
+    na.value = "transparent",
+    name = "Co-Release Percentage"
+  ) +
+  scale_x_discrete(position = "top") +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 0, vjust = 0, size = 10, color = "black"),  # Set x-axis text color to black
-    axis.text.y = element_text(size = 10, color = "black"),  # Set y-axis text color to black
-    axis.title.x = element_blank(),  
-    axis.title.y = element_blank(),  
-    panel.grid = element_blank()  
+    axis.text.x = element_text(angle = 45, hjust = 0, vjust = 0, size = 10, color = "black"),
+    axis.text.y = element_text(size = 10, color = "black"),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    panel.grid = element_blank()
   )
+
 
 cns_heat
 
@@ -578,17 +626,39 @@ cardioresp_co_long <- cardioresp_co_long %>%
 
 # Create heatmap with black tile borders and updated labels
 cardioresp_heat = ggplot(cardioresp_co_long, aes(x = chemical1, y = chemical2, fill = value)) +
-  geom_tile(color = "gray", size = 0.5) +  # Black border around each tile
-  scale_fill_gradientn(colors = brewer.pal(9, "Blues"), na.value = "transparent", name = "Co-Release Percentage") +  
-  scale_x_discrete(position = "top") +  # Moves x-axis labels to the top
+  geom_tile(color = "gray", size = 0.5) +
+  geom_text(
+    aes(
+      label = ifelse(
+        value == 0, "0",
+        ifelse(value < 1,
+               sprintf("%.1f", value),   # one decimal
+               sprintf("%.0f", value)    # no decimals
+        )
+      ),
+      color = ifelse(
+        value > max(cardioresp_co_long$value, na.rm = TRUE) * 0.5,
+        "white", "black"
+      )
+    ),
+    size = 3
+  ) +
+  scale_color_identity() +  # allows custom text colors
+  scale_fill_gradientn(
+    colors = brewer.pal(9, "Blues"),
+    na.value = "transparent",
+    name = "Co-Release Percentage"
+  ) +
+  scale_x_discrete(position = "top") +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 0, vjust = 0, size = 10, color = "black"),  # Set x-axis text color to black
-    axis.text.y = element_text(size = 10, color = "black"),  # Set y-axis text color to black
-    axis.title.x = element_blank(),  
-    axis.title.y = element_blank(),  
-    panel.grid = element_blank()  
+    axis.text.x = element_text(angle = 45, hjust = 0, vjust = 0, size = 10, color = "black"),
+    axis.text.y = element_text(size = 10, color = "black"),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    panel.grid = element_blank()
   )
+
 
 cardioresp_heat
 
@@ -665,17 +735,39 @@ devrep_co_long <- devrep_co_long %>%
 
 # Create heatmap with black tile borders and updated labels
 devrep_heat = ggplot(devrep_co_long, aes(x = chemical1, y = chemical2, fill = value)) +
-  geom_tile(color = "gray", size = 0.5) +  # Black border around each tile
-  scale_fill_gradientn(colors = brewer.pal(9, "Blues"), na.value = "transparent", name = "Co-Release Percentage") +  
-  scale_x_discrete(position = "top") +  # Moves x-axis labels to the top
+  geom_tile(color = "gray", size = 0.5) +
+  geom_text(
+    aes(
+      label = ifelse(
+        value == 0, "0",
+        ifelse(value < 1,
+               sprintf("%.1f", value),   # one decimal
+               sprintf("%.0f", value)    # no decimals
+        )
+      ),
+      color = ifelse(
+        value > max(devrep_co_long$value, na.rm = TRUE) * 0.5,
+        "white", "black"
+      )
+    ),
+    size = 3
+  ) +
+  scale_color_identity() +  # allows us to apply color directly
+  scale_fill_gradientn(
+    colors = brewer.pal(9, "Blues"),
+    na.value = "transparent",
+    name = "Co-Release Percentage"
+  ) +
+  scale_x_discrete(position = "top") +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 0, vjust = 0, size = 10, color = "black"),  # Set x-axis text color to black
-    axis.text.y = element_text(size = 10, color = "black"),  # Set y-axis text color to black
-    axis.title.x = element_blank(),  
-    axis.title.y = element_blank(),  
-    panel.grid = element_blank()  
+    axis.text.x = element_text(angle = 45, hjust = 0, vjust = 0, size = 10, color = "black"),
+    axis.text.y = element_text(size = 10, color = "black"),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    panel.grid = element_blank()
   )
+
 
 devrep_heat
 
@@ -753,16 +845,38 @@ lkt_co_long <- lkt_co_long %>%
 
 # Create heatmap with black tile borders and updated labels
 lkt_heat = ggplot(lkt_co_long, aes(x = chemical1, y = chemical2, fill = value)) +
-  geom_tile(color = "gray", size = 0.5) +  # Black border around each tile
-  scale_fill_gradientn(colors = brewer.pal(9, "Blues"), na.value = "transparent", name = "Co-Release Percentage") +  
-  scale_x_discrete(position = "top") +  # Moves x-axis labels to the top
+  geom_tile(color = "gray", size = 0.5) +
+  geom_text(
+    aes(
+      label = ifelse(
+        value == 0, "0",
+        ifelse(
+          value < 1,
+          sprintf("%.1f", value),   # one decimal for <1
+          sprintf("%.0f", value)    # no decimals for >=1
+        )
+      ),
+      color = ifelse(
+        value > max(lkt_co_long$value, na.rm = TRUE) * 0.5,  # threshold = 50% of max()
+        "white", "black"
+      )
+    ),
+    size = 3
+  ) +
+  scale_color_identity() +  # use custom text colors directly
+  scale_fill_gradientn(
+    colors = brewer.pal(9, "Blues"),
+    na.value = "transparent",
+    name = "Co-Release Percentage"
+  ) +
+  scale_x_discrete(position = "top") +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 0, vjust = 0, size = 10, color = "black"),  # Set x-axis text color to black
-    axis.text.y = element_text(size = 10, color = "black"),  # Set y-axis text color to black
-    axis.title.x = element_blank(),  
-    axis.title.y = element_blank(),  
-    panel.grid = element_blank()  
+    axis.text.x = element_text(angle = 45, hjust = 0, vjust = 0, size = 10, color = "black"),
+    axis.text.y = element_text(size = 10, color = "black"),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    panel.grid = element_blank()
   )
 
 lkt_heat
